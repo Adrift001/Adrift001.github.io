@@ -1,0 +1,2846 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>逆波兰表达式求值</title>
+    <url>/2019/09/11/ni-bo-lan-biao-da-shi-qiu-zhi/</url>
+    <content><![CDATA[<pre><code>// 计算逆波兰表达式
+class Solution {
+    func evalRPN(_ tokens: [String]) -&gt; Int {
+
+        var stack: [Int] = []
+        for token in tokens {
+            if isOperator(token: token) {
+                let right = stack.popLast()!
+                let left = stack.popLast()!
+                let result = calculate(right: right, left: left, token: token)
+                stack.append(result)
+            } else {
+                stack.append(Int(token)!)
+            }
+        }
+        return stack.first!
+    }
+
+    func calculate(right: Int, left: Int, token: String) -&gt; Int {
+        if token == &quot;+&quot; {
+            return left + right
+        } else if token == &quot;-&quot; {
+            return left - right
+        } else if token == &quot;*&quot; {
+            return left * right
+        } else if token == &quot;/&quot; {
+            return left / right
+        }
+        return 0
+    }
+
+    func isOperator(token: String) -&gt; Bool {
+        return token == &quot;+&quot; || token == &quot;-&quot; || token == &quot;*&quot; || token == &quot;/&quot;
+    }
+}
+
+let solution = Solution()
+let array = [&quot;-78&quot;,&quot;-33&quot;,&quot;196&quot;,&quot;+&quot;,&quot;-19&quot;,&quot;-&quot;,&quot;115&quot;,&quot;+&quot;,&quot;-&quot;,&quot;-99&quot;,&quot;/&quot;,&quot;-18&quot;,&quot;8&quot;,&quot;*&quot;,&quot;-86&quot;,&quot;-&quot;,&quot;-&quot;,&quot;16&quot;,&quot;/&quot;,&quot;26&quot;,&quot;-14&quot;,&quot;-&quot;,&quot;-&quot;,&quot;47&quot;,&quot;-&quot;,&quot;101&quot;,&quot;-&quot;,&quot;163&quot;,&quot;*&quot;,&quot;143&quot;,&quot;-&quot;,&quot;0&quot;,&quot;-&quot;,&quot;171&quot;,&quot;+&quot;,&quot;120&quot;,&quot;*&quot;,&quot;-60&quot;,&quot;+&quot;,&quot;156&quot;,&quot;/&quot;,&quot;173&quot;,&quot;/&quot;,&quot;-24&quot;,&quot;11&quot;,&quot;+&quot;,&quot;21&quot;,&quot;/&quot;,&quot;*&quot;,&quot;44&quot;,&quot;*&quot;,&quot;180&quot;,&quot;70&quot;,&quot;-40&quot;,&quot;-&quot;,&quot;*&quot;,&quot;86&quot;,&quot;132&quot;,&quot;-84&quot;,&quot;+&quot;,&quot;*&quot;,&quot;-&quot;,&quot;38&quot;,&quot;/&quot;,&quot;/&quot;,&quot;21&quot;,&quot;28&quot;,&quot;/&quot;,&quot;+&quot;,&quot;83&quot;,&quot;/&quot;,&quot;-31&quot;,&quot;156&quot;,&quot;-&quot;,&quot;+&quot;,&quot;28&quot;,&quot;/&quot;,&quot;95&quot;,&quot;-&quot;,&quot;120&quot;,&quot;+&quot;,&quot;8&quot;,&quot;*&quot;,&quot;90&quot;,&quot;-&quot;,&quot;-94&quot;,&quot;*&quot;,&quot;-73&quot;,&quot;/&quot;,&quot;-62&quot;,&quot;/&quot;,&quot;93&quot;,&quot;*&quot;,&quot;196&quot;,&quot;-&quot;,&quot;-59&quot;,&quot;+&quot;,&quot;187&quot;,&quot;-&quot;,&quot;143&quot;,&quot;/&quot;,&quot;-79&quot;,&quot;-89&quot;,&quot;+&quot;,&quot;-&quot;]
+let result = solution.evalRPN(array)
+print(result)</code></pre><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>数据结构和算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>协议前缀</title>
+    <url>/2019/08/13/protocol-prefix/</url>
+    <content><![CDATA[<pre><code>import Foundation
+
+/// 前缀类型
+//前缀类型
+struct Swifter&lt;Base&gt; {
+    let base: Base
+    init(_ base: Base) {
+        self.base = base
+    }
+}
+//利用协议扩展属性
+protocol SwifterProtocol {}
+
+extension SwifterProtocol {
+    var swifter: Swifter&lt;Self&gt; {
+        set { }
+        get {
+            return Swifter(self)
+        }
+    }
+    static var swifter: Swifter&lt;Self&gt;.Type {
+        set { }
+        get { Swifter&lt;Self&gt;.self }
+    }
+}
+
+//给字符串扩展功能
+extension String: SwifterProtocol {}
+extension NSString: SwifterProtocol {}
+//extension NSMutableString: SwifterProtocol {}
+//给Person扩展功能
+class Person{}
+extension Person: SwifterProtocol {}
+
+// 扩展功能
+extension Swifter where Base: ExpressibleByStringLiteral {
+    var numberCount: Int {
+        var count = 0
+        for c in (base as! String) where (&quot;0&quot;...&quot;9&quot;).contains(c) {
+            count += 1
+        }
+        return count
+    }
+
+    static func test() {
+        print(&quot;test&quot;)
+    }
+
+    mutating func run() {
+// self.base = &quot;run&quot;
+    }
+}
+
+extension Swifter where Base: Person {
+    func run() {
+        print(&quot;跑&quot;)
+    }
+}
+
+print(&quot;123ooo123&quot;.swifter.numberCount)
+Person().swifter.run()
+
+String.swifter.test()
+
+var abc = &quot;123&quot;
+var def: NSMutableString = &quot;456&quot;
+abc.swifter.run()
+print(abc)
+def.swifter.run()
+
+/////////////////////////
+
+protocol ArrayType {
+
+}
+extension Array: ArrayType{}
+extension NSArray: ArrayType{}
+extension String: ArrayType{}
+func isArrayType(_ type: Any.Type) -&gt; Bool {
+    type is ArrayType.Type
+}
+
+print(isArrayType([Int].self))
+print(isArrayType([Any].self))
+print(isArrayType(NSArray.self))
+print(isArrayType(NSMutableArray.self))
+print(isArrayType(String.self))</code></pre><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>Swift</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vapor最简单的服务器</title>
+    <url>/2019/08/09/vapor-simplest-server/</url>
+    <content><![CDATA[<h4 id="Package-swift"><a href="#Package-swift" class="headerlink" title="Package.swift"></a>Package.swift</h4><pre><code>// swift-tools-version:5.1
+// The swift-tools-version declares the minimum version of Swift required to build this package.
+
+import PackageDescription
+
+let package = Package(
+    name: &quot;HelloWorld&quot;,
+    dependencies: [
+        // Dependencies declare other packages that this package depends on.
+         .package(url: &quot;https://github.com/vapor/vapor.git&quot;, from: &quot;4.0.0-alpha.2&quot;),
+    ],
+    targets: [
+        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
+        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
+        .target(
+            name: &quot;HelloWorld&quot;,
+            dependencies: [&quot;Vapor&quot;]),
+        .testTarget(
+            name: &quot;HelloWorldTests&quot;,
+            dependencies: [&quot;HelloWorld&quot;]),
+    ]
+)</code></pre><h4 id="main-swift"><a href="#main-swift" class="headerlink" title="main.swift"></a>main.swift</h4><pre><code>import Vapor
+
+let app = Application(environment: try .detect()) { (service) in
+    service.extend(Routes.self) { (routes, container) in
+        routes.get(&quot;hello&quot;) { (req) -&gt; String in
+            &quot;Hello World!&quot;
+        }
+    }
+}
+try app.run()</code></pre><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>Swift</tag>
+        <tag>Vapor</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Swift实现可选协议</title>
+    <url>/2019/08/08/swift-implements-optional-protocol/</url>
+    <content><![CDATA[<h4 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h4><pre><code>protocol Runnable1: class { }
+
+extension Runnable1 {
+    func run() {
+
+    }
+}</code></pre><h4 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h4><pre><code>@objc protocol Runnable2 {
+    @objc optional func run()
+    func stop()
+}</code></pre><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>Swift</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Swift 属性绑定</title>
+    <url>/2019/08/08/swift-property-binding/</url>
+    <content><![CDATA[<pre><code>class Person { }
+
+extension Person {
+
+    private static var age_key = false //占一个字节,省空间
+    private static var weight_key = false //占一个字节,省空间
+
+// private static var age_key1: Void? //这种方式也是可以的
+// private static var weight_key1: Void?
+
+    var age: Int {
+        get {
+            objc_getAssociatedObject(self, &amp;Self.age_key) as! Int
+        }
+        set {
+// self abc 都相当于是key
+            objc_setAssociatedObject(self, &amp;Self.age_key, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
+        }
+    }
+
+    var weight: Int {
+        get {
+            objc_getAssociatedObject(self, &amp;Self.weight_key) as! Int
+        }
+        set {
+// self abc 都相当于是key
+            objc_setAssociatedObject(self, &amp;Self.weight_key, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
+        }
+    }
+}
+
+var p = Person()
+p.age = 10
+print(p.age)
+p.weight = 50
+print(p.weight)</code></pre><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>Swift</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Swift重命名C函数</title>
+    <url>/2019/08/05/swift-renames-c-functions/</url>
+    <content><![CDATA[<p><strong>Test.h</strong></p><pre><code>#ifndef Test_h
+#define Test_h
+
+#include &lt;stdio.h&gt;
+int sum(int v1, int v2);
+#endif /* Test_h */</code></pre><p><strong>Test.c</strong></p><pre><code>#include &quot;Test.h&quot;
+
+int sum(int v1, int v2) {
+    return v1 + v2;
+}</code></pre><p><strong>main.swift</strong></p><pre><code>// 重命名c函数
+@_silgen_name(&quot;sum&quot;)
+func swift_sum(_ v1: Int32, _ v2: Int32) -&gt; Int32
+
+print(swift_sum(1, 2))</code></pre><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>Swift</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Custom expression pattern</title>
+    <url>/2019/07/30/custom-expression-pattern/</url>
+    <content><![CDATA[<pre><code>// 自定义表达式模式
+struct Student {
+    var score = 0, name = &quot;&quot;
+
+    /// pattern: case 后面内容
+    /// value: switch 后面内容
+    static func ~=(pattern: Int, value: Student) -&gt; Bool {
+        return value.score &gt;= pattern
+    }
+
+    static func ~=(pattern: Range&lt;Int&gt;, value: Student) -&gt; Bool {
+        return pattern.contains(value.score)
+    }
+
+    static func ~=(pattern: ClosedRange&lt;Int&gt;, value: Student) -&gt; Bool {
+        return pattern.contains(value.score)
+    }
+}
+
+var stu = Student(score: 75, name: &quot;Tom&quot;)
+switch stu {
+case 100:
+    print(&quot;&gt;=100&quot;)
+case 90:
+    print(&quot;&gt;=90&quot;)
+case 80..&lt;90:
+    print(&quot;[80, 90]&quot;)
+case 60...79:
+    print(&quot;[60, 79]&quot;)
+case 0:
+    print(&quot;&gt;=0&quot;)
+default:
+    break
+}
+
+extension String {
+    static func ~=(pattern: (String) -&gt; String, value: String) -&gt; Bool {
+        return pattern(value)
+    }
+}
+
+func hasPrefix(_ prefix: String) -&gt; ((String) -&gt; Bool) {
+    return { $0.hasPrefix(prefix) }
+}
+func hasSuffix(_ suffix: String) -&gt; ((String) -&gt; Bool) {
+    return { $0.hasSuffix(suffix) }
+}
+
+var fn = hasPrefix(&quot;123&quot;)
+print(fn(&quot;123456&quot;))
+
+var str = &quot;123456&quot;
+switch str {
+case hasPrefix(&quot;123&quot;), hasSuffix(&quot;456&quot;):
+    print(&quot;123开头&quot;)
+    print(&quot;456结尾&quot;)
+default:
+    break
+}
+
+func isEven(_ i: Int) -&gt; Bool {
+    return i % 2 == 0
+}
+
+func isOdd(_ i: Int) -&gt; Bool {
+    return i % 2 != 0
+}
+
+extension Int {
+    static func ~=(pattern: (Int) -&gt; Bool, value: Int) -&gt; Bool {
+        return pattern(value)
+    }
+}
+
+var age = 9
+switch age {
+case isEven: //函数匹配,函数类型
+    print(age,&quot;是个偶数&quot;)
+case isOdd:
+    print(age,&quot;是个奇数&quot;)
+default:
+    break
+}</code></pre><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>Swift</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>查找表</title>
+    <url>/2019/07/27/lookup-table/</url>
+    <content><![CDATA[<p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>数据结构和算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Swift Access Control</title>
+    <url>/2019/07/25/swift-access-control/</url>
+    <content><![CDATA[<ol><li>open: 允许在定义实体的模块,其他模块中访问,允许其他模块进行继承,重写(open只能用在类,类成员上)</li><li>public: 允许在定义实体的模块,其他模块中访问,不允许继承,重写(模块内可以)</li><li>internal: 只允许在定义实体的模块中访问,不允许在其他模块中访问(默认)</li><li>fileprivate: 在同一文件中访问</li><li>private: 在实体内访问</li></ol><blockquote><p>全局内用private修饰类,变量或扩展,就是用fileprivate</p></blockquote><pre><code>class Test {
+    private struct Dog {
+        var age = 0 //Test内可用,如果显式用private修饰,则Person内不能使用age
+        func run() { }
+    }
+
+    private struct Person {
+        var dog = Dog()
+        mutating func walk() {
+            dog.run()
+            dog.age = 1
+        }
+    }
+}</code></pre><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>Swift</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>队列实现</title>
+    <url>/2019/07/24/queue-implement/</url>
+    <content><![CDATA[<p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>数据结构和算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>栈实现</title>
+    <url>/2019/07/24/stack-implement/</url>
+    <content><![CDATA[<p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>数据结构和算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>自定义运算符</title>
+    <url>/2019/07/23/custom-operator/</url>
+    <content><![CDATA[<p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>Swift</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>线性表的顺序操作</title>
+    <url>/2019/06/20/sequential-operation-of-linear-tables/</url>
+    <content><![CDATA[<pre><code>#include &lt;stdio.h&gt;
+
+#define maxsize 10
+#define failure -1
+#define success 1
+typedef int datatype;
+
+typedef struct {
+    datatype data[maxsize];
+    int length;
+} Seqlist;
+
+typedef Seqlist* List;
+
+///求表长度 o(1)
+int length(Seqlist L) {
+    return L.length;
+}
+
+/// 取表元 O(n)
+datatype get(List L, int index) {
+    if (index &lt; 1 || index &gt; L-&gt;length ) {
+        return failure;
+    }
+    return L-&gt;data[index - 1];
+}
+
+/// 定位 O(n)
+int locate(List L, datatype x) {
+// for (int i = 0; i &lt; L-&gt;length - 1; i++) {
+// if (x == L-&gt;data[i]) {
+// return i + 1;
+// }
+// }
+// return failure;
+    int i = 0;
+    while (i &lt; L-&gt;length &amp;&amp; L-&gt;data[i] != x) {
+        i++;
+    }
+    if (i &lt; L-&gt;length) {
+        return i + 1;
+    } else {
+        return failure;
+    }
+}
+
+/// 删除 O(n)
+int delete(List L, int index) {
+    if (index &lt; 1 || index &gt; L-&gt;length) {
+        return failure;
+    }
+    for (int j = index; j &lt; L-&gt;length; j++) {
+        L-&gt;data[j - 1] = L-&gt;data[j];
+    }
+    return success;
+}
+
+/// 插入 O(n)
+int insert(List L, datatype x, int index) {
+
+    if (L-&gt;length == maxsize) {
+        return failure; //表满
+    }
+    if (index &lt; 1 || index &gt; L-&gt;length + 1) {
+        return failure; //位置错
+    }
+
+    for (int j = L-&gt;length; j &gt;= index; j--) {
+        L-&gt;data[j] = L-&gt;data[j - 1];
+    }
+    L-&gt;data[index - 1] = x;
+    L-&gt;length++;
+    return success;
+}
+
+
+
+int main(int argc, const char * argv[]) {
+    List L = (List)malloc(sizeof(Seqlist));
+    L-&gt;length = 0;
+    printf(&quot;%d\n&quot;, length(*L));
+    int result = insert(L, 0, 1);
+    printf(&quot;%d\n&quot;, result);
+    printf(&quot;%d\n&quot;, length(*L));
+
+    printf(&quot;取表元 %d\n&quot;, get(L, 0));
+    return 0;
+}</code></pre><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>数据结构和算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>subscript_keyPath,propertyWrapper</title>
+    <url>/2019/06/07/subscript_keypath-propertywrapper/</url>
+    <content><![CDATA[<pre><code>import Foundation
+
+//dynamicMemberLookup_keyPath
+struct Address {
+    let street: String
+    let zipCode: String
+    let city: String
+}
+
+@dynamicMemberLookup
+struct Person {
+    let firstName: String
+    let lastName: String
+    private let address: Address
+
+    init(firstName: String, lastName: String, address: Address) {
+        self.firstName = firstName
+        self.lastName = lastName
+        self.address = address
+    }
+
+    subscript&lt;T&gt;(dynamicMember keyPath: KeyPath&lt;Address, T&gt;) -&gt; T {
+        self.address[keyPath: keyPath]
+    }
+
+}
+
+let address = Address(street: &quot;青岛街&quot;, zipCode: &quot;266700&quot;, city: &quot;北京市&quot;)
+let person = Person(firstName: &quot;五&quot;, lastName: &quot;王&quot;, address: address)
+print(person.firstName)
+
+//property_wrappers
+//https://www.avanderlee.com/swift/property-wrappers/
+extension UserDefaults {
+
+    public enum Keys {
+        static let hasSeenAppIntroduction = &quot;has_seen_app_introduction&quot;
+    }
+
+    var hasSeenAppIntroduction: Bool {
+        set {
+            set(newValue, forKey: Keys.hasSeenAppIntroduction)
+        }
+        get {
+            bool(forKey: Keys.hasSeenAppIntroduction)
+        }
+    }
+}
+
+UserDefaults.standard.hasSeenAppIntroduction = true
+print(UserDefaults.standard.hasSeenAppIntroduction)
+
+@propertyWrapper
+struct UserDefault&lt;T&gt; {
+    let key: String
+    let defaultValue: T
+
+    init(_ key: String, defaultValue: T) {
+        self.key = key
+        self.defaultValue = defaultValue
+    }
+
+    var value: T {
+        get {
+            UserDefaults.standard.value(forKey: key) as? T ?? defaultValue
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: key)
+        }
+    }
+}
+
+struct UserDefaultsConfig {
+    @UserDefault(&quot;has_seen_app_introduction&quot;, defaultValue: false)
+    static var hasSeenAppIntroduction: Bool
+}
+
+print(UserDefaultsConfig.hasSeenAppIntroduction)</code></pre><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>Swift</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>求最大子列和</title>
+    <url>/2019/05/25/finding-the-maximum-subcolumn-sum/</url>
+    <content><![CDATA[<pre><code>var nums = [1, -2, 2, -13, 6, -10, 3, 12]
+
+/// O(n^3)
+func maxSubSequenceSum1() {
+    var maxSum = 0
+    for i in 0..&lt;nums.count {
+        for j in i..&lt;nums.count {
+            var thisSum = 0
+            for k in i...j {
+                thisSum += nums[k]
+            }
+            if thisSum &gt; maxSum {
+                maxSum = thisSum
+            }
+        }
+    }
+    print(maxSum)
+}
+
+/// O(n^2)
+func maxSubSequenceSum2() {
+    var maxSum = 0
+    for i in 0..&lt;nums.count {
+        var thisSum = 0
+        for j in i..&lt;nums.count {
+            thisSum += nums[j]
+            if thisSum &gt; maxSum {
+                maxSum = thisSum
+            }
+        }
+    }
+    print(maxSum)
+}
+
+/// O(n)
+func maxSubSequenceSum3() {
+    var maxSum = 0, thisSum = 0
+    for i in 0..&lt;nums.count {
+        thisSum += nums[i]
+        if thisSum &gt; 0 {
+            maxSum = thisSum
+        } else { //如果thisSum小于0,则不可能使后面的部分和增大,抛弃.
+            thisSum = 0
+        }
+    }
+    print(maxSum)
+}
+
+maxSubSequenceSum1()
+maxSubSequenceSum2()
+maxSubSequenceSum3()</code></pre><p>算法很重要呐 😄😄</p><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>数据结构和算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>打破for循环嵌套</title>
+    <url>/2019/05/19/how-to-break-out-of-multiple-loop-levels-using-labeled-statements/</url>
+    <content><![CDATA[<pre><code>exitLoop: for i in 0...100 {
+    print(&quot;i=\(i)&quot;)
+    if i == 50 {
+// break
+    } else {
+        for j in 0...100 {
+            print(&quot;j=\(j)&quot;)
+            if j == 50 {
+                break exitLoop
+            }
+        }
+    }
+}</code></pre><p>参考: <a href="https://www.hackingwithswift.com/example-code/language/how-to-break-out-of-multiple-loop-levels-using-labeled-statements" target="_blank" rel="noopener">https://www.hackingwithswift.com/example-code/language/how-to-break-out-of-multiple-loop-levels-using-labeled-statements</a></p><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>Swift</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SourceTree不能使用账号密码提交代码</title>
+    <url>/2019/05/05/sourcetree-could-not-commit-code-by-username/</url>
+    <content><![CDATA[<p>总感觉用账号密码提交代码是反人类的🙂</p><p>解决方法:</p><blockquote><p>SourceTree -&gt; 偏好设置-&gt; Git -&gt; 使用系统安装的Git</p></blockquote><p>好长时间不写博客了,能水一篇是一篇.</p><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2018年总结</title>
+    <url>/2018/12/31/summary-of-2018/</url>
+    <content><![CDATA[<h1 id="穷折腾"><a href="#穷折腾" class="headerlink" title="穷折腾"></a>穷折腾</h1><h1 id="🙂"><a href="#🙂" class="headerlink" title="🙂"></a>🙂</h1>]]></content>
+      <tags>
+        <tag>Me</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>位运算</title>
+    <url>/2018/11/26/bit-operation/</url>
+    <content><![CDATA[<p>位运算了解一下,哈哈哈哈哈哈…</p><p>Person.swift</p><pre><code>import Foundation
+
+extension Bool {
+    init(_ integer: Int){
+        self.init(integer != 0)
+    }
+}
+
+struct Person {
+
+    let TallMask = (0b00000001 &lt;&lt; 0b00000000)
+    let RichMask = (0b00000001 &lt;&lt; 0b00000001)
+    let HandsomeMask = (0b00000001 &lt;&lt; 0b00000010)
+
+    var _tallRichHandsome = 0b00000000
+
+    mutating func setTall(_ tall: Bool) {
+        if tall {
+            _tallRichHandsome = (_tallRichHandsome | TallMask)
+        } else {
+            _tallRichHandsome = (_tallRichHandsome &amp; ~TallMask)
+        }
+    }
+
+    func isTall() -&gt; Bool {
+        return Bool(_tallRichHandsome &amp; TallMask)
+    }
+
+    mutating func setRich(_ rich: Bool) {
+        if rich {
+            _tallRichHandsome = (_tallRichHandsome | RichMask)
+        } else {
+            _tallRichHandsome = (_tallRichHandsome &amp; ~RichMask)
+        }
+    }
+
+    func isRich() -&gt; Bool {
+        return Bool(_tallRichHandsome &amp; RichMask)
+    }
+
+    mutating func setHandsome(_ handsome: Bool) {
+        if handsome {
+            _tallRichHandsome = (_tallRichHandsome | HandsomeMask)
+        } else {
+            _tallRichHandsome = (_tallRichHandsome &amp; ~HandsomeMask)
+        }
+    }
+
+    func isHandsome() -&gt; Bool {
+        return Bool(_tallRichHandsome &amp; HandsomeMask)
+    }
+}</code></pre><p>main.swift</p><pre><code>import Foundation
+
+
+var person = Person()
+
+print(person.isTall())
+print(person.isRich())
+print(person.isHandsome())
+print(&quot;================&quot;)
+print(person._tallRichHandsome)
+print(&quot;===================&quot;)
+person.setTall(true)
+person.setRich(true)
+person.setHandsome(true)
+print(person.isTall())
+print(person.isRich())
+print(person.isHandsome())
+
+print(&quot;===================&quot;)
+//print(person.TallMask)
+//print(person.RichMask)
+//print(person.HandsomeMask)
+person.setTall(false)
+print(person.isTall())
+print(person.isRich())
+print(person.isHandsome())
+
+print(&quot;==================&quot;)
+//print(0b00000000)
+//print(0b00000001)
+//print(0b00000010)
+
+print(&quot;==================&quot;)
+
+print(person._tallRichHandsome)</code></pre><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>Swift</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OC对象的分类</title>
+    <url>/2018/11/21/oc-object-classify/</url>
+    <content><![CDATA[<pre><code>//实例对象(instance对象)
+    //isa指针
+    //变量
+//类对象(Class对象)
+    //每个类有且只有一个类对象
+    //class对象在内存中存储的主要信息有:
+    //isa指针
+    //superclass指针
+    //类属性信息(@property), 类的对象信息(instance method)
+    //类的协议信息(protocol),成员变量信息(ivar)
+//元类对象(meta class)
+    //每个类只有一个元类对象
+    //元类对象跟类对象内存结构是一样的
+    //包括:
+    //isa指针
+    //superclass指针
+    //类的类方法信息 (class method,+号开头)
+
+#import &lt;Foundation/Foundation.h&gt;
+#import &lt;objc/runtime.h&gt;
+
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+        //实例对象(instance对象)
+        NSObject *obj1 = [[NSObject alloc] init];
+        NSObject *obj2 = [[NSObject alloc] init];
+
+        //类对象(Class对象)
+        Class objClass1 = [obj1 class]; //类对象
+        Class objClass2 = [obj2 class];
+        Class objClass3 = object_getClass(obj2);
+        Class objClass4 = object_getClass(obj1);
+        Class objClass5 = [NSObject class];
+        NSLog(@&quot;%p&quot;, objClass1);
+        NSLog(@&quot;%p&quot;, objClass2);
+        NSLog(@&quot;%p&quot;, objClass3);
+        NSLog(@&quot;%p&quot;, objClass4);
+        NSLog(@&quot;%p&quot;, objClass5);
+
+        //元类对象(meta class对象)
+        Class metaClass = object_getClass([NSObject class]);
+    }
+    return 0;
+}</code></pre><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>iOS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Protocols</title>
+    <url>/2018/11/18/protocols/</url>
+    <content><![CDATA[<p>A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol.</p><pre><code>import Foundation
+
+//协议语法
+protocol SomeProtocol {
+
+}
+
+struct SomeStructure: SomeProtocol {}
+class SomeClass: SomeProtocol {}
+
+//属性要求
+//如果属性标注了(set get),则不能通过常量存储属性和只读计算属性来实现
+//如果属性只设置了(get),那么任何类型都可以满足,包括变量存储属性
+
+protocol SomeProtocol1 {
+    var mustBeSettable: Int { get set }
+    var doesNotNeedToBeSettable: Int { get }
+}
+
+//协议中用static修饰时,实现中用static或者class实现都行
+protocol AnotherProtocol {
+    static var someTypeProperty: Int { get set }
+}
+
+protocol FullyNamed {
+    var fullName: String { get }
+}
+
+struct Person: FullyNamed {
+    var fullName: String
+}
+//可set 可 get
+let john = Person(fullName: &quot;Tom&quot;)
+
+class Starship: FullyNamed {
+    var prefix: String?
+    var name: String
+
+    init(name: String, prefix: String? = nil) {
+        self.name = name
+        self.prefix = prefix
+    }
+
+    var fullName: String {
+        return (prefix != nil ? prefix!+&quot; &quot; : &quot;&quot;) + name
+    }
+}
+
+var ncc1701 = Starship(name: &quot;Enterprise&quot;, prefix: &quot;USS&quot;)
+
+//方法要求
+
+//不能在协议方法中指定默认值
+
+protocol SomeProtocol2 {
+    static func someTypeMethod()
+}
+
+protocol RandomNumberGenerator {
+    func random() -&gt; Double
+}
+
+//线性同余生成器的伪随机数生成器算法,好高大上有木有...
+class LinearCongruentialGenerator: RandomNumberGenerator {
+    var lastRandom = 42.0
+    let m = 139968.0
+    let a = 3877.0
+    let c = 29573.0
+    func random() -&gt; Double {
+        lastRandom = ((lastRandom * a + c).truncatingRemainder(dividingBy: m))
+        return lastRandom / m
+    }
+}
+
+let generator = LinearCongruentialGenerator()
+print(generator.random())
+print(generator.random())
+
+//变异方法要求 mutating method requirements
+//如果希望实现协议的任何类型(类,结构体,枚举)要修改实例或者实例中的任何属性
+//得在func前加mutating关键字
+//类实现时,无需加mutating,结构体,枚举需要加
+protocol Toggleable {
+    mutating func toggle()
+}
+
+enum OnOffSwitch: Toggleable {
+    case off, on
+    mutating func toggle() {
+        switch self {
+        case .on:
+            self = .off
+        case .off:
+            self = .on
+        }
+    }
+}
+
+var lightSwitch = OnOffSwitch.off
+print(lightSwitch)
+lightSwitch.toggle()
+print(lightSwitch)
+
+//初始化程序要求
+protocol SomeProtocol3 {
+    init(someParameter: Int)
+}
+
+//required 方便子类继承,从而遵守SomeProtocol3协议
+//如果给类加上final,则required可以省略
+final class SomeClass3: SomeProtocol3 {
+    required init(someParameter: Int) {
+        //在这进行初始化实现
+    }
+}
+
+//如果子类重写父类中init方法,并且这个init也是协议中的实现,则需要用
+//`required`和`override`修饰
+protocol SomeProtocol4 {
+    init()
+}
+
+class SomeSuperClass {
+    init() {
+
+    }
+}
+
+class SomeSubClass: SomeSuperClass, SomeProtocol4 {
+    required override init() {
+        //good job
+    }
+}
+
+//协议还可以定义可失败构造器
+
+//协议作为类型
+//协议本身不实现任何功能,但是,创建的任何协议都会变成代码中成熟的类型.
+//可以用协议的地方:
+//1. 在函数,方法或初始化方法中作为参数或返回值
+//2. 作为常量,变量,或者属性的类型
+//3. 作为数组,字典或其他容器类型的元素类型
+
+class Dice {
+    let sides: Int
+    let generator: RandomNumberGenerator
+    init(sides: Int, generator: RandomNumberGenerator) {
+        self.sides = sides
+        self.generator = generator
+    }
+    func roll() -&gt; Int {
+        return Int(generator.random() * Double(sides)) + 1
+    }
+}
+var d6 = Dice(sides: 6, generator: LinearCongruentialGenerator())
+for _ in 1...5 {
+    print(&quot;Random dice roll is \(d6.roll())&quot;)
+}
+
+//委托
+//响应特定操作或者从外部检索数据
+protocol DiceGame {
+    var dice: Dice { get }
+    func play()
+}
+
+protocol DiceGameDelegate: AnyObject {
+    func gameDidStart(_ game: DiceGame)
+    func game(_ game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int)
+    func gameDidEnd(_ game: DiceGame)
+}
+
+class SnakesAndLadders: DiceGame {
+    let finalSquare = 25
+    let dice = Dice(sides: 6, generator: LinearCongruentialGenerator())
+    var square = 0
+    var board: [Int]
+
+    init() {
+        board = Array(repeating: 0, count: finalSquare + 1)
+        board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02
+        board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08
+    }
+
+    weak var delegate: DiceGameDelegate?
+    func play() {
+        square = 0
+        delegate?.gameDidStart(self)
+        gameLoop: while square != finalSquare {
+            let diceRoll = dice.roll()
+            delegate?.game(self, didStartNewTurnWithDiceRoll: diceRoll)
+            switch square + diceRoll {
+            case finalSquare:
+                break gameLoop
+            case let newSquare where newSquare &gt; finalSquare:
+                continue gameLoop
+            default:
+                square += diceRoll
+                square += board[square]
+            }
+        }
+        delegate?.gameDidEnd(self)
+    }
+}
+
+class DiceGameTracker: DiceGameDelegate {
+    var numberOfTurns = 0
+    func gameDidStart(_ game: DiceGame) {
+        numberOfTurns = 0
+        if game is SnakesAndLadders {
+            print(&quot;Started a new game of Snakes and Ladders&quot;)
+        }
+        print(&quot;The game is using a \(game.dice.sides)-sided dice&quot;)
+    }
+    func game(_ game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int) {
+        numberOfTurns += 1
+        print(&quot;Rolled a \(diceRoll)&quot;)
+    }
+    func gameDidEnd(_ game: DiceGame) {
+        print(&quot;The game lasted for \(numberOfTurns) turns&quot;)
+    }
+}
+
+let tracker = DiceGameTracker()
+let game = SnakesAndLadders()
+game.delegate = tracker
+game.play()
+
+//通过扩展遵守某个协议
+protocol TextRepresentable {
+    var textualDescription: String { get }
+}
+
+extension Dice: TextRepresentable {
+    var textualDescription: String {
+        return &quot;A \(sides)-sided dice&quot;
+    }
+}
+
+let d12 = Dice(sides: 12, generator: LinearCongruentialGenerator())
+print(d12.textualDescription)
+// Prints &quot;A 12-sided dice&quot;
+
+extension SnakesAndLadders: TextRepresentable {
+    var textualDescription: String {
+        return &quot;A game of Snakes and Ladders with \(finalSquare) squares&quot;
+    }
+}
+print(game.textualDescription)
+
+//有条件的遵守协议
+extension Array: TextRepresentable where Element: TextRepresentable {
+    var textualDescription: String {
+        let itemsAsText = self.map { $0.textualDescription }
+        return &quot;[&quot; + itemsAsText.joined(separator: &quot;, &quot;) + &quot;]&quot;
+    }
+}
+let myDice = [d6, d12]
+print(myDice.textualDescription)
+
+//通过协议适应某种类型
+//如果某个类型已经符合协议的所有要求，但尚未声明它采用该协议，则可以使其采用带有空扩展的协议
+struct Hamster {
+    var name: String
+    var textualDescription: String {
+        return &quot;A hamster named \(name)&quot;
+    }
+}
+extension Hamster: TextRepresentable {}
+let simonTheHamster = Hamster(name: &quot;Simon&quot;)
+let somethingTextRepresentable: TextRepresentable = simonTheHamster
+print(somethingTextRepresentable.textualDescription)
+// Prints &quot;A hamster named Simon&quot;
+
+//协议类型的集合
+let things: [TextRepresentable] = [game, d12, simonTheHamster]
+for thing in things {
+    print(thing.textualDescription)
+}
+
+//协议继承</code></pre><p>还是有点烧脑….</p><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>Swift</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Generics</title>
+    <url>/2018/11/17/generics/</url>
+    <content><![CDATA[<p>通用代码使您能够根据您定义的要求编写可以使用任何类型的灵活，可重用的函数和类型。您可以编写避免重复的代码，并以清晰，抽象的方式表达其意图。</p><p>泛型是Swift最强大的功能之一，Swift标准库的大部分内容都是使用通用代码构建的。</p><pre><code>import Foundation
+
+//泛型函数
+func swapTwoValues&lt;T&gt;(_ a: inout T, _ b: inout T) {
+    let tmp = a
+    a = b
+    b = tmp
+}
+
+var a = 1, b = 2
+print(&quot;\(a)====\(b)&quot;)
+swapTwoValues(&amp;a, &amp;b)
+print(&quot;\(a)====\(b)&quot;)
+
+//泛型类型(泛型类,泛型结构体,泛型枚举),听起来挺高大上,其实就是给自定义类加个泛型
+struct Stack&lt;Element&gt; {
+    var items: [Element] = []
+    mutating func push(_ item: Element) {
+        items.append(item)
+    }
+
+    mutating func pop() -&gt; Element {
+        return items.removeLast()
+    }
+}
+//扩展泛型类型
+extension Stack {
+    var topItem: Element? {
+        return items.isEmpty ? nil : items[items.count - 1]
+    }
+}
+
+var strings = Stack&lt;String&gt;()
+strings.push(&quot;hello&quot;)
+print(strings.topItem)
+print(strings.pop())
+
+//泛型约束(不限于泛型类型,除了泛型类型就是TM的泛型函数)
+//泛型约束不能省略,如果省略value == v就不能运行了,没法玩了.
+//泛型约束必须是特定类继承，或符合特定协议或协议组合
+//这里Equable不能被替换为String,因为String是结构体,不能被继承.Int, Bool, Double, anything else...
+//返回值不能用泛型,🙂because the type to use for T is inferred from the types of values passed to the function.
+// (因为类型都是从传递给函数的值的类型推断出来的),除非再传一个参数,类似:
+// func findIndex1&lt;T: Equatable, S: SignedInteger&gt;(of value: T,in array: [T], _ type: S) -&gt; S?
+// 告诉一下Swift,接下来会发生什么,不然Swift心里会发慌...
+func findIndex1&lt;T: Equatable&gt;(of value: T,in array: [T]) -&gt; Int? {
+    for (i, v) in array.enumerated() {
+        if value == v {
+            return i
+        }
+    }
+    return nil
+}
+
+let arr = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;]
+let index = findIndex1(of: &quot;a&quot;, in: arr)
+print(index)
+
+
+//关联类型
+//协议中的泛型,实现具体类型的时候,由自己指定泛型类型为某种具体类型.
+protocol Container {
+    associatedtype Item
+    mutating func append(_ item: Item)
+    var count: Int { get }
+    subscript(i: Int) -&gt; Item { get }
+}
+
+//这里typealias item不能等于协议,例如typealias Item = Equatable
+//这样Swift就不知道`EquableStack`应该怎么分配内存了有木有...,谁TM知道`EquableStack`实现了几个协议
+//脚踏了几只船?
+//typealias Item = Int删掉也可以,可以通过append,推断出Item类型
+struct IntStack: Container {
+
+    mutating func push(_ item: Item) {
+        items.append(item)
+    }
+
+    mutating func pop() -&gt; Item {
+        return items.removeLast()
+    }
+
+    typealias Item = Int
+    var items: [Item] = []
+    mutating func append(_ item: Item) {
+        items.append(item)
+    }
+    var count: Int {
+        return items.count
+    }
+
+    subscript(i: Int) -&gt; Item {
+        return items[i]
+    }
+}
+
+//上面的Stack可以写作下面方式
+//因为通过append可以知道Element为Item的具体类型,所以typealias可以省略
+//又因为Stack1是泛型类型,Element创建实例对象时具体指出,所以,一下代码完全正确.
+//可以写typealias Item = Element, 然后Element跟Item可以互相交叉替换🙂
+struct Stack1&lt;Element&gt;: Container {
+    var items = [Element]()
+    mutating func push(_ item: Element) {
+        items.append(item)
+    }
+
+    mutating func pop() -&gt; Element {
+        return items.removeLast()
+    }
+    //conformance to the Container
+    mutating func append(_ item: Element) {
+        push(item)
+    }
+    var count: Int {
+        return items.count
+    }
+    subscript(i: Int) -&gt; Element {
+        return items[i]
+    }
+}
+
+var strings1 = Stack1&lt;String&gt;()
+strings.push(&quot;hello&quot;)
+print(strings.topItem)
+print(strings.pop())
+
+//扩展现有类型以指定关联类型
+//array 中有append用来推断具体类型,并且有count,有下标
+//所以以后完全可以使用Array作为Container
+//但是typealias Container = Array也是不错的
+extension Array: Container {}
+
+//将约束添加到关联类型
+//如果这样定义,得像下面这样搞
+//struct Stack1&lt;Element: Equatable&gt;: Container
+protocol Container1 {
+    associatedtype Item: Equatable
+    mutating func append(_ item: Item)
+    var count: Int { get }
+    subscript(i: Int) -&gt; Item { get }
+}
+
+//在关联类型的约束中使用协议
+//这个JB关系有点乱,有木有...
+//儿子有一个家,爹有一个家,儿子从爹那继承过来的家跟自己成立的家必须是一个家,不能搞分家...
+//大概就是这样了....
+protocol SuffixableContainer: Container {
+    associatedtype Suffix: SuffixableContainer where Suffix.Item == Item
+    func suffix(_ size: Int) -&gt; Suffix
+}
+
+extension Stack1: SuffixableContainer {
+    func suffix(_ size: Int) -&gt; Stack1 {
+        var result = Stack1()
+        //max是用来防止程序崩溃的,🙂
+        for index in max((count-size), 0)..&lt;count {
+            result.append(self[index])
+        }
+        return result
+    }
+    // Inferred that Suffix is Stack.
+}
+
+var stackOfInts = Stack1&lt;Int&gt;()
+stackOfInts.append(10)
+stackOfInts.append(20)
+stackOfInts.append(30)
+let suffix = stackOfInts.suffix(3)
+
+//Generic Where Clauses(通用条款)
+//泛型条件约束吧... where
+
+func allItemsMatch&lt;C1: Container, C2: Container&gt;(_ someContainer: C1, _ anotherContainer: C2) -&gt; Bool where C1.Item == C2.Item, C1.Item: Equatable {
+    // Check that both containers contain the same number of items.
+    if someContainer.count != anotherContainer.count {
+        return false
+    }
+    // Check each pair of items to see if they&apos;re equivalent.
+    for i in 0..&lt;someContainer.count {
+        if someContainer[i] != anotherContainer[i] {
+            return false
+        }
+    }
+    // All items match, so return true.
+    return true
+}
+
+var stackOfStrings = Stack1&lt;String&gt;()
+stackOfStrings.push(&quot;uno&quot;)
+stackOfStrings.push(&quot;dos&quot;)
+stackOfStrings.push(&quot;tres&quot;)
+
+var arrayOfStrings = [&quot;uno&quot;, &quot;dos&quot;, &quot;tres&quot;]
+
+if allItemsMatch(stackOfStrings, arrayOfStrings) {
+    print(&quot;All items match.&quot;)
+} else {
+    print(&quot;Not all items match.&quot;)
+}
+
+extension Stack1 where Element: Equatable {
+    func isTop(_ item: Element) -&gt; Bool {
+        guard let last = items.last else {
+            return false
+        }
+        return item == last
+    }
+}
+//如果将没有遵守Equatable用于该方法,会报错
+if stackOfStrings.isTop(&quot;tres&quot;) {
+    print(&quot;Top element is tres.&quot;)
+} else {
+    print(&quot;Top element is something else.&quot;)
+}
+
+//上面where扩展类型,下面where扩展协议,这TM就比较6了...
+extension Container where Item: Equatable {
+    func startsWith(_ item: Item) -&gt; Bool {
+        return count &gt;= 1 &amp;&amp; self[0] == item
+    }
+}
+if [9, 9, 9].startsWith(42) {
+    print(&quot;Starts with 42.&quot;)
+} else {
+    print(&quot;Starts with something else.&quot;)
+}
+
+//Item是特定类型的where子句
+extension Container where Item == Double {
+    func average() -&gt; Double {
+        var sum = 0.0
+        for index in 0..&lt;count {
+            sum += self[index]
+        }
+        return sum / Double(count)
+    }
+}
+print([1260.0, 1200.0, 98.6, 37.0].average())
+
+
+//关联类型和泛型子句
+protocol Container2 {
+    associatedtype Item
+    mutating func append(_ item: Item)
+    var count: Int { get }
+    subscript(i: Int) -&gt; Item { get }
+
+    associatedtype Iterator: IteratorProtocol where Iterator.Element == Item
+
+    func makeIterator() -&gt; Iterator
+}
+
+protocol ComparableContainer: Container2 where Item: Comparable {}
+
+//泛型下标
+extension Container2 {
+    subscript&lt;Indices: Sequence&gt;(indices: Indices) -&gt; [Item]
+        where Indices.Iterator.Element == Int {
+            var result = [Item]()
+            for index in indices {
+                result.append(self[index])
+            }
+            return result
+    }
+}</code></pre><p>真是烧脑的玩意……</p><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>Swift</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LLVM</title>
+    <url>/2018/10/27/llvm/</url>
+    <content><![CDATA[<h3 id="LLVM"><a href="#LLVM" class="headerlink" title="LLVM:"></a>LLVM:</h3><p>模块化,可重用的编译器以及工具链技术集合.</p><p>创始人: Chris Lattner</p><p>LLVM不是Low Level Virtual Machine(低级虚拟机)的缩写,LLVM就是他的项目全名.</p><h3 id="传统编译器"><a href="#传统编译器" class="headerlink" title="传统编译器:"></a>传统编译器:</h3><p>GCC<br>Clang</p><h4 id="传统编译器架构"><a href="#传统编译器架构" class="headerlink" title="传统编译器架构:"></a>传统编译器架构:</h4><p><img src="https://pic.jingxuetao.com/201810/ping-mu-kuai-zhao-2018-10-26-xia-wu-9-53-38.png" alt="ping-mu-kuai-zhao-2018-10-26-xia-wu-9-53-38"></p><ul><li>Frontend: 前端</li></ul><blockquote><p>词法分析,语法分析,语义分析,生成中间代码</p></blockquote><ul><li>Opotimizer: 优化器</li></ul><blockquote><p>中间代码优化</p></blockquote><ul><li>Backend: 后端</li></ul><blockquote><p>生成机器码</p></blockquote><h3 id="LLVM架构"><a href="#LLVM架构" class="headerlink" title="LLVM架构"></a>LLVM架构</h3><p><img src="https://pic.jingxuetao.com/201810/ping-mu-kuai-zhao-2018-10-26-xia-wu-9-58-59.png" alt="ping-mu-kuai-zhao-2018-10-26-xia-wu-9-58-59"></p><ul><li>不同的前端后端使用统一的中间代码 LLVM Intermediate Representation(LLVM IR).</li><li>如果需要支持一种新的编程语言,只需要实现一个新的前端.</li><li>如果需要支持一种新的硬件设备,只需要增加一个新的后端.</li><li>优化阶段是一个通用阶段,它针对的是统一的LLVM IR,无论是支持新的编程语言,还是支持新的硬件设备,都不需要对优化阶段做修改.</li><li>相比之下,GCC的前端和后端没分的泰开,前端后端耦合在一起.所以GCC为了来支持一门新的语言或者新的硬件设备,就变得很困难.</li><li>LLVM现在被用作为实现各种静态和运行时变易语言的通用基础结构.(GCC家族,Java,.net,Python等)</li></ul><h3 id="Clang"><a href="#Clang" class="headerlink" title="Clang"></a>Clang</h3><ul><li>LLVM一个子项目</li><li>基于LVVM架构的C/C++/Objective-C编译器前端</li></ul><p>优点:</p><ul><li>编译速度快,在某些平台上Clang的便以速度显著地快过GCC</li><li>占用内存小,Clang生成的AST所占用的内训师CGG的五分之一左右</li><li>模块化设计,基于库的模块化设计,易于IDE集成以及其他用途的重用</li><li>诊断信息可读性强: 在编译过程中,Clang创建并保留了大量详细的元数据(metadata),有利于调试和错误解读.</li><li>设计清晰简单,容易理解,易于扩展增强</li></ul><h2 id="Clang与LLVM"><a href="#Clang与LLVM" class="headerlink" title="Clang与LLVM"></a>Clang与LLVM</h2><p><img src="https://pic.jingxuetao.com/201810/ping-mu-kuai-zhao-2018-10-26-xia-wu-10-17-23.png" alt="ping-mu-kuai-zhao-2018-10-26-xia-wu-10-17-23"></p><ul><li>广义LLVM</li></ul><blockquote><p>整个LLVM架构</p></blockquote><ul><li>狭义LLVM</li></ul><blockquote><p>LLVM后端(代码优化,目标代码生成等)</p></blockquote><p><img src="https://pic.jingxuetao.com/201810/ping-mu-kuai-zhao-2018-10-26-xia-wu-10-22-37.png" alt="ping-mu-kuai-zhao-2018-10-26-xia-wu-10-22-37"></p><h2 id="OC源文件编译过程"><a href="#OC源文件编译过程" class="headerlink" title="OC源文件编译过程"></a>OC源文件编译过程</h2><h3 id="命令行查看编译过程"><a href="#命令行查看编译过程" class="headerlink" title="命令行查看编译过程"></a>命令行查看编译过程</h3><blockquote><p>clang -ccc-print-phases main.m</p></blockquote><pre><code>➜ TestSwift clang -ccc-print-phases main.swift
+0: input, &quot;main.swift&quot;, object
+1: linker, {0}, image
+2: bind-arch, &quot;x86_64&quot;, {1}, image
+
+➜ TestOC clang -ccc-print-phases main.m
+0: input, &quot;main.m&quot;, objective-c
+1: preprocessor, {0}, objective-c-cpp-output
+2: compiler, {1}, ir
+3: backend, {2}, assembler
+4: assembler, {3}, object
+5: linker, {4}, image
+6: bind-arch, &quot;x86_64&quot;, {5}, image</code></pre><blockquote><p>Swift比OC少了4个编译阶段呐,有木有…</p></blockquote><h3 id="查看preprocessor-预处理-的结果"><a href="#查看preprocessor-预处理-的结果" class="headerlink" title="查看preprocessor(预处理)的结果"></a>查看preprocessor(预处理)的结果</h3><blockquote><p>clang -E main.m</p></blockquote><pre><code>//源文件
+print(&quot;Hello World&quot;)
+//预处理输出
+➜ TestSwift clang -E main.swift
+clang: warning: main.swift: &apos;linker&apos; input unused [-Wunused-command-line-argument]
+
+//源文件
+#define AGE 10
+
+int main(int argc, const char * argv[]) {
+
+    int a = 10;
+    int b = 20;
+    int c = a + b + AGE;
+
+    return 0;
+}
+//预处理输出
+➜ TestOC clang -E main.m
+# 1 &quot;main.m&quot;
+# 1 &quot;&lt;built-in&gt;&quot; 1
+# 1 &quot;&lt;built-in&gt;&quot; 3
+# 373 &quot;&lt;built-in&gt;&quot; 3
+# 1 &quot;&lt;command line&gt;&quot; 1
+# 1 &quot;&lt;built-in&gt;&quot; 2
+# 1 &quot;main.m&quot; 2
+# 11 &quot;main.m&quot;
+int main(int argc, const char * argv[]) {
+
+    int a = 10;
+    int b = 20;
+    int c = a + b + 10;
+
+    return 0;
+}</code></pre><h2 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h2><ul><li>词法分析,生成Token(类似英语中主语,谓语,宾语,宾补…)</li></ul><blockquote><p>clang -fmodules -E -Xclang -dump-tokens main.m</p></blockquote><pre><code>➜ TestSwift clang -fmodules -E -Xclang -dump-tokens main.swift
+clang: warning: main.swift: &apos;linker&apos; input unused [-Wunused-command-line-argument]
+clang: warning: argument unused during compilation: &apos;-fmodules&apos; [-Wunused-command-line-argument]
+clang: warning: argument unused during compilation: &apos;-Xclang -dump-tokens&apos; [-Wunused-command-line-argument]
+
+➜ TestOC clang -fmodules -E -Xclang -dump-tokens main.m
+int &apos;int&apos; [StartOfLine]    Loc=&lt;main.m:11:1&gt;
+identifier &apos;main&apos; [LeadingSpace]    Loc=&lt;main.m:11:5&gt;
+l_paren &apos;(&apos; Loc=&lt;main.m:11:9&gt;
+int &apos;int&apos; Loc=&lt;main.m:11:10&gt;
+identifier &apos;argc&apos; [LeadingSpace]    Loc=&lt;main.m:11:14&gt;
+comma &apos;,&apos; Loc=&lt;main.m:11:18&gt;
+const &apos;const&apos; [LeadingSpace]    Loc=&lt;main.m:11:20&gt;
+char &apos;char&apos; [LeadingSpace]    Loc=&lt;main.m:11:26&gt;
+star &apos;*&apos; [LeadingSpace]    Loc=&lt;main.m:11:31&gt;
+identifier &apos;argv&apos; [LeadingSpace]    Loc=&lt;main.m:11:33&gt;
+l_square &apos;[&apos; Loc=&lt;main.m:11:37&gt;
+r_square &apos;]&apos; Loc=&lt;main.m:11:38&gt;
+r_paren &apos;)&apos; Loc=&lt;main.m:11:39&gt;
+l_brace &apos;{&apos; [LeadingSpace]    Loc=&lt;main.m:11:41&gt;
+int &apos;int&apos; [StartOfLine] [LeadingSpace]    Loc=&lt;main.m:13:5&gt;
+identifier &apos;a&apos; [LeadingSpace]    Loc=&lt;main.m:13:9&gt;
+equal &apos;=&apos; [LeadingSpace]    Loc=&lt;main.m:13:11&gt;
+numeric_constant &apos;10&apos; [LeadingSpace]    Loc=&lt;main.m:13:13&gt;
+semi &apos;;&apos; Loc=&lt;main.m:13:15&gt;
+int &apos;int&apos; [StartOfLine] [LeadingSpace]    Loc=&lt;main.m:14:5&gt;
+identifier &apos;b&apos; [LeadingSpace]    Loc=&lt;main.m:14:9&gt;
+equal &apos;=&apos; [LeadingSpace]    Loc=&lt;main.m:14:11&gt;
+numeric_constant &apos;20&apos; [LeadingSpace]    Loc=&lt;main.m:14:13&gt;
+semi &apos;;&apos; Loc=&lt;main.m:14:15&gt;
+int &apos;int&apos; [StartOfLine] [LeadingSpace]    Loc=&lt;main.m:15:5&gt;
+identifier &apos;c&apos; [LeadingSpace]    Loc=&lt;main.m:15:9&gt;
+equal &apos;=&apos; [LeadingSpace]    Loc=&lt;main.m:15:11&gt;
+identifier &apos;a&apos; [LeadingSpace]    Loc=&lt;main.m:15:13&gt;
+plus &apos;+&apos; [LeadingSpace]    Loc=&lt;main.m:15:15&gt;
+identifier &apos;b&apos; [LeadingSpace]    Loc=&lt;main.m:15:17&gt;
+plus &apos;+&apos; [LeadingSpace]    Loc=&lt;main.m:15:19&gt;
+numeric_constant &apos;10&apos; [LeadingSpace]    Loc=&lt;main.m:15:21 &lt;Spelling=main.m:9:13&gt;&gt;
+semi &apos;;&apos; Loc=&lt;main.m:15:24&gt;
+return &apos;return&apos; [StartOfLine] [LeadingSpace]    Loc=&lt;main.m:17:5&gt;
+numeric_constant &apos;0&apos; [LeadingSpace]    Loc=&lt;main.m:17:12&gt;
+semi &apos;;&apos; Loc=&lt;main.m:17:13&gt;
+r_brace &apos;}&apos; [StartOfLine]    Loc=&lt;main.m:18:1&gt;
+eof &apos;&apos; Loc=&lt;main.m:18:2&gt;</code></pre><h2 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h2><ul><li>语法分析,生成语法树(AST, Abstract Syntax Tree)</li></ul><blockquote><p>clang -fmodules -fsyntax-only -Xclang -ast-dump main.m</p></blockquote><pre><code>➜ Test clang -fmodules -fsyntax-only -Xclang -ast-dump main.swift
+clang: warning: main.swift: &apos;linker&apos; input unused [-Wunused-command-line-argument]
+clang: warning: argument unused during compilation: &apos;-fmodules&apos; [-Wunused-command-line-argument]
+clang: warning: argument unused during compilation: &apos;-Xclang -ast-dump&apos; [-Wunused-command-line-argument]
+
+➜ TestOC clang -fmodules -fsyntax-only -Xclang -ast-dump main.m
+TranslationUnitDecl 0x7ff3730298e8 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt;
+|-TypedefDecl 0x7ff373029e60 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit __int128_t &apos;__ int128&apos;
+| `-BuiltinType 0x7ff373029b80 &apos;__int128&apos;
+|-TypedefDecl 0x7ff373029ed0 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit __uint128_t &apos;unsigned__ int128&apos;
+| `-BuiltinType 0x7ff373029ba0 &apos;unsigned __int128&apos;
+|-TypedefDecl 0x7ff373029f70 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit SEL &apos;SEL *&apos;
+| `-PointerType 0x7ff373029f30 &apos;SEL *&apos;
+| `-BuiltinType 0x7ff373029dc0 &apos;SEL&apos;
+|-TypedefDecl 0x7ff37302a058 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit id &apos;id&apos;
+| `-ObjCObjectPointerType 0x7ff37302a000 &apos;id&apos;
+| `-ObjCObjectType 0x7ff373029fd0 &apos;id&apos;
+|-TypedefDecl 0x7ff37302a138 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit Class &apos;Class&apos;
+| `-ObjCObjectPointerType 0x7ff37302a0e0 &apos;Class&apos;
+| `-ObjCObjectType 0x7ff37302a0b0 &apos;Class&apos;
+|-ObjCInterfaceDecl 0x7ff37302a190 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit Protocol
+|-TypedefDecl 0x7ff37302a4f8 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit __NSConstantString &apos;struct__ NSConstantString_tag&apos;
+| `-RecordType 0x7ff37302a300 &apos;struct __NSConstantString_tag&apos;
+| `-Record 0x7ff37302a260 &apos;__NSConstantString_tag&apos;
+|-TypedefDecl 0x7ff37302a590 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit __builtin_ms_va_list &apos;char *&apos;
+| `-PointerType 0x7ff37302a550 &apos;char *&apos;
+| `-BuiltinType 0x7ff373029980 &apos;char&apos;
+|-TypedefDecl 0x7ff373062488 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit __builtin_va_list &apos;struct__ va_list_tag [1]&apos;
+| `-ConstantArrayType 0x7ff373062430 &apos;struct __va_list_tag [1]&apos; 1
+| `-RecordType 0x7ff3730622a0 &apos;struct __va_list_tag&apos;
+| `-Record 0x7ff373062200 &apos;__va_list_tag&apos;
+`-FunctionDecl 0x7ff373062758 &lt;main.m:11:1, line:18:1&gt; line:11:5 main &apos;int (int, const char **)&apos;
+  |-ParmVarDecl 0x7ff3730624f8 &lt;col:10, col:14&gt; col:14 argc &apos;int&apos;
+  |-ParmVarDecl 0x7ff373062610 &lt;col:20, col:38&gt; col:33 argv &apos;const char **&apos;:&apos;const char**&apos;
+  `-CompoundStmt 0x7ff373062bd8 &lt;col:41, line:18:1&gt;
+    |-DeclStmt 0x7ff373062928 &lt;line:13:5, col:15&gt;
+    | `-VarDecl 0x7ff3730628a8 &lt;col:5, col:13&gt; col:9 used a &apos;int&apos; cinit
+    | `-IntegerLiteral 0x7ff373062908 &lt;col:13&gt; &apos;int&apos; 10
+    |-DeclStmt 0x7ff3730629d8 &lt;line:14:5, col:15&gt;
+    | `-VarDecl 0x7ff373062958 &lt;col:5, col:13&gt; col:9 used b &apos;int&apos; cinit
+    | `-IntegerLiteral 0x7ff3730629b8 &lt;col:13&gt; &apos;int&apos; 20
+    |-DeclStmt 0x7ff373062b88 &lt;line:15:5, col:24&gt;
+    | `-VarDecl 0x7ff373062a08 &lt;col:5, line:9:13&gt; line:15:9 c &apos;int&apos; cinit
+    | `-BinaryOperator 0x7ff373062b60 &lt;col:13, line:9:13&gt; &apos;int&apos; &apos;+&apos;
+    | |-BinaryOperator 0x7ff373062b18 &lt;line:15:13, col:17&gt; &apos;int&apos; &apos;+&apos;
+    | | |-ImplicitCastExpr 0x7ff373062ae8 &lt;col:13&gt; &apos;int&apos; &lt;LValueToRValue&gt;
+    | | | `-DeclRefExpr 0x7ff373062a68 &lt;col:13&gt; &apos;int&apos; lvalue Var 0x7ff3730628a8 &apos;a&apos; &apos;int&apos;
+    | | `-ImplicitCastExpr 0x7ff373062b00 &lt;col:17&gt; &apos;int&apos; &lt;LValueToRValue&gt;
+    | | `-DeclRefExpr 0x7ff373062aa8 &lt;col:17&gt; &apos;int&apos; lvalue Var 0x7ff373062958 &apos;b&apos; &apos;int&apos;
+    | `-IntegerLiteral 0x7ff373062b40 &lt;line:9:13&gt; &apos;int&apos; 10
+    `-ReturnStmt 0x7ff373062bc0 &lt;line:17:5, col:12&gt;
+      `-IntegerLiteral 0x7ff373062ba0 &lt;col:12&gt; &apos;int&apos; 0</code></pre><h2 id="LLVM-IR"><a href="#LLVM-IR" class="headerlink" title="LLVM IR"></a>LLVM IR</h2><p>LLVM IR有三种表示形式(本质等价,好比水的气态,液态,固态)</p><p>1.text: 便于阅读的文本格式,类似于汇编语言,扩展名<code>.ll</code></p><pre><code>&gt; clang -S -emit-llvm main.m
+
+; ModuleID = &apos;main.m&apos;
+source_filename = &quot;main.m&quot;
+target datalayout = &quot;e-m:o-i64:64-f80:128-n8:16:32:64-S128&quot;
+target triple = &quot;x86_64-apple-macosx10.14.0&quot;
+
+; Function Attrs: noinline nounwind optnone ssp uwtable
+define i32 @main(i32, i8**) #0 {
+  %3 = alloca i32, align 4
+  %4 = alloca i32, align 4
+  %5 = alloca i8**, align 8
+  %6 = alloca i32, align 4
+  %7 = alloca i32, align 4
+  %8 = alloca i32, align 4
+  store i32 0, i32* %3, align 4
+  store i32 %0, i32* %4, align 4
+  store i8 **%1, i8*** %5, align 8
+  store i32 10, i32* %6, align 4
+  store i32 20, i32* %7, align 4
+  %9 = load i32, i32* %6, align 4
+  %10 = load i32, i32* %7, align 4
+  %11 = add nsw i32 %9, %10
+  %12 = add nsw i32 %11, 10
+  store i32 %12, i32* %8, align 4
+  ret i32 0
+}
+
+attributes #0 = { noinline nounwind optnone ssp uwtable &quot;correctly-rounded-divide-sqrt-fp-math&quot;=&quot;false&quot; &quot;disable-tail-calls&quot;=&quot;false&quot; &quot;less-precise-fpmad&quot;=&quot;false&quot; &quot;no-frame-pointer-elim&quot;=&quot;true&quot; &quot;no-frame-pointer-elim-non-leaf&quot; &quot;no-infs-fp-math&quot;=&quot;false&quot; &quot;no-jump-tables&quot;=&quot;false&quot; &quot;no-nans-fp-math&quot;=&quot;false&quot; &quot;no-signed-zeros-fp-math&quot;=&quot;false&quot; &quot;no-trapping-math&quot;=&quot;false&quot; &quot;stack-protector-buffer-size&quot;=&quot;8&quot; &quot;target-cpu&quot;=&quot;penryn&quot; &quot;target-features&quot;=&quot;+cx16,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87&quot; &quot;unsafe-fp-math&quot;=&quot;false&quot; &quot;use-soft-float&quot;=&quot;false&quot; }
+
+!llvm.module.flags = !{!0, !1, !2, !3, !4, !5, !6}
+!llvm.ident = !{!7}
+
+!0 = !{i32 1, !&quot;Objective-C Version&quot;, i32 2}
+!1 = !{i32 1, !&quot;Objective-C Image Info Version&quot;, i32 0}
+!2 = !{i32 1, !&quot;Objective-C Image Info Section&quot;, !&quot; __DATA,__ objc_imageinfo,regular,no_dead_strip&quot;}
+!3 = !{i32 4, !&quot;Objective-C Garbage Collection&quot;, i32 0}
+!4 = !{i32 1, !&quot;Objective-C Class Properties&quot;, i32 64}
+!5 = !{i32 1, !&quot;wchar_size&quot;, i32 4}
+!6 = !{i32 7, !&quot;PIC Level&quot;, i32 2}
+!7 = !{!&quot;Apple LLVM version 10.0.0 (clang-1000.11.45.2)&quot;}
+//什么鬼东西</code></pre><p>2.memory: 内存格式<br>3.bitcode: 二进制格式,扩展名<code>.bc</code></p><blockquote><p>clang -c -emit-llvm main.m</p></blockquote><h3 id="IR基本语法"><a href="#IR基本语法" class="headerlink" title="IR基本语法"></a>IR基本语法</h3><ul><li>注释以分号<code>;</code>开头</li><li>全局标识符以<code>@</code>开头,局部标识符以<code>%</code>开头</li><li><code>alloca</code>在当前函数栈帧中分配内存</li><li><code>i32</code>,32bit,4个字节的意思</li><li><code>align</code>,内存对齐</li><li><code>store</code>,写入数据</li><li><code>load</code>,读取数据</li></ul><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>LLVM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>封装CoreImage</title>
+    <url>/2018/09/30/package-coreimage/</url>
+    <content><![CDATA[<p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>Swift</tag>
+        <tag>Foundation</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>战舰</title>
+    <url>/2018/09/30/battleship/</url>
+    <content><![CDATA[<p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>Swift</tag>
+        <tag>Foundation</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>同步的方式编写异步代码</title>
+    <url>/2018/09/30/sync-way-code-async-code/</url>
+    <content><![CDATA[<p>代码来自泊学</p><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>Swift</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Enum表示TableView的数据源</title>
+    <url>/2018/05/29/enum-express-tableview-datasource/</url>
+    <content><![CDATA[<figure class="kg-card kg-image-card"><img src="https://img.hacpai.com/bing/20180330.jpg?imageView2/1/w/960/h/520/interlace/1/q/100" class="kg-image"></figure><pre><code>//
+// SettingTableViewController.swift
+
+
+import UIKit
+
+protocol SettingViewControllerDelegate: class {
+    func controllerDidChangeDateMode(controller: SettingTableViewController)
+    func controllerDidChangeTemperatureMode(controller: SettingTableViewController)
+}
+
+class SettingTableViewController: UITableViewController {
+
+    weak var changeDelegate: SettingViewControllerDelegate?
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.rowHeight = 44
+    }
+}
+
+extension SettingTableViewController {
+    private enum Section: Int {
+        case date
+        case temperature
+
+        var numberOfRows: Int {
+            return 2
+        }
+
+        static var count: Int {
+            return Section.temperature.rawValue + 1
+        }
+    }
+
+    override func numberOfSections(in tableView: UITableView) -&gt; Int {
+        return Section.count
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int {
+        guard let section = Section(rawValue: section) else {
+            fatalError(&quot;未知section索引&quot;)
+        }
+        return section.numberOfRows
+    }
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -&gt; String? {
+        if section == 0 {
+            return &quot;Date format&quot;
+        }
+        return &quot;Temperature unit&quot;
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.reuseIdentifier, for: indexPath) as? SettingTableViewCell else {
+            fatalError(&quot;未知的tableViewCell&quot;)
+        }
+        guard let section = Section(rawValue: indexPath.section) else {
+            fatalError(&quot;未知的section&quot;)
+        }
+        switch section {
+        case .date:
+            cell.label.text = (indexPath.row == 0) ? &quot;Fri, 01 December&quot; : &quot;F, 12/01&quot;
+            let timeMode = UserDefaults.dateMode()
+            if indexPath.row == timeMode.rawValue {
+                cell.accessoryType = .checkmark
+            } else {
+                cell.accessoryType = .none
+            }
+        case .temperature:
+            cell.label.text = (indexPath.row == 0) ? &quot;Celcius&quot; : &quot;Fahrenheit&quot;
+            let temperatureMode = UserDefaults.temperatureMode()
+            if indexPath.row == temperatureMode.rawValue {
+                cell.accessoryType = .checkmark
+            } else {
+                cell.accessoryType = .none
+            }
+        }
+        return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let section = Section(rawValue: indexPath.section) else {
+            fatalError(&quot;未知的section索引&quot;)
+        }
+        switch section {
+            case .date:
+                let dateMode = UserDefaults.dateMode()
+                guard indexPath.row != dateMode.rawValue else { return }
+                if let newMode = DateMode(rawValue: indexPath.row) {
+                    UserDefaults.setDateMode(to: newMode)
+                }
+                changeDelegate?.controllerDidChangeDateMode(controller: self)
+            case .temperature:
+                let temperatureMode = UserDefaults.temperatureMode()
+                guard indexPath.row != temperatureMode.rawValue else { return }
+                if let newMode = TemperatureMode(rawValue: indexPath.row) {
+                    UserDefaults.setTemperatureMode(to: newMode)
+                }
+                changeDelegate?.controllerDidChangeTemperatureMode(controller: self)
+        }
+        let sections = IndexSet(integer: indexPath.section)
+        tableView.reloadSections(sections, with: .none)
+    }
+}</code></pre><p>提供一种思路</p><p>代码来自<a href="https://boxueio.com/" target="_blank" rel="noopener">泊学</a></p><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>iOS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>反向代理</title>
+    <url>/2018/01/01/reverse-proxy/</url>
+    <content><![CDATA[<pre><code>server {
+    listen 80;
+    listen 443 ssl;
+    server_name localhost;
+
+    ssl_certificate /etc/nginx/ssl/fullchain.cer;
+    ssl_certificate_key /etc/nginx/ssl/unsplash.jingxuetao.com.key;
+
+    location /api {
+        rewrite ^.+api/?(.*)$ /$1 break;
+        proxy_pass https://api.unsplash.com;
+    }
+
+    location /images {
+        rewrite ^.+images/?(.*)$ /$1 break;
+        proxy_pass https://images.unsplash.com;
+    }
+
+}</code></pre><p><strong>参考链接</strong></p><p><a href="https://www.cnblogs.com/gabrielchen/p/5066120.html" target="_blank" rel="noopener">https://www.cnblogs.com/gabrielchen/p/5066120.html</a><br><a href="https://www.jianshu.com/p/b34a57129d6c?from=timeline" target="_blank" rel="noopener">https://www.jianshu.com/p/b34a57129d6c?from=timeline</a></p><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>NGINX</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常用命令行</title>
+    <url>/2017/12/13/chang-yong-ming-ling-xing/</url>
+    <content><![CDATA[<pre><code>find . -name &quot;*.gif&quot;|sed &apos;s/.gif//&apos;|xargs -n1 -I {} mv {}.gif {}.png //批量修改文件后缀名
+sips -Z 75 *.png //批量修改文件像素
+sudo python -m SimpleHTTPServer 80 //开启一个简单的服务器,用于网页访问文件夹内容.</code></pre>]]></content>
+      <tags>
+        <tag>macOS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ghost博客支持emoji</title>
+    <url>/2017/09/13/ghost-blog-support-emoji/</url>
+    <content><![CDATA[<p><a href="https://xiao.lu/solve-the-ghost-blog-can-not-display-emoji/" target="_blank" rel="noopener">原文链接</a></p><p>转载备忘</p><p>自从 Emoji 被推广开来，被越来越多的操作系统支持，变成了一种通用的表情符号，今天看到 Ghost 的官方博客文章中用了 Emoji，我也想试一下，发现自己文章中插入 Emoji 发表后不能显示。😭</p><p>Google 了一下，找到了问题，我的 Ghost 数据保存在 MySQL 数据库上，当时安装 MySQL 设置了 utf8 的字符集，需要改成 utf8mb4 才能支持存储 Emoji。</p><p>那么如何把当前 MySQL 的编码由 utf8 转换为 utf8mb4 呢？😶</p><p>首先，为了保险起见，务必先备份一下原来的数据库。</p><p>然后呢，确认一下 MySQL 的版本号，要高于 5.5.3。</p><p>第三步，修改 MySQL 的配置文件 my.cnf，加入下面的内容，如果之前有设置 utf8 字符集的内容，需要删除。</p><p>下面是我博客的<code>my.cnf</code>内容,系统是<code>CentOS7.2</code>,文件位置<code>/etc/my.cnf</code></p><pre><code>[client]
+socket=/var/lib/mysql/mysql.sock
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+# Settings user and group are ignored when systemd is used.
+# If you need to run mysqld under a different user or group,
+# customize your systemd unit file for mariadb according to the
+# instructions in http://fedoraproject.org/wiki/Systemd
+character-set-server=utf8mb4
+collation-server=utf8mb4_unicode_ci
+
+[mysqld_safe]
+log-error=/var/log/mariadb/mariadb.log
+pid-file=/var/run/mariadb/mariadb.pid
+
+[client]
+default-character-set=utf8mb4
+[mysql]
+default-character-set=utf8mb4
+#
+# include all files from the config directory
+#
+!includedir /etc/my.cnf.d</code></pre><p>第四步，重启 MySQL 服务，并确认变更</p><pre><code>#登录 MySQL（需要 MySQL root 密码）
+mysql -uroot -p
+mysql&gt; SHOW VARIABLES WHERE Variable_name LIKE &apos;character\_set\_%&apos; OR Variable_name LIKE &apos;collation%&apos;;
++--------------------------+--------------------+
+| Variable_name | Value |
++--------------------------+--------------------+
+| character_set_client | utf8mb4 |
+| character_set_connection | utf8mb4 |
+| character_set_database | utf8mb4 |
+| character_set_filesystem | binary |
+| character_set_results | utf8mb4 |
+| character_set_server | utf8mb4 |
+| character_set_system | utf8 |
+| collation_connection | utf8mb4_unicode_ci |
+| collation_database | utf8mb4_unicode_ci |
+| collation_server | utf8mb4_unicode_ci |
++--------------------------+--------------------+
+10 rows in set (0.00 sec)</code></pre><p>第五步，修改数据库和数据表的编码格式。</p><pre><code>#选择数据库，database-name 替换为你自己的数据库名
+mysql&gt; use database-name
+#对于 Ghost 貌似修改这两处就行了
+mysql&gt; ALTER DATABASE ghost CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+mysql&gt; ALTER TABLE posts CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;</code></pre><p>然后就支持emoji了.🙂🙂</p><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Can't connect to local MySQL server through socket '' (2)</title>
+    <url>/2017/09/12/cant-connect-to-local-mysql-server-through-socket-2/</url>
+    <content><![CDATA[<p>今天折腾Perfect服务端的时候,出现下面错误:</p><blockquote><p>Can’t connect to local MySQL server through socket ‘’ (2)</p></blockquote><p>然后各种Google,各种试错.最后在这篇文章中看到了<code>IP</code>这个字眼,突然灵感来了,直接把<code>locahost</code>改成<code>127.0.0.1</code>,然后成功了~</p><p>我了个大草,原来还能这么玩…</p><p>至于具体原因可以查看这篇文章<a href="http://www.jb51.net/article/50421.htm" target="_blank" rel="noopener">Localhost 与127.0.0.1和IP的区别是什么</a></p><p>于2017/9/12,我的博客支持emoji啦,😁😁😝</p><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客开启HTTPS</title>
+    <url>/2017/08/27/blog-open-https/</url>
+    <content><![CDATA[<h2 id="系统环境"><a href="#系统环境" class="headerlink" title="系统环境:"></a>系统环境:</h2><pre><code>#nginx -v
+nginx version: nginx/1.10.2
+#openssl version
+OpenSSL 1.0.1e-fips 11 Feb 2013
+#cat /etc/redhat-release
+CentOS Linux release 7.3.1611 (Core)</code></pre><h2 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h2><blockquote><p><a href="https://certbot.eff.org/" target="_blank" rel="noopener">Certbot</a>选择自己的操作系统以及服务器软件,按照说明安装即可.</p></blockquote><h2 id="安装方式二"><a href="#安装方式二" class="headerlink" title="安装方式二"></a>安装方式二</h2><blockquote><p><a href="https://github.com/Neilpang/acme.sh" target="_blank" rel="noopener">acme.sh</a>有中文文档,按照文档安装即可.</p></blockquote><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>Ghost</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>搭建博客遇到的问题</title>
+    <url>/2017/08/24/da-jian-bo-ke-yu-dao-de-wen-ti/</url>
+    <content><![CDATA[<blockquote><p>操作系统版本: CentOS7.2</p></blockquote><h2 id="1-安装Nginx说找不到包"><a href="#1-安装Nginx说找不到包" class="headerlink" title="1. 安装Nginx说找不到包"></a>1. 安装Nginx说找不到包</h2><pre><code>yum remove eprl-release
+yum install eprl-release</code></pre><h2 id="2-安装MySQL有问题"><a href="#2-安装MySQL有问题" class="headerlink" title="2. 安装MySQL有问题"></a>2. 安装MySQL有问题</h2><pre><code>CentOS7.2安装的是Mariadb,安装方式如下:
+安装命令
+
+yum -y install mariadb mariadb-server
+安装完成MariaDB，首先启动MariaDB
+
+systemctl start mariadb
+设置开机启动
+
+systemctl enable mariadb
+接下来进行MariaDB的相关简单配置
+
+mysql_secure_installation
+首先是设置密码，会提示先输入密码
+
+Enter current password for root (enter for none):&lt;–初次运行直接回车
+
+设置密码
+
+Set root password? [Y/n] &lt;– 是否设置root用户密码，输入y并回车或直接回车
+New password: &lt;– 设置root用户的密码
+Re-enter new password: &lt;– 再输入一次你设置的密码
+
+其他配置
+
+Remove anonymous users? [Y/n] &lt;– 是否删除匿名用户，回车
+
+Disallow root login remotely? [Y/n] &lt;–是否禁止root远程登录,回车,
+
+Remove test database and access to it? [Y/n] &lt;– 是否删除test数据库，回车
+
+Reload privilege tables now? [Y/n] &lt;– 是否重新加载权限表，回车
+
+初始化MariaDB完成，接下来测试登录
+
+mysql -uroot -ppassword
+完成。</code></pre><p><strong>–EOF–</strong></p><p>Photo by Brady Bellini on Unsplash</p>]]></content>
+  </entry>
+  <entry>
+    <title>人类的父类是动物</title>
+    <url>/2016/08/13/superclass-of-people-is-animal/</url>
+    <content><![CDATA[<blockquote><p>慢慢的你长大了，人们说你理性了，冷漠了，那是因为他们不知道，你对这个世界的情感不是变淡了，而是变深了，深到海面以下五百米深蓝的地方，在海面泛起一两个炫目漂亮的水花，对你已毫无意义。</p></blockquote><p>在微博上看到上面一段话,大脑处于空闲状态,脑洞大开了一下.</p><p>上面例子可能是因为 折腾的次数多了,发现折腾并没有什么卵用.然后自然而然的就不折腾了.人也是动物,继承了动物的一些共有属性.→_→我的面向对象思想已经出神入化了.像一条被链子被栓着的狗一样,狗想挣脱链子,但是挣脱了N次,发现并挣脱不了.最后,即使被放开,也不会再想挣脱.</p><p>每个人都是一个对象,给每个对象的每个属性设置不同的值,就成了每一个不同的人. 这么说,TM人类就是new出来的.再这么说整个世界,也是被new World()出来的.当然这个new World()需要被一个变量引用一下,可以是全局变量,可以是局部变量.否则分分钟就被销毁了.虚拟机知道自己是虚拟机么?虚拟机肯定认为自己是一台完整的电脑.</p><p>人既然是人类的实例对象.那人类肯定可以重载父类的属性跟方法.属性不一样,造就了不同的人的非行为部分.像高,福,帅,矮,挫,穷.<br>方法不同表现为人的行为不同.这就是有些人不理解另一些人做法的原因.TM方法都不一样,结果怎么会相同.</p><p>这是不是就说明了,你以为的不一定是别人以为的.</p><blockquote><p>最后一段是重点,’你以为的不一定是别人以为的’</p></blockquote><p>脑洞结束</p><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>Me</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>又好久没有更新博客了</title>
+    <url>/2016/08/09/updated-my-blog-for-a-long-time-too/</url>
+    <content><![CDATA[<p>好久没更新博客了.</p><p>一是没什么东西可以写,看一些大神写的博客那质量,简直没法玩了.</p><p>二是还是实在没什么东西可以写.</p><p>想的东西有点杂,下面乱写了.</p><p>原来编程因为兴趣,而工作了之后才感觉兴趣并没什么卵用,最终还是钱.</p><p>几十天之前,前公司刚招了一个前端,结果第二天就走了,是因为学历问题.当技术总监跟boss说那个人走了的时候,boss就”哦”了一句…TM,当时我就笑喷了.这老板真是可以的.你他妈倒是问问什么原因啊!!!就TM’哦’了一句,当员工是什么了.也是比较服气.</p><p>因为各种原因,有个人原因,有外部原因.原来还想着公司不辞我,我肯定不会辞职.现在说这些好像是婊子给自己立牌坊.</p><p>前公司人事人挺好,发现我的问题,没有跟任何人说.</p><p>在前公司因为经验不够,导致项目延期了好长时间.给人一种不靠谱的感觉.继续留在那的话得花好长时间才能让人改变这种印象.算了,也懒得让人改变了.毕竟自己靠不靠谱自己说的算,不是么.</p><p>HTML5带的播放器样式太TM难看了,换一个.</p><p>现在凌晨3:13,还不打算睡.</p><p>难看就难看吧,折腾了几个小时,没弄出来.就这样吧.</p><p>现在凌晨3:12,打算整点东西喝.</p><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>Me</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>好久没更新博客了</title>
+    <url>/2016/06/27/updated-my-blog-for-a-long-time/</url>
+    <content><![CDATA[<p>此人已死.有事烧纸.小事招魂.大事挖坟.</p><p>联系方式:43BA5BBCBD7622A060509FB1B1D96663</p>]]></content>
+  </entry>
+  <entry>
+    <title>项目上架问题总结</title>
+    <url>/2016/06/07/summary-of-project-problems/</url>
+    <content><![CDATA[<h3 id="定位问题"><a href="#定位问题" class="headerlink" title="定位问题"></a>定位问题</h3><pre><code>using background location services must provide a reason that clarifies the purpose of the use, using mechanisms described in the Human Interface Guidelines</code></pre><p>这个原因主要是向用于请求定位权限时,要说明原因.</p><p>解决方法<br>在info.plist文件中设置下面两个字段</p><p><img src="https://pic.jingxuetao.com/image/c/fe/2ec9f27f3f7b9e19f7afe80f53710.png" alt></p><h3 id="占位符问题"><a href="#占位符问题" class="headerlink" title="占位符问题"></a>占位符问题</h3><pre><code>we found that your app and/or its metadata does not appear to include final content, which is not in compliance with the App Store Review Guidelines</code></pre><p>可能原因一:这个原因主要是图片的placeholder,当从服务器没有请求到图片时,显示的placeholder图片被苹果认为是半成品的APP<br>可能原因二:在上架项目的时候对于APP的介绍描述不清楚,能吹则吹,多写点,又死不了人.</p><p>解决方法<br>在服务器弄好完整的图片,让APP能请求到.多些应用的描述.</p><hr><p>以上方法仅限于理论,因为需要上架的项目没有源码.</p><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>iOS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>embedded dylibs/frameworks are only supported编译报错</title>
+    <url>/2016/06/06/embedded-dylibs-frameworks-are-only-supportedbian-yi-bao-cuo/</url>
+    <content><![CDATA[<h3 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h3><pre><code>ld: embedded dylibs/frameworks are only supported on iOS 8.0 and later (@rpath/Alamofire.framework/Alamofire) for architecture x86_64</code></pre><p>其实从名字大概也能猜出来,某个库支持的最低部署环境是8.0.</p><h3 id="修改方法"><a href="#修改方法" class="headerlink" title="修改方法"></a>修改方法</h3><figure class="kg-card kg-image-card"><img src="https://o3pxzuakz.qnssl.com/image/4/64/cbfb32287545352e67ba92d4ae471.png" class="kg-image"></figure><p>我这应该修改成8.0</p><p>本文参考<a href="http://blog.csdn.net/xyxjn/article/details/42100425" target="_blank" rel="noopener">xyxjn的专栏</a></p><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>iOS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>动态加载视图</title>
+    <url>/2016/06/05/dynamic-loading-view/</url>
+    <content><![CDATA[<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol><li>获取JSON文件路径</li><li>根据路径创建NSData对象</li><li>根据NSData对象对JSON进行序列化,得到一个数组</li><li>遍历数组,提取出<code>视图名</code>,<code>标题</code>,<code>图片名</code>,根据这三项创建视图,并用UINavigationViewController包裹起来,将navi添加到tabBarViewController中.</li></ol><h3 id="MainVCSettings-json文件"><a href="#MainVCSettings-json文件" class="headerlink" title="MainVCSettings.json文件"></a>MainVCSettings.json文件</h3><pre><code>[
+ {
+    &quot;vcName&quot;: &quot;HomeTableViewController&quot;,
+    &quot;title&quot;: &quot;首页&quot;,
+    &quot;imageName&quot;: &quot;tabbar_home&quot;
+ },
+ {
+     &quot;vcName&quot;: &quot;MessageTableViewController&quot;,
+     &quot;title&quot;: &quot;消息&quot;,
+     &quot;imageName&quot;: &quot;tabbar_message_center&quot;
+ },
+ {
+ &quot;vcName&quot;: &quot;NullViewController&quot;,
+ &quot;title&quot;: &quot;&quot;,
+ &quot;imageName&quot;: &quot;&quot;
+ },
+ {
+     &quot;vcName&quot;: &quot;DiscoverTableViewController&quot;,
+     &quot;title&quot;: &quot;广场&quot;,
+     &quot;imageName&quot;: &quot;tabbar_discover&quot;
+ },
+ {
+     &quot;vcName&quot;: &quot;ProfileTableViewController&quot;,
+     &quot;title&quot;: &quot;我&quot;,
+     &quot;imageName&quot;: &quot;tabbar_profile&quot;
+ }
+ ]</code></pre><h3 id="具体实现代码"><a href="#具体实现代码" class="headerlink" title="具体实现代码"></a>具体实现代码</h3><pre><code>//
+// MainViewController.swift
+// weibo
+//
+// Created by Adrift on 16/6/5.
+// Copyright © 2016年 Adrift. All rights reserved.
+//
+
+import UIKit
+
+class MainViewController: UITabBarController {
+
+    //MARK: - 生命周期
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //设置当前控制器对应的tabBar的颜色,iOS7之前如果设置了tintClor只有文字会变,而图片不会变
+        tabBar.tintColor = UIColor.orangeColor()
+        addChildViewControllers()
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        tabBar.addSubview(composeBtn)
+        //计算宽度
+        let width = UIScreen.mainScreen().bounds.width / CGFloat(viewControllers!.count)
+        //创建 frame
+        let rect = CGRect(x: 0, y: 0, width: width, height: tabBar.bounds.height)
+        //设置 frame 跟 偏移量
+        composeBtn.frame = CGRectOffset(rect, width * 2, 0)
+
+    }
+
+    //MARK: - 方法
+    /**
+     添加所有子控制器
+     */
+    func addChildViewControllers() {
+        //获取json文件路径
+        let path = NSBundle.mainBundle().pathForResource(&quot;MainVCSettings&quot;, ofType: &quot;json&quot;)
+        //通过文件路径创建NSData
+        if let tempPath = path {
+            let jsonData = NSData(contentsOfFile: tempPath)
+            do {
+                //序列化
+                let dictArr = try NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as! [[String: String]]
+                //遍历数组,并创建视图控制器
+                for dict in dictArr {
+                    addChildViewController(dict[&quot;vcName&quot;]!, title: dict[&quot;title&quot;]!, imageName: dict[&quot;imageName&quot;]!)
+                }
+            }catch{
+                print(&quot;crash&quot;)
+                //并添加到TabBarViewController
+                addChildViewController(&quot;HomeTableViewController&quot;, title: &quot;首页&quot;, imageName: &quot;tabbar_home&quot;)
+                addChildViewController(&quot;MessageTableViewController&quot;, title: &quot;消息&quot;, imageName: &quot;tabbar_message_center&quot;)
+                addChildViewController(&quot;NullViewController&quot;, title: &quot;&quot;, imageName: &quot;&quot;)
+                addChildViewController(&quot;DiscoverTableViewController&quot;, title: &quot;发现&quot;, imageName: &quot;tabbar_discover&quot;)
+                addChildViewController(&quot;ProfileTableViewController&quot;, title: &quot;我的&quot;, imageName: &quot;tabbar_profile&quot;)
+            }
+        }
+    }
+
+    /**
+     将navigationViewController 添加到 TabBarViewController
+
+     - parameter childController: 子控制图
+     - parameter title: 标题
+     - parameter imageName: 非高亮图片名称
+     */
+    private func addChildViewController(childControllerName: String, title: String, imageName: String) {
+        //获取命名空间
+        let speaceName = NSBundle.mainBundle().infoDictionary![&quot;CFBundleExecutable&quot;] as! String
+
+        //通过字符串转换为类
+        let cls:AnyClass? = NSClassFromString(speaceName + &quot;.&quot; + childControllerName)
+
+        //通过类创建对象
+        let vcCls = cls as! UIViewController.Type
+        let vc = vcCls.init()
+
+// 设置首页
+        vc.tabBarItem.image = UIImage(named: imageName)
+        vc.tabBarItem.selectedImage = UIImage(named: imageName + &quot;_highlighted&quot;)
+        vc.title = title
+        //2.给首页包装一个导航器
+        let navi = UINavigationController()
+        navi.addChildViewController(vc)
+        //3.将导航控制器添加到当前控制器
+        addChildViewController(navi)
+    }
+
+    func composeBtnClick() {
+        print(&quot;被点击...&quot;)
+    }
+
+    //MARK: - 懒加载
+    private lazy var composeBtn:UIButton = {
+
+        let button = UIButton()
+
+        //设置button图片
+        button.setImage(UIImage(named: &quot;tabbar_compose_icon_add&quot;), forState: UIControlState.Normal)
+        button.setImage(UIImage(named: &quot;tabbar_compose_icon_add_highlighted&quot;), forState: UIControlState.Highlighted)
+
+        //设置button背景图片
+        button.setBackgroundImage(UIImage(named: &quot;tabbar_compose_button&quot;), forState: UIControlState.Normal)
+        button.setBackgroundImage(UIImage(named: &quot;tabbar_compose_button_highlighted&quot;), forState: UIControlState.Highlighted)
+
+        //添加监听事件
+        button.addTarget(self, action: #selector(MainViewController.composeBtnClick), forControlEvents: UIControlEvents.TouchUpInside)
+
+        return button
+    }()
+}</code></pre><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>Swift</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ghost博客设置邮件发送服务</title>
+    <url>/2016/05/22/ghost-set-email-service/</url>
+    <content><![CDATA[<p>自从安装Ghost博客之后,邮件服务都是被弃用的…闲的无聊,百度了一下…</p><pre><code>mail: {
+    transport: &apos;SMTP&apos;,
+    host: &apos;smtp.qq.com&apos;,
+    fromaddress: &apos;vip@qq.com&apos;,
+    options: {
+        port: 465,
+        service: &apos;QQ&apos;,
+        auth: {
+            user: &apos;vip@qq.com&apos;,
+            pass: &apos;abcdefg123456789&apos;
+        }
+    }
+}</code></pre><p>设置之后可以发QQ邮件,如果是其他邮箱,修改一下host就可以了.</p><p>本文参考:<a href="http://www.kisshc.com/backup/" target="_blank" rel="noopener">Ghost博客系统数据库自动邮件备份</a></p><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>Ghost</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>github上误删远程库解决方法</title>
+    <url>/2016/05/18/github-mistakenly-delete-remote-library-solution/</url>
+    <content><![CDATA[<p>迷你码农遇到的个性化问题.遇到这个问题还得上网查,说明对Git不了解.有时间看看廖雪峰的<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">Git教程</a>.</p><h3 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h3><figure class="kg-card kg-image-card"><img src="https://o3pxzuakz.qnssl.com/image/d/77/18cb880e3e602afddb9c9ece95d52.png" class="kg-image" alt="报错信息"></figure><h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ol><li>在Github Desktop客户端<code>右击项目</code>,然后<code>Open in Terminal</code></li><li>输入命令:<code>ls -al</code>,会看到.git文件夹</li><li>输入命令:<code>cd .git</code>,打开.git文件夹</li><li>输入命令:<code>ls -al</code>,会看到config文件</li><li>输入命令:<code>vim config</code>,打开config文件</li><li>按键盘<code>下</code>键,将光标移动到<code>[remote &quot;origin&quot;]</code>这行,按键盘<code>i</code>键进入插入模式.</li><li>按<code>delete</code>键删除包括本行在内的三行</li><li>删除完之后,按<code>Esc</code>键,退出编辑模式.然后英文状态下输入<code>shift+:</code>,输入<code>wq</code>,保存退出.</li><li>将<code>Github Desktop</code>完全退出重新打开,现在就能<code>Sync</code>了.</li></ol><p>参考链接:<a href="http://www.jamesrobertson.eu/blog/2013/mar/17/solved-error-repository-not-found.html" target="_blank" rel="noopener">Solved: ERROR: Repository not found</a></p><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OC根据分隔符分隔字符串</title>
+    <url>/2016/05/13/oc-according-to-symbol-split-string/</url>
+    <content><![CDATA[<p>同学前几天面试面到了这个题,毕竟闷了半天才闷出来.记录一下省的忘了…</p><p>NSString+Category.h文件</p><pre><code>#import &lt;Foundation/Foundation.h&gt;
+
+@interface NSString (Category)
+
+/**
+ * 根据分隔符,分隔字符串
+ *
+ * @param symbol 分隔符
+ *
+ * @return 由被分隔完的字串组成的数组
+ */
+- (NSArray *)splitStringWithSymbol:(NSString *)symbol;
+
+@end</code></pre><p>NSString+Category.m文件</p><pre><code>#import &quot;NSString+Category.h&quot;
+
+@implementation NSString (Category)
+
+- (NSArray *)splitStringWithSymbol:(NSString *)symbol {
+
+    if (!self || [self isEqualToString:@&quot;&quot;] || !symbol || [self isEqualToString:@&quot;&quot;]) {
+        NSException *e = [NSException exceptionWithName:@&quot;NullPointerException&quot; reason:@&quot;self and symbol can&apos;t be nil or @\&quot;\&quot;&quot; userInfo:nil];
+        @throw e;
+    }
+
+    NSMutableArray *mutableArr = [NSMutableArray new];
+    NSInteger length = symbol.length;
+    NSString *tempStr = nil;
+
+    for (int startIndex = 0, endIndex = 0; endIndex &lt;= self.length - length; endIndex++) {
+
+        tempStr = [self substringWithRange:NSMakeRange(endIndex, length)];
+        if ([tempStr isEqualToString:symbol]) {
+            NSString *splitedString = [self substringWithRange:NSMakeRange(startIndex, endIndex - startIndex)];
+            if (splitedString &amp;&amp; ![splitedString isEqualToString:@&quot;&quot;]) {
+                [mutableArr addObject:splitedString];
+            }
+            startIndex = endIndex + (int)length;
+        } else if (endIndex == self.length - length){
+            NSString *splitedString = [self substringWithRange:NSMakeRange(startIndex, endIndex - startIndex + length)];
+            if (splitedString &amp;&amp; ![splitedString isEqualToString:@&quot;&quot;]) {
+                [mutableArr addObject:splitedString];
+            }
+        }
+
+    }
+
+    return [mutableArr copy];
+}
+@end</code></pre><p>以上代码有个问题,当字符串是<code>,asdf,,123</code>,分隔字符是<code>,</code>,分隔结果是<code>(asdf,123)</code>,而不是<code>(asdf,(前面一个是数组的逗号),123)</code>.<br>试了一下官方的<code>componentsSeparatedByString</code>方法,相同的字符串跟分隔符,输出结果是<code>(&quot;&quot;,asdf,&quot;&quot;,123)</code>,连是否是<code>@&quot;&quot;</code>都没判断.Java当中实验的结果跟OC结果相同.官方方法都这样,我想我是想多了.</p><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>iOS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>自定义搜索框</title>
+    <url>/2016/05/13/custom-searchbar/</url>
+    <content><![CDATA[<h3 id="封装的几种方法"><a href="#封装的几种方法" class="headerlink" title="封装的几种方法"></a>封装的几种方法</h3><ol><li>分类:UITextField/UISearchBar</li><li>自定义控件</li><li>工具类</li></ol><p>从上到下优先度依次降低.</p><h3 id="用哪种方式封装"><a href="#用哪种方式封装" class="headerlink" title="用哪种方式封装"></a>用哪种方式封装</h3><p>通过分类,如果通过分类[UITextField searchBar]方法名跟类名明显对不上号;[UISearchBar searchBar]返回结果是一个UITextField,跟类名也对不上.所以我们需要自定控件,自定义控件就需要继承UITextField.</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>== CTSearchBar.h 文件==</p><pre><code>#import &lt;UIKit/UIKit.h&gt;
+
+@interface CTSearchBar : UITextField
++ (instancetype)searchBar;
+@end</code></pre><p>CTSearchBar.m</p><pre><code>#import &quot;CTSearchBar.h&quot;
+
+@implementation CTSearchBar
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        self.font = [UIFont systemFontOfSize:15];
+        self.placeholder = @&quot;请输入搜索内容&quot;;
+        self.clearsOnBeginEditing = YES;
+        self.clearButtonMode = UITextFieldViewModeAlways;
+
+        UIImage *image = [UIImage imageNamed:@&quot;searchbar_textfield_search_icon&quot;];
+        UIImageView *searchIcon = [[UIImageView alloc] initWithImage:image];
+        searchIcon.width = 30;
+        searchIcon.height = 30;
+        searchIcon.contentMode = UIViewContentModeCenter;
+
+        self.leftView = searchIcon;
+        self.leftViewMode = UITextFieldViewModeAlways;
+    }
+    return self;
+}
+
++ (instancetype)searchBar {
+    return [[self alloc] init];
+}
+@end</code></pre><h3 id="调用方式"><a href="#调用方式" class="headerlink" title="调用方式"></a>调用方式</h3><pre><code>- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    UITextField *searchBar = [CTSearchBar searchBar];
+    searchBar.width = 500;
+    searchBar.height = 35;
+    self.navigationItem.titleView = searchBar;
+}</code></pre><p>上面代码中<code>searchBar.width = 500;</code>这种方式是因为我给UIView做了一个分类,所以可以直接赋值.详见:<a href="https://jingxuetao.com/by-category-to-make-uiview-convenient-layout/">通过Category让UIView更方便的布局</a></p><p>以上仅提供简单思路,还可以封装更加复杂的搜索框,像新浪微博的.</p><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>iOS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用分类自定义UIBarButtonItem</title>
+    <url>/2016/05/11/use-category-define-uibarbuttonitem/</url>
+    <content><![CDATA[<blockquote><p>原因：</p></blockquote><ol><li>项目中多次用到自定义UIBarButtonItem，所以需要抽取出来</li><li>代码该干什么就干什么，因为这段代码是自定义。UIBarButtonItem，所以应该由UIBarButtonItem做。所以创建一个分类。</li><li>命名习惯，代码规范。要用[UIBarButtonItem itemWith…]这种形式。</li></ol><h3 id="自定义UIBarButtonItem"><a href="#自定义UIBarButtonItem" class="headerlink" title="自定义UIBarButtonItem"></a>自定义UIBarButtonItem</h3><p>UIBarButtonItem+Category.h文件</p><pre><code>#import &lt;UIKit/UIKit.h&gt;
+
+@interface UIBarButtonItem (Category)
++ (NSArray *)itemWithTarget:(id)target action:(SEL)action image:(NSString *)image lighlightImage:(NSString *)lighlightImage;
+@end</code></pre><p>UIBarButtonItem+Category.m文件</p><pre><code>#import &quot;UIBarButtonItem+Category.h&quot;
+
+@implementation UIBarButtonItem (Category)
+
+/**
+ * 自定义一个UIBarButtomItem
+ *
+ * @param target 点击之后调用哪个对象
+ * @param action 点击之后调用对象里面的哪个方法
+ * @param image 普通状态下图片
+ * @param lighlightImage 高亮状态下图片
+ *
+ * @return 创建完的一个UIBarButtomItem数组
+ */
++ (NSArray *)itemWithTarget:(id)target action:(SEL)action image:(NSString *)image lighlightImage:(NSString *)lighlightImage {
+
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:lighlightImage] forState:UIControlStateHighlighted];
+    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    button.size = button.currentImage.size;
+
+    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
+    UIBarButtonItem *speaceItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    speaceItem.width = -5;
+
+    return @[speaceItem,buttonItem];
+}
+
+@end</code></pre><h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><p>在ViewController调用或者在自定义的UINavigationController的push方法里面调用。</p><pre><code>//ViewController调用
+self.navigationItem.leftBarButtonItems = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@&quot;back_icon_red&quot; lighlightImage:@&quot;back_icon_red&quot;];
+//自定义UINavigationController的push方法调用
+viewController.navigationItem.leftBarButtonItems = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@&quot;back_icon_red&quot; lighlightImage:@&quot;back_icon_red&quot;];</code></pre><p>注意：action方法写在ViewController或自定义UINavigationController里面。</p><p>当然还可以在分类里做其他自定义的样式。</p><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>iOS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>统一设置UINavigationController左上角图标</title>
+    <url>/2016/05/11/unified-set-navi-upper-left-corner-icon/</url>
+    <content><![CDATA[<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>通过工厂方法，然后在需要左上角显示图标的ViewController的viewDidLoad方法调用。代码如下：</p><p>Factory.h文件</p><pre><code>#import &lt;Foundation/Foundation.h&gt;
+
+@interface Factory : NSObject
++ (void)addBackButton:(UIViewController *)viewController;
+@end
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">==Factory.m文件==</span><br></pre></td></tr></table></figure>
+
+#import &quot;Factory.h&quot;
+
+@implementation Factory
++ (void)addBackButton:(UIViewController *)viewController{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[UIImage imageNamed:@&quot;community_highlight&quot;] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@&quot;community_highlight&quot;] forState:UIControlStateHighlighted];
+    CGRect frame = button.frame;
+    frame.size = button.currentImage.size;
+    button.frame = frame;
+    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
+    UIBarButtonItem *speaceItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    speaceItem.width = -5;
+    viewController.navigationItem.leftBarButtonItems = @[speaceItem,buttonItem];
+}
+@end
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">### 方法二</span><br><span class="line">这种方法是通过实现UINavigationController的pushViewController方法，拦截所有push进来的viewController，然后对其进行设置。代码如下：</span><br><span class="line"></span><br><span class="line">==BaseNavigationController.h文件==</span><br></pre></td></tr></table></figure>
+
+#import &lt;UIKit/UIKit.h&gt;
+
+@interface BaseNavigationController : UINavigationController
+
+@end
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">==BaseNavigationController.m文件==</span><br></pre></td></tr></table></figure>
+
+#import &quot;BaseNavigationController.h&quot;
+
+@interface BaseNavigationController ()
+
+@end
+
+@implementation BaseNavigationController
+
+- (void)addBackButton:(UIViewController *)viewController{
+    if (self.viewControllers.count &gt; 0) {
+        viewController.hidesBottomBarWhenPushed = YES;
+
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setImage:[UIImage imageNamed:@&quot;back_icon_red&quot;] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@&quot;back_icon_red&quot;] forState:UIControlStateHighlighted];
+        [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+        button.size = button.currentImage.size;
+        UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
+        UIBarButtonItem *speaceItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        speaceItem.width = -5;
+        viewController.navigationItem.leftBarButtonItems = @[speaceItem,buttonItem];
+    }
+}
+
+- (void)back{
+    [self popViewControllerAnimated:YES];
+}
+
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    NSLog(@&quot;push&quot;);
+    [self addBackButton:viewController];
+    [super pushViewController:viewController animated:animated];
+}
+
+#pragma -mark 生命周期
+- (void)viewDidLoad {
+    [super viewDidLoad];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+@end
+```
+&gt; 注意：
+
+1. 用方法一如果某个viewController需要单独设置navigationItem的图标，则在ViewController的viewDidLoad方法里设置即可。
+2. 用了方法二如果在push之前调用设置view样式有关的方法，则先调用viewDidLoad方法，然后调用push方法。这时如果在viewDidLoad方法里设置navigationItem的图标将跟push方法拦截viewController设置的效果一样。
+
+&gt; 所谓的拦截，大部分都是通过自定义类，然后重写自带方法实现的。
+
+**--EOF--**</code></pre>]]></content>
+      <tags>
+        <tag>iOS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>通过Category让UIView更方便的布局</title>
+    <url>/2016/05/11/tong-guo-categoryrang-uiviewgeng-fang-bian-de-bu-ju/</url>
+    <content><![CDATA[<p>之前我们给一个控件设置宽高或者位置的时候会用下面代码：</p><pre><code>UIView *view = [UIView new];
+CGRect frame = view.frame;
+frame.size.width = 100;
+view.frame = frame;</code></pre><p>上面方式很麻烦，不解释。下面是对UIView的分类，方便了对控件的布局：<br>UIView+Category.h文件</p><pre><code>#import &lt;UIKit/UIKit.h&gt;
+
+@interface UIView (Extension)
+@property (nonatomic,assign) CGFloat x;
+@property (nonatomic,assign) CGFloat y;
+@property (nonatomic,assign) CGFloat width;
+@property (nonatomic,assign) CGFloat height;
+@property (nonatomic,assign) CGSize size;
+@property (nonatomic,assign) CGPoint origin;
+//- (void)setX:(CGFloat)x;
+//- (CGFloat)x;
+//- (void)setY:(CGFloat)y;
+//- (CGFloat)y;
+//- (void)setWidth:(CGFloat)width;
+//- (CGFloat)width;
+//- (void)setHeight:(CGFloat)height;
+//- (CGFloat)height;
+//- (void)setOrigin:(CGPoint)origin;
+//- (CGPoint)origin;
+//- (void)setSize:(CGSize)size;
+//- (CGSize)size;
+@end</code></pre><p>UIView+Category.m文件</p><pre><code>#import &quot;UIView+Category.h&quot;
+
+@implementation UIView (Extension)
+- (void)setX:(CGFloat)x {
+    CGRect frame = self.frame;
+    frame.origin.x = x;
+    self.frame = frame;
+}
+
+- (CGFloat)x {
+    return self.frame.origin.x;
+}
+
+- (void)setY:(CGFloat)y {
+    CGRect frame = self.frame;
+    frame.origin.y = y;
+    self.frame = frame;
+    self.frame = frame;
+}
+
+- (CGFloat)y {
+    return self.frame.origin.y;
+}
+
+- (void)setWidth:(CGFloat)width {
+    CGRect frame = self.frame;
+    frame.size.width = width;
+    self.frame = frame;
+}
+
+- (CGFloat)width {
+    return self.frame.size.width;
+}
+
+- (void)setHeight:(CGFloat)height {
+    CGRect frame = self.frame;
+    frame.size.height = height;
+    self.frame = frame;
+}
+
+- (CGFloat)height {
+    return self.frame.size.height;
+}
+
+- (void)setOrigin:(CGPoint)origin {
+    CGRect frame = self.frame;
+    frame.origin = origin;
+    self.frame = frame;
+}
+
+- (CGPoint)origin {
+    return self.frame.origin;
+}
+
+- (void)setSize:(CGSize)size {
+    CGRect frame = self.frame;
+    frame.size = size;
+    self.frame = frame;
+}
+
+- (CGSize)size {
+    return self.frame.size;
+}
+@end</code></pre><p>现在就可以通过下面方式对UIView进行布局了：</p><pre><code>UIView *view = [UIView new];
+view.width = 100;
+view.height = 100;
+view.x = 100;
+view.y = 100;
+//或者
+view.origin = CGPointMake(100, 100);
+view.size = CGSizeMake(100, 100);</code></pre><p>最后你可能有疑问，category中不是不能定义属性么？即使可以定义属性，不应该用runtime来实现setter跟getter方法么？</p><ol><li>category中的属性不能自动生成实例变量（类似:_xxx），所以我们有时会看到通过runtime的方式将变量绑定到实例上。</li><li>上面例子，定义属性为了生成setter跟getter方法。没有用到任何有关<code>self.x</code>、<code>self.y</code>、<code>self.width</code>或者<code>_x</code>、<code>_y</code>这些自定义属性，都是通过UIView自带属性frame(self.frame)来实现给UIView设置布局，所以不需要用runtime。所以本例子不定义属性也可以，把属性注释掉，然后将下面方法取消注释，一样能用。</li></ol><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>iOS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>为Ghost博客文章添加目录</title>
+    <url>/2016/04/29/add-dictionary-to-the-ghost/</url>
+    <content><![CDATA[<h3 id="引入JS文件"><a href="#引入JS文件" class="headerlink" title="引入JS文件"></a>引入JS文件</h3><p>在default.hbs中引入js文件,下载<a href="https://github.com/idiotWu/jQuery-TOC/tree/master/dist" target="_blank" rel="noopener">TOC</a></p><pre><code>//放在jQuery之后
+&lt;script src=&quot;https://xxxxxx.com/jquery.toc.min.js&quot;&gt;&lt;/script&gt;</code></pre><h3 id="添加DIV"><a href="#添加DIV" class="headerlink" title="添加DIV"></a>添加DIV</h3><p>在post.hbs文件的<code>&lt;/main&gt;</code>标签之前添加下面代码</p><pre><code>&lt;aside id=&quot;toc&quot;&gt;
+    &lt;h4&gt;文章目录&lt;/h4&gt;
+&lt;/aside&gt;</code></pre><h3 id="设置样式"><a href="#设置样式" class="headerlink" title="设置样式"></a>设置样式</h3><p>在博客的css文件里设置样式,代码如下:</p><pre><code>#toc {
+    font: 400 16px/1.8 &quot;Open Sans&quot;,&quot;Hiragino Sans GB&quot;,&quot;Microsoft YaHei&quot;,&quot;WenQuanYi Micro Hei&quot;,sans-serif;
+    position: fixed;
+    display: none;
+    left:50%;
+    top: 50%;
+    width: 180px;
+    max-height: 100%;
+    padding: 0 5px;
+    overflow-y: auto;
+}
+#toc ol {
+    margin: 0 0 0 1em;
+    list-style: none;
+    padding: 0;
+}
+#toc li {
+    padding: 0;
+    position: relative;
+}
+#toc li:before {
+    border: 5px dashed transparent;
+    border-left: 5px solid #57a3e8;
+    position: absolute;
+    left: -1em;
+    top: .5em;
+}
+#toc li:before {
+    content: &quot;&quot;;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+}
+#toc a {
+    display: block;
+    color: #6aa7c0;
+    cursor: pointer;
+    max-height: 2em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-decoration: none;
+    transition: color .3s;
+}
+#toc a:hover {
+    color: #F3A01E;
+}
+#toc h4 {
+    padding-bottom: 0.25em;
+    margin: .75em 0;
+    border-bottom: 1px solid #b3b3b3;
+    font-size: 18px;
+    color: #3b3b3b;
+    font-family: &quot;Open Sans&quot;,&quot;Hiragino Sans GB&quot;,&quot;Microsoft YaHei&quot;,&quot;WenQuanYi Micro Hei&quot;,sans-serif;
+}</code></pre><h3 id="初始化目录插件并动态的调整样式"><a href="#初始化目录插件并动态的调整样式" class="headerlink" title="初始化目录插件并动态的调整样式"></a>初始化目录插件并动态的调整样式</h3><p>在博客下的JS文件中添加下面代码:</p><pre><code>$(document).ready(function() {
+    //初始化插件
+    $(&apos;#toc&apos;).initTOC({
+        selector: &quot;h5, h6&quot;,
+        scope: &quot;article&quot;,
+        overwrite: false,
+        prefix: &quot;toc&quot;
+    });
+
+    //动态设置样式,例如:滚动到一定程度之后隐藏目录
+    var mar_left = $(&quot;.post&quot;).width() / 2 + 20;
+    //var top = $(&quot;#toc&quot;).css(&quot;top&quot;); 这只能获取类似152px的字符串,下面才能获取值
+    //var top = $(&quot;#toc&quot;).position().top;
+    var top = $(window).height();
+    $(&quot;#toc&quot;).css(&quot;top&quot;,top / 2 - (top / 4)+&quot;px&quot;);
+    $(&quot;#toc ol&quot;).html(function(i,origText){
+        return origText + &quot;&lt;li&gt;&lt;a id=&apos;scrollTop&apos; href=&apos;#&apos;&gt;返回顶部&lt;/a&gt;&lt;/li&gt;&quot;;
+    });
+    $(&quot;#toc&quot;).css({&quot;margin-left&quot;:mar_left+&quot;px&quot;});
+    $(window).scroll(function(){
+        var window_offset = $(window).scrollTop();
+        var main_header_height = $(&quot;.main-header&quot;).height();
+        var content_height = $(&quot;.content&quot;).height();
+        if(window_offset &lt; main_header_height - 100) {
+            $(&quot;#toc&quot;).hide();
+            //下面的条件不能用 a&gt;x&gt;c这种形式,只能用&amp;&amp;.身为一个前端小白表示伤不起...
+        }else if(window_offset &gt; main_header_height&amp;&amp;main_header_height+content_height - 500 &gt; window_offset) {
+            $(&quot;#toc&quot;).show();
+        }else{
+            $(&quot;#toc&quot;).hide();
+        }
+    });
+});</code></pre><p>以上就是我博客的文章目录添加步骤.前端有个好处就是<code>所见即所得</code>,慢慢折腾.^_^</p><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>Ghost</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>子类对象之间的强转</title>
+    <url>/2016/04/27/forced-conversion-between-sub-classes/</url>
+    <content><![CDATA[<pre><code>#import &lt;Foundation/Foundation.h&gt;
+
+@interface Tom : NSObject
+@property (nonatomic,copy) NSString *name;
+@property (nonatomic) NSInteger age;
+@end
+
+@implementation Tom
+- (instancetype)initWithName:(NSString *)name andAge:(NSInteger)age {
+    if (self = [self init]) {
+        self.name = name;
+        self.age =age;
+    }
+    return self;
+}
+@end
+
+@interface Jerry : NSObject
+@property (nonatomic) NSString *name;
+@property (nonatomic) NSInteger age;
+@end
+
+@implementation Jerry
+- (instancetype)initWithName:(NSString *)name andAge:(NSInteger)age {
+    if (self = [self init]) {
+        self.name = name;
+        self.age =age;
+    }
+    return self;
+}
+@end
+
+@interface Test : NSObject
+@end
+
+@implementation Test
++ (void)showName:(Tom *)tom {
+    NSLog(@&quot;%@&quot;,tom.name);
+}
++ (void)showNameWithKVC:(NSObject *)obj{
+    NSString *name = [obj valueForKey:@&quot;name&quot;];
+    NSLog(@&quot;%@&quot;,name);
+}
+@end
+
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+        Tom *tom = [[Tom alloc]initWithName:@&quot;Tom&quot; andAge:10];
+        Jerry *jerry = [[Jerry alloc]initWithName:@&quot;Jerry&quot; andAge:10];
+
+        //可以通过强转的方式
+        [Test showName:(Tom *)jerry];
+        [Test showName:tom];
+
+        //也可以通过KVC
+        [Test showNameWithKVC:jerry];
+        [Test showNameWithKVC:tom];
+
+    }
+    return 0;
+}</code></pre><p><strong>–EOF–</strong></p>]]></content>
+  </entry>
+  <entry>
+    <title>配置CentOS密钥验证登录</title>
+    <url>/2016/04/19/config-centos-secretkey-authentication-login/</url>
+    <content><![CDATA[<p>用密码登录SSH好不方便,并且安全性不高,为了提升安全性那我们就用密钥登录.</p><blockquote><p>本地环境:OS X,估计是Linux就可以.</p></blockquote><h3 id="1-在远程服务器上创建密钥对"><a href="#1-在远程服务器上创建密钥对" class="headerlink" title="1.在远程服务器上创建密钥对."></a>1.在远程服务器上创建密钥对.</h3><pre><code># create key pair
+
+[cent@dlp ~]$ ssh-keygen -t rsa
+
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/cent/.ssh/id_rsa): # 路径默认,直接回车
+
+Created directory &apos;/home/cent/.ssh&apos;.
+Enter passphrase (empty for no passphrase): # 设置密钥密码,直接回车，不用设置
+
+Enter same passphrase again:#再次输入密码,直接回车
+
+Your identification has been saved in /home/cent/.ssh/id_rsa.
+Your public key has been saved in /home/cent/.ssh/id_rsa.pub.
+The key fingerprint is:
+38:f1:a4:6d:d3:0e:99:c8:fa:1d:1d:48:86:f0:fe:74 cent@dlp.server.world
+The key&apos;s randomart image is:
+
+[cent@dlp ~]$ mv ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys#将id_rsa.pub中的公钥复制到authorized_keys中
+
+[cent@dlp ~]$ chmod 600 ~/.ssh/authorized_keys #修改authorized_keys权限为拥有者可读写</code></pre><h3 id="2-将远程服务器上的私钥下载到本地用于登录远程服务器"><a href="#2-将远程服务器上的私钥下载到本地用于登录远程服务器" class="headerlink" title="2.将远程服务器上的私钥下载到本地用于登录远程服务器"></a>2.将远程服务器上的私钥下载到本地用于登录远程服务器</h3><p>以下是本地操作</p><pre><code> [cent@www ~]$ mkdir ~/.ssh #创建文件夹
+
+[cent@www ~]$ chmod 700 ~/.ssh #修改文件夹权限为拥有者可&apos;读,写,执行&apos;
+# copy the secret key to local ssh directory
+
+[cent@www ~]$ scp cent@10.0.0.30:/home/cent/.ssh/id_rsa ~/.ssh/ #将远程的私钥下载到本地,这要注意路径,如果用root登录的,路径是:/root/.ssh/id_rsa
+
+cent@10.0.0.30&apos;s password: #输入远程服务器密码
+id_rsa
+[cent@www ~]$ ssh -i ~/.ssh/id_rsa cent@10.0.0.30 #现在就可以用这条命令登录远程服务器了
+
+Enter passphrase for key &apos;/home/cent/.ssh/id_rsa&apos;: # 刚才密钥没设置密码,所以不会出现
+
+Last login: Wed Jul 30 21:37:19 2014 from www.server.world
+[cent@dlp ~]$ # 登录成功</code></pre><h3 id="3-简化登录"><a href="#3-简化登录" class="headerlink" title="3.简化登录"></a>3.简化登录</h3><p>本地机器执行下面代码:</p><pre><code>vi ~/.ssh/config</code></pre><p>加入下面一段内容:</p><pre><code>Host server #别名，域名缩写
+    HostName jingxuetao.com #完整的域名
+    User root #登录该域名使用的账号名
+    PreferredAuthentications publickey #加不加都一样,SSH会优先密钥登录
+    IdentityFile ~/.ssh/id_rsa #私钥文件的路径
+    #删掉#号后面的中文,包括这句</code></pre><p>上面配置完了之后就可以通过<code>ssh server</code>或者<code>ssh jingxuetao.com</code>来登录远程服务器了.</p><h3 id="4-关闭密码验证登录"><a href="#4-关闭密码验证登录" class="headerlink" title="4.关闭密码验证登录"></a>4.关闭密码验证登录</h3><p>操作远程服务器</p><pre><code>vi /etc/ssh/sshd_config</code></pre><p>找到<code>PasswordAuthentication</code>将其值改为<code>no</code></p><pre><code>PasswordAuthentication no</code></pre><p>最后用<code>systemctl restart sshd</code>或者<code>service sshd restart</code>重启SSH服务</p><blockquote><p>好了,sshd_config文件中除了配置PasswordAuthentication这条之外其他的并不用配置,还是被注释状态</p></blockquote><p>保存到本地的密钥,最好备份到网盘一份.</p><p>本文参考:<a href="http://www.server-world.info/en/note?os=CentOS_7&p=ssh&f=4" target="_blank" rel="noopener">server-world</a></p><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>CentOS</tag>
+        <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>深夜矫情</title>
+    <url>/2016/04/16/night-hypocritical/</url>
+    <content><![CDATA[<p>前一天过得不踏实,心里不安,胡思乱想中想起博客名,就想起了高中,然后又想起了初中.然后百度了一下初中跟高中的官网,于是就找了一些图片,回忆一下我的初中跟高中.多图预警</p><h3 id="平度市朝-zhao-阳中学"><a href="#平度市朝-zhao-阳中学" class="headerlink" title="平度市朝(zhao)阳中学"></a>平度市朝(zhao)阳中学</h3><p>教学楼正面,教学楼从上面看是呈一个蝴蝶状的.初三的时候做课间操就是在教学楼前的广场上做.我们班在做操的时候是在广场中央,因为喇叭是安装在两边的教学楼上的并且对称,所以在做操的时候会有不一样的听觉效果.第一张图片是当时我们的朝阳中学的原图,下面三张图是后来的华侨高中.因为乡镇高中要迁往市里,所以就把我们学校给征收了,变成了华侨高中.好好的母校,被别人征去当高中,真是亏.</p><p><img src="https://pic.jingxuetao.com/image/b/12/6691cc3c2226c662f69c11cf2a773.jpg" alt><br><img src="https://pic.jingxuetao.com/image/6/ce/498ac686a12e1871981a304080f30.jpg" alt><br><img src="https://pic.jingxuetao.com/image/7/33/58af8addd353e152a809ca194b343.jpg" alt><br><img src="https://pic.jingxuetao.com/image/2/b2/a7e7e07c2dea8468175bd55c479b6.jpg" alt></p><p>教学楼背面.由于花钱不太节制,家里给的生活费第一个周花的差不多了,到了第二个周就只剩二三十块钱左右,二三十块钱要过五天,平均每天也就五六块钱.所以每当中午放学的时候,听着喇叭里放的<code>斯卡波罗集市</code>,走在这条回宿舍的路上(没钱,只能回宿舍,就着调料啃馒头:(),心里有点淡淡的忧伤.歌曲如下:</p><p>&lt;斯卡波罗集市-莎拉布莱曼&gt;</p><p><img src="https://pic.jingxuetao.com/image/a/08/d944a589b50f71c52c66ed2304855.jpg" alt></p><p>操场,应该是初二的时候修起来的.之前都叫草场,杂草丛生,草有人那么高.</p><p><img src="https://pic.jingxuetao.com/image/0/4c/5d22031ce6dddad5c2f616af6edc3.jpg" alt></p><p>左边是一个小操场,初二的时候做广播体操,早晨跑操都在这.右边是女生宿舍,当时好像没窗帘..</p><p><img src="https://pic.jingxuetao.com/image/3/79/d4e97f33cb987aab4989e6ed8caf8.jpg" alt></p><p>餐厅拐角处的一棵树.树的右边是一个大花坛(图中没有),想当年’老邱’(学生处主任,武警出身)在这整过两个带刀外校学生.</p><p><img src="https://pic.jingxuetao.com/image/2/65/9efc435ba32a20daf5be39e4e7230.jpg" alt></p><p>教学楼,宿舍楼东边的一条路,灯是后来装的</p><p><img src="https://pic.jingxuetao.com/image/4/54/da0017701197c7e5b1e0b9a8c0a39.jpg" alt></p><p>对了,我们那一级是16个班,然而其他初中就算全校也没有16个班啊有木有,所以我们会说’拉我们一个级部出去可以打其他学校的整个学校’.不过后来招的学生就慢慢变少了,我们下一级好像是14个班.这几年好像8个班…</p><h3 id="平度市开发区高中"><a href="#平度市开发区高中" class="headerlink" title="平度市开发区高中"></a>平度市开发区高中</h3><p>高中跟初中比起来就比较老旧了,因为初中是06年刚搬到新校区.而高中一直是这个校区.然而一中,九中都换了新校区,并且其他几所高中由于跟一中九中合并,同样也是新校区,就我们学校.万恶的资本主义,唉.</p><p>仁卿楼,主教学楼,楼前一本大书,内容是<code>劝学</code>(劝学是个什么鬼,劝你退学,恩!),左边是中文版,右边是英文版</p><p><img src="https://pic.jingxuetao.com/image/9/28/bdbad9b58ca6f2582e8293dbff073.jpg" alt><br><img src="https://pic.jingxuetao.com/image/b/1c/dba6ba975e532af568308e9920a46.jpg" alt></p><p>仁卿楼广场西边,餐厅南边的小花坛,再往西是高二西教学楼</p><p><img src="https://pic.jingxuetao.com/image/e/59/702c36e0445227fd6fa57dbe2f358.jpg" alt></p><p>高二西教学楼前的草坪,想起了被班主任没收的手机…</p><p><img src="https://pic.jingxuetao.com/image/7/0b/c62bb75aac26bffd5c4624f4f8860.jpg" alt></p><p>高二西教学楼前的走廊</p><p><img src="https://pic.jingxuetao.com/image/a/f5/fcc685c478b3bb72a9f2d79266fd6.jpg" alt></p><p>仁卿楼广场西面的办公楼,高三临近毕业的时候正式入团(共青团)就是在这弄得^_^,少交了好几年团费,不亏.</p><p><img src="https://pic.jingxuetao.com/image/0/0b/01322c280b0c6dc8b089072d19bbc.jpg" alt></p><p>高中官网上的图片差不多就这些了,大一的时候高中又重修了一座教学楼跟操场,说好的重建校区呢??看来重建校区是没希望了..</p><p>有时间一定回去看看，但是什么时候有时间呢？这是个问题.</p><p>好了,矫情完毕,睡觉.</p><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>Me</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何配置使用HSTS</title>
+    <url>/2016/03/24/configure-the-use-of-hsts/</url>
+    <content><![CDATA[<p>HTTP严格传输安全（英语：HTTP Strict Transport Security，缩写：HSTS）是一套由互联网工程任务组发布的互联网安全策略机制。网站可以选择使用HSTS策略，来让浏览器强制使用HTTPS与网站进行通信，以减少会话劫持风险.</p><h3 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h3><p>HSTS的作用是强制客户端（如浏览器）使用HTTPS与服务器创建连接。服务器开启HSTS的方法是，当客户端通过HTTPS发出请求时，在服务器返回的超文本传输协议响应头中包含Strict-Transport-Security字段。非加密传输时设置的HSTS字段无效。</p><p>比如，<a href="https://example.com/" target="_blank" rel="noopener">https://example.com/</a> 的响应头含有Strict-Transport-Security: max-age=31536000; includeSubDomains。这意味着两点：</p><ol><li>在接下来的一年（即31536000秒）中，浏览器只要向example.com或其子域名发送HTTP请求时，必须采用HTTPS来发起连接。比如，用户点击超链接或在地址栏输入<a href="http://www.example.com/" target="_blank" rel="noopener">http://www.example.com/</a> ，浏览器应当自动将 http 转写成 https，然后直接向 <a href="https://www.example.com/" target="_blank" rel="noopener">https://www.example.com/</a> 发送请求。</li><li>在接下来的一年中，如果 example.com 服务器发送的TLS证书无效，用户不能忽略浏览器警告继续访问网站.</li></ol><h3 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h3><p>HSTS的雏形来自于2008年4月在北京召开的第十七届国际万维网大会上柯林·杰克逊（Collin Jackson）和亚当·巴斯（Adam Barth）的题为“ForceHTTPS: Protecting High-Security Web Sites from Network Attacks”的演讲。他们的提议是使用“ForceHTTPS” Cookie来强制浏览器使用HTTPS。</p><p>2009年9月18日，他们和杰夫·霍奇斯（Jeff Hodges）发布了最初的草案，题目为”Strict Transport Security”[5]，这个草案基于ForceHTTPS，并有所修改。</p><p>2010年6月17日，这三位作者经由互联网工程任务组发布了首版互联网草案，”HTTP Strict Transport Security”。</p><p>2012年10月2日，互联网工程指导组批准了将第14版HSTS草案发布为RFC的请求。</p><p>2012年11月19日，互联网工程任务组发布RFC 6797</p><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>HSTS可以用来抵御SSL剥离攻击。SSL剥离攻击是中间人攻击的一种，由Moxie Marlinspike于2009年发明。他在当年的黑帽大会上发表的题为“New Tricks For Defeating SSL In Practice”的演讲中将这种攻击方式公开。SSL剥离的实施方法是阻止浏览器与服务器创建HTTPS连接。它的前提是用户很少直接在地址栏输入 https:// ，用户总是通过点击链接或3xx重定向，从HTTP页面进入HTTPS页面。所以攻击者可以在用户访问HTTP页面时替换所有 https:// 开头的链接为 http:// ，达到阻止HTTPS的目的.</p><p>HSTS可以很大程度上解决SSL剥离攻击，因为只要浏览器曾经与服务器创建过一次安全连接，之后浏览器会强制使用HTTPS，即使链接被换成了HTTP。</p><p>另外，如果中间人使用自己的自签名证书来进行攻击，浏览器会给出警告，但是许多用户会忽略警告。HSTS解决了这一问题，一旦服务器发送了HSTS字段，用户将不再允许忽略警告。</p><h3 id="不足"><a href="#不足" class="headerlink" title="不足"></a>不足</h3><p>用户首次访问某网站是不受HSTS保护的。这是因为首次访问时，浏览器还未收到HSTS，所以仍有可能通过明文HTTP来访问。解决这个不足目前有两种方案，一是浏览器预置HSTS域名列表，Google Chrome、Firefox、Internet Explorer和Microsoft Edge实现了这一方案。二是将HSTS信息加入到域名系统记录中。但这需要保证DNS的安全性，也就是需要部署域名系统安全扩展。截至2014年这一方案没有大规模部署。</p><p>由于HSTS会在一定时间后失效（有效期由max-age指定），所以浏览器是否强制HSTS策略取决于当前系统时间。部分操作系统经常通过网络时间协议更新系统时间，如Ubuntu每次连接网络时，OS X Lion每隔9分钟会自动连接时间服务器。攻击者可以通过伪造NTP信息，设置错误时间来绕过HSTS。解决方法是认证NTP信息，或者禁止NTP大幅度增减时间。比如Windows 8每7天更新一次时间，并且要求每次NTP设置的时间与当前时间不得超过15小时。</p><h3 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h3><ul><li>Chromium和Google Chrome从4.0.211.0版本开始支持HSTS</li><li>Firefox 4及以上版本</li><li>Opera 12及以上版本</li><li>Safari从OS X Mavericks起</li><li>Internet Explorer从Windows 10技术预览版开始支持</li></ul><h3 id="网站支持"><a href="#网站支持" class="headerlink" title="网站支持"></a>网站支持</h3><p>根据SSL Pulse的调查，截至2015年2月，仅有2.7%的网站开启了HSTS。目前支持HSTS的主流网站有：支付宝、PayPal、Twitter、维基百科邮件列表、上善若水等。</p><blockquote><p>以上内容来自<a href="https://zh.wikipedia.org/wiki/HTTP%E4%B8%A5%E6%A0%BC%E4%BC%A0%E8%BE%93%E5%AE%89%E5%85%A8" target="_blank" rel="noopener">维基百科</a>,维基百科真是个好网站.</p></blockquote><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>啰嗦了这么多,其实就是为了凑字数.Nginx配置在ssl.conf文件中的server字段下添加如下代码:</p><pre><code>add_header Strict-Transport-Security &quot;max-age=31536000; includeSubdomains; preload&quot;;//第二个跟第三个参数一般来说没用,支付宝的首页就只用了第一个参数.所以添加下面一行配置就行
+add_header Strict-Transport-Security &quot;max-age=31536000;&quot;;</code></pre><p><strong>max-age</strong> ，单位是秒，用来告诉浏览器在指定时间内，这个网站必须通过 HTTPS 协议来访问。也就是对于这个网站的 HTTP 地址，浏览器需要先在本地替换为 HTTPS 之后再发送请求。</p><p><strong>includeSubDomains</strong> ，可选参数，如果指定这个参数，表明这个网站所有子域名也必须通过 HTTPS 协议来访问。</p><p><strong>preload</strong> ,将域名加入HSTS Preload List,但是有这个参数也不一定能加入.</p><p>HSTS 这个响应头只能用于 HTTPS 响应；网站必须使用默认的 443 端口；必须使用域名，不能是 IP。而且启用 HSTS 之后，一旦网站证书错误，用户无法选择忽略。</p><h3 id="配置生效"><a href="#配置生效" class="headerlink" title="配置生效"></a>配置生效</h3><p>最后打开 <strong>chrome://net-internals/#hsts</strong> ,在Query domain中输入自己的域名(不加http),搜索一下试试.往后,只要用户不清缓存,就会直接通过<a href="https://xxxx.com:443" target="_blank" rel="noopener">https://xxxx.com:443</a> 访问网站,而不是通过http重定向到https的方式了.</p><p><strong>–EOF–</strong></p>]]></content>
+      <tags>
+        <tag>NGINX</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS安装Ghost博客并实现全站HTTPS</title>
+    <url>/2016/03/13/centosan-zhuang-ghostbo-ke-bing-shi-xian-quan-zhan-https/</url>
+    <content><![CDATA[<h3 id="1-前期准备"><a href="#1-前期准备" class="headerlink" title="1.前期准备"></a>1.前期准备</h3><pre><code>yum update //更新yum源
+yum groupinstall &quot;Development Tools&quot; //安装开发工具包
+yum install wget //安装wget下载工具</code></pre><h3 id="2-安装Nginx"><a href="#2-安装Nginx" class="headerlink" title="2.安装Nginx"></a>2.安装Nginx</h3><pre><code>yum install nginx -y //安装nginx
+service nginx start //开启nginx
+chkconfig nginx on //设置开机自启动</code></pre><p>Nginx安装完成,现在用IP或者域名就可以访问你的服务器了.</p><p>使用Nginx配置反向代理,指向ghost博客的2368端口.</p><pre><code>cd /etc/nginx/conf.d //cd到nginx目录
+vim default.conf //打开default.conf文件</code></pre><p>在文件中写入一下内容:</p><pre><code>server {  
+    listen 80;
+    server_name jingxuetao.com;
+    location / {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $http_host;
+        proxy_pass http://127.0.0.1:2368;
+        proxy_set_header REMOTE-HOST $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}</code></pre><p>将上面的server_name 替换成自己的域名,保存退出,并重启Nginx.</p><pre><code>service nginx restart</code></pre><h3 id="3-安装MySQL"><a href="#3-安装MySQL" class="headerlink" title="3.安装MySQL"></a>3.安装MySQL</h3><blockquote><p>Ghost集成了sqlite3数据库,如果不用MySQL,本步可以忽略.</p></blockquote><pre><code>yum install mysql mysql-server //安装MySQL
+service mysqld restart //启动数据库
+chkconfig mysqld on //设置开机启动
+mysql_secure_installation //开始配置数据库</code></pre><pre><code>Set root password? [Y/n] //设置root密码 -- 根据个人需求  
+anonymous users? [Y/n] //删除匿名用户 -- y  
+Disallow root login remotely? [Y/n] //禁止root用户远程登录 --n
+Remove test database and access to it? [Y/n] //删除默认的 test 数据库 --y  
+Reload privilege tables now? [Y/n] //是否马上应用最新的设置 --y  </code></pre><p>为了支持中文,还需要修改MySQL字符支持.</p><pre><code>vim /etc/my.cnf</code></pre><p>在对应位置填入对应的内容:</p><pre><code>[client]
+default-character-set=utf8  
+[mysql]
+default-character-set=utf8  
+[mysqld]
+character-set-server=utf8  
+collation-server=utf8_general_ci  </code></pre><p>然后新建一个Ghost专用MySQL用户跟database:</p><pre><code>mysql -u root -p  
+//用root用户登录mysql
+
+create database ghost;  
+//创建ghost数据库
+
+GRANT ALL PRIVILEGES ON ghost.* To &apos;ghost&apos;@&apos;%&apos; IDENTIFIED BY &apos;密码&apos;;  
+//创建ghost database 和 用户名为ghost的用户
+//%代表能被所有地址访问</code></pre><h3 id="4-安装Node-js"><a href="#4-安装Node-js" class="headerlink" title="4.安装Node.js"></a>4.安装Node.js</h3><p>根据Ghost官方建议,安装v0.10.40版本</p><pre><code>wget http://nodejs.org/dist/v0.10.40/node-v0.10.40.tar.gz
+tar zxvf node-v0.10.40.tar.gz
+cd node-v0.10.40
+./configure
+make &amp;&amp; make install</code></pre><h3 id="5-安装Ghost"><a href="#5-安装Ghost" class="headerlink" title="5.安装Ghost"></a>5.安装Ghost</h3><pre><code>mkdir /var/www //创建Ghost安装路径
+wget http://dl.ghostchina.com/Ghost-0.7.4-zh-full.zip //下载Ghost(中文版)
+unzip Ghost-0.7.4-zh-full.zip //解压zip文件到当前文件夹
+mv config.example.js config.js //重命名,并配置
+vim config.js //打开config.js文件,并在里面填写对应内容.如果用sqlite3,只需要配置url</code></pre><pre><code>production: {  
+    url: &apos;http://jingxuetao.com&apos;, //这里是你自己VPS主机的域名，或者IP
+    mail: {},
+    database: {
+        client: &apos;mysql&apos;这里我选择使用mysql作为我博客的数据库
+        connection: {
+            host : &apos;127.0.0.1&apos;,
+            user : &apos;ghost&apos;, //mysql用户名
+            password : &apos;&apos;, //密码
+            database : &apos;ghost&apos;, //之前创建的ghost数据库名称
+            charset : &apos;utf8&apos;
+        },
+    server: {
+            host: &apos;127.0.0.1&apos;,
+            port: &apos;2368&apos;//若修改该端口记得在nginx中做相应改变
+        }
+    }  </code></pre><p>现在在www目录下用命令npm start启动Ghost,网页就可以浏览了.</p><h3 id="6-使用PM2让Ghost永远在线"><a href="#6-使用PM2让Ghost永远在线" class="headerlink" title="6.使用PM2让Ghost永远在线"></a>6.使用PM2让Ghost永远在线</h3><p>只要我们一断开ssh，Ghost的进程就会被关闭，这里我们使用PM2来守护Ghost服务进程，并让其运行在生产模式production上</p><pre><code>//！！首先进到ghost的安装目录
+//安装pm2
+npm install pm2 -g  
+//让ghost以production模式运作，指定程序的入口index.js，并且此进程命名为ghost
+NODE_ENV=production pm2 start index.js --name &quot;ghost&quot;  
+//开机启动
+pm2 startup centos  
+pm2 save  </code></pre><p>进程守护做完，顺便提提pm2重启进程的命令是:</p><pre><code>pm2 restart ghost</code></pre><p>用<a href="http://jingxuetao.com/ghost">http://jingxuetao.com/ghost</a> 访问后台</p><h3 id="7-设置外部存储"><a href="#7-设置外部存储" class="headerlink" title="7.设置外部存储"></a>7.设置外部存储</h3><p>Ghost默认是将图片存储在服务器上的,但是服务器存储空间有限,并且外部存储又不花钱.</p><p><a href="https://portal.qiniu.com/" target="_blank" rel="noopener">https://portal.qiniu.com/</a> 创建七牛云存储账号,并创建一个空间(公开空间).(使用免费空间之前得冲10块钱),然后修改Ghost配置文件如下:</p><pre><code>/*storage: {
+     provider: &apos;local-file-store&apos;
+ }*/ //注释掉本地存储代码.
+ storage: {
+     provider: &apos;qiniu&apos;,
+     bucketname: &apos;blog-pic&apos;,//空间名称
+     ACCESS_KEY: &apos;d05f31DxWMuCdnqxxxxHOFc5cMJ4rQbdpnPJGB4F&apos;,//账号-&gt;密钥(左边菜单栏),将AK,SK分别对应ACCESS_KEY,SECRET_KEY填入
+     SECRET_KEY: &apos;q6l8YgfxOdxGSR8U5_DwBhtyC5133xurgBGyjIHt&apos;,
+     root: &apos;/image/&apos;,
+     prefix: &apos;http://o3pxzuakz.qnssl.com&apos;//选择一个空间-&gt;空间设置-&gt;域名设置-&gt;七牛域名,将网址复制到这.
+ }</code></pre><p>然后,在default.conf文件的location中添加</p><pre><code>client_max_body_size 5m; //设置上传图片最大是5M,不设置上传图片会不成功,默认上传图片大小比较小.</code></pre><p>重启Ghost,上传一张图片试试,看看图片地址.</p><h3 id="8-设置HTTPS"><a href="#8-设置HTTPS" class="headerlink" title="8.设置HTTPS"></a>8.设置HTTPS</h3><p>①申请沃通免费证书,参考这篇文章.<br><a href="http://www.freehao123.com/cloudflare-wosign-ssl/" target="_blank" rel="noopener">Wosign沃通免费SSL申请开通</a></p><p>②选择nginx的证书,改名为cert.crt跟cert.key</p><p>③将证书上传到服务器的/etc/nginx目录下,然后配置Nginx.在/etc/nginx/conf.d目录下,除了default.conf文件之外,应该还有一个sslxxxxx.conf文件(没有就创建ssl.conf文件),将下面内容对比填入或者复制进去.</p><pre><code># HTTPS server
+#
+server {
+    listen 443 ssl;
+    server_name jingxuetao.com;
+
+    ssl_certificate /etc/nginx/cert.crt;
+    ssl_certificate_key /etc/nginx/cert.key;
+
+    ssl_session_cache shared:SSL:1m;
+    ssl_session_timeout 5m;
+
+    ssl_ciphers HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers on;
+
+    location / {
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_pass http://127.0.0.1:2368;
+        client_max_body_size 5m;
+    }
+}</code></pre><p><strong>另外还得在config.js文件中将url字段http后面加个s,例如:</strong></p><pre><code>url: &apos;https://jingxuetao.com&apos;</code></pre><p>现在通过<a href="https://jingxuetao.com">https://jingxuetao.com</a> 就可以访问自己的网站了.</p><p>要想将HTTP请求自动跳转到HTTPS,在default.conf文件的location中添加下面内容</p><pre><code>return 301 https://$server_name$request_uri;</code></pre><p>现在是实现HTTPS了,但是因为网页中含有其他网站的资源文件(图片,一个是头像,另一个就是后台左上角的那个小图标,再就是自己上传到七牛的图片.),所以现在浏览器地址栏中并没有显示安全连接.</p><p>往后需要各种注意的细节,文字描述不清楚.不说了,心好累.</p><p>博客本来访问量就不多,耐心看到这的就更少了.如果需要,加我QQ吧,1247846317 验证问题:荆学涛.</p><p>END</p>]]></content>
+      <tags>
+        <tag>Ghost</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>iOS界面跳转隐藏tabBar</title>
+    <url>/2016/03/10/ios-jump-hide-tabbar/</url>
+    <content><![CDATA[<h3 id="一-IOS隐藏tabBar的方法"><a href="#一-IOS隐藏tabBar的方法" class="headerlink" title="一.IOS隐藏tabBar的方法:"></a>一.IOS隐藏tabBar的方法:</h3><pre><code>self.tabBarController.tabBar.hidden = YES;</code></pre><p>但是我们跳转隐藏tabBar需要的不是这段代码.</p><h3 id="二-push跳转隐藏tabBar"><a href="#二-push跳转隐藏tabBar" class="headerlink" title="二.push跳转隐藏tabBar"></a>二.push跳转隐藏tabBar</h3><p>如果在push跳转时需要隐藏tabBar，设置self.hidesBottomBarWhenPushed=YES;并在push后设置self.hidesBottomBarWhenPushed=NO;这样back回来的时候，tabBar会恢复正常显示。代码如下:</p><pre><code>NextViewController *next=[[NextViewController alloc]init];
+next. hidesBottomBarWhenPushed = YES;
+[self.navigationController pushViewController:next animated:YES];</code></pre><p>END</p>]]></content>
+      <tags>
+        <tag>iOS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一台虚拟机的悲哀</title>
+    <url>/2016/03/07/sorrow-of-a-virtual-machine/</url>
+    <content><![CDATA[<blockquote><p>“哈哈,我终于从镜像文件变成变成操作系统啦,O(∩_∩)O~,我的主人每天都会用我办公超过10个小时.虽然我的身体素质不好,但是我有一颗顽强灵魂;虽然每天都会很累,但是我很开心.因为我是主人的操作系统呀!(<em>^_\</em>^<em>)”.<br>______________________________________________________________\</em>—–一台虚拟机的悲哀</p></blockquote><pre><code>或许我们也是虚拟机.</code></pre><ul><li>博客从ACE转移到ECS上了.过程比较曲折,结果还算完美.</li><li>明天写一下教程,然后再把HTTPS的反代理弄一下.又得翻代码.</li><li>以后不折腾了,不折腾了.</li></ul><p>END</p>]]></content>
+      <tags>
+        <tag>Me</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>通过runtime让属性在category上飞</title>
+    <url>/2016/02/19/by-runtime-to-allow-properties-to-fly-on-category/</url>
+    <content><![CDATA[<h3 id="现在面临的场景"><a href="#现在面临的场景" class="headerlink" title="现在面临的场景"></a>现在面临的场景</h3><p>在做项目过程中难免会创建很多ViewModel,这些ViewModel难免有些共同的方法跟属性,这些共同的方法和属性可以单独提取出来,这就用到category.我现在的具体场景是:每个ViewModel都需要请求数据,当ViewController从当前界面切换到另一个画面时,暂停本页面的网络请求.</p><h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3><p>NSObject+ViewModel.h文件</p><pre><code>@interface NSObject (ViewModel)
+@property (nonatomic) NSURLSessionDataTask *dataTask;
+- (void)cancelTask; //取消任务
+- (void)suspendTask; //暂停任务
+- (void)resumeTask; //继续任务
+@end</code></pre><p>NSObject+ViewModel.m文件</p><pre><code>#import &quot;NSObject+ViewModel.h&quot;
+#import &lt;objc/runtime.h&gt;//得引入runtime
+
+static const void *dataTaskKey = &amp;dataTaskKey;
+@implementation NSObject (ViewModel)
+
+//通过运行时, 实现setter方法动态的绑定属性到对象
+/**
+  参数一 源对象,此处是self
+  参数二 唯一静态变量,dataTaskKey保存的是他自己的地址,因为是静态的,所以地址不会重复
+  参数三 关联的对象
+  参数四 关联策略(属性的内存管理方式),关联策略详细解释在下面
+**/
+- (void)setDataTask:(NSURLSessionDataTask *)dataTask{
+    objc_setAssociatedObject(self, dataTaskKey, dataTask, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+/**
+  参数一 源对象,此处是self
+  参数二 唯一静态变量,dataTaskKey保存的是他自己的地址,因为是静态的,所以地址不会重复
+**/
+- (NSURLSessionDataTask *)dataTask{
+    return objc_getAssociatedObject(self, dataTaskKey);
+}
+
+- (void)resumeTask{
+    [self.dataTask resume];
+}
+- (void)cancelTask{
+    [self.dataTask cancel];
+}
+- (void)suspendTask{
+    [self.dataTask suspend];
+}
+@end</code></pre><h3 id="关联策略"><a href="#关联策略" class="headerlink" title="关联策略"></a>关联策略</h3><p>&nbsp; &nbsp; &nbsp;Behavior &nbsp; &nbsp;@property Equivalent &nbsp; &nbsp;Description &nbsp; &nbsp; &nbsp; &nbsp;OBJC_ASSOCIATION_ASSIGN &nbsp; &nbsp;@property (assign) 或 @property (unsafe_unretained) &nbsp; &nbsp;指定一个关联对象的弱引用。 &nbsp; &nbsp; &nbsp; &nbsp;OBJC_ASSOCIATION_RETAIN_NONATOMIC &nbsp; &nbsp;@property (nonatomic, strong) &nbsp; &nbsp;指定一个关联对象的强引用，不能被原子化使用。 &nbsp; &nbsp; &nbsp; &nbsp;OBJC_ASSOCIATION_COPY_NONATOMIC &nbsp; &nbsp;@property (nonatomic, copy) &nbsp; &nbsp;指定一个关联对象的copy引用，不能被原子化使用。 &nbsp; &nbsp; &nbsp; &nbsp;OBJC_ASSOCIATION_RETAIN &nbsp; &nbsp;@property (atomic, strong) &nbsp; &nbsp;指定一个关联对象的强引用，能被原子化使用。 &nbsp; &nbsp; &nbsp; &nbsp;OBJC_ASSOCIATION_COPY &nbsp; &nbsp;@property (atomic, copy) &nbsp; &nbsp;指定一个关联对象的copy引用，能被原子化使用。 &nbsp;</p><blockquote><p>这两个方法可以让一个对象和另一个对象关联，就是说一个对象可以保持对另一个对象的引用，并获取那个对象。有了这些，就能实现属性功能了。</p></blockquote><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3>]]></content>
+      <tags>
+        <tag>iOS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>全站实现HTTPS访问</title>
+    <url>/2016/02/18/implementation-of-https-access-station/</url>
+    <content><![CDATA[<p>经过一番折腾,现在博客能通过HTTPS访问了,但是还不完美,主要是图片资源不是通过HTTPS形式访问的.一个是自己上传的图片,这个好解决,修改一下七牛上传的图片地址就行.另一个就是多说的头像,多说的头像不支持HTTPS,这个得通过反代理的形式.不知道ACE支不支持反代理,已经提交了工单.当然自己上传的图片也可以通过反代理的形式.</p><p>年轻就是折腾!</p><p>END</p>]]></content>
+      <tags>
+        <tag>Me</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>又转到了ghost博客</title>
+    <url>/2016/02/13/went-to-ghost-2/</url>
+    <content><![CDATA[<p>用了有半年多的b3log solo博客程序,虽然solo的博客编辑用的也是markdown格式的,但是个人感觉好难用.尽管我发表写的博文并不多.但是有点完美主义的我(并不是往自己身上贴标签),还是不愿意再用solo了.我会把<a href="http://www.jingxuetao.com指向原来的IP,原来的程序有几十篇博文,转移起来也好麻烦,懒得动了.然后在导航设置一个链接,链接到原来的博客.呵,不知道以后会不会再换回WordPress.呵呵,我并不知道.以后的事以后再说吧" target="_blank" rel="noopener">www.jingxuetao.com指向原来的IP,原来的程序有几十篇博文,转移起来也好麻烦,懒得动了.然后在导航设置一个链接,链接到原来的博客.呵,不知道以后会不会再换回WordPress.呵呵,我并不知道.以后的事以后再说吧</a>.</p><p>现在感觉这个markdown格式用起来还是比较不错的.</p><pre><code>public static void main(String args[]){
+    System.out.println(&quot;hello world!!&quot;);
+}</code></pre><p>现在代码插入也很方便,可能原来插入代码就很方便,只不过是因为心里问题,觉得原来好麻烦.</p><ol><li>现在</li><li>现在插入代码</li><li>现在插入代码很方便</li></ol><p>无序列表</p><ul><li>无序列表1</li><li>无序列表2</li></ul><p>还可以插入图片,插入图片也很方便</p><figure class="kg-card kg-image-card"><img src="https://o3pxzuakz.qnssl.com/75b31e23e4e4c22e24daa3de4ed47474.jpeg/image/1/ef/849ba9f8cea329e8faaefa49aa970.jpg" class="kg-image" alt="这是一张即将要插入的图片"></figure><pre><code>public static void main(String args[]){
+    //这是一个由```写的高亮代码
+}</code></pre><p>添加引用:</p><blockquote><p>这是一个引用</p></blockquote><p>添加分割线</p><hr><p>一些常用得markdown语法都在这了,用起来还算顺手.</p><p>上方配图来自<a href="http://weibo.com/bboyzong" target="_blank" rel="noopener">王源宗Bboy</a></p>]]></content>
+      <tags>
+        <tag>Me</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>为Xib中的控件设置圆角</title>
+    <url>/2016/02/02/set-the-corner-for-the-control-in-xib/</url>
+    <content><![CDATA[<p>今天同学问了我一个问题,Google了一下,以后会用到,所以在这记录一下.</p><p>有时候,项目需要引用XIB,但是有些UI属性在面板不好设置,例如设置圆角.那么我们可以采取一种思路,通过拖线连接到.m文件,然后开始进行代码属性的修改,但是切记.设置圆角的方法,不能在ViewDidLoad里边重写,这样会导致无效,我们需要在drawRect进行设置,然后再进行调用即可.代码如下:</p><pre><code>- (void)drawRect:(CGRect)rect{
+
+  [super drawRect:rect];
+
+  self.imgView.layer.cornerRadius = 20;
+
+  self.imgView.clipsToBounds =YES;
+
+}</code></pre><p>另外,有道云笔记这个工具不错.</p><p>再就是推荐一个国外的非常不错的图库<a href="https://unsplash.com/" target="_blank" rel="noopener">Unsplash</a>,上面有很多高清图,可以免费使用.以后写博客,就从这上面盗图了.</p><p>END</p>]]></content>
+      <tags>
+        <tag>iOS</tag>
+      </tags>
+  </entry>
+</search>
