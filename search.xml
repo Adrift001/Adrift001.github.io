@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>逆波兰表达式求值</title>
-    <url>/2019/09/11/ni-bo-lan-biao-da-shi-qiu-zhi/</url>
+    <url>/ni-bo-lan-biao-da-shi-qiu-zhi/</url>
     <content><![CDATA[<pre><code>// 计算逆波兰表达式
 class Solution {
     func evalRPN(_ tokens: [String]) -&gt; Int {
@@ -49,7 +49,7 @@ print(result)</code></pre><p><strong>–EOF–</strong></p>]]></content>
   </entry>
   <entry>
     <title>协议前缀</title>
-    <url>/2019/08/13/protocol-prefix/</url>
+    <url>/protocol-prefix/</url>
     <content><![CDATA[<pre><code>import Foundation
 
 /// 前缀类型
@@ -143,7 +143,7 @@ print(isArrayType(String.self))</code></pre><p><strong>–EOF–</strong></p>]]>
   </entry>
   <entry>
     <title>Vapor最简单的服务器</title>
-    <url>/2019/08/09/vapor-simplest-server/</url>
+    <url>/vapor-simplest-server/</url>
     <content><![CDATA[<h4 id="Package-swift"><a href="#Package-swift" class="headerlink" title="Package.swift"></a>Package.swift</h4><pre><code>// swift-tools-version:5.1
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
@@ -182,7 +182,7 @@ try app.run()</code></pre><p><strong>–EOF–</strong></p>]]></content>
   </entry>
   <entry>
     <title>Swift实现可选协议</title>
-    <url>/2019/08/08/swift-implements-optional-protocol/</url>
+    <url>/swift-implements-optional-protocol/</url>
     <content><![CDATA[<h4 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h4><pre><code>protocol Runnable1: class { }
 
 extension Runnable1 {
@@ -199,7 +199,7 @@ extension Runnable1 {
   </entry>
   <entry>
     <title>Swift 属性绑定</title>
-    <url>/2019/08/08/swift-property-binding/</url>
+    <url>/swift-property-binding/</url>
     <content><![CDATA[<pre><code>class Person { }
 
 extension Person {
@@ -242,7 +242,7 @@ print(p.weight)</code></pre><p><strong>–EOF–</strong></p>]]></content>
   </entry>
   <entry>
     <title>Swift重命名C函数</title>
-    <url>/2019/08/05/swift-renames-c-functions/</url>
+    <url>/swift-renames-c-functions/</url>
     <content><![CDATA[<p><strong>Test.h</strong></p><pre><code>#ifndef Test_h
 #define Test_h
 
@@ -263,7 +263,7 @@ print(swift_sum(1, 2))</code></pre><p><strong>–EOF–</strong></p>]]></content
   </entry>
   <entry>
     <title>Custom expression pattern</title>
-    <url>/2019/07/30/custom-expression-pattern/</url>
+    <url>/custom-expression-pattern/</url>
     <content><![CDATA[<pre><code>// 自定义表达式模式
 struct Student {
     var score = 0, name = &quot;&quot;
@@ -353,7 +353,7 @@ default:
   </entry>
   <entry>
     <title>查找表</title>
-    <url>/2019/07/27/lookup-table/</url>
+    <url>/lookup-table/</url>
     <content><![CDATA[<p><strong>–EOF–</strong></p>]]></content>
       <tags>
         <tag>数据结构和算法</tag>
@@ -361,7 +361,7 @@ default:
   </entry>
   <entry>
     <title>Swift Access Control</title>
-    <url>/2019/07/25/swift-access-control/</url>
+    <url>/swift-access-control/</url>
     <content><![CDATA[<ol><li>open: 允许在定义实体的模块,其他模块中访问,允许其他模块进行继承,重写(open只能用在类,类成员上)</li><li>public: 允许在定义实体的模块,其他模块中访问,不允许继承,重写(模块内可以)</li><li>internal: 只允许在定义实体的模块中访问,不允许在其他模块中访问(默认)</li><li>fileprivate: 在同一文件中访问</li><li>private: 在实体内访问</li></ol><blockquote><p>全局内用private修饰类,变量或扩展,就是用fileprivate</p></blockquote><pre><code>class Test {
     private struct Dog {
         var age = 0 //Test内可用,如果显式用private修饰,则Person内不能使用age
@@ -382,7 +382,7 @@ default:
   </entry>
   <entry>
     <title>队列实现</title>
-    <url>/2019/07/24/queue-implement/</url>
+    <url>/queue-implement/</url>
     <content><![CDATA[<p><strong>–EOF–</strong></p>]]></content>
       <tags>
         <tag>数据结构和算法</tag>
@@ -390,7 +390,7 @@ default:
   </entry>
   <entry>
     <title>栈实现</title>
-    <url>/2019/07/24/stack-implement/</url>
+    <url>/stack-implement/</url>
     <content><![CDATA[<p><strong>–EOF–</strong></p>]]></content>
       <tags>
         <tag>数据结构和算法</tag>
@@ -398,7 +398,7 @@ default:
   </entry>
   <entry>
     <title>自定义运算符</title>
-    <url>/2019/07/23/custom-operator/</url>
+    <url>/custom-operator/</url>
     <content><![CDATA[<p><strong>–EOF–</strong></p>]]></content>
       <tags>
         <tag>Swift</tag>
@@ -406,7 +406,7 @@ default:
   </entry>
   <entry>
     <title>线性表的顺序操作</title>
-    <url>/2019/06/20/sequential-operation-of-linear-tables/</url>
+    <url>/sequential-operation-of-linear-tables/</url>
     <content><![CDATA[<pre><code>#include &lt;stdio.h&gt;
 
 #define maxsize 10
@@ -501,7 +501,7 @@ int main(int argc, const char * argv[]) {
   </entry>
   <entry>
     <title>subscript_keyPath,propertyWrapper</title>
-    <url>/2019/06/07/subscript_keypath-propertywrapper/</url>
+    <url>/subscript_keypath-propertywrapper/</url>
     <content><![CDATA[<pre><code>import Foundation
 
 //dynamicMemberLookup_keyPath
@@ -586,7 +586,7 @@ print(UserDefaultsConfig.hasSeenAppIntroduction)</code></pre><p><strong>–EOF�
   </entry>
   <entry>
     <title>求最大子列和</title>
-    <url>/2019/05/25/finding-the-maximum-subcolumn-sum/</url>
+    <url>/finding-the-maximum-subcolumn-sum/</url>
     <content><![CDATA[<pre><code>var nums = [1, -2, 2, -13, 6, -10, 3, 12]
 
 /// O(n^3)
@@ -644,7 +644,7 @@ maxSubSequenceSum3()</code></pre><p>算法很重要呐 😄😄</p><p><strong>�
   </entry>
   <entry>
     <title>打破for循环嵌套</title>
-    <url>/2019/05/19/how-to-break-out-of-multiple-loop-levels-using-labeled-statements/</url>
+    <url>/how-to-break-out-of-multiple-loop-levels-using-labeled-statements/</url>
     <content><![CDATA[<pre><code>exitLoop: for i in 0...100 {
     print(&quot;i=\(i)&quot;)
     if i == 50 {
@@ -664,7 +664,7 @@ maxSubSequenceSum3()</code></pre><p>算法很重要呐 😄😄</p><p><strong>�
   </entry>
   <entry>
     <title>SourceTree不能使用账号密码提交代码</title>
-    <url>/2019/05/05/sourcetree-could-not-commit-code-by-username/</url>
+    <url>/sourcetree-could-not-commit-code-by-username/</url>
     <content><![CDATA[<p>总感觉用账号密码提交代码是反人类的🙂</p><p>解决方法:</p><blockquote><p>SourceTree -&gt; 偏好设置-&gt; Git -&gt; 使用系统安装的Git</p></blockquote><p>好长时间不写博客了,能水一篇是一篇.</p><p><strong>–EOF–</strong></p>]]></content>
       <tags>
         <tag>Git</tag>
@@ -672,7 +672,7 @@ maxSubSequenceSum3()</code></pre><p>算法很重要呐 😄😄</p><p><strong>�
   </entry>
   <entry>
     <title>2018年总结</title>
-    <url>/2018/12/31/summary-of-2018/</url>
+    <url>/summary-of-2018/</url>
     <content><![CDATA[<h1 id="穷折腾"><a href="#穷折腾" class="headerlink" title="穷折腾"></a>穷折腾</h1><h1 id="🙂"><a href="#🙂" class="headerlink" title="🙂"></a>🙂</h1>]]></content>
       <tags>
         <tag>Me</tag>
@@ -680,7 +680,7 @@ maxSubSequenceSum3()</code></pre><p>算法很重要呐 😄😄</p><p><strong>�
   </entry>
   <entry>
     <title>位运算</title>
-    <url>/2018/11/26/bit-operation/</url>
+    <url>/bit-operation/</url>
     <content><![CDATA[<p>位运算了解一下,哈哈哈哈哈哈…</p><p>Person.swift</p><pre><code>import Foundation
 
 extension Bool {
@@ -773,7 +773,7 @@ print(person._tallRichHandsome)</code></pre><p><strong>–EOF–</strong></p>]]>
   </entry>
   <entry>
     <title>OC对象的分类</title>
-    <url>/2018/11/21/oc-object-classify/</url>
+    <url>/oc-object-classify/</url>
     <content><![CDATA[<pre><code>//实例对象(instance对象)
     //isa指针
     //变量
@@ -824,7 +824,7 @@ int main(int argc, const char * argv[]) {
   </entry>
   <entry>
     <title>Protocols</title>
-    <url>/2018/11/18/protocols/</url>
+    <url>/protocols/</url>
     <content><![CDATA[<p>A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol.</p><pre><code>import Foundation
 
 //协议语法
@@ -1112,7 +1112,7 @@ for thing in things {
   </entry>
   <entry>
     <title>Generics</title>
-    <url>/2018/11/17/generics/</url>
+    <url>/generics/</url>
     <content><![CDATA[<p>通用代码使您能够根据您定义的要求编写可以使用任何类型的灵活，可重用的函数和类型。您可以编写避免重复的代码，并以清晰，抽象的方式表达其意图。</p><p>泛型是Swift最强大的功能之一，Swift标准库的大部分内容都是使用通用代码构建的。</p><pre><code>import Foundation
 
 //泛型函数
@@ -1384,7 +1384,7 @@ extension Container2 {
   </entry>
   <entry>
     <title>LLVM</title>
-    <url>/2018/10/27/llvm/</url>
+    <url>/llvm/</url>
     <content><![CDATA[<h3 id="LLVM"><a href="#LLVM" class="headerlink" title="LLVM:"></a>LLVM:</h3><p>模块化,可重用的编译器以及工具链技术集合.</p><p>创始人: Chris Lattner</p><p>LLVM不是Low Level Virtual Machine(低级虚拟机)的缩写,LLVM就是他的项目全名.</p><h3 id="传统编译器"><a href="#传统编译器" class="headerlink" title="传统编译器:"></a>传统编译器:</h3><p>GCC<br>Clang</p><h4 id="传统编译器架构"><a href="#传统编译器架构" class="headerlink" title="传统编译器架构:"></a>传统编译器架构:</h4><p><img src="https://pic.jingxuetao.com/201810/ping-mu-kuai-zhao-2018-10-26-xia-wu-9-53-38.png" alt="ping-mu-kuai-zhao-2018-10-26-xia-wu-9-53-38"></p><ul><li>Frontend: 前端</li></ul><blockquote><p>词法分析,语法分析,语义分析,生成中间代码</p></blockquote><ul><li>Opotimizer: 优化器</li></ul><blockquote><p>中间代码优化</p></blockquote><ul><li>Backend: 后端</li></ul><blockquote><p>生成机器码</p></blockquote><h3 id="LLVM架构"><a href="#LLVM架构" class="headerlink" title="LLVM架构"></a>LLVM架构</h3><p><img src="https://pic.jingxuetao.com/201810/ping-mu-kuai-zhao-2018-10-26-xia-wu-9-58-59.png" alt="ping-mu-kuai-zhao-2018-10-26-xia-wu-9-58-59"></p><ul><li>不同的前端后端使用统一的中间代码 LLVM Intermediate Representation(LLVM IR).</li><li>如果需要支持一种新的编程语言,只需要实现一个新的前端.</li><li>如果需要支持一种新的硬件设备,只需要增加一个新的后端.</li><li>优化阶段是一个通用阶段,它针对的是统一的LLVM IR,无论是支持新的编程语言,还是支持新的硬件设备,都不需要对优化阶段做修改.</li><li>相比之下,GCC的前端和后端没分的泰开,前端后端耦合在一起.所以GCC为了来支持一门新的语言或者新的硬件设备,就变得很困难.</li><li>LLVM现在被用作为实现各种静态和运行时变易语言的通用基础结构.(GCC家族,Java,.net,Python等)</li></ul><h3 id="Clang"><a href="#Clang" class="headerlink" title="Clang"></a>Clang</h3><ul><li>LLVM一个子项目</li><li>基于LVVM架构的C/C++/Objective-C编译器前端</li></ul><p>优点:</p><ul><li>编译速度快,在某些平台上Clang的便以速度显著地快过GCC</li><li>占用内存小,Clang生成的AST所占用的内训师CGG的五分之一左右</li><li>模块化设计,基于库的模块化设计,易于IDE集成以及其他用途的重用</li><li>诊断信息可读性强: 在编译过程中,Clang创建并保留了大量详细的元数据(metadata),有利于调试和错误解读.</li><li>设计清晰简单,容易理解,易于扩展增强</li></ul><h2 id="Clang与LLVM"><a href="#Clang与LLVM" class="headerlink" title="Clang与LLVM"></a>Clang与LLVM</h2><p><img src="https://pic.jingxuetao.com/201810/ping-mu-kuai-zhao-2018-10-26-xia-wu-10-17-23.png" alt="ping-mu-kuai-zhao-2018-10-26-xia-wu-10-17-23"></p><ul><li>广义LLVM</li></ul><blockquote><p>整个LLVM架构</p></blockquote><ul><li>狭义LLVM</li></ul><blockquote><p>LLVM后端(代码优化,目标代码生成等)</p></blockquote><p><img src="https://pic.jingxuetao.com/201810/ping-mu-kuai-zhao-2018-10-26-xia-wu-10-22-37.png" alt="ping-mu-kuai-zhao-2018-10-26-xia-wu-10-22-37"></p><h2 id="OC源文件编译过程"><a href="#OC源文件编译过程" class="headerlink" title="OC源文件编译过程"></a>OC源文件编译过程</h2><h3 id="命令行查看编译过程"><a href="#命令行查看编译过程" class="headerlink" title="命令行查看编译过程"></a>命令行查看编译过程</h3><blockquote><p>clang -ccc-print-phases main.m</p></blockquote><pre><code>➜ TestSwift clang -ccc-print-phases main.swift
 0: input, &quot;main.swift&quot;, object
 1: linker, {0}, image
@@ -1573,7 +1573,7 @@ attributes #0 = { noinline nounwind optnone ssp uwtable &quot;correctly-rounded-
   </entry>
   <entry>
     <title>封装CoreImage</title>
-    <url>/2018/09/30/package-coreimage/</url>
+    <url>/package-coreimage/</url>
     <content><![CDATA[<p><strong>–EOF–</strong></p>]]></content>
       <tags>
         <tag>Swift</tag>
@@ -1582,7 +1582,7 @@ attributes #0 = { noinline nounwind optnone ssp uwtable &quot;correctly-rounded-
   </entry>
   <entry>
     <title>战舰</title>
-    <url>/2018/09/30/battleship/</url>
+    <url>/battleship/</url>
     <content><![CDATA[<p><strong>–EOF–</strong></p>]]></content>
       <tags>
         <tag>Swift</tag>
@@ -1591,7 +1591,7 @@ attributes #0 = { noinline nounwind optnone ssp uwtable &quot;correctly-rounded-
   </entry>
   <entry>
     <title>同步的方式编写异步代码</title>
-    <url>/2018/09/30/sync-way-code-async-code/</url>
+    <url>/sync-way-code-async-code/</url>
     <content><![CDATA[<p>代码来自泊学</p><p><strong>–EOF–</strong></p>]]></content>
       <tags>
         <tag>Swift</tag>
@@ -1599,7 +1599,7 @@ attributes #0 = { noinline nounwind optnone ssp uwtable &quot;correctly-rounded-
   </entry>
   <entry>
     <title>Enum表示TableView的数据源</title>
-    <url>/2018/05/29/enum-express-tableview-datasource/</url>
+    <url>/enum-express-tableview-datasource/</url>
     <content><![CDATA[<figure class="kg-card kg-image-card"><img src="https://img.hacpai.com/bing/20180330.jpg?imageView2/1/w/960/h/520/interlace/1/q/100" class="kg-image"></figure><pre><code>//
 // SettingTableViewController.swift
 
@@ -1711,7 +1711,7 @@ extension SettingTableViewController {
   </entry>
   <entry>
     <title>反向代理</title>
-    <url>/2018/01/01/reverse-proxy/</url>
+    <url>/reverse-proxy/</url>
     <content><![CDATA[<pre><code>server {
     listen 80;
     listen 443 ssl;
@@ -1737,7 +1737,7 @@ extension SettingTableViewController {
   </entry>
   <entry>
     <title>常用命令行</title>
-    <url>/2017/12/13/chang-yong-ming-ling-xing/</url>
+    <url>/chang-yong-ming-ling-xing/</url>
     <content><![CDATA[<pre><code>find . -name &quot;*.gif&quot;|sed &apos;s/.gif//&apos;|xargs -n1 -I {} mv {}.gif {}.png //批量修改文件后缀名
 sips -Z 75 *.png //批量修改文件像素
 sudo python -m SimpleHTTPServer 80 //开启一个简单的服务器,用于网页访问文件夹内容.</code></pre>]]></content>
@@ -1747,7 +1747,7 @@ sudo python -m SimpleHTTPServer 80 //开启一个简单的服务器,用于网页
   </entry>
   <entry>
     <title>Ghost博客支持emoji</title>
-    <url>/2017/09/13/ghost-blog-support-emoji/</url>
+    <url>/ghost-blog-support-emoji/</url>
     <content><![CDATA[<p><a href="https://xiao.lu/solve-the-ghost-blog-can-not-display-emoji/" target="_blank" rel="noopener">原文链接</a></p><p>转载备忘</p><p>自从 Emoji 被推广开来，被越来越多的操作系统支持，变成了一种通用的表情符号，今天看到 Ghost 的官方博客文章中用了 Emoji，我也想试一下，发现自己文章中插入 Emoji 发表后不能显示。😭</p><p>Google 了一下，找到了问题，我的 Ghost 数据保存在 MySQL 数据库上，当时安装 MySQL 设置了 utf8 的字符集，需要改成 utf8mb4 才能支持存储 Emoji。</p><p>那么如何把当前 MySQL 的编码由 utf8 转换为 utf8mb4 呢？😶</p><p>首先，为了保险起见，务必先备份一下原来的数据库。</p><p>然后呢，确认一下 MySQL 的版本号，要高于 5.5.3。</p><p>第三步，修改 MySQL 的配置文件 my.cnf，加入下面的内容，如果之前有设置 utf8 字符集的内容，需要删除。</p><p>下面是我博客的<code>my.cnf</code>内容,系统是<code>CentOS7.2</code>,文件位置<code>/etc/my.cnf</code></p><pre><code>[client]
 socket=/var/lib/mysql/mysql.sock
 # Disabling symbolic-links is recommended to prevent assorted security risks
@@ -1798,7 +1798,7 @@ mysql&gt; ALTER TABLE posts CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_uni
   </entry>
   <entry>
     <title>Can't connect to local MySQL server through socket '' (2)</title>
-    <url>/2017/09/12/cant-connect-to-local-mysql-server-through-socket-2/</url>
+    <url>/cant-connect-to-local-mysql-server-through-socket-2/</url>
     <content><![CDATA[<p>今天折腾Perfect服务端的时候,出现下面错误:</p><blockquote><p>Can’t connect to local MySQL server through socket ‘’ (2)</p></blockquote><p>然后各种Google,各种试错.最后在这篇文章中看到了<code>IP</code>这个字眼,突然灵感来了,直接把<code>locahost</code>改成<code>127.0.0.1</code>,然后成功了~</p><p>我了个大草,原来还能这么玩…</p><p>至于具体原因可以查看这篇文章<a href="http://www.jb51.net/article/50421.htm" target="_blank" rel="noopener">Localhost 与127.0.0.1和IP的区别是什么</a></p><p>于2017/9/12,我的博客支持emoji啦,😁😁😝</p><p><strong>–EOF–</strong></p>]]></content>
       <tags>
         <tag>MySQL</tag>
@@ -1806,7 +1806,7 @@ mysql&gt; ALTER TABLE posts CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_uni
   </entry>
   <entry>
     <title>博客开启HTTPS</title>
-    <url>/2017/08/27/blog-open-https/</url>
+    <url>/blog-open-https/</url>
     <content><![CDATA[<h2 id="系统环境"><a href="#系统环境" class="headerlink" title="系统环境:"></a>系统环境:</h2><pre><code>#nginx -v
 nginx version: nginx/1.10.2
 #openssl version
@@ -1819,7 +1819,7 @@ CentOS Linux release 7.3.1611 (Core)</code></pre><h2 id="方式一"><a href="#�
   </entry>
   <entry>
     <title>搭建博客遇到的问题</title>
-    <url>/2017/08/24/da-jian-bo-ke-yu-dao-de-wen-ti/</url>
+    <url>/da-jian-bo-ke-yu-dao-de-wen-ti/</url>
     <content><![CDATA[<blockquote><p>操作系统版本: CentOS7.2</p></blockquote><h2 id="1-安装Nginx说找不到包"><a href="#1-安装Nginx说找不到包" class="headerlink" title="1. 安装Nginx说找不到包"></a>1. 安装Nginx说找不到包</h2><pre><code>yum remove eprl-release
 yum install eprl-release</code></pre><h2 id="2-安装MySQL有问题"><a href="#2-安装MySQL有问题" class="headerlink" title="2. 安装MySQL有问题"></a>2. 安装MySQL有问题</h2><pre><code>CentOS7.2安装的是Mariadb,安装方式如下:
 安装命令
@@ -1861,7 +1861,7 @@ mysql -uroot -ppassword
   </entry>
   <entry>
     <title>人类的父类是动物</title>
-    <url>/2016/08/13/superclass-of-people-is-animal/</url>
+    <url>/superclass-of-people-is-animal/</url>
     <content><![CDATA[<blockquote><p>慢慢的你长大了，人们说你理性了，冷漠了，那是因为他们不知道，你对这个世界的情感不是变淡了，而是变深了，深到海面以下五百米深蓝的地方，在海面泛起一两个炫目漂亮的水花，对你已毫无意义。</p></blockquote><p>在微博上看到上面一段话,大脑处于空闲状态,脑洞大开了一下.</p><p>上面例子可能是因为 折腾的次数多了,发现折腾并没有什么卵用.然后自然而然的就不折腾了.人也是动物,继承了动物的一些共有属性.→_→我的面向对象思想已经出神入化了.像一条被链子被栓着的狗一样,狗想挣脱链子,但是挣脱了N次,发现并挣脱不了.最后,即使被放开,也不会再想挣脱.</p><p>每个人都是一个对象,给每个对象的每个属性设置不同的值,就成了每一个不同的人. 这么说,TM人类就是new出来的.再这么说整个世界,也是被new World()出来的.当然这个new World()需要被一个变量引用一下,可以是全局变量,可以是局部变量.否则分分钟就被销毁了.虚拟机知道自己是虚拟机么?虚拟机肯定认为自己是一台完整的电脑.</p><p>人既然是人类的实例对象.那人类肯定可以重载父类的属性跟方法.属性不一样,造就了不同的人的非行为部分.像高,福,帅,矮,挫,穷.<br>方法不同表现为人的行为不同.这就是有些人不理解另一些人做法的原因.TM方法都不一样,结果怎么会相同.</p><p>这是不是就说明了,你以为的不一定是别人以为的.</p><blockquote><p>最后一段是重点,’你以为的不一定是别人以为的’</p></blockquote><p>脑洞结束</p><p><strong>–EOF–</strong></p>]]></content>
       <tags>
         <tag>Me</tag>
@@ -1869,7 +1869,7 @@ mysql -uroot -ppassword
   </entry>
   <entry>
     <title>又好久没有更新博客了</title>
-    <url>/2016/08/09/updated-my-blog-for-a-long-time-too/</url>
+    <url>/updated-my-blog-for-a-long-time-too/</url>
     <content><![CDATA[<p>好久没更新博客了.</p><p>一是没什么东西可以写,看一些大神写的博客那质量,简直没法玩了.</p><p>二是还是实在没什么东西可以写.</p><p>想的东西有点杂,下面乱写了.</p><p>原来编程因为兴趣,而工作了之后才感觉兴趣并没什么卵用,最终还是钱.</p><p>几十天之前,前公司刚招了一个前端,结果第二天就走了,是因为学历问题.当技术总监跟boss说那个人走了的时候,boss就”哦”了一句…TM,当时我就笑喷了.这老板真是可以的.你他妈倒是问问什么原因啊!!!就TM’哦’了一句,当员工是什么了.也是比较服气.</p><p>因为各种原因,有个人原因,有外部原因.原来还想着公司不辞我,我肯定不会辞职.现在说这些好像是婊子给自己立牌坊.</p><p>前公司人事人挺好,发现我的问题,没有跟任何人说.</p><p>在前公司因为经验不够,导致项目延期了好长时间.给人一种不靠谱的感觉.继续留在那的话得花好长时间才能让人改变这种印象.算了,也懒得让人改变了.毕竟自己靠不靠谱自己说的算,不是么.</p><p>HTML5带的播放器样式太TM难看了,换一个.</p><p>现在凌晨3:13,还不打算睡.</p><p>难看就难看吧,折腾了几个小时,没弄出来.就这样吧.</p><p>现在凌晨3:12,打算整点东西喝.</p><p><strong>–EOF–</strong></p>]]></content>
       <tags>
         <tag>Me</tag>
@@ -1877,12 +1877,12 @@ mysql -uroot -ppassword
   </entry>
   <entry>
     <title>好久没更新博客了</title>
-    <url>/2016/06/27/updated-my-blog-for-a-long-time/</url>
+    <url>/updated-my-blog-for-a-long-time/</url>
     <content><![CDATA[<p>此人已死.有事烧纸.小事招魂.大事挖坟.</p><p>联系方式:43BA5BBCBD7622A060509FB1B1D96663</p>]]></content>
   </entry>
   <entry>
     <title>项目上架问题总结</title>
-    <url>/2016/06/07/summary-of-project-problems/</url>
+    <url>/summary-of-project-problems/</url>
     <content><![CDATA[<h3 id="定位问题"><a href="#定位问题" class="headerlink" title="定位问题"></a>定位问题</h3><pre><code>using background location services must provide a reason that clarifies the purpose of the use, using mechanisms described in the Human Interface Guidelines</code></pre><p>这个原因主要是向用于请求定位权限时,要说明原因.</p><p>解决方法<br>在info.plist文件中设置下面两个字段</p><p><img src="https://pic.jingxuetao.com/image/c/fe/2ec9f27f3f7b9e19f7afe80f53710.png" alt></p><h3 id="占位符问题"><a href="#占位符问题" class="headerlink" title="占位符问题"></a>占位符问题</h3><pre><code>we found that your app and/or its metadata does not appear to include final content, which is not in compliance with the App Store Review Guidelines</code></pre><p>可能原因一:这个原因主要是图片的placeholder,当从服务器没有请求到图片时,显示的placeholder图片被苹果认为是半成品的APP<br>可能原因二:在上架项目的时候对于APP的介绍描述不清楚,能吹则吹,多写点,又死不了人.</p><p>解决方法<br>在服务器弄好完整的图片,让APP能请求到.多些应用的描述.</p><hr><p>以上方法仅限于理论,因为需要上架的项目没有源码.</p><p><strong>–EOF–</strong></p>]]></content>
       <tags>
         <tag>iOS</tag>
@@ -1890,7 +1890,7 @@ mysql -uroot -ppassword
   </entry>
   <entry>
     <title>embedded dylibs/frameworks are only supported编译报错</title>
-    <url>/2016/06/06/embedded-dylibs-frameworks-are-only-supportedbian-yi-bao-cuo/</url>
+    <url>/embedded-dylibs-frameworks-are-only-supportedbian-yi-bao-cuo/</url>
     <content><![CDATA[<h3 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h3><pre><code>ld: embedded dylibs/frameworks are only supported on iOS 8.0 and later (@rpath/Alamofire.framework/Alamofire) for architecture x86_64</code></pre><p>其实从名字大概也能猜出来,某个库支持的最低部署环境是8.0.</p><h3 id="修改方法"><a href="#修改方法" class="headerlink" title="修改方法"></a>修改方法</h3><figure class="kg-card kg-image-card"><img src="https://o3pxzuakz.qnssl.com/image/4/64/cbfb32287545352e67ba92d4ae471.png" class="kg-image"></figure><p>我这应该修改成8.0</p><p>本文参考<a href="http://blog.csdn.net/xyxjn/article/details/42100425" target="_blank" rel="noopener">xyxjn的专栏</a></p><p><strong>–EOF–</strong></p>]]></content>
       <tags>
         <tag>iOS</tag>
@@ -1898,7 +1898,7 @@ mysql -uroot -ppassword
   </entry>
   <entry>
     <title>动态加载视图</title>
-    <url>/2016/06/05/dynamic-loading-view/</url>
+    <url>/dynamic-loading-view/</url>
     <content><![CDATA[<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol><li>获取JSON文件路径</li><li>根据路径创建NSData对象</li><li>根据NSData对象对JSON进行序列化,得到一个数组</li><li>遍历数组,提取出<code>视图名</code>,<code>标题</code>,<code>图片名</code>,根据这三项创建视图,并用UINavigationViewController包裹起来,将navi添加到tabBarViewController中.</li></ol><h3 id="MainVCSettings-json文件"><a href="#MainVCSettings-json文件" class="headerlink" title="MainVCSettings.json文件"></a>MainVCSettings.json文件</h3><pre><code>[
  {
     &quot;vcName&quot;: &quot;HomeTableViewController&quot;,
@@ -2044,7 +2044,7 @@ class MainViewController: UITabBarController {
   </entry>
   <entry>
     <title>Ghost博客设置邮件发送服务</title>
-    <url>/2016/05/22/ghost-set-email-service/</url>
+    <url>/ghost-set-email-service/</url>
     <content><![CDATA[<p>自从安装Ghost博客之后,邮件服务都是被弃用的…闲的无聊,百度了一下…</p><pre><code>mail: {
     transport: &apos;SMTP&apos;,
     host: &apos;smtp.qq.com&apos;,
@@ -2064,7 +2064,7 @@ class MainViewController: UITabBarController {
   </entry>
   <entry>
     <title>github上误删远程库解决方法</title>
-    <url>/2016/05/18/github-mistakenly-delete-remote-library-solution/</url>
+    <url>/github-mistakenly-delete-remote-library-solution/</url>
     <content><![CDATA[<p>迷你码农遇到的个性化问题.遇到这个问题还得上网查,说明对Git不了解.有时间看看廖雪峰的<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">Git教程</a>.</p><h3 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h3><figure class="kg-card kg-image-card"><img src="https://o3pxzuakz.qnssl.com/image/d/77/18cb880e3e602afddb9c9ece95d52.png" class="kg-image" alt="报错信息"></figure><h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ol><li>在Github Desktop客户端<code>右击项目</code>,然后<code>Open in Terminal</code></li><li>输入命令:<code>ls -al</code>,会看到.git文件夹</li><li>输入命令:<code>cd .git</code>,打开.git文件夹</li><li>输入命令:<code>ls -al</code>,会看到config文件</li><li>输入命令:<code>vim config</code>,打开config文件</li><li>按键盘<code>下</code>键,将光标移动到<code>[remote &quot;origin&quot;]</code>这行,按键盘<code>i</code>键进入插入模式.</li><li>按<code>delete</code>键删除包括本行在内的三行</li><li>删除完之后,按<code>Esc</code>键,退出编辑模式.然后英文状态下输入<code>shift+:</code>,输入<code>wq</code>,保存退出.</li><li>将<code>Github Desktop</code>完全退出重新打开,现在就能<code>Sync</code>了.</li></ol><p>参考链接:<a href="http://www.jamesrobertson.eu/blog/2013/mar/17/solved-error-repository-not-found.html" target="_blank" rel="noopener">Solved: ERROR: Repository not found</a></p><p><strong>–EOF–</strong></p>]]></content>
       <tags>
         <tag>Git</tag>
@@ -2072,7 +2072,7 @@ class MainViewController: UITabBarController {
   </entry>
   <entry>
     <title>OC根据分隔符分隔字符串</title>
-    <url>/2016/05/13/oc-according-to-symbol-split-string/</url>
+    <url>/oc-according-to-symbol-split-string/</url>
     <content><![CDATA[<p>同学前几天面试面到了这个题,毕竟闷了半天才闷出来.记录一下省的忘了…</p><p>NSString+Category.h文件</p><pre><code>#import &lt;Foundation/Foundation.h&gt;
 
 @interface NSString (Category)
@@ -2128,7 +2128,7 @@ class MainViewController: UITabBarController {
   </entry>
   <entry>
     <title>自定义搜索框</title>
-    <url>/2016/05/13/custom-searchbar/</url>
+    <url>/custom-searchbar/</url>
     <content><![CDATA[<h3 id="封装的几种方法"><a href="#封装的几种方法" class="headerlink" title="封装的几种方法"></a>封装的几种方法</h3><ol><li>分类:UITextField/UISearchBar</li><li>自定义控件</li><li>工具类</li></ol><p>从上到下优先度依次降低.</p><h3 id="用哪种方式封装"><a href="#用哪种方式封装" class="headerlink" title="用哪种方式封装"></a>用哪种方式封装</h3><p>通过分类,如果通过分类[UITextField searchBar]方法名跟类名明显对不上号;[UISearchBar searchBar]返回结果是一个UITextField,跟类名也对不上.所以我们需要自定控件,自定义控件就需要继承UITextField.</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>== CTSearchBar.h 文件==</p><pre><code>#import &lt;UIKit/UIKit.h&gt;
 
 @interface CTSearchBar : UITextField
@@ -2173,7 +2173,7 @@ class MainViewController: UITabBarController {
   </entry>
   <entry>
     <title>用分类自定义UIBarButtonItem</title>
-    <url>/2016/05/11/use-category-define-uibarbuttonitem/</url>
+    <url>/use-category-define-uibarbuttonitem/</url>
     <content><![CDATA[<blockquote><p>原因：</p></blockquote><ol><li>项目中多次用到自定义UIBarButtonItem，所以需要抽取出来</li><li>代码该干什么就干什么，因为这段代码是自定义。UIBarButtonItem，所以应该由UIBarButtonItem做。所以创建一个分类。</li><li>命名习惯，代码规范。要用[UIBarButtonItem itemWith…]这种形式。</li></ol><h3 id="自定义UIBarButtonItem"><a href="#自定义UIBarButtonItem" class="headerlink" title="自定义UIBarButtonItem"></a>自定义UIBarButtonItem</h3><p>UIBarButtonItem+Category.h文件</p><pre><code>#import &lt;UIKit/UIKit.h&gt;
 
 @interface UIBarButtonItem (Category)
@@ -2217,7 +2217,7 @@ viewController.navigationItem.leftBarButtonItems = [UIBarButtonItem itemWithTarg
   </entry>
   <entry>
     <title>统一设置UINavigationController左上角图标</title>
-    <url>/2016/05/11/unified-set-navi-upper-left-corner-icon/</url>
+    <url>/unified-set-navi-upper-left-corner-icon/</url>
     <content><![CDATA[<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>通过工厂方法，然后在需要左上角显示图标的ViewController的viewDidLoad方法调用。代码如下：</p><p>Factory.h文件</p><pre><code>#import &lt;Foundation/Foundation.h&gt;
 
 @interface Factory : NSObject
@@ -2308,7 +2308,7 @@ viewController.navigationItem.leftBarButtonItems = [UIBarButtonItem itemWithTarg
   </entry>
   <entry>
     <title>通过Category让UIView更方便的布局</title>
-    <url>/2016/05/11/tong-guo-categoryrang-uiviewgeng-fang-bian-de-bu-ju/</url>
+    <url>/tong-guo-categoryrang-uiviewgeng-fang-bian-de-bu-ju/</url>
     <content><![CDATA[<p>之前我们给一个控件设置宽高或者位置的时候会用下面代码：</p><pre><code>UIView *view = [UIView new];
 CGRect frame = view.frame;
 frame.size.width = 100;
@@ -2410,7 +2410,7 @@ view.size = CGSizeMake(100, 100);</code></pre><p>最后你可能有疑问，cate
   </entry>
   <entry>
     <title>为Ghost博客文章添加目录</title>
-    <url>/2016/04/29/add-dictionary-to-the-ghost/</url>
+    <url>/add-dictionary-to-the-ghost/</url>
     <content><![CDATA[<h3 id="引入JS文件"><a href="#引入JS文件" class="headerlink" title="引入JS文件"></a>引入JS文件</h3><p>在default.hbs中引入js文件,下载<a href="https://github.com/idiotWu/jQuery-TOC/tree/master/dist" target="_blank" rel="noopener">TOC</a></p><pre><code>//放在jQuery之后
 &lt;script src=&quot;https://xxxxxx.com/jquery.toc.min.js&quot;&gt;&lt;/script&gt;</code></pre><h3 id="添加DIV"><a href="#添加DIV" class="headerlink" title="添加DIV"></a>添加DIV</h3><p>在post.hbs文件的<code>&lt;/main&gt;</code>标签之前添加下面代码</p><pre><code>&lt;aside id=&quot;toc&quot;&gt;
     &lt;h4&gt;文章目录&lt;/h4&gt;
@@ -2507,7 +2507,7 @@ view.size = CGSizeMake(100, 100);</code></pre><p>最后你可能有疑问，cate
   </entry>
   <entry>
     <title>子类对象之间的强转</title>
-    <url>/2016/04/27/forced-conversion-between-sub-classes/</url>
+    <url>/forced-conversion-between-sub-classes/</url>
     <content><![CDATA[<pre><code>#import &lt;Foundation/Foundation.h&gt;
 
 @interface Tom : NSObject
@@ -2572,7 +2572,7 @@ int main(int argc, const char * argv[]) {
   </entry>
   <entry>
     <title>配置CentOS密钥验证登录</title>
-    <url>/2016/04/19/config-centos-secretkey-authentication-login/</url>
+    <url>/config-centos-secretkey-authentication-login/</url>
     <content><![CDATA[<p>用密码登录SSH好不方便,并且安全性不高,为了提升安全性那我们就用密钥登录.</p><blockquote><p>本地环境:OS X,估计是Linux就可以.</p></blockquote><h3 id="1-在远程服务器上创建密钥对"><a href="#1-在远程服务器上创建密钥对" class="headerlink" title="1.在远程服务器上创建密钥对."></a>1.在远程服务器上创建密钥对.</h3><pre><code># create key pair
 
 [cent@dlp ~]$ ssh-keygen -t rsa
@@ -2620,7 +2620,7 @@ Last login: Wed Jul 30 21:37:19 2014 from www.server.world
   </entry>
   <entry>
     <title>深夜矫情</title>
-    <url>/2016/04/16/night-hypocritical/</url>
+    <url>/night-hypocritical/</url>
     <content><![CDATA[<p>前一天过得不踏实,心里不安,胡思乱想中想起博客名,就想起了高中,然后又想起了初中.然后百度了一下初中跟高中的官网,于是就找了一些图片,回忆一下我的初中跟高中.多图预警</p><h3 id="平度市朝-zhao-阳中学"><a href="#平度市朝-zhao-阳中学" class="headerlink" title="平度市朝(zhao)阳中学"></a>平度市朝(zhao)阳中学</h3><p>教学楼正面,教学楼从上面看是呈一个蝴蝶状的.初三的时候做课间操就是在教学楼前的广场上做.我们班在做操的时候是在广场中央,因为喇叭是安装在两边的教学楼上的并且对称,所以在做操的时候会有不一样的听觉效果.第一张图片是当时我们的朝阳中学的原图,下面三张图是后来的华侨高中.因为乡镇高中要迁往市里,所以就把我们学校给征收了,变成了华侨高中.好好的母校,被别人征去当高中,真是亏.</p><p><img src="https://pic.jingxuetao.com/image/b/12/6691cc3c2226c662f69c11cf2a773.jpg" alt><br><img src="https://pic.jingxuetao.com/image/6/ce/498ac686a12e1871981a304080f30.jpg" alt><br><img src="https://pic.jingxuetao.com/image/7/33/58af8addd353e152a809ca194b343.jpg" alt><br><img src="https://pic.jingxuetao.com/image/2/b2/a7e7e07c2dea8468175bd55c479b6.jpg" alt></p><p>教学楼背面.由于花钱不太节制,家里给的生活费第一个周花的差不多了,到了第二个周就只剩二三十块钱左右,二三十块钱要过五天,平均每天也就五六块钱.所以每当中午放学的时候,听着喇叭里放的<code>斯卡波罗集市</code>,走在这条回宿舍的路上(没钱,只能回宿舍,就着调料啃馒头:(),心里有点淡淡的忧伤.歌曲如下:</p><p>&lt;斯卡波罗集市-莎拉布莱曼&gt;</p><p><img src="https://pic.jingxuetao.com/image/a/08/d944a589b50f71c52c66ed2304855.jpg" alt></p><p>操场,应该是初二的时候修起来的.之前都叫草场,杂草丛生,草有人那么高.</p><p><img src="https://pic.jingxuetao.com/image/0/4c/5d22031ce6dddad5c2f616af6edc3.jpg" alt></p><p>左边是一个小操场,初二的时候做广播体操,早晨跑操都在这.右边是女生宿舍,当时好像没窗帘..</p><p><img src="https://pic.jingxuetao.com/image/3/79/d4e97f33cb987aab4989e6ed8caf8.jpg" alt></p><p>餐厅拐角处的一棵树.树的右边是一个大花坛(图中没有),想当年’老邱’(学生处主任,武警出身)在这整过两个带刀外校学生.</p><p><img src="https://pic.jingxuetao.com/image/2/65/9efc435ba32a20daf5be39e4e7230.jpg" alt></p><p>教学楼,宿舍楼东边的一条路,灯是后来装的</p><p><img src="https://pic.jingxuetao.com/image/4/54/da0017701197c7e5b1e0b9a8c0a39.jpg" alt></p><p>对了,我们那一级是16个班,然而其他初中就算全校也没有16个班啊有木有,所以我们会说’拉我们一个级部出去可以打其他学校的整个学校’.不过后来招的学生就慢慢变少了,我们下一级好像是14个班.这几年好像8个班…</p><h3 id="平度市开发区高中"><a href="#平度市开发区高中" class="headerlink" title="平度市开发区高中"></a>平度市开发区高中</h3><p>高中跟初中比起来就比较老旧了,因为初中是06年刚搬到新校区.而高中一直是这个校区.然而一中,九中都换了新校区,并且其他几所高中由于跟一中九中合并,同样也是新校区,就我们学校.万恶的资本主义,唉.</p><p>仁卿楼,主教学楼,楼前一本大书,内容是<code>劝学</code>(劝学是个什么鬼,劝你退学,恩!),左边是中文版,右边是英文版</p><p><img src="https://pic.jingxuetao.com/image/9/28/bdbad9b58ca6f2582e8293dbff073.jpg" alt><br><img src="https://pic.jingxuetao.com/image/b/1c/dba6ba975e532af568308e9920a46.jpg" alt></p><p>仁卿楼广场西边,餐厅南边的小花坛,再往西是高二西教学楼</p><p><img src="https://pic.jingxuetao.com/image/e/59/702c36e0445227fd6fa57dbe2f358.jpg" alt></p><p>高二西教学楼前的草坪,想起了被班主任没收的手机…</p><p><img src="https://pic.jingxuetao.com/image/7/0b/c62bb75aac26bffd5c4624f4f8860.jpg" alt></p><p>高二西教学楼前的走廊</p><p><img src="https://pic.jingxuetao.com/image/a/f5/fcc685c478b3bb72a9f2d79266fd6.jpg" alt></p><p>仁卿楼广场西面的办公楼,高三临近毕业的时候正式入团(共青团)就是在这弄得^_^,少交了好几年团费,不亏.</p><p><img src="https://pic.jingxuetao.com/image/0/0b/01322c280b0c6dc8b089072d19bbc.jpg" alt></p><p>高中官网上的图片差不多就这些了,大一的时候高中又重修了一座教学楼跟操场,说好的重建校区呢??看来重建校区是没希望了..</p><p>有时间一定回去看看，但是什么时候有时间呢？这是个问题.</p><p>好了,矫情完毕,睡觉.</p><p><strong>–EOF–</strong></p>]]></content>
       <tags>
         <tag>Me</tag>
@@ -2628,7 +2628,7 @@ Last login: Wed Jul 30 21:37:19 2014 from www.server.world
   </entry>
   <entry>
     <title>如何配置使用HSTS</title>
-    <url>/2016/03/24/configure-the-use-of-hsts/</url>
+    <url>/configure-the-use-of-hsts/</url>
     <content><![CDATA[<p>HTTP严格传输安全（英语：HTTP Strict Transport Security，缩写：HSTS）是一套由互联网工程任务组发布的互联网安全策略机制。网站可以选择使用HSTS策略，来让浏览器强制使用HTTPS与网站进行通信，以减少会话劫持风险.</p><h3 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h3><p>HSTS的作用是强制客户端（如浏览器）使用HTTPS与服务器创建连接。服务器开启HSTS的方法是，当客户端通过HTTPS发出请求时，在服务器返回的超文本传输协议响应头中包含Strict-Transport-Security字段。非加密传输时设置的HSTS字段无效。</p><p>比如，<a href="https://example.com/" target="_blank" rel="noopener">https://example.com/</a> 的响应头含有Strict-Transport-Security: max-age=31536000; includeSubDomains。这意味着两点：</p><ol><li>在接下来的一年（即31536000秒）中，浏览器只要向example.com或其子域名发送HTTP请求时，必须采用HTTPS来发起连接。比如，用户点击超链接或在地址栏输入<a href="http://www.example.com/" target="_blank" rel="noopener">http://www.example.com/</a> ，浏览器应当自动将 http 转写成 https，然后直接向 <a href="https://www.example.com/" target="_blank" rel="noopener">https://www.example.com/</a> 发送请求。</li><li>在接下来的一年中，如果 example.com 服务器发送的TLS证书无效，用户不能忽略浏览器警告继续访问网站.</li></ol><h3 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h3><p>HSTS的雏形来自于2008年4月在北京召开的第十七届国际万维网大会上柯林·杰克逊（Collin Jackson）和亚当·巴斯（Adam Barth）的题为“ForceHTTPS: Protecting High-Security Web Sites from Network Attacks”的演讲。他们的提议是使用“ForceHTTPS” Cookie来强制浏览器使用HTTPS。</p><p>2009年9月18日，他们和杰夫·霍奇斯（Jeff Hodges）发布了最初的草案，题目为”Strict Transport Security”[5]，这个草案基于ForceHTTPS，并有所修改。</p><p>2010年6月17日，这三位作者经由互联网工程任务组发布了首版互联网草案，”HTTP Strict Transport Security”。</p><p>2012年10月2日，互联网工程指导组批准了将第14版HSTS草案发布为RFC的请求。</p><p>2012年11月19日，互联网工程任务组发布RFC 6797</p><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>HSTS可以用来抵御SSL剥离攻击。SSL剥离攻击是中间人攻击的一种，由Moxie Marlinspike于2009年发明。他在当年的黑帽大会上发表的题为“New Tricks For Defeating SSL In Practice”的演讲中将这种攻击方式公开。SSL剥离的实施方法是阻止浏览器与服务器创建HTTPS连接。它的前提是用户很少直接在地址栏输入 https:// ，用户总是通过点击链接或3xx重定向，从HTTP页面进入HTTPS页面。所以攻击者可以在用户访问HTTP页面时替换所有 https:// 开头的链接为 http:// ，达到阻止HTTPS的目的.</p><p>HSTS可以很大程度上解决SSL剥离攻击，因为只要浏览器曾经与服务器创建过一次安全连接，之后浏览器会强制使用HTTPS，即使链接被换成了HTTP。</p><p>另外，如果中间人使用自己的自签名证书来进行攻击，浏览器会给出警告，但是许多用户会忽略警告。HSTS解决了这一问题，一旦服务器发送了HSTS字段，用户将不再允许忽略警告。</p><h3 id="不足"><a href="#不足" class="headerlink" title="不足"></a>不足</h3><p>用户首次访问某网站是不受HSTS保护的。这是因为首次访问时，浏览器还未收到HSTS，所以仍有可能通过明文HTTP来访问。解决这个不足目前有两种方案，一是浏览器预置HSTS域名列表，Google Chrome、Firefox、Internet Explorer和Microsoft Edge实现了这一方案。二是将HSTS信息加入到域名系统记录中。但这需要保证DNS的安全性，也就是需要部署域名系统安全扩展。截至2014年这一方案没有大规模部署。</p><p>由于HSTS会在一定时间后失效（有效期由max-age指定），所以浏览器是否强制HSTS策略取决于当前系统时间。部分操作系统经常通过网络时间协议更新系统时间，如Ubuntu每次连接网络时，OS X Lion每隔9分钟会自动连接时间服务器。攻击者可以通过伪造NTP信息，设置错误时间来绕过HSTS。解决方法是认证NTP信息，或者禁止NTP大幅度增减时间。比如Windows 8每7天更新一次时间，并且要求每次NTP设置的时间与当前时间不得超过15小时。</p><h3 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h3><ul><li>Chromium和Google Chrome从4.0.211.0版本开始支持HSTS</li><li>Firefox 4及以上版本</li><li>Opera 12及以上版本</li><li>Safari从OS X Mavericks起</li><li>Internet Explorer从Windows 10技术预览版开始支持</li></ul><h3 id="网站支持"><a href="#网站支持" class="headerlink" title="网站支持"></a>网站支持</h3><p>根据SSL Pulse的调查，截至2015年2月，仅有2.7%的网站开启了HSTS。目前支持HSTS的主流网站有：支付宝、PayPal、Twitter、维基百科邮件列表、上善若水等。</p><blockquote><p>以上内容来自<a href="https://zh.wikipedia.org/wiki/HTTP%E4%B8%A5%E6%A0%BC%E4%BC%A0%E8%BE%93%E5%AE%89%E5%85%A8" target="_blank" rel="noopener">维基百科</a>,维基百科真是个好网站.</p></blockquote><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>啰嗦了这么多,其实就是为了凑字数.Nginx配置在ssl.conf文件中的server字段下添加如下代码:</p><pre><code>add_header Strict-Transport-Security &quot;max-age=31536000; includeSubdomains; preload&quot;;//第二个跟第三个参数一般来说没用,支付宝的首页就只用了第一个参数.所以添加下面一行配置就行
 add_header Strict-Transport-Security &quot;max-age=31536000;&quot;;</code></pre><p><strong>max-age</strong> ，单位是秒，用来告诉浏览器在指定时间内，这个网站必须通过 HTTPS 协议来访问。也就是对于这个网站的 HTTP 地址，浏览器需要先在本地替换为 HTTPS 之后再发送请求。</p><p><strong>includeSubDomains</strong> ，可选参数，如果指定这个参数，表明这个网站所有子域名也必须通过 HTTPS 协议来访问。</p><p><strong>preload</strong> ,将域名加入HSTS Preload List,但是有这个参数也不一定能加入.</p><p>HSTS 这个响应头只能用于 HTTPS 响应；网站必须使用默认的 443 端口；必须使用域名，不能是 IP。而且启用 HSTS 之后，一旦网站证书错误，用户无法选择忽略。</p><h3 id="配置生效"><a href="#配置生效" class="headerlink" title="配置生效"></a>配置生效</h3><p>最后打开 <strong>chrome://net-internals/#hsts</strong> ,在Query domain中输入自己的域名(不加http),搜索一下试试.往后,只要用户不清缓存,就会直接通过<a href="https://xxxx.com:443" target="_blank" rel="noopener">https://xxxx.com:443</a> 访问网站,而不是通过http重定向到https的方式了.</p><p><strong>–EOF–</strong></p>]]></content>
       <tags>
@@ -2637,7 +2637,7 @@ add_header Strict-Transport-Security &quot;max-age=31536000;&quot;;</code></pre>
   </entry>
   <entry>
     <title>CentOS安装Ghost博客并实现全站HTTPS</title>
-    <url>/2016/03/13/centosan-zhuang-ghostbo-ke-bing-shi-xian-quan-zhan-https/</url>
+    <url>/centosan-zhuang-ghostbo-ke-bing-shi-xian-quan-zhan-https/</url>
     <content><![CDATA[<h3 id="1-前期准备"><a href="#1-前期准备" class="headerlink" title="1.前期准备"></a>1.前期准备</h3><pre><code>yum update //更新yum源
 yum groupinstall &quot;Development Tools&quot; //安装开发工具包
 yum install wget //安装wget下载工具</code></pre><h3 id="2-安装Nginx"><a href="#2-安装Nginx" class="headerlink" title="2.安装Nginx"></a>2.安装Nginx</h3><pre><code>yum install nginx -y //安装nginx
@@ -2744,7 +2744,7 @@ server {
   </entry>
   <entry>
     <title>iOS界面跳转隐藏tabBar</title>
-    <url>/2016/03/10/ios-jump-hide-tabbar/</url>
+    <url>/ios-jump-hide-tabbar/</url>
     <content><![CDATA[<h3 id="一-IOS隐藏tabBar的方法"><a href="#一-IOS隐藏tabBar的方法" class="headerlink" title="一.IOS隐藏tabBar的方法:"></a>一.IOS隐藏tabBar的方法:</h3><pre><code>self.tabBarController.tabBar.hidden = YES;</code></pre><p>但是我们跳转隐藏tabBar需要的不是这段代码.</p><h3 id="二-push跳转隐藏tabBar"><a href="#二-push跳转隐藏tabBar" class="headerlink" title="二.push跳转隐藏tabBar"></a>二.push跳转隐藏tabBar</h3><p>如果在push跳转时需要隐藏tabBar，设置self.hidesBottomBarWhenPushed=YES;并在push后设置self.hidesBottomBarWhenPushed=NO;这样back回来的时候，tabBar会恢复正常显示。代码如下:</p><pre><code>NextViewController *next=[[NextViewController alloc]init];
 next. hidesBottomBarWhenPushed = YES;
 [self.navigationController pushViewController:next animated:YES];</code></pre><p>END</p>]]></content>
@@ -2754,7 +2754,7 @@ next. hidesBottomBarWhenPushed = YES;
   </entry>
   <entry>
     <title>一台虚拟机的悲哀</title>
-    <url>/2016/03/07/sorrow-of-a-virtual-machine/</url>
+    <url>/sorrow-of-a-virtual-machine/</url>
     <content><![CDATA[<blockquote><p>“哈哈,我终于从镜像文件变成变成操作系统啦,O(∩_∩)O~,我的主人每天都会用我办公超过10个小时.虽然我的身体素质不好,但是我有一颗顽强灵魂;虽然每天都会很累,但是我很开心.因为我是主人的操作系统呀!(<em>^_\</em>^<em>)”.<br>______________________________________________________________\</em>—–一台虚拟机的悲哀</p></blockquote><pre><code>或许我们也是虚拟机.</code></pre><ul><li>博客从ACE转移到ECS上了.过程比较曲折,结果还算完美.</li><li>明天写一下教程,然后再把HTTPS的反代理弄一下.又得翻代码.</li><li>以后不折腾了,不折腾了.</li></ul><p>END</p>]]></content>
       <tags>
         <tag>Me</tag>
@@ -2762,7 +2762,7 @@ next. hidesBottomBarWhenPushed = YES;
   </entry>
   <entry>
     <title>通过runtime让属性在category上飞</title>
-    <url>/2016/02/19/by-runtime-to-allow-properties-to-fly-on-category/</url>
+    <url>/by-runtime-to-allow-properties-to-fly-on-category/</url>
     <content><![CDATA[<h3 id="现在面临的场景"><a href="#现在面临的场景" class="headerlink" title="现在面临的场景"></a>现在面临的场景</h3><p>在做项目过程中难免会创建很多ViewModel,这些ViewModel难免有些共同的方法跟属性,这些共同的方法和属性可以单独提取出来,这就用到category.我现在的具体场景是:每个ViewModel都需要请求数据,当ViewController从当前界面切换到另一个画面时,暂停本页面的网络请求.</p><h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3><p>NSObject+ViewModel.h文件</p><pre><code>@interface NSObject (ViewModel)
 @property (nonatomic) NSURLSessionDataTask *dataTask;
 - (void)cancelTask; //取消任务
@@ -2809,7 +2809,7 @@ static const void *dataTaskKey = &amp;dataTaskKey;
   </entry>
   <entry>
     <title>全站实现HTTPS访问</title>
-    <url>/2016/02/18/implementation-of-https-access-station/</url>
+    <url>/implementation-of-https-access-station/</url>
     <content><![CDATA[<p>经过一番折腾,现在博客能通过HTTPS访问了,但是还不完美,主要是图片资源不是通过HTTPS形式访问的.一个是自己上传的图片,这个好解决,修改一下七牛上传的图片地址就行.另一个就是多说的头像,多说的头像不支持HTTPS,这个得通过反代理的形式.不知道ACE支不支持反代理,已经提交了工单.当然自己上传的图片也可以通过反代理的形式.</p><p>年轻就是折腾!</p><p>END</p>]]></content>
       <tags>
         <tag>Me</tag>
@@ -2817,7 +2817,7 @@ static const void *dataTaskKey = &amp;dataTaskKey;
   </entry>
   <entry>
     <title>又转到了ghost博客</title>
-    <url>/2016/02/13/went-to-ghost-2/</url>
+    <url>/went-to-ghost-2/</url>
     <content><![CDATA[<p>用了有半年多的b3log solo博客程序,虽然solo的博客编辑用的也是markdown格式的,但是个人感觉好难用.尽管我发表写的博文并不多.但是有点完美主义的我(并不是往自己身上贴标签),还是不愿意再用solo了.我会把<a href="http://www.jingxuetao.com指向原来的IP,原来的程序有几十篇博文,转移起来也好麻烦,懒得动了.然后在导航设置一个链接,链接到原来的博客.呵,不知道以后会不会再换回WordPress.呵呵,我并不知道.以后的事以后再说吧" target="_blank" rel="noopener">www.jingxuetao.com指向原来的IP,原来的程序有几十篇博文,转移起来也好麻烦,懒得动了.然后在导航设置一个链接,链接到原来的博客.呵,不知道以后会不会再换回WordPress.呵呵,我并不知道.以后的事以后再说吧</a>.</p><p>现在感觉这个markdown格式用起来还是比较不错的.</p><pre><code>public static void main(String args[]){
     System.out.println(&quot;hello world!!&quot;);
 }</code></pre><p>现在代码插入也很方便,可能原来插入代码就很方便,只不过是因为心里问题,觉得原来好麻烦.</p><ol><li>现在</li><li>现在插入代码</li><li>现在插入代码很方便</li></ol><p>无序列表</p><ul><li>无序列表1</li><li>无序列表2</li></ul><p>还可以插入图片,插入图片也很方便</p><figure class="kg-card kg-image-card"><img src="https://o3pxzuakz.qnssl.com/75b31e23e4e4c22e24daa3de4ed47474.jpeg/image/1/ef/849ba9f8cea329e8faaefa49aa970.jpg" class="kg-image" alt="这是一张即将要插入的图片"></figure><pre><code>public static void main(String args[]){
@@ -2829,7 +2829,7 @@ static const void *dataTaskKey = &amp;dataTaskKey;
   </entry>
   <entry>
     <title>为Xib中的控件设置圆角</title>
-    <url>/2016/02/02/set-the-corner-for-the-control-in-xib/</url>
+    <url>/set-the-corner-for-the-control-in-xib/</url>
     <content><![CDATA[<p>今天同学问了我一个问题,Google了一下,以后会用到,所以在这记录一下.</p><p>有时候,项目需要引用XIB,但是有些UI属性在面板不好设置,例如设置圆角.那么我们可以采取一种思路,通过拖线连接到.m文件,然后开始进行代码属性的修改,但是切记.设置圆角的方法,不能在ViewDidLoad里边重写,这样会导致无效,我们需要在drawRect进行设置,然后再进行调用即可.代码如下:</p><pre><code>- (void)drawRect:(CGRect)rect{
 
   [super drawRect:rect];
