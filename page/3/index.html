@@ -1,19 +1,258 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><meta name="generator" content="Hexo 3.9.0"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0"><link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222"><link rel="stylesheet" href="/css/main.css?v=7.4.0"><link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css"><script id="hexo-configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Pisces",version:"7.4.0",exturl:!1,sidebar:{position:"left",display:"post",offset:12,onmobile:!1},copycode:{enable:!0,show_result:!0,style:null},back2top:{enable:!0,sidebar:!1,scrollpercent:!0},bookmark:{enable:!1,color:"#222",save:"auto"},fancybox:!0,mediumzoom:!1,lazyload:!0,pangu:!1,algolia:{appID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}},localsearch:{enable:!0,trigger:"auto",top_n_per_article:1,unescape:!1,preload:!1},path:"search.xml",motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},translation:{copy_button:"复制",copy_success:"复制成功",copy_failure:"复制失败"},sidebarPadding:40}</script><meta name="keywords" content="喵小咪 Swift"><meta property="og:type" content="website"><meta property="og:title" content="喵小咪的博客"><meta property="og:url" content="https://jingxuetao.com/page/3/index.html"><meta property="og:site_name" content="喵小咪的博客"><meta property="og:locale" content="zh-CN"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="喵小咪的博客"><link rel="canonical" href="https://jingxuetao.com/page/3/"><script id="page-configurations">CONFIG.page={sidebar:"",isHome:!0,isPost:!1,isPage:!1,isArchive:!1}</script><title>喵小咪的博客</title><noscript><style>.sidebar-inner,.use-motion .brand,.use-motion .collection-header,.use-motion .comments,.use-motion .menu-item,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.use-motion .logo-line-before i{left:initial}.use-motion .logo-line-after i{right:initial}</style></noscript></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN"><div class="container use-motion"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-container"><div class="site-meta"><div><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">喵小咪的博客</span> <span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">Thoughts, stories and ideas.</p></div><div class="site-nav-toggle"><button aria-label="切换导航栏"><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索</a></li></ul></nav><div class="site-search"><div class="popup search-popup"><div class="search-header"><span class="search-icon"><i class="fa fa-search"></i></span><div class="search-input-container"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜索..." spellcheck="false" type="text" id="search-input"></div><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span></div><div id="search-result"></div></div><div class="search-pop-overlay"></div></div></div></header><div class="back-to-top"><i class="fa fa-arrow-up"></i> <span>0%</span></div><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article itemscope itemtype="http://schema.org/Article"><div class="post-block home"><link itemprop="mainEntityOfPage" href="https://jingxuetao.com/bit-operation/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="喵小咪"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="喵小咪的博客"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"><a href="/bit-operation/" class="post-title-link" itemprop="url">位运算</a></h1><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建时间：2018-11-26 08:14:20" itemprop="dateCreated datePublished" datetime="2018-11-26T08:14:20+00:00">2018-11-26</time> </span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span></span></div></header><div class="post-body" itemprop="articleBody"><p>位运算了解一下,哈哈哈哈哈哈…</p><p>Person.swift</p><pre><code>import Foundation
-
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="theme-color" content="#222">
+    <meta name="generator" content="Hexo 3.9.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+    <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+    <link rel="stylesheet" href="/css/main.css?v=7.4.0">
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+    <script id="hexo-configurations">
+      var NexT = window.NexT || {};
+      var CONFIG = {
+        root: '/',
+        scheme: 'Pisces',
+        version: '7.4.0',
+        exturl: false,
+        sidebar: {
+          "position": "left",
+          "display": "post",
+          "offset": 12,
+          "onmobile": false
+        },
+        copycode: {
+          "enable": true,
+          "show_result": true,
+          "style": null
+        },
+        back2top: {
+          "enable": true,
+          "sidebar": false,
+          "scrollpercent": true
+        },
+        bookmark: {
+          "enable": false,
+          "color": "#222",
+          "save": "auto"
+        },
+        fancybox: true,
+        mediumzoom: false,
+        lazyload: true,
+        pangu: false,
+        algolia: {
+          appID: '',
+          apiKey: '',
+          indexName: '',
+          hits: {
+            "per_page": 10
+          },
+          labels: {
+            "input_placeholder": "Search for Posts",
+            "hits_empty": "We didn't find any results for the search: ${query}",
+            "hits_stats": "${hits} results found in ${time} ms"
+          }
+        },
+        localsearch: {
+          "enable": true,
+          "trigger": "auto",
+          "top_n_per_article": 1,
+          "unescape": false,
+          "preload": false
+        },
+        path: 'search.xml',
+        motion: {
+          "enable": true,
+          "async": false,
+          "transition": {
+            "post_block": "fadeIn",
+            "post_header": "slideDownIn",
+            "post_body": "slideDownIn",
+            "coll_header": "slideLeftIn",
+            "sidebar": "slideUpIn"
+          }
+        },
+        translation: {
+          copy_button: '复制',
+          copy_success: '复制成功',
+          copy_failure: '复制失败'
+        },
+        sidebarPadding: 40
+      };
+    </script>
+    <meta name="keywords" content="喵小咪 Swift">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="喵小咪的博客">
+    <meta property="og:url" content="https://jingxuetao.com/page/3/index.html">
+    <meta property="og:site_name" content="喵小咪的博客">
+    <meta property="og:locale" content="zh-CN">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="喵小咪的博客">
+    <link rel="canonical" href="https://jingxuetao.com/page/3/">
+    <script id="page-configurations">
+      // https://hexo.io/docs/variables.html
+      CONFIG.page = {
+        sidebar: "",
+        isHome: true,
+        isPost: false,
+        isPage: false,
+        isArchive: false
+      };
+    </script>
+    <title>喵小咪的博客</title>
+    <noscript>
+      <style>
+        .use-motion .brand,
+        .use-motion .menu-item,
+        .sidebar-inner,
+        .use-motion .post-block,
+        .use-motion .pagination,
+        .use-motion .comments,
+        .use-motion .post-header,
+        .use-motion .post-body,
+        .use-motion .collection-header {
+          opacity: initial;
+        }
+        .use-motion .logo,
+        .use-motion .site-title,
+        .use-motion .site-subtitle {
+          opacity: initial;
+          top: initial;
+        }
+        .use-motion .logo-line-before i {
+          left: initial;
+        }
+        .use-motion .logo-line-after i {
+          right: initial;
+        }
+      </style>
+    </noscript>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+    <div class="container use-motion">
+      <div class="headband"></div>
+      <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner">
+          <div class="site-brand-container">
+            <div class="site-meta">
+              <div>
+                <a href="/" class="brand" rel="start">
+                  <span class="logo-line-before"><i></i></span>
+                  <span class="site-title">喵小咪的博客</span>
+                  <span class="logo-line-after"><i></i></span>
+                </a>
+              </div>
+              <p class="site-subtitle">Thoughts, stories and ideas.</p>
+            </div>
+            <div class="site-nav-toggle">
+              <button aria-label="切换导航栏">
+                <span class="btn-bar"></span>
+                <span class="btn-bar"></span>
+                <span class="btn-bar"></span>
+              </button>
+            </div>
+          </div>
+          <nav class="site-nav">
+            <ul id="menu" class="menu">
+              <li class="menu-item menu-item-home">
+                <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+              </li>
+              <li class="menu-item menu-item-categories">
+                <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+              </li>
+              <li class="menu-item menu-item-archives">
+                <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+              </li>
+              <li class="menu-item menu-item-links">
+                <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+              </li>
+              <li class="menu-item menu-item-about">
+                <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+              </li>
+              <li class="menu-item menu-item-search">
+                <a href="javascript:;" class="popup-trigger">
+                  <i class="fa fa-search fa-fw"></i>搜索</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="site-search">
+            <div class="popup search-popup">
+              <div class="search-header">
+                <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+                <div class="search-input-container">
+                  <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜索..." spellcheck="false" type="text" id="search-input">
+                </div>
+                <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+              </div>
+              <div id="search-result"></div>
+            </div>
+            <div class="search-pop-overlay"></div>
+          </div>
+        </div>
+      </header>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        <span>0%</span>
+      </div>
+      <main id="main" class="main">
+        <div class="main-inner">
+          <div class="content-wrap">
+            <div id="content" class="content">
+              <div id="posts" class="posts-expand">
+                <article itemscope itemtype="http://schema.org/Article">
+                  <div class="post-block home">
+                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/bit-operation/">
+                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="喵小咪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="喵小咪的博客">
+    </span>
+                    <header class="post-header">
+                      <h1 class="post-title" itemprop="name headline">
+                        <a href="/bit-operation/" class="post-title-link" itemprop="url">位运算</a>
+                      </h1>
+                      <div class="post-meta">
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                        <span class="post-meta-item-text">发表于</span>
+                        <time title="创建时间：2018-11-26 08:14:20" itemprop="dateCreated datePublished" datetime="2018-11-26T08:14:20+00:00">2018-11-26</time>
+                        </span>
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+                        <span class="post-meta-item-text">分类于</span>
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
+                        </span>
+                      </div>
+                    </header>
+                    <div class="post-body" itemprop="articleBody">
+                      <p>位运算了解一下,哈哈哈哈哈哈…</p>
+                      <p>Person.swift</p>
+                      <pre><code>import Foundation
 extension Bool {
     init(_ integer: Int){
         self.init(integer != 0)
     }
 }
-
 struct Person {
-
     let TallMask = (0b00000001 &lt;&lt; 0b00000000)
     let RichMask = (0b00000001 &lt;&lt; 0b00000001)
     let HandsomeMask = (0b00000001 &lt;&lt; 0b00000010)
-
     var _tallRichHandsome = 0b00000000
-
     mutating func setTall(_ tall: Bool) {
         if tall {
             _tallRichHandsome = (_tallRichHandsome | TallMask)
@@ -21,11 +260,9 @@ struct Person {
             _tallRichHandsome = (_tallRichHandsome &amp; ~TallMask)
         }
     }
-
     func isTall() -&gt; Bool {
         return Bool(_tallRichHandsome &amp; TallMask)
     }
-
     mutating func setRich(_ rich: Bool) {
         if rich {
             _tallRichHandsome = (_tallRichHandsome | RichMask)
@@ -33,11 +270,9 @@ struct Person {
             _tallRichHandsome = (_tallRichHandsome &amp; ~RichMask)
         }
     }
-
     func isRich() -&gt; Bool {
         return Bool(_tallRichHandsome &amp; RichMask)
     }
-
     mutating func setHandsome(_ handsome: Bool) {
         if handsome {
             _tallRichHandsome = (_tallRichHandsome | HandsomeMask)
@@ -45,15 +280,13 @@ struct Person {
             _tallRichHandsome = (_tallRichHandsome &amp; ~HandsomeMask)
         }
     }
-
     func isHandsome() -&gt; Bool {
         return Bool(_tallRichHandsome &amp; HandsomeMask)
     }
-}</code></pre><p>main.swift</p><pre><code>import Foundation
-
-
+}</code></pre>
+                      <p>main.swift</p>
+                      <pre><code>import Foundation
 var person = Person()
-
 print(person.isTall())
 print(person.isRich())
 print(person.isHandsome())
@@ -66,7 +299,6 @@ person.setHandsome(true)
 print(person.isTall())
 print(person.isRich())
 print(person.isHandsome())
-
 print(&quot;===================&quot;)
 //print(person.TallMask)
 //print(person.RichMask)
@@ -75,15 +307,55 @@ person.setTall(false)
 print(person.isTall())
 print(person.isRich())
 print(person.isHandsome())
-
 print(&quot;==================&quot;)
 //print(0b00000000)
 //print(0b00000001)
 //print(0b00000010)
-
 print(&quot;==================&quot;)
+print(person._tallRichHandsome)</code></pre>
+                      <p><strong>–EOF–</strong></p>
 
-print(person._tallRichHandsome)</code></pre><p><strong>–EOF–</strong></p></div><footer class="post-footer"><div class="post-eof"></div></footer></div></article><article itemscope itemtype="http://schema.org/Article"><div class="post-block home"><link itemprop="mainEntityOfPage" href="https://jingxuetao.com/oc-object-classify/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="喵小咪"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="喵小咪的博客"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"><a href="/oc-object-classify/" class="post-title-link" itemprop="url">OC对象的分类</a></h1><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建时间：2018-11-21 14:09:18" itemprop="dateCreated datePublished" datetime="2018-11-21T14:09:18+00:00">2018-11-21</time> </span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a></span></span></div></header><div class="post-body" itemprop="articleBody"><pre><code>//实例对象(instance对象)
+                      <!--kg-card-end: markdown-->
+                    </div>
+                    <footer class="post-footer">
+                      <div class="post-eof"></div>
+                    </footer>
+                  </div>
+                </article>
+                <article itemscope itemtype="http://schema.org/Article">
+                  <div class="post-block home">
+                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/oc-object-classify/">
+                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="喵小咪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="喵小咪的博客">
+    </span>
+                    <header class="post-header">
+                      <h1 class="post-title" itemprop="name headline">
+                        <a href="/oc-object-classify/" class="post-title-link" itemprop="url">OC对象的分类</a>
+                      </h1>
+                      <div class="post-meta">
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                        <span class="post-meta-item-text">发表于</span>
+                        <time title="创建时间：2018-11-21 14:09:18" itemprop="dateCreated datePublished" datetime="2018-11-21T14:09:18+00:00">2018-11-21</time>
+                        </span>
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+                        <span class="post-meta-item-text">分类于</span>
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a></span>
+                        </span>
+                      </div>
+                    </header>
+                    <div class="post-body" itemprop="articleBody">
+                      <pre><code>//实例对象(instance对象)
     //isa指针
     //变量
 //类对象(Class对象)
@@ -100,16 +372,13 @@ print(person._tallRichHandsome)</code></pre><p><strong>–EOF–</strong></p></d
     //isa指针
     //superclass指针
     //类的类方法信息 (class method,+号开头)
-
 #import &lt;Foundation/Foundation.h&gt;
 #import &lt;objc/runtime.h&gt;
-
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         //实例对象(instance对象)
         NSObject *obj1 = [[NSObject alloc] init];
         NSObject *obj2 = [[NSObject alloc] init];
-
         //类对象(Class对象)
         Class objClass1 = [obj1 class]; //类对象
         Class objClass2 = [obj2 class];
@@ -121,73 +390,99 @@ int main(int argc, const char * argv[]) {
         NSLog(@&quot;%p&quot;, objClass3);
         NSLog(@&quot;%p&quot;, objClass4);
         NSLog(@&quot;%p&quot;, objClass5);
-
         //元类对象(meta class对象)
         Class metaClass = object_getClass([NSObject class]);
     }
     return 0;
-}</code></pre><p><strong>–EOF–</strong></p></div><footer class="post-footer"><div class="post-eof"></div></footer></div></article><article itemscope itemtype="http://schema.org/Article"><div class="post-block home"><link itemprop="mainEntityOfPage" href="https://jingxuetao.com/protocols/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="喵小咪"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="喵小咪的博客"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"><a href="/protocols/" class="post-title-link" itemprop="url">Protocols</a></h1><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建时间：2018-11-18 04:04:14" itemprop="dateCreated datePublished" datetime="2018-11-18T04:04:14+00:00">2018-11-18</time> </span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span></span></div></header><div class="post-body" itemprop="articleBody"><p>A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol.</p><pre><code>import Foundation
+}</code></pre>
+                      <p><strong>–EOF–</strong></p>
 
+                      <!--kg-card-end: markdown-->
+                    </div>
+                    <footer class="post-footer">
+                      <div class="post-eof"></div>
+                    </footer>
+                  </div>
+                </article>
+                <article itemscope itemtype="http://schema.org/Article">
+                  <div class="post-block home">
+                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/protocols/">
+                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="喵小咪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="喵小咪的博客">
+    </span>
+                    <header class="post-header">
+                      <h1 class="post-title" itemprop="name headline">
+                        <a href="/protocols/" class="post-title-link" itemprop="url">Protocols</a>
+                      </h1>
+                      <div class="post-meta">
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                        <span class="post-meta-item-text">发表于</span>
+                        <time title="创建时间：2018-11-18 04:04:14" itemprop="dateCreated datePublished" datetime="2018-11-18T04:04:14+00:00">2018-11-18</time>
+                        </span>
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+                        <span class="post-meta-item-text">分类于</span>
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
+                        </span>
+                      </div>
+                    </header>
+                    <div class="post-body" itemprop="articleBody">
+                      <p>A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol.</p>
+                      <pre><code>import Foundation
 //协议语法
 protocol SomeProtocol {
-
 }
-
 struct SomeStructure: SomeProtocol {}
 class SomeClass: SomeProtocol {}
-
 //属性要求
 //如果属性标注了(set get),则不能通过常量存储属性和只读计算属性来实现
 //如果属性只设置了(get),那么任何类型都可以满足,包括变量存储属性
-
 protocol SomeProtocol1 {
     var mustBeSettable: Int { get set }
     var doesNotNeedToBeSettable: Int { get }
 }
-
 //协议中用static修饰时,实现中用static或者class实现都行
 protocol AnotherProtocol {
     static var someTypeProperty: Int { get set }
 }
-
 protocol FullyNamed {
     var fullName: String { get }
 }
-
 struct Person: FullyNamed {
     var fullName: String
 }
 //可set 可 get
 let john = Person(fullName: &quot;Tom&quot;)
-
 class Starship: FullyNamed {
     var prefix: String?
     var name: String
-
     init(name: String, prefix: String? = nil) {
         self.name = name
         self.prefix = prefix
     }
-
     var fullName: String {
         return (prefix != nil ? prefix!+&quot; &quot; : &quot;&quot;) + name
     }
 }
-
 var ncc1701 = Starship(name: &quot;Enterprise&quot;, prefix: &quot;USS&quot;)
-
 //方法要求
-
 //不能在协议方法中指定默认值
-
 protocol SomeProtocol2 {
     static func someTypeMethod()
 }
-
 protocol RandomNumberGenerator {
     func random() -&gt; Double
 }
-
 //线性同余生成器的伪随机数生成器算法,好高大上有木有...
 class LinearCongruentialGenerator: RandomNumberGenerator {
     var lastRandom = 42.0
@@ -199,11 +494,9 @@ class LinearCongruentialGenerator: RandomNumberGenerator {
         return lastRandom / m
     }
 }
-
 let generator = LinearCongruentialGenerator()
 print(generator.random())
 print(generator.random())
-
 //变异方法要求 mutating method requirements
 //如果希望实现协议的任何类型(类,结构体,枚举)要修改实例或者实例中的任何属性
 //得在func前加mutating关键字
@@ -211,7 +504,6 @@ print(generator.random())
 protocol Toggleable {
     mutating func toggle()
 }
-
 enum OnOffSwitch: Toggleable {
     case off, on
     mutating func toggle() {
@@ -223,17 +515,14 @@ enum OnOffSwitch: Toggleable {
         }
     }
 }
-
 var lightSwitch = OnOffSwitch.off
 print(lightSwitch)
 lightSwitch.toggle()
 print(lightSwitch)
-
 //初始化程序要求
 protocol SomeProtocol3 {
     init(someParameter: Int)
 }
-
 //required 方便子类继承,从而遵守SomeProtocol3协议
 //如果给类加上final,则required可以省略
 final class SomeClass3: SomeProtocol3 {
@@ -241,34 +530,27 @@ final class SomeClass3: SomeProtocol3 {
         //在这进行初始化实现
     }
 }
-
 //如果子类重写父类中init方法,并且这个init也是协议中的实现,则需要用
 //`required`和`override`修饰
 protocol SomeProtocol4 {
     init()
 }
-
 class SomeSuperClass {
     init() {
-
     }
 }
-
 class SomeSubClass: SomeSuperClass, SomeProtocol4 {
     required override init() {
         //good job
     }
 }
-
 //协议还可以定义可失败构造器
-
 //协议作为类型
 //协议本身不实现任何功能,但是,创建的任何协议都会变成代码中成熟的类型.
 //可以用协议的地方:
 //1. 在函数,方法或初始化方法中作为参数或返回值
 //2. 作为常量,变量,或者属性的类型
 //3. 作为数组,字典或其他容器类型的元素类型
-
 class Dice {
     let sides: Int
     let generator: RandomNumberGenerator
@@ -284,32 +566,27 @@ var d6 = Dice(sides: 6, generator: LinearCongruentialGenerator())
 for _ in 1...5 {
     print(&quot;Random dice roll is \(d6.roll())&quot;)
 }
-
 //委托
 //响应特定操作或者从外部检索数据
 protocol DiceGame {
     var dice: Dice { get }
     func play()
 }
-
 protocol DiceGameDelegate: AnyObject {
     func gameDidStart(_ game: DiceGame)
     func game(_ game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int)
     func gameDidEnd(_ game: DiceGame)
 }
-
 class SnakesAndLadders: DiceGame {
     let finalSquare = 25
     let dice = Dice(sides: 6, generator: LinearCongruentialGenerator())
     var square = 0
     var board: [Int]
-
     init() {
         board = Array(repeating: 0, count: finalSquare + 1)
         board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02
         board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08
     }
-
     weak var delegate: DiceGameDelegate?
     func play() {
         square = 0
@@ -330,7 +607,6 @@ class SnakesAndLadders: DiceGame {
         delegate?.gameDidEnd(self)
     }
 }
-
 class DiceGameTracker: DiceGameDelegate {
     var numberOfTurns = 0
     func gameDidStart(_ game: DiceGame) {
@@ -348,34 +624,28 @@ class DiceGameTracker: DiceGameDelegate {
         print(&quot;The game lasted for \(numberOfTurns) turns&quot;)
     }
 }
-
 let tracker = DiceGameTracker()
 let game = SnakesAndLadders()
 game.delegate = tracker
 game.play()
-
 //通过扩展遵守某个协议
 protocol TextRepresentable {
     var textualDescription: String { get }
 }
-
 extension Dice: TextRepresentable {
     var textualDescription: String {
         return &quot;A \(sides)-sided dice&quot;
     }
 }
-
 let d12 = Dice(sides: 12, generator: LinearCongruentialGenerator())
 print(d12.textualDescription)
 // Prints &quot;A 12-sided dice&quot;
-
 extension SnakesAndLadders: TextRepresentable {
     var textualDescription: String {
         return &quot;A game of Snakes and Ladders with \(finalSquare) squares&quot;
     }
 }
 print(game.textualDescription)
-
 //有条件的遵守协议
 extension Array: TextRepresentable where Element: TextRepresentable {
     var textualDescription: String {
@@ -385,7 +655,6 @@ extension Array: TextRepresentable where Element: TextRepresentable {
 }
 let myDice = [d6, d12]
 print(myDice.textualDescription)
-
 //通过协议适应某种类型
 //如果某个类型已经符合协议的所有要求，但尚未声明它采用该协议，则可以使其采用带有空扩展的协议
 struct Hamster {
@@ -399,34 +668,76 @@ let simonTheHamster = Hamster(name: &quot;Simon&quot;)
 let somethingTextRepresentable: TextRepresentable = simonTheHamster
 print(somethingTextRepresentable.textualDescription)
 // Prints &quot;A hamster named Simon&quot;
-
 //协议类型的集合
 let things: [TextRepresentable] = [game, d12, simonTheHamster]
 for thing in things {
     print(thing.textualDescription)
 }
+//协议继承</code></pre>
+                      <p>还是有点烧脑….</p>
+                      <p><strong>–EOF–</strong></p>
 
-//协议继承</code></pre><p>还是有点烧脑….</p><p><strong>–EOF–</strong></p></div><footer class="post-footer"><div class="post-eof"></div></footer></div></article><article itemscope itemtype="http://schema.org/Article"><div class="post-block home"><link itemprop="mainEntityOfPage" href="https://jingxuetao.com/generics/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="喵小咪"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="喵小咪的博客"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"><a href="/generics/" class="post-title-link" itemprop="url">Generics</a></h1><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建时间：2018-11-17 14:49:13" itemprop="dateCreated datePublished" datetime="2018-11-17T14:49:13+00:00">2018-11-17</time> </span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span></span></div></header><div class="post-body" itemprop="articleBody"><p>通用代码使您能够根据您定义的要求编写可以使用任何类型的灵活，可重用的函数和类型。您可以编写避免重复的代码，并以清晰，抽象的方式表达其意图。</p><p>泛型是Swift最强大的功能之一，Swift标准库的大部分内容都是使用通用代码构建的。</p><pre><code>import Foundation
+                      <!--kg-card-end: markdown-->
+                    </div>
+                    <footer class="post-footer">
+                      <div class="post-eof"></div>
+                    </footer>
+                  </div>
+                </article>
+                <article itemscope itemtype="http://schema.org/Article">
+                  <div class="post-block home">
+                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/generics/">
+                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="喵小咪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="喵小咪的博客">
+    </span>
+                    <header class="post-header">
+                      <h1 class="post-title" itemprop="name headline">
+                        <a href="/generics/" class="post-title-link" itemprop="url">Generics</a>
+                      </h1>
+                      <div class="post-meta">
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                        <span class="post-meta-item-text">发表于</span>
+                        <time title="创建时间：2018-11-17 14:49:13" itemprop="dateCreated datePublished" datetime="2018-11-17T14:49:13+00:00">2018-11-17</time>
+                        </span>
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+                        <span class="post-meta-item-text">分类于</span>
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
+                        </span>
+                      </div>
+                    </header>
+                    <div class="post-body" itemprop="articleBody">
 
+                      <!--kg-card-begin: markdown-->
+                      <p>通用代码使您能够根据您定义的要求编写可以使用任何类型的灵活，可重用的函数和类型。您可以编写避免重复的代码，并以清晰，抽象的方式表达其意图。</p>
+                      <p>泛型是Swift最强大的功能之一，Swift标准库的大部分内容都是使用通用代码构建的。</p>
+                      <pre><code>import Foundation
 //泛型函数
 func swapTwoValues&lt;T&gt;(_ a: inout T, _ b: inout T) {
     let tmp = a
     a = b
     b = tmp
 }
-
 var a = 1, b = 2
 print(&quot;\(a)====\(b)&quot;)
 swapTwoValues(&amp;a, &amp;b)
 print(&quot;\(a)====\(b)&quot;)
-
 //泛型类型(泛型类,泛型结构体,泛型枚举),听起来挺高大上,其实就是给自定义类加个泛型
 struct Stack&lt;Element&gt; {
     var items: [Element] = []
     mutating func push(_ item: Element) {
         items.append(item)
     }
-
     mutating func pop() -&gt; Element {
         return items.removeLast()
     }
@@ -437,12 +748,10 @@ extension Stack {
         return items.isEmpty ? nil : items[items.count - 1]
     }
 }
-
 var strings = Stack&lt;String&gt;()
 strings.push(&quot;hello&quot;)
 print(strings.topItem)
 print(strings.pop())
-
 //泛型约束(不限于泛型类型,除了泛型类型就是TM的泛型函数)
 //泛型约束不能省略,如果省略value == v就不能运行了,没法玩了.
 //泛型约束必须是特定类继承，或符合特定协议或协议组合
@@ -459,12 +768,9 @@ func findIndex1&lt;T: Equatable&gt;(of value: T,in array: [T]) -&gt; Int? {
     }
     return nil
 }
-
 let arr = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;]
 let index = findIndex1(of: &quot;a&quot;, in: arr)
 print(index)
-
-
 //关联类型
 //协议中的泛型,实现具体类型的时候,由自己指定泛型类型为某种具体类型.
 protocol Container {
@@ -473,21 +779,17 @@ protocol Container {
     var count: Int { get }
     subscript(i: Int) -&gt; Item { get }
 }
-
 //这里typealias item不能等于协议,例如typealias Item = Equatable
 //这样Swift就不知道`EquableStack`应该怎么分配内存了有木有...,谁TM知道`EquableStack`实现了几个协议
 //脚踏了几只船?
 //typealias Item = Int删掉也可以,可以通过append,推断出Item类型
 struct IntStack: Container {
-
     mutating func push(_ item: Item) {
         items.append(item)
     }
-
     mutating func pop() -&gt; Item {
         return items.removeLast()
     }
-
     typealias Item = Int
     var items: [Item] = []
     mutating func append(_ item: Item) {
@@ -496,12 +798,10 @@ struct IntStack: Container {
     var count: Int {
         return items.count
     }
-
     subscript(i: Int) -&gt; Item {
         return items[i]
     }
 }
-
 //上面的Stack可以写作下面方式
 //因为通过append可以知道Element为Item的具体类型,所以typealias可以省略
 //又因为Stack1是泛型类型,Element创建实例对象时具体指出,所以,一下代码完全正确.
@@ -511,7 +811,6 @@ struct Stack1&lt;Element&gt;: Container {
     mutating func push(_ item: Element) {
         items.append(item)
     }
-
     mutating func pop() -&gt; Element {
         return items.removeLast()
     }
@@ -526,18 +825,15 @@ struct Stack1&lt;Element&gt;: Container {
         return items[i]
     }
 }
-
 var strings1 = Stack1&lt;String&gt;()
 strings.push(&quot;hello&quot;)
 print(strings.topItem)
 print(strings.pop())
-
 //扩展现有类型以指定关联类型
 //array 中有append用来推断具体类型,并且有count,有下标
 //所以以后完全可以使用Array作为Container
 //但是typealias Container = Array也是不错的
 extension Array: Container {}
-
 //将约束添加到关联类型
 //如果这样定义,得像下面这样搞
 //struct Stack1&lt;Element: Equatable&gt;: Container
@@ -547,7 +843,6 @@ protocol Container1 {
     var count: Int { get }
     subscript(i: Int) -&gt; Item { get }
 }
-
 //在关联类型的约束中使用协议
 //这个JB关系有点乱,有木有...
 //儿子有一个家,爹有一个家,儿子从爹那继承过来的家跟自己成立的家必须是一个家,不能搞分家...
@@ -556,7 +851,6 @@ protocol SuffixableContainer: Container {
     associatedtype Suffix: SuffixableContainer where Suffix.Item == Item
     func suffix(_ size: Int) -&gt; Suffix
 }
-
 extension Stack1: SuffixableContainer {
     func suffix(_ size: Int) -&gt; Stack1 {
         var result = Stack1()
@@ -568,16 +862,13 @@ extension Stack1: SuffixableContainer {
     }
     // Inferred that Suffix is Stack.
 }
-
 var stackOfInts = Stack1&lt;Int&gt;()
 stackOfInts.append(10)
 stackOfInts.append(20)
 stackOfInts.append(30)
 let suffix = stackOfInts.suffix(3)
-
 //Generic Where Clauses(通用条款)
 //泛型条件约束吧... where
-
 func allItemsMatch&lt;C1: Container, C2: Container&gt;(_ someContainer: C1, _ anotherContainer: C2) -&gt; Bool where C1.Item == C2.Item, C1.Item: Equatable {
     // Check that both containers contain the same number of items.
     if someContainer.count != anotherContainer.count {
@@ -592,20 +883,16 @@ func allItemsMatch&lt;C1: Container, C2: Container&gt;(_ someContainer: C1, _ an
     // All items match, so return true.
     return true
 }
-
 var stackOfStrings = Stack1&lt;String&gt;()
 stackOfStrings.push(&quot;uno&quot;)
 stackOfStrings.push(&quot;dos&quot;)
 stackOfStrings.push(&quot;tres&quot;)
-
 var arrayOfStrings = [&quot;uno&quot;, &quot;dos&quot;, &quot;tres&quot;]
-
 if allItemsMatch(stackOfStrings, arrayOfStrings) {
     print(&quot;All items match.&quot;)
 } else {
     print(&quot;Not all items match.&quot;)
 }
-
 extension Stack1 where Element: Equatable {
     func isTop(_ item: Element) -&gt; Bool {
         guard let last = items.last else {
@@ -620,7 +907,6 @@ if stackOfStrings.isTop(&quot;tres&quot;) {
 } else {
     print(&quot;Top element is something else.&quot;)
 }
-
 //上面where扩展类型,下面where扩展协议,这TM就比较6了...
 extension Container where Item: Equatable {
     func startsWith(_ item: Item) -&gt; Bool {
@@ -632,7 +918,6 @@ if [9, 9, 9].startsWith(42) {
 } else {
     print(&quot;Starts with something else.&quot;)
 }
-
 //Item是特定类型的where子句
 extension Container where Item == Double {
     func average() -&gt; Double {
@@ -644,22 +929,16 @@ extension Container where Item == Double {
     }
 }
 print([1260.0, 1200.0, 98.6, 37.0].average())
-
-
 //关联类型和泛型子句
 protocol Container2 {
     associatedtype Item
     mutating func append(_ item: Item)
     var count: Int { get }
     subscript(i: Int) -&gt; Item { get }
-
     associatedtype Iterator: IteratorProtocol where Iterator.Element == Item
-
     func makeIterator() -&gt; Iterator
 }
-
 protocol ComparableContainer: Container2 where Item: Comparable {}
-
 //泛型下标
 extension Container2 {
     subscript&lt;Indices: Sequence&gt;(indices: Indices) -&gt; [Item]
@@ -670,11 +949,123 @@ extension Container2 {
             }
             return result
     }
-}</code></pre><p>真是烧脑的玩意……</p><p><strong>–EOF–</strong></p></div><footer class="post-footer"><div class="post-eof"></div></footer></div></article><article itemscope itemtype="http://schema.org/Article"><div class="post-block home"><link itemprop="mainEntityOfPage" href="https://jingxuetao.com/llvm/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="喵小咪"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="喵小咪的博客"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"><a href="/llvm/" class="post-title-link" itemprop="url">LLVM</a></h1><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建时间：2018-10-27 04:34:34" itemprop="dateCreated datePublished" datetime="2018-10-27T04:34:34+00:00">2018-10-27</time> </span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LLVM/" itemprop="url" rel="index"><span itemprop="name">LLVM</span></a></span></span></div></header><div class="post-body" itemprop="articleBody"><h3 id="LLVM"><a href="#LLVM" class="headerlink" title="LLVM:"></a>LLVM:</h3><p>模块化,可重用的编译器以及工具链技术集合.</p><p>创始人: Chris Lattner</p><p>LLVM不是Low Level Virtual Machine(低级虚拟机)的缩写,LLVM就是他的项目全名.</p><h3 id="传统编译器"><a href="#传统编译器" class="headerlink" title="传统编译器:"></a>传统编译器:</h3><p>GCC<br>Clang</p><h4 id="传统编译器架构"><a href="#传统编译器架构" class="headerlink" title="传统编译器架构:"></a>传统编译器架构:</h4><p><img alt="ping-mu-kuai-zhao-2018-10-26-xia-wu-9-53-38" data-src="https://pic.jingxuetao.com/201810/ping-mu-kuai-zhao-2018-10-26-xia-wu-9-53-38.png"></p><ul><li>Frontend: 前端</li></ul><blockquote><p>词法分析,语法分析,语义分析,生成中间代码</p></blockquote><ul><li>Opotimizer: 优化器</li></ul><blockquote><p>中间代码优化</p></blockquote><ul><li>Backend: 后端</li></ul><blockquote><p>生成机器码</p></blockquote><h3 id="LLVM架构"><a href="#LLVM架构" class="headerlink" title="LLVM架构"></a>LLVM架构</h3><p><img alt="ping-mu-kuai-zhao-2018-10-26-xia-wu-9-58-59" data-src="https://pic.jingxuetao.com/201810/ping-mu-kuai-zhao-2018-10-26-xia-wu-9-58-59.png"></p><ul><li>不同的前端后端使用统一的中间代码 LLVM Intermediate Representation(LLVM IR).</li><li>如果需要支持一种新的编程语言,只需要实现一个新的前端.</li><li>如果需要支持一种新的硬件设备,只需要增加一个新的后端.</li><li>优化阶段是一个通用阶段,它针对的是统一的LLVM IR,无论是支持新的编程语言,还是支持新的硬件设备,都不需要对优化阶段做修改.</li><li>相比之下,GCC的前端和后端没分的泰开,前端后端耦合在一起.所以GCC为了来支持一门新的语言或者新的硬件设备,就变得很困难.</li><li>LLVM现在被用作为实现各种静态和运行时变易语言的通用基础结构.(GCC家族,Java,.net,Python等)</li></ul><h3 id="Clang"><a href="#Clang" class="headerlink" title="Clang"></a>Clang</h3><ul><li>LLVM一个子项目</li><li>基于LVVM架构的C/C++/Objective-C编译器前端</li></ul><p>优点:</p><ul><li>编译速度快,在某些平台上Clang的便以速度显著地快过GCC</li><li>占用内存小,Clang生成的AST所占用的内训师CGG的五分之一左右</li><li>模块化设计,基于库的模块化设计,易于IDE集成以及其他用途的重用</li><li>诊断信息可读性强: 在编译过程中,Clang创建并保留了大量详细的元数据(metadata),有利于调试和错误解读.</li><li>设计清晰简单,容易理解,易于扩展增强</li></ul><h2 id="Clang与LLVM"><a href="#Clang与LLVM" class="headerlink" title="Clang与LLVM"></a>Clang与LLVM</h2><p><img alt="ping-mu-kuai-zhao-2018-10-26-xia-wu-10-17-23" data-src="https://pic.jingxuetao.com/201810/ping-mu-kuai-zhao-2018-10-26-xia-wu-10-17-23.png"></p><ul><li>广义LLVM</li></ul><blockquote><p>整个LLVM架构</p></blockquote><ul><li>狭义LLVM</li></ul><blockquote><p>LLVM后端(代码优化,目标代码生成等)</p></blockquote><p><img alt="ping-mu-kuai-zhao-2018-10-26-xia-wu-10-22-37" data-src="https://pic.jingxuetao.com/201810/ping-mu-kuai-zhao-2018-10-26-xia-wu-10-22-37.png"></p><h2 id="OC源文件编译过程"><a href="#OC源文件编译过程" class="headerlink" title="OC源文件编译过程"></a>OC源文件编译过程</h2><h3 id="命令行查看编译过程"><a href="#命令行查看编译过程" class="headerlink" title="命令行查看编译过程"></a>命令行查看编译过程</h3><blockquote><p>clang -ccc-print-phases main.m</p></blockquote><pre><code>➜ TestSwift clang -ccc-print-phases main.swift
+}</code></pre>
+                      <p>真是烧脑的玩意……</p>
+                      <p><strong>–EOF–</strong></p>
+
+                      <!--kg-card-end: markdown-->
+                    </div>
+                    <footer class="post-footer">
+                      <div class="post-eof"></div>
+                    </footer>
+                  </div>
+                </article>
+                <article itemscope itemtype="http://schema.org/Article">
+                  <div class="post-block home">
+                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/llvm/">
+                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="喵小咪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="喵小咪的博客">
+    </span>
+                    <header class="post-header">
+                      <h1 class="post-title" itemprop="name headline">
+                        <a href="/llvm/" class="post-title-link" itemprop="url">LLVM</a>
+                      </h1>
+                      <div class="post-meta">
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                        <span class="post-meta-item-text">发表于</span>
+                        <time title="创建时间：2018-10-27 04:34:34" itemprop="dateCreated datePublished" datetime="2018-10-27T04:34:34+00:00">2018-10-27</time>
+                        </span>
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+                        <span class="post-meta-item-text">分类于</span>
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LLVM/" itemprop="url" rel="index"><span itemprop="name">LLVM</span></a></span>
+                        </span>
+                      </div>
+                    </header>
+                    <div class="post-body" itemprop="articleBody">
+                      <h3 id="LLVM"><a href="#LLVM" class="headerlink" title="LLVM:"></a>LLVM:</h3>
+                      <p>模块化,可重用的编译器以及工具链技术集合.</p>
+                      <p>创始人: Chris Lattner</p>
+                      <p>LLVM不是Low Level Virtual Machine(低级虚拟机)的缩写,LLVM就是他的项目全名.</p>
+                      <h3 id="传统编译器"><a href="#传统编译器" class="headerlink" title="传统编译器:"></a>传统编译器:</h3>
+                      <p>GCC<br>Clang</p>
+                      <h4 id="传统编译器架构"><a href="#传统编译器架构" class="headerlink" title="传统编译器架构:"></a>传统编译器架构:</h4>
+                      <p><img alt="ping-mu-kuai-zhao-2018-10-26-xia-wu-9-53-38" data-src="https://pic.jingxuetao.com/201810/ping-mu-kuai-zhao-2018-10-26-xia-wu-9-53-38.png"></p>
+                      <ul>
+                        <li>Frontend: 前端</li>
+                      </ul>
+                      <blockquote>
+                        <p>词法分析,语法分析,语义分析,生成中间代码</p>
+                      </blockquote>
+                      <ul>
+                        <li>Opotimizer: 优化器</li>
+                      </ul>
+                      <blockquote>
+                        <p>中间代码优化</p>
+                      </blockquote>
+                      <ul>
+                        <li>Backend: 后端</li>
+                      </ul>
+                      <blockquote>
+                        <p>生成机器码</p>
+                      </blockquote>
+                      <h3 id="LLVM架构"><a href="#LLVM架构" class="headerlink" title="LLVM架构"></a>LLVM架构</h3>
+                      <p><img alt="ping-mu-kuai-zhao-2018-10-26-xia-wu-9-58-59" data-src="https://pic.jingxuetao.com/201810/ping-mu-kuai-zhao-2018-10-26-xia-wu-9-58-59.png"></p>
+                      <ul>
+                        <li>不同的前端后端使用统一的中间代码 LLVM Intermediate Representation(LLVM IR).</li>
+                        <li>如果需要支持一种新的编程语言,只需要实现一个新的前端.</li>
+                        <li>如果需要支持一种新的硬件设备,只需要增加一个新的后端.</li>
+                        <li>优化阶段是一个通用阶段,它针对的是统一的LLVM IR,无论是支持新的编程语言,还是支持新的硬件设备,都不需要对优化阶段做修改.</li>
+                        <li>相比之下,GCC的前端和后端没分的泰开,前端后端耦合在一起.所以GCC为了来支持一门新的语言或者新的硬件设备,就变得很困难.</li>
+                        <li>LLVM现在被用作为实现各种静态和运行时变易语言的通用基础结构.(GCC家族,Java,.net,Python等)</li>
+                      </ul>
+                      <h3 id="Clang"><a href="#Clang" class="headerlink" title="Clang"></a>Clang</h3>
+                      <ul>
+                        <li>LLVM一个子项目</li>
+                        <li>基于LVVM架构的C/C++/Objective-C编译器前端</li>
+                      </ul>
+                      <p>优点:</p>
+                      <ul>
+                        <li>编译速度快,在某些平台上Clang的便以速度显著地快过GCC</li>
+                        <li>占用内存小,Clang生成的AST所占用的内训师CGG的五分之一左右</li>
+                        <li>模块化设计,基于库的模块化设计,易于IDE集成以及其他用途的重用</li>
+                        <li>诊断信息可读性强: 在编译过程中,Clang创建并保留了大量详细的元数据(metadata),有利于调试和错误解读.</li>
+                        <li>设计清晰简单,容易理解,易于扩展增强</li>
+                      </ul>
+                      <h2 id="Clang与LLVM"><a href="#Clang与LLVM" class="headerlink" title="Clang与LLVM"></a>Clang与LLVM</h2>
+                      <p><img alt="ping-mu-kuai-zhao-2018-10-26-xia-wu-10-17-23" data-src="https://pic.jingxuetao.com/201810/ping-mu-kuai-zhao-2018-10-26-xia-wu-10-17-23.png"></p>
+                      <ul>
+                        <li>广义LLVM</li>
+                      </ul>
+                      <blockquote>
+                        <p>整个LLVM架构</p>
+                      </blockquote>
+                      <ul>
+                        <li>狭义LLVM</li>
+                      </ul>
+                      <blockquote>
+                        <p>LLVM后端(代码优化,目标代码生成等)</p>
+                      </blockquote>
+                      <p><img alt="ping-mu-kuai-zhao-2018-10-26-xia-wu-10-22-37" data-src="https://pic.jingxuetao.com/201810/ping-mu-kuai-zhao-2018-10-26-xia-wu-10-22-37.png"></p>
+                      <h2 id="OC源文件编译过程"><a href="#OC源文件编译过程" class="headerlink" title="OC源文件编译过程"></a>OC源文件编译过程</h2>
+                      <h3 id="命令行查看编译过程"><a href="#命令行查看编译过程" class="headerlink" title="命令行查看编译过程"></a>命令行查看编译过程</h3>
+                      <blockquote>
+                        <p>clang -ccc-print-phases main.m</p>
+                      </blockquote>
+                      <pre><code>➜ TestSwift clang -ccc-print-phases main.swift
 0: input, &quot;main.swift&quot;, object
 1: linker, {0}, image
 2: bind-arch, &quot;x86_64&quot;, {1}, image
-
 ➜ TestOC clang -ccc-print-phases main.m
 0: input, &quot;main.m&quot;, objective-c
 1: preprocessor, {0}, objective-c-cpp-output
@@ -682,21 +1073,25 @@ extension Container2 {
 3: backend, {2}, assembler
 4: assembler, {3}, object
 5: linker, {4}, image
-6: bind-arch, &quot;x86_64&quot;, {5}, image</code></pre><blockquote><p>Swift比OC少了4个编译阶段呐,有木有…</p></blockquote><h3 id="查看preprocessor-预处理-的结果"><a href="#查看preprocessor-预处理-的结果" class="headerlink" title="查看preprocessor(预处理)的结果"></a>查看preprocessor(预处理)的结果</h3><blockquote><p>clang -E main.m</p></blockquote><pre><code>//源文件
+6: bind-arch, &quot;x86_64&quot;, {5}, image</code></pre>
+                      <blockquote>
+                        <p>Swift比OC少了4个编译阶段呐,有木有…</p>
+                      </blockquote>
+                      <h3 id="查看preprocessor-预处理-的结果"><a href="#查看preprocessor-预处理-的结果" class="headerlink" title="查看preprocessor(预处理)的结果"></a>查看preprocessor(预处理)的结果</h3>
+                      <blockquote>
+                        <p>clang -E main.m</p>
+                      </blockquote>
+                      <pre><code>//源文件
 print(&quot;Hello World&quot;)
 //预处理输出
 ➜ TestSwift clang -E main.swift
 clang: warning: main.swift: &apos;linker&apos; input unused [-Wunused-command-line-argument]
-
 //源文件
 #define AGE 10
-
 int main(int argc, const char * argv[]) {
-
     int a = 10;
     int b = 20;
     int c = a + b + AGE;
-
     return 0;
 }
 //预处理输出
@@ -710,17 +1105,22 @@ int main(int argc, const char * argv[]) {
 # 1 &quot;main.m&quot; 2
 # 11 &quot;main.m&quot;
 int main(int argc, const char * argv[]) {
-
     int a = 10;
     int b = 20;
     int c = a + b + 10;
-
     return 0;
-}</code></pre><h2 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h2><ul><li>词法分析,生成Token(类似英语中主语,谓语,宾语,宾补…)</li></ul><blockquote><p>clang -fmodules -E -Xclang -dump-tokens main.m</p></blockquote><pre><code>➜ TestSwift clang -fmodules -E -Xclang -dump-tokens main.swift
+}</code></pre>
+                      <h2 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h2>
+                      <ul>
+                        <li>词法分析,生成Token(类似英语中主语,谓语,宾语,宾补…)</li>
+                      </ul>
+                      <blockquote>
+                        <p>clang -fmodules -E -Xclang -dump-tokens main.m</p>
+                      </blockquote>
+                      <pre><code>➜ TestSwift clang -fmodules -E -Xclang -dump-tokens main.swift
 clang: warning: main.swift: &apos;linker&apos; input unused [-Wunused-command-line-argument]
 clang: warning: argument unused during compilation: &apos;-fmodules&apos; [-Wunused-command-line-argument]
 clang: warning: argument unused during compilation: &apos;-Xclang -dump-tokens&apos; [-Wunused-command-line-argument]
-
 ➜ TestOC clang -fmodules -E -Xclang -dump-tokens main.m
 int &apos;int&apos; [StartOfLine]    Loc=&lt;main.m:11:1&gt;
 identifier &apos;main&apos; [LeadingSpace]    Loc=&lt;main.m:11:5&gt;
@@ -759,11 +1159,18 @@ return &apos;return&apos; [StartOfLine] [LeadingSpace]    Loc=&lt;main.m:17:5&gt
 numeric_constant &apos;0&apos; [LeadingSpace]    Loc=&lt;main.m:17:12&gt;
 semi &apos;;&apos; Loc=&lt;main.m:17:13&gt;
 r_brace &apos;}&apos; [StartOfLine]    Loc=&lt;main.m:18:1&gt;
-eof &apos;&apos; Loc=&lt;main.m:18:2&gt;</code></pre><h2 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h2><ul><li>语法分析,生成语法树(AST, Abstract Syntax Tree)</li></ul><blockquote><p>clang -fmodules -fsyntax-only -Xclang -ast-dump main.m</p></blockquote><pre><code>➜ Test clang -fmodules -fsyntax-only -Xclang -ast-dump main.swift
+eof &apos;&apos; Loc=&lt;main.m:18:2&gt;</code></pre>
+                      <h2 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h2>
+                      <ul>
+                        <li>语法分析,生成语法树(AST, Abstract Syntax Tree)</li>
+                      </ul>
+                      <blockquote>
+                        <p>clang -fmodules -fsyntax-only -Xclang -ast-dump main.m</p>
+                      </blockquote>
+                      <pre><code>➜ Test clang -fmodules -fsyntax-only -Xclang -ast-dump main.swift
 clang: warning: main.swift: &apos;linker&apos; input unused [-Wunused-command-line-argument]
 clang: warning: argument unused during compilation: &apos;-fmodules&apos; [-Wunused-command-line-argument]
 clang: warning: argument unused during compilation: &apos;-Xclang -ast-dump&apos; [-Wunused-command-line-argument]
-
 ➜ TestOC clang -fmodules -fsyntax-only -Xclang -ast-dump main.m
 TranslationUnitDecl 0x7ff3730298e8 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt;
 |-TypedefDecl 0x7ff373029e60 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit __int128_t &apos;__ int128&apos;
@@ -810,13 +1217,15 @@ TranslationUnitDecl 0x7ff3730298e8 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc
     | | `-DeclRefExpr 0x7ff373062aa8 &lt;col:17&gt; &apos;int&apos; lvalue Var 0x7ff373062958 &apos;b&apos; &apos;int&apos;
     | `-IntegerLiteral 0x7ff373062b40 &lt;line:9:13&gt; &apos;int&apos; 10
     `-ReturnStmt 0x7ff373062bc0 &lt;line:17:5, col:12&gt;
-      `-IntegerLiteral 0x7ff373062ba0 &lt;col:12&gt; &apos;int&apos; 0</code></pre><h2 id="LLVM-IR"><a href="#LLVM-IR" class="headerlink" title="LLVM IR"></a>LLVM IR</h2><p>LLVM IR有三种表示形式(本质等价,好比水的气态,液态,固态)</p><p>1.text: 便于阅读的文本格式,类似于汇编语言,扩展名<code>.ll</code></p><pre><code>&gt; clang -S -emit-llvm main.m
-
+      `-IntegerLiteral 0x7ff373062ba0 &lt;col:12&gt; &apos;int&apos; 0</code></pre>
+                      <h2 id="LLVM-IR"><a href="#LLVM-IR" class="headerlink" title="LLVM IR"></a>LLVM IR</h2>
+                      <p>LLVM IR有三种表示形式(本质等价,好比水的气态,液态,固态)</p>
+                      <p>1.text: 便于阅读的文本格式,类似于汇编语言,扩展名<code>.ll</code></p>
+                      <pre><code>&gt; clang -S -emit-llvm main.m
 ; ModuleID = &apos;main.m&apos;
 source_filename = &quot;main.m&quot;
 target datalayout = &quot;e-m:o-i64:64-f80:128-n8:16:32:64-S128&quot;
 target triple = &quot;x86_64-apple-macosx10.14.0&quot;
-
 ; Function Attrs: noinline nounwind optnone ssp uwtable
 define i32 @main(i32, i8**) #0 {
   %3 = alloca i32, align 4
@@ -837,12 +1246,9 @@ define i32 @main(i32, i8**) #0 {
   store i32 %12, i32* %8, align 4
   ret i32 0
 }
-
 attributes #0 = { noinline nounwind optnone ssp uwtable &quot;correctly-rounded-divide-sqrt-fp-math&quot;=&quot;false&quot; &quot;disable-tail-calls&quot;=&quot;false&quot; &quot;less-precise-fpmad&quot;=&quot;false&quot; &quot;no-frame-pointer-elim&quot;=&quot;true&quot; &quot;no-frame-pointer-elim-non-leaf&quot; &quot;no-infs-fp-math&quot;=&quot;false&quot; &quot;no-jump-tables&quot;=&quot;false&quot; &quot;no-nans-fp-math&quot;=&quot;false&quot; &quot;no-signed-zeros-fp-math&quot;=&quot;false&quot; &quot;no-trapping-math&quot;=&quot;false&quot; &quot;stack-protector-buffer-size&quot;=&quot;8&quot; &quot;target-cpu&quot;=&quot;penryn&quot; &quot;target-features&quot;=&quot;+cx16,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87&quot; &quot;unsafe-fp-math&quot;=&quot;false&quot; &quot;use-soft-float&quot;=&quot;false&quot; }
-
 !llvm.module.flags = !{!0, !1, !2, !3, !4, !5, !6}
 !llvm.ident = !{!7}
-
 !0 = !{i32 1, !&quot;Objective-C Version&quot;, i32 2}
 !1 = !{i32 1, !&quot;Objective-C Image Info Version&quot;, i32 0}
 !2 = !{i32 1, !&quot;Objective-C Image Info Section&quot;, !&quot; __DATA,__ objc_imageinfo,regular,no_dead_strip&quot;}
@@ -851,58 +1257,229 @@ attributes #0 = { noinline nounwind optnone ssp uwtable &quot;correctly-rounded-
 !5 = !{i32 1, !&quot;wchar_size&quot;, i32 4}
 !6 = !{i32 7, !&quot;PIC Level&quot;, i32 2}
 !7 = !{!&quot;Apple LLVM version 10.0.0 (clang-1000.11.45.2)&quot;}
-//什么鬼东西</code></pre><p>2.memory: 内存格式<br>3.bitcode: 二进制格式,扩展名<code>.bc</code></p><blockquote><p>clang -c -emit-llvm main.m</p></blockquote><h3 id="IR基本语法"><a href="#IR基本语法" class="headerlink" title="IR基本语法"></a>IR基本语法</h3><ul><li>注释以分号<code>;</code>开头</li><li>全局标识符以<code>@</code>开头,局部标识符以<code>%</code>开头</li><li><code>alloca</code>在当前函数栈帧中分配内存</li><li><code>i32</code>,32bit,4个字节的意思</li><li><code>align</code>,内存对齐</li><li><code>store</code>,写入数据</li><li><code>load</code>,读取数据</li></ul><p><strong>–EOF–</strong></p></div><footer class="post-footer"><div class="post-eof"></div></footer></div></article><article itemscope itemtype="http://schema.org/Article"><div class="post-block home"><link itemprop="mainEntityOfPage" href="https://jingxuetao.com/package-coreimage/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="喵小咪"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="喵小咪的博客"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"><a href="/package-coreimage/" class="post-title-link" itemprop="url">封装CoreImage</a></h1><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建时间：2018-09-30 14:56:01" itemprop="dateCreated datePublished" datetime="2018-09-30T14:56:01+00:00">2018-09-30</time> </span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span></span></div></header><div class="post-body" itemprop="articleBody"><p><strong>–EOF–</strong></p></div><footer class="post-footer"><div class="post-eof"></div></footer></div></article><article itemscope itemtype="http://schema.org/Article"><div class="post-block home"><link itemprop="mainEntityOfPage" href="https://jingxuetao.com/battleship/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="喵小咪"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="喵小咪的博客"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"><a href="/battleship/" class="post-title-link" itemprop="url">战舰</a></h1><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建时间：2018-09-30 14:53:31" itemprop="dateCreated datePublished" datetime="2018-09-30T14:53:31+00:00">2018-09-30</time> </span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span></span></div></header><div class="post-body" itemprop="articleBody"><p><strong>–EOF–</strong></p></div><footer class="post-footer"><div class="post-eof"></div></footer></div></article><article itemscope itemtype="http://schema.org/Article"><div class="post-block home"><link itemprop="mainEntityOfPage" href="https://jingxuetao.com/sync-way-code-async-code/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="喵小咪"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="喵小咪的博客"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"><a href="/sync-way-code-async-code/" class="post-title-link" itemprop="url">同步的方式编写异步代码</a></h1><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建时间：2018-09-30 11:26:56" itemprop="dateCreated datePublished" datetime="2018-09-30T11:26:56+00:00">2018-09-30</time> </span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span></span></div></header><div class="post-body" itemprop="articleBody"><p>代码来自泊学</p><p><strong>–EOF–</strong></p></div><footer class="post-footer"><div class="post-eof"></div></footer></div></article><article itemscope itemtype="http://schema.org/Article"><div class="post-block home"><link itemprop="mainEntityOfPage" href="https://jingxuetao.com/enum-express-tableview-datasource/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="喵小咪"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="喵小咪的博客"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"><a href="/enum-express-tableview-datasource/" class="post-title-link" itemprop="url">Enum表示TableView的数据源</a></h1><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建时间：2018-05-29 14:24:00" itemprop="dateCreated datePublished" datetime="2018-05-29T14:24:00+00:00">2018-05-29</time> </span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a></span></span></div></header><div class="post-body" itemprop="articleBody"><figure class="kg-card kg-image-card"><img class="kg-image" data-src="https://img.hacpai.com/bing/20180330.jpg?imageView2/1/w/960/h/520/interlace/1/q/100"></figure><pre><code>//
+//什么鬼东西</code></pre>
+                      <p>2.memory: 内存格式<br>3.bitcode: 二进制格式,扩展名<code>.bc</code></p>
+                      <blockquote>
+                        <p>clang -c -emit-llvm main.m</p>
+                      </blockquote>
+                      <h3 id="IR基本语法"><a href="#IR基本语法" class="headerlink" title="IR基本语法"></a>IR基本语法</h3>
+                      <ul>
+                        <li>注释以分号<code>;</code>开头</li>
+                        <li>全局标识符以<code>@</code>开头,局部标识符以<code>%</code>开头</li>
+                        <li><code>alloca</code>在当前函数栈帧中分配内存</li>
+                        <li><code>i32</code>,32bit,4个字节的意思</li>
+                        <li><code>align</code>,内存对齐</li>
+                        <li><code>store</code>,写入数据</li>
+                        <li><code>load</code>,读取数据</li>
+                      </ul>
+                      <p><strong>–EOF–</strong></p>
+
+                      <!--kg-card-end: markdown-->
+                    </div>
+                    <footer class="post-footer">
+                      <div class="post-eof"></div>
+                    </footer>
+                  </div>
+                </article>
+                <article itemscope itemtype="http://schema.org/Article">
+                  <div class="post-block home">
+                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/package-coreimage/">
+                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="喵小咪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="喵小咪的博客">
+    </span>
+                    <header class="post-header">
+                      <h1 class="post-title" itemprop="name headline">
+                        <a href="/package-coreimage/" class="post-title-link" itemprop="url">封装CoreImage</a>
+                      </h1>
+                      <div class="post-meta">
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                        <span class="post-meta-item-text">发表于</span>
+                        <time title="创建时间：2018-09-30 14:56:01" itemprop="dateCreated datePublished" datetime="2018-09-30T14:56:01+00:00">2018-09-30</time>
+                        </span>
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+                        <span class="post-meta-item-text">分类于</span>
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
+                        </span>
+                      </div>
+                    </header>
+                    <div class="post-body" itemprop="articleBody">
+                      <p> <strong>–EOF–</strong></p>
+                    </div>
+                    <footer class="post-footer">
+                      <div class="post-eof"></div>
+                    </footer>
+                  </div>
+                </article>
+                <article itemscope itemtype="http://schema.org/Article">
+                  <div class="post-block home">
+                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/battleship/">
+                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="喵小咪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="喵小咪的博客">
+    </span>
+                    <header class="post-header">
+                      <h1 class="post-title" itemprop="name headline">
+                        <a href="/battleship/" class="post-title-link" itemprop="url">战舰</a>
+                      </h1>
+                      <div class="post-meta">
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                        <span class="post-meta-item-text">发表于</span>
+                        <time title="创建时间：2018-09-30 14:53:31" itemprop="dateCreated datePublished" datetime="2018-09-30T14:53:31+00:00">2018-09-30</time>
+                        </span>
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+                        <span class="post-meta-item-text">分类于</span>
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
+                        </span>
+                      </div>
+                    </header>
+                    <div class="post-body" itemprop="articleBody">
+                      <p> <strong>–EOF–</strong></p>
+                    </div>
+                    <footer class="post-footer">
+                      <div class="post-eof"></div>
+                    </footer>
+                  </div>
+                </article>
+                <article itemscope itemtype="http://schema.org/Article">
+                  <div class="post-block home">
+                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/sync-way-code-async-code/">
+                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="喵小咪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="喵小咪的博客">
+    </span>
+                    <header class="post-header">
+                      <h1 class="post-title" itemprop="name headline">
+                        <a href="/sync-way-code-async-code/" class="post-title-link" itemprop="url">同步的方式编写异步代码</a>
+                      </h1>
+                      <div class="post-meta">
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                        <span class="post-meta-item-text">发表于</span>
+                        <time title="创建时间：2018-09-30 11:26:56" itemprop="dateCreated datePublished" datetime="2018-09-30T11:26:56+00:00">2018-09-30</time>
+                        </span>
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+                        <span class="post-meta-item-text">分类于</span>
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
+                        </span>
+                      </div>
+                    </header>
+                    <div class="post-body" itemprop="articleBody">
+                      <p>代码来自泊学</p>
+                      <p><strong>–EOF–</strong></p>
+                    </div>
+                    <footer class="post-footer">
+                      <div class="post-eof"></div>
+                    </footer>
+                  </div>
+                </article>
+                <article itemscope itemtype="http://schema.org/Article">
+                  <div class="post-block home">
+                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/enum-express-tableview-datasource/">
+                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="喵小咪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="喵小咪的博客">
+    </span>
+                    <header class="post-header">
+                      <h1 class="post-title" itemprop="name headline">
+                        <a href="/enum-express-tableview-datasource/" class="post-title-link" itemprop="url">Enum表示TableView的数据源</a>
+                      </h1>
+                      <div class="post-meta">
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                        <span class="post-meta-item-text">发表于</span>
+                        <time title="创建时间：2018-05-29 14:24:00" itemprop="dateCreated datePublished" datetime="2018-05-29T14:24:00+00:00">2018-05-29</time>
+                        </span>
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+                        <span class="post-meta-item-text">分类于</span>
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a></span>
+                        </span>
+                      </div>
+                    </header>
+                    <div class="post-body" itemprop="articleBody">
+                      <figure class="kg-card kg-image-card"><img class="kg-image" data-src="https://img.hacpai.com/bing/20180330.jpg?imageView2/1/w/960/h/520/interlace/1/q/100"></figure>
+
+                      <!--kg-card-end: image-->
+
+                      <!--kg-card-begin: code-->
+                      <pre><code>//
 // SettingTableViewController.swift
-
-
 import UIKit
-
 protocol SettingViewControllerDelegate: class {
     func controllerDidChangeDateMode(controller: SettingTableViewController)
     func controllerDidChangeTemperatureMode(controller: SettingTableViewController)
 }
-
 class SettingTableViewController: UITableViewController {
-
     weak var changeDelegate: SettingViewControllerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 44
     }
 }
-
 extension SettingTableViewController {
     private enum Section: Int {
         case date
         case temperature
-
         var numberOfRows: Int {
             return 2
         }
-
         static var count: Int {
             return Section.temperature.rawValue + 1
         }
     }
-
     override func numberOfSections(in tableView: UITableView) -&gt; Int {
         return Section.count
     }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int {
         guard let section = Section(rawValue: section) else {
             fatalError(&quot;未知section索引&quot;)
         }
         return section.numberOfRows
     }
-
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -&gt; String? {
         if section == 0 {
             return &quot;Date format&quot;
         }
         return &quot;Temperature unit&quot;
     }
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.reuseIdentifier, for: indexPath) as? SettingTableViewCell else {
             fatalError(&quot;未知的tableViewCell&quot;)
@@ -930,7 +1507,6 @@ extension SettingTableViewController {
         }
         return cell
     }
-
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let section = Section(rawValue: indexPath.section) else {
@@ -955,22 +1531,157 @@ extension SettingTableViewController {
         let sections = IndexSet(integer: indexPath.section)
         tableView.reloadSections(sections, with: .none)
     }
-}</code></pre><p>提供一种思路</p><p>代码来自<a href="https://boxueio.com/" target="_blank" rel="noopener">泊学</a></p><p><strong>–EOF–</strong></p></div><footer class="post-footer"><div class="post-eof"></div></footer></div></article><article itemscope itemtype="http://schema.org/Article"><div class="post-block home"><link itemprop="mainEntityOfPage" href="https://jingxuetao.com/reverse-proxy/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="喵小咪"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="喵小咪的博客"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"><a href="/reverse-proxy/" class="post-title-link" itemprop="url">反向代理</a></h1><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建时间：2018-01-01 13:49:00" itemprop="dateCreated datePublished" datetime="2018-01-01T13:49:00+00:00">2018-01-01</time> </span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/NGINX/" itemprop="url" rel="index"><span itemprop="name">NGINX</span></a></span></span></div></header><div class="post-body" itemprop="articleBody"><pre><code>server {
+}</code></pre>
+
+                      <!--kg-card-end: code-->
+                      <p>提供一种思路</p>
+                      <p>代码来自<a href="https://boxueio.com/" target="_blank" rel="noopener">泊学</a></p>
+                      <p><strong>–EOF–</strong></p>
+                    </div>
+                    <footer class="post-footer">
+                      <div class="post-eof"></div>
+                    </footer>
+                  </div>
+                </article>
+                <article itemscope itemtype="http://schema.org/Article">
+                  <div class="post-block home">
+                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/reverse-proxy/">
+                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="喵小咪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="喵小咪的博客">
+    </span>
+                    <header class="post-header">
+                      <h1 class="post-title" itemprop="name headline">
+                        <a href="/reverse-proxy/" class="post-title-link" itemprop="url">反向代理</a>
+                      </h1>
+                      <div class="post-meta">
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                        <span class="post-meta-item-text">发表于</span>
+                        <time title="创建时间：2018-01-01 13:49:00" itemprop="dateCreated datePublished" datetime="2018-01-01T13:49:00+00:00">2018-01-01</time>
+                        </span>
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+                        <span class="post-meta-item-text">分类于</span>
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/NGINX/" itemprop="url" rel="index"><span itemprop="name">NGINX</span></a></span>
+                        </span>
+                      </div>
+                    </header>
+                    <div class="post-body" itemprop="articleBody">
+                      <pre><code>server {
     listen 80;
     listen 443 ssl;
     server_name localhost;
-
     ssl_certificate /etc/nginx/ssl/fullchain.cer;
     ssl_certificate_key /etc/nginx/ssl/unsplash.jingxuetao.com.key;
-
     location /api {
         rewrite ^.+api/?(.*)$ /$1 break;
         proxy_pass https://api.unsplash.com;
     }
-
     location /images {
         rewrite ^.+images/?(.*)$ /$1 break;
         proxy_pass https://images.unsplash.com;
     }
+}</code></pre>
 
-}</code></pre><p><strong>参考链接</strong></p><p><a href="https://www.cnblogs.com/gabrielchen/p/5066120.html" target="_blank" rel="noopener">https://www.cnblogs.com/gabrielchen/p/5066120.html</a><br><a href="https://www.jianshu.com/p/b34a57129d6c?from=timeline" target="_blank" rel="noopener">https://www.jianshu.com/p/b34a57129d6c?from=timeline</a></p><p><strong>–EOF–</strong></p></div><footer class="post-footer"><div class="post-eof"></div></footer></div></article></div><nav class="pagination"><a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a></nav></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span> <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span> <span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc">文章目录</li><li class="sidebar-nav-overview">站点概览</li></ul><div class="post-toc-wrap sidebar-panel"></div><div class="site-overview-wrap sidebar-panel"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="喵小咪"><p class="site-author-name" itemprop="name">喵小咪</p><div class="site-description" itemprop="description"></div></div><div class="site-state-wrap motion-element"><nav class="site-state"><div class="site-state-item site-state-posts"><a href="/archives/"><span class="site-state-item-count">60</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"><a href="/categories/"><span class="site-state-item-count">12</span> <span class="site-state-item-name">分类</span></a></div></nav></div></div></div></aside><div id="sidebar-dimmer"></div></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">鲁ICP备14023895号-1 </a><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=" rel="noopener" target="_blank"></a>&copy; 2014 – <span itemprop="copyrightYear">2019</span> <span class="with-love" id="animate"><i class="fa fa-user"></i> </span><span class="author" itemprop="copyrightHolder">喵小咪</span></div><div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div><span class="post-meta-divider">|</span><div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.0</div></div></footer></div><script src="/lib/anime.min.js?v=3.1.0"></script><script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script><script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script><script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script><script src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script><script src="/js/schemes/pisces.js?v=7.4.0"></script><script src="/js/next-boot.js?v=7.4.0"></script><script src="/js/local-search.js?v=7.4.0"></script></body></html>
+                      <!--kg-card-end: code-->
+                      <p><strong>参考链接</strong></p>
+                      <p><a href="https://www.cnblogs.com/gabrielchen/p/5066120.html" target="_blank" rel="noopener">https://www.cnblogs.com/gabrielchen/p/5066120.html</a><br><a href="https://www.jianshu.com/p/b34a57129d6c?from=timeline" target="_blank" rel="noopener">https://www.jianshu.com/p/b34a57129d6c?from=timeline</a></p>
+                      <p><strong>–EOF–</strong></p>
+                    </div>
+                    <footer class="post-footer">
+                      <div class="post-eof"></div>
+                    </footer>
+                  </div>
+                </article>
+              </div>
+              <nav class="pagination">
+                <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+              </nav>
+            </div>
+          </div>
+          <div class="sidebar-toggle">
+            <div class="sidebar-toggle-line-wrap">
+              <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+              <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+              <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+            </div>
+          </div>
+          <aside class="sidebar">
+            <div class="sidebar-inner">
+              <ul class="sidebar-nav motion-element">
+                <li class="sidebar-nav-toc">
+                  文章目录
+                </li>
+                <li class="sidebar-nav-overview">
+                  站点概览
+                </li>
+              </ul>
+
+              <!--noindex-->
+              <div class="post-toc-wrap sidebar-panel">
+              </div> <!--/noindex-->
+              <div class="site-overview-wrap sidebar-panel">
+                <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                  <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="喵小咪">
+                  <p class="site-author-name" itemprop="name">喵小咪</p>
+                  <div class="site-description" itemprop="description"></div>
+                </div>
+                <div class="site-state-wrap motion-element">
+                  <nav class="site-state">
+                    <div class="site-state-item site-state-posts">
+                      <a href="/archives/">
+                        <span class="site-state-item-count">60</span>
+                        <span class="site-state-item-name">日志</span>
+                      </a>
+                    </div>
+                    <div class="site-state-item site-state-categories">
+                      <a href="/categories/">
+                        <span class="site-state-item-count">12</span>
+                        <span class="site-state-item-name">分类</span>
+                      </a>
+                    </div>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </aside>
+          <div id="sidebar-dimmer"></div>
+        </div>
+      </main>
+      <footer id="footer" class="footer">
+        <div class="footer-inner">
+          <div class="copyright"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">鲁ICP备14023895号-1 </a>
+            <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=" rel="noopener" target="_blank"> </a>&copy; 2014 – <span itemprop="copyrightYear">2019</span>
+            <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+            <span class="author" itemprop="copyrightHolder">喵小咪</span>
+          </div>
+          <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+          <span class="post-meta-divider">|</span>
+          <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.0</div>
+        </div>
+      </footer>
+    </div>
+    <script src="/lib/anime.min.js?v=3.1.0"></script>
+    <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+    <script src="/js/utils.js?v=7.4.0"></script>
+    <script src="/js/motion.js?v=7.4.0"></script>
+    <script src="/js/schemes/pisces.js?v=7.4.0"></script>
+    <script src="/js/next-boot.js?v=7.4.0"></script>
+    <script src="/js/local-search.js?v=7.4.0"></script>
+  </body>
+</html>

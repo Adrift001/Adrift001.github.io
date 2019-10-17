@@ -1,65 +1,294 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><meta name="generator" content="Hexo 3.9.0"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0"><link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222"><link rel="stylesheet" href="/css/main.css?v=7.4.0"><link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css"><script id="hexo-configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Pisces",version:"7.4.0",exturl:!1,sidebar:{position:"left",display:"post",offset:12,onmobile:!1},copycode:{enable:!0,show_result:!0,style:null},back2top:{enable:!0,sidebar:!1,scrollpercent:!0},bookmark:{enable:!1,color:"#222",save:"auto"},fancybox:!0,mediumzoom:!1,lazyload:!0,pangu:!1,algolia:{appID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}},localsearch:{enable:!0,trigger:"auto",top_n_per_article:1,unescape:!1,preload:!1},path:"search.xml",motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},translation:{copy_button:"复制",copy_success:"复制成功",copy_failure:"复制失败"},sidebarPadding:40}</script><meta name="description" content="A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumerat"><meta name="keywords" content="喵小咪 Swift"><meta property="og:type" content="article"><meta property="og:title" content="Protocols"><meta property="og:url" content="https://jingxuetao.com/protocols/index.html"><meta property="og:site_name" content="喵小咪的博客"><meta property="og:description" content="A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumerat"><meta property="og:locale" content="zh-CN"><meta property="og:updated_time" content="2019-10-17T11:32:52.421Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Protocols"><meta name="twitter:description" content="A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumerat"><link rel="canonical" href="https://jingxuetao.com/protocols/"><script id="page-configurations">CONFIG.page={sidebar:"",isHome:!1,isPost:!0,isPage:!1,isArchive:!1}</script><title>Protocols | 喵小咪的博客</title><noscript><style>.sidebar-inner,.use-motion .brand,.use-motion .collection-header,.use-motion .comments,.use-motion .menu-item,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.use-motion .logo-line-before i{left:initial}.use-motion .logo-line-after i{right:initial}</style></noscript></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN"><div class="container use-motion"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-container"><div class="site-meta"><div><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">喵小咪的博客</span> <span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">Thoughts, stories and ideas.</p></div><div class="site-nav-toggle"><button aria-label="切换导航栏"><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索</a></li></ul></nav><div class="site-search"><div class="popup search-popup"><div class="search-header"><span class="search-icon"><i class="fa fa-search"></i></span><div class="search-input-container"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜索..." spellcheck="false" type="text" id="search-input"></div><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span></div><div id="search-result"></div></div><div class="search-pop-overlay"></div></div></div></header><div class="back-to-top"><i class="fa fa-arrow-up"></i> <span>0%</span></div><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article itemscope itemtype="http://schema.org/Article"><div class="post-block post"><link itemprop="mainEntityOfPage" href="https://jingxuetao.com/protocols/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="喵小咪"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="喵小咪的博客"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">Protocols</h1><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建时间：2018-11-18 04:04:14" itemprop="dateCreated datePublished" datetime="2018-11-18T04:04:14+00:00">2018-11-18</time> </span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span></span></div></header><div class="post-body" itemprop="articleBody"><p>A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol.</p><pre><code>import Foundation
-
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="theme-color" content="#222">
+    <meta name="generator" content="Hexo 3.9.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+    <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+    <link rel="stylesheet" href="/css/main.css?v=7.4.0">
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+    <script id="hexo-configurations">
+      var NexT = window.NexT || {};
+      var CONFIG = {
+        root: '/',
+        scheme: 'Pisces',
+        version: '7.4.0',
+        exturl: false,
+        sidebar: {
+          "position": "left",
+          "display": "post",
+          "offset": 12,
+          "onmobile": false
+        },
+        copycode: {
+          "enable": true,
+          "show_result": true,
+          "style": null
+        },
+        back2top: {
+          "enable": true,
+          "sidebar": false,
+          "scrollpercent": true
+        },
+        bookmark: {
+          "enable": false,
+          "color": "#222",
+          "save": "auto"
+        },
+        fancybox: true,
+        mediumzoom: false,
+        lazyload: true,
+        pangu: false,
+        algolia: {
+          appID: '',
+          apiKey: '',
+          indexName: '',
+          hits: {
+            "per_page": 10
+          },
+          labels: {
+            "input_placeholder": "Search for Posts",
+            "hits_empty": "We didn't find any results for the search: ${query}",
+            "hits_stats": "${hits} results found in ${time} ms"
+          }
+        },
+        localsearch: {
+          "enable": true,
+          "trigger": "auto",
+          "top_n_per_article": 1,
+          "unescape": false,
+          "preload": false
+        },
+        path: 'search.xml',
+        motion: {
+          "enable": true,
+          "async": false,
+          "transition": {
+            "post_block": "fadeIn",
+            "post_header": "slideDownIn",
+            "post_body": "slideDownIn",
+            "coll_header": "slideLeftIn",
+            "sidebar": "slideUpIn"
+          }
+        },
+        translation: {
+          copy_button: '复制',
+          copy_success: '复制成功',
+          copy_failure: '复制失败'
+        },
+        sidebarPadding: 40
+      };
+    </script>
+    <meta name="description" content="A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumerat">
+    <meta name="keywords" content="喵小咪 Swift">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Protocols">
+    <meta property="og:url" content="https://jingxuetao.com/protocols/index.html">
+    <meta property="og:site_name" content="喵小咪的博客">
+    <meta property="og:description" content="A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumerat">
+    <meta property="og:locale" content="zh-CN">
+    <meta property="og:updated_time" content="2019-10-17T13:38:57.091Z">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Protocols">
+    <meta name="twitter:description" content="A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumerat">
+    <link rel="canonical" href="https://jingxuetao.com/protocols/">
+    <script id="page-configurations">
+      // https://hexo.io/docs/variables.html
+      CONFIG.page = {
+        sidebar: "",
+        isHome: false,
+        isPost: true,
+        isPage: false,
+        isArchive: false
+      };
+    </script>
+    <title>Protocols | 喵小咪的博客</title>
+    <noscript>
+      <style>
+        .use-motion .brand,
+        .use-motion .menu-item,
+        .sidebar-inner,
+        .use-motion .post-block,
+        .use-motion .pagination,
+        .use-motion .comments,
+        .use-motion .post-header,
+        .use-motion .post-body,
+        .use-motion .collection-header {
+          opacity: initial;
+        }
+        .use-motion .logo,
+        .use-motion .site-title,
+        .use-motion .site-subtitle {
+          opacity: initial;
+          top: initial;
+        }
+        .use-motion .logo-line-before i {
+          left: initial;
+        }
+        .use-motion .logo-line-after i {
+          right: initial;
+        }
+      </style>
+    </noscript>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+    <div class="container use-motion">
+      <div class="headband"></div>
+      <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner">
+          <div class="site-brand-container">
+            <div class="site-meta">
+              <div>
+                <a href="/" class="brand" rel="start">
+                  <span class="logo-line-before"><i></i></span>
+                  <span class="site-title">喵小咪的博客</span>
+                  <span class="logo-line-after"><i></i></span>
+                </a>
+              </div>
+              <p class="site-subtitle">Thoughts, stories and ideas.</p>
+            </div>
+            <div class="site-nav-toggle">
+              <button aria-label="切换导航栏">
+                <span class="btn-bar"></span>
+                <span class="btn-bar"></span>
+                <span class="btn-bar"></span>
+              </button>
+            </div>
+          </div>
+          <nav class="site-nav">
+            <ul id="menu" class="menu">
+              <li class="menu-item menu-item-home">
+                <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+              </li>
+              <li class="menu-item menu-item-categories">
+                <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+              </li>
+              <li class="menu-item menu-item-archives">
+                <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+              </li>
+              <li class="menu-item menu-item-links">
+                <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+              </li>
+              <li class="menu-item menu-item-about">
+                <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+              </li>
+              <li class="menu-item menu-item-search">
+                <a href="javascript:;" class="popup-trigger">
+                  <i class="fa fa-search fa-fw"></i>搜索</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="site-search">
+            <div class="popup search-popup">
+              <div class="search-header">
+                <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+                <div class="search-input-container">
+                  <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜索..." spellcheck="false" type="text" id="search-input">
+                </div>
+                <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+              </div>
+              <div id="search-result"></div>
+            </div>
+            <div class="search-pop-overlay"></div>
+          </div>
+        </div>
+      </header>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        <span>0%</span>
+      </div>
+      <main id="main" class="main">
+        <div class="main-inner">
+          <div class="content-wrap">
+            <div id="content" class="content">
+              <div id="posts" class="posts-expand">
+                <article itemscope itemtype="http://schema.org/Article">
+                  <div class="post-block post">
+                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/protocols/">
+                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="喵小咪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="喵小咪的博客">
+    </span>
+                    <header class="post-header">
+                      <h1 class="post-title" itemprop="name headline">Protocols
+                      </h1>
+                      <div class="post-meta">
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                        <span class="post-meta-item-text">发表于</span>
+                        <time title="创建时间：2018-11-18 04:04:14" itemprop="dateCreated datePublished" datetime="2018-11-18T04:04:14+00:00">2018-11-18</time>
+                        </span>
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+                        <span class="post-meta-item-text">分类于</span>
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
+                        </span>
+                      </div>
+                    </header>
+                    <div class="post-body" itemprop="articleBody">
+                      <p>A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol.</p>
+                      <pre><code>import Foundation
 //协议语法
 protocol SomeProtocol {
-
 }
-
 struct SomeStructure: SomeProtocol {}
 class SomeClass: SomeProtocol {}
-
 //属性要求
 //如果属性标注了(set get),则不能通过常量存储属性和只读计算属性来实现
 //如果属性只设置了(get),那么任何类型都可以满足,包括变量存储属性
-
 protocol SomeProtocol1 {
     var mustBeSettable: Int { get set }
     var doesNotNeedToBeSettable: Int { get }
 }
-
 //协议中用static修饰时,实现中用static或者class实现都行
 protocol AnotherProtocol {
     static var someTypeProperty: Int { get set }
 }
-
 protocol FullyNamed {
     var fullName: String { get }
 }
-
 struct Person: FullyNamed {
     var fullName: String
 }
 //可set 可 get
 let john = Person(fullName: &quot;Tom&quot;)
-
 class Starship: FullyNamed {
     var prefix: String?
     var name: String
-
     init(name: String, prefix: String? = nil) {
         self.name = name
         self.prefix = prefix
     }
-
     var fullName: String {
         return (prefix != nil ? prefix!+&quot; &quot; : &quot;&quot;) + name
     }
 }
-
 var ncc1701 = Starship(name: &quot;Enterprise&quot;, prefix: &quot;USS&quot;)
-
 //方法要求
-
 //不能在协议方法中指定默认值
-
 protocol SomeProtocol2 {
     static func someTypeMethod()
 }
-
 protocol RandomNumberGenerator {
     func random() -&gt; Double
 }
-
 //线性同余生成器的伪随机数生成器算法,好高大上有木有...
 class LinearCongruentialGenerator: RandomNumberGenerator {
     var lastRandom = 42.0
@@ -71,11 +300,9 @@ class LinearCongruentialGenerator: RandomNumberGenerator {
         return lastRandom / m
     }
 }
-
 let generator = LinearCongruentialGenerator()
 print(generator.random())
 print(generator.random())
-
 //变异方法要求 mutating method requirements
 //如果希望实现协议的任何类型(类,结构体,枚举)要修改实例或者实例中的任何属性
 //得在func前加mutating关键字
@@ -83,7 +310,6 @@ print(generator.random())
 protocol Toggleable {
     mutating func toggle()
 }
-
 enum OnOffSwitch: Toggleable {
     case off, on
     mutating func toggle() {
@@ -95,17 +321,14 @@ enum OnOffSwitch: Toggleable {
         }
     }
 }
-
 var lightSwitch = OnOffSwitch.off
 print(lightSwitch)
 lightSwitch.toggle()
 print(lightSwitch)
-
 //初始化程序要求
 protocol SomeProtocol3 {
     init(someParameter: Int)
 }
-
 //required 方便子类继承,从而遵守SomeProtocol3协议
 //如果给类加上final,则required可以省略
 final class SomeClass3: SomeProtocol3 {
@@ -113,34 +336,27 @@ final class SomeClass3: SomeProtocol3 {
         //在这进行初始化实现
     }
 }
-
 //如果子类重写父类中init方法,并且这个init也是协议中的实现,则需要用
 //`required`和`override`修饰
 protocol SomeProtocol4 {
     init()
 }
-
 class SomeSuperClass {
     init() {
-
     }
 }
-
 class SomeSubClass: SomeSuperClass, SomeProtocol4 {
     required override init() {
         //good job
     }
 }
-
 //协议还可以定义可失败构造器
-
 //协议作为类型
 //协议本身不实现任何功能,但是,创建的任何协议都会变成代码中成熟的类型.
 //可以用协议的地方:
 //1. 在函数,方法或初始化方法中作为参数或返回值
 //2. 作为常量,变量,或者属性的类型
 //3. 作为数组,字典或其他容器类型的元素类型
-
 class Dice {
     let sides: Int
     let generator: RandomNumberGenerator
@@ -156,32 +372,27 @@ var d6 = Dice(sides: 6, generator: LinearCongruentialGenerator())
 for _ in 1...5 {
     print(&quot;Random dice roll is \(d6.roll())&quot;)
 }
-
 //委托
 //响应特定操作或者从外部检索数据
 protocol DiceGame {
     var dice: Dice { get }
     func play()
 }
-
 protocol DiceGameDelegate: AnyObject {
     func gameDidStart(_ game: DiceGame)
     func game(_ game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int)
     func gameDidEnd(_ game: DiceGame)
 }
-
 class SnakesAndLadders: DiceGame {
     let finalSquare = 25
     let dice = Dice(sides: 6, generator: LinearCongruentialGenerator())
     var square = 0
     var board: [Int]
-
     init() {
         board = Array(repeating: 0, count: finalSquare + 1)
         board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02
         board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08
     }
-
     weak var delegate: DiceGameDelegate?
     func play() {
         square = 0
@@ -202,7 +413,6 @@ class SnakesAndLadders: DiceGame {
         delegate?.gameDidEnd(self)
     }
 }
-
 class DiceGameTracker: DiceGameDelegate {
     var numberOfTurns = 0
     func gameDidStart(_ game: DiceGame) {
@@ -220,34 +430,28 @@ class DiceGameTracker: DiceGameDelegate {
         print(&quot;The game lasted for \(numberOfTurns) turns&quot;)
     }
 }
-
 let tracker = DiceGameTracker()
 let game = SnakesAndLadders()
 game.delegate = tracker
 game.play()
-
 //通过扩展遵守某个协议
 protocol TextRepresentable {
     var textualDescription: String { get }
 }
-
 extension Dice: TextRepresentable {
     var textualDescription: String {
         return &quot;A \(sides)-sided dice&quot;
     }
 }
-
 let d12 = Dice(sides: 12, generator: LinearCongruentialGenerator())
 print(d12.textualDescription)
 // Prints &quot;A 12-sided dice&quot;
-
 extension SnakesAndLadders: TextRepresentable {
     var textualDescription: String {
         return &quot;A game of Snakes and Ladders with \(finalSquare) squares&quot;
     }
 }
 print(game.textualDescription)
-
 //有条件的遵守协议
 extension Array: TextRepresentable where Element: TextRepresentable {
     var textualDescription: String {
@@ -257,7 +461,6 @@ extension Array: TextRepresentable where Element: TextRepresentable {
 }
 let myDice = [d6, d12]
 print(myDice.textualDescription)
-
 //通过协议适应某种类型
 //如果某个类型已经符合协议的所有要求，但尚未声明它采用该协议，则可以使其采用带有空扩展的协议
 struct Hamster {
@@ -271,11 +474,150 @@ let simonTheHamster = Hamster(name: &quot;Simon&quot;)
 let somethingTextRepresentable: TextRepresentable = simonTheHamster
 print(somethingTextRepresentable.textualDescription)
 // Prints &quot;A hamster named Simon&quot;
-
 //协议类型的集合
 let things: [TextRepresentable] = [game, d12, simonTheHamster]
 for thing in things {
     print(thing.textualDescription)
 }
+//协议继承</code></pre>
+                      <p>还是有点烧脑….</p>
+                      <p><strong>–EOF–</strong></p>
 
-//协议继承</code></pre><p>还是有点烧脑….</p><p><strong>–EOF–</strong></p></div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者： </strong>喵小咪</li><li class="post-copyright-link"><strong>本文链接：</strong> <a href="https://jingxuetao.com/protocols/" title="Protocols">https://jingxuetao.com/protocols/</a></li><li class="post-copyright-license"><strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li></ul></div><footer class="post-footer"><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/generics/" rel="next" title="Generics"><i class="fa fa-chevron-left"></i> Generics</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"><a href="/oc-object-classify/" rel="prev" title="OC对象的分类">OC对象的分类 <i class="fa fa-chevron-right"></i></a></div></div></footer></div></article></div></div><div class="comments" id="comments"><div id="disqus_thread"><noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript></div></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span> <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span> <span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc">文章目录</li><li class="sidebar-nav-overview">站点概览</li></ul><div class="post-toc-wrap sidebar-panel"></div><div class="site-overview-wrap sidebar-panel"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="喵小咪"><p class="site-author-name" itemprop="name">喵小咪</p><div class="site-description" itemprop="description"></div></div><div class="site-state-wrap motion-element"><nav class="site-state"><div class="site-state-item site-state-posts"><a href="/archives/"><span class="site-state-item-count">60</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"><a href="/categories/"><span class="site-state-item-count">12</span> <span class="site-state-item-name">分类</span></a></div></nav></div></div></div></aside><div id="sidebar-dimmer"></div></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">鲁ICP备14023895号-1 </a><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=" rel="noopener" target="_blank"></a>&copy; 2014 – <span itemprop="copyrightYear">2019</span> <span class="with-love" id="animate"><i class="fa fa-user"></i> </span><span class="author" itemprop="copyrightHolder">喵小咪</span></div><div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div><span class="post-meta-divider">|</span><div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.0</div></div></footer></div><script src="/lib/anime.min.js?v=3.1.0"></script><script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script><script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script><script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script><script src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script><script src="/js/schemes/pisces.js?v=7.4.0"></script><script src="/js/next-boot.js?v=7.4.0"></script><script src="/js/local-search.js?v=7.4.0"></script><script>function disqus_config(){this.page.url="https://jingxuetao.com/protocols/",this.page.identifier="protocols/",this.page.title="Protocols"}function loadComments(){if(window.DISQUS)DISQUS.reset({reload:!0,config:disqus_config});else{var e=document,t=e.createElement("script");t.src="https://miao-xiao-mi-de-bo-ke.disqus.com/embed.js",t.setAttribute("data-timestamp",""+ +new Date),(e.head||e.body).appendChild(t)}}window.addEventListener("load",loadComments,!1)</script></body></html>
+                      <!--kg-card-end: markdown-->
+                    </div>
+                    <div>
+                      <ul class="post-copyright">
+                        <li class="post-copyright-author">
+                          <strong>本文作者： </strong>喵小咪</li>
+                        <li class="post-copyright-link">
+                          <strong>本文链接：</strong>
+                          <a href="https://jingxuetao.com/protocols/" title="Protocols">https://jingxuetao.com/protocols/</a>
+                        </li>
+                        <li class="post-copyright-license">
+                          <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+                      </ul>
+                    </div>
+                    <footer class="post-footer">
+                      <div class="post-nav">
+                        <div class="post-nav-next post-nav-item">
+                          <a href="/generics/" rel="next" title="Generics">
+                            <i class="fa fa-chevron-left"></i> Generics
+                          </a>
+                        </div>
+                        <span class="post-nav-divider"></span>
+                        <div class="post-nav-prev post-nav-item">
+                          <a href="/oc-object-classify/" rel="prev" title="OC对象的分类">
+                            OC对象的分类 <i class="fa fa-chevron-right"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </footer>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <div class="comments" id="comments">
+              <div id="disqus_thread">
+                <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+              </div>
+            </div>
+          </div>
+          <div class="sidebar-toggle">
+            <div class="sidebar-toggle-line-wrap">
+              <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+              <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+              <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+            </div>
+          </div>
+          <aside class="sidebar">
+            <div class="sidebar-inner">
+              <ul class="sidebar-nav motion-element">
+                <li class="sidebar-nav-toc">
+                  文章目录
+                </li>
+                <li class="sidebar-nav-overview">
+                  站点概览
+                </li>
+              </ul>
+
+              <!--noindex-->
+              <div class="post-toc-wrap sidebar-panel">
+              </div> <!--/noindex-->
+              <div class="site-overview-wrap sidebar-panel">
+                <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                  <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="喵小咪">
+                  <p class="site-author-name" itemprop="name">喵小咪</p>
+                  <div class="site-description" itemprop="description"></div>
+                </div>
+                <div class="site-state-wrap motion-element">
+                  <nav class="site-state">
+                    <div class="site-state-item site-state-posts">
+                      <a href="/archives/">
+                        <span class="site-state-item-count">60</span>
+                        <span class="site-state-item-name">日志</span>
+                      </a>
+                    </div>
+                    <div class="site-state-item site-state-categories">
+                      <a href="/categories/">
+                        <span class="site-state-item-count">12</span>
+                        <span class="site-state-item-name">分类</span>
+                      </a>
+                    </div>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </aside>
+          <div id="sidebar-dimmer"></div>
+        </div>
+      </main>
+      <footer id="footer" class="footer">
+        <div class="footer-inner">
+          <div class="copyright"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">鲁ICP备14023895号-1 </a>
+            <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=" rel="noopener" target="_blank"> </a>&copy; 2014 – <span itemprop="copyrightYear">2019</span>
+            <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+            <span class="author" itemprop="copyrightHolder">喵小咪</span>
+          </div>
+          <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+          <span class="post-meta-divider">|</span>
+          <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.0</div>
+        </div>
+      </footer>
+    </div>
+    <script src="/lib/anime.min.js?v=3.1.0"></script>
+    <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+    <script src="/js/utils.js?v=7.4.0"></script>
+    <script src="/js/motion.js?v=7.4.0"></script>
+    <script src="/js/schemes/pisces.js?v=7.4.0"></script>
+    <script src="/js/next-boot.js?v=7.4.0"></script>
+    <script src="/js/local-search.js?v=7.4.0"></script>
+    <script>
+      function disqus_config() {
+        this.page.url = "https://jingxuetao.com/protocols/";
+        this.page.identifier = "protocols/";
+        this.page.title = 'Protocols';
+      };
+      function loadComments() {
+        if (window.DISQUS) {
+          DISQUS.reset({
+            reload: true,
+            config: disqus_config
+          });
+        } else {
+          var d = document,
+            s = d.createElement('script');
+          s.src = 'https://miao-xiao-mi-de-bo-ke.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', '' + +new Date());
+          (d.head || d.body).appendChild(s);
+        }
+      }
+      window.addEventListener('load', loadComments, false);
+    </script>
+  </body>
+</html>
