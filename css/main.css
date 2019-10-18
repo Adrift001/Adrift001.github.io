@@ -1133,7 +1133,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ffc6e8;
+  background: #4ba1ff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1838,9 +1838,6 @@ article:last-child .post-eof {
   .post-meta-item-icon {
     display: inline-block;
   }
-}
-.post-meta-item-text {
-  display: none;
 }
 @media (max-width: 991px) {
   .post-meta-item-text {
