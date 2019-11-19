@@ -209,6 +209,49 @@
               <div id="posts" class="posts-expand">
                 <article itemscope itemtype="http://schema.org/Article">
                   <div class="post-block home">
+                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/avoid-force-exchange/">
+                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="喵小咪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="喵小咪的博客">
+    </span>
+                    <header class="post-header">
+                      <h1 class="post-title" itemprop="name headline">
+                        <a href="/avoid-force-exchange/" class="post-title-link" itemprop="url">避免强转</a>
+                      </h1>
+                      <div class="post-meta">
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                        <span class="post-meta-item-text">发表于</span>
+                        <time title="创建时间：2019-11-19 09:05:41" itemprop="dateCreated datePublished" datetime="2019-11-19T09:05:41+00:00">2019-11-19</time>
+                        </span>
+                      </div>
+                    </header>
+                    <div class="post-body" itemprop="articleBody">
+                      <p><img alt data-src="https://source.unsplash.com/w24KoifPovw/1600x900"></p>
+                      <blockquote class="blockquote-center">
+                        总得说点什么,🙂
+                      </blockquote>
+
+                      <!--noindex-->
+                      <div class="post-button">
+                        <a class="btn" href="/avoid-force-exchange/#more" rel="contents">
+                          阅读全文 &raquo;
+                        </a>
+                      </div> <!--/noindex-->
+                    </div>
+                    <footer class="post-footer">
+                      <div class="post-eof"></div>
+                    </footer>
+                  </div>
+                </article>
+                <article itemscope itemtype="http://schema.org/Article">
+                  <div class="post-block home">
                     <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/jian/">
                     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="喵小咪">
@@ -705,64 +748,6 @@ print(p.weight)</code></pre>
                     </footer>
                   </div>
                 </article>
-                <article itemscope itemtype="http://schema.org/Article">
-                  <div class="post-block home">
-                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/swift-renames-c-functions/">
-                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="喵小咪">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="喵小咪的博客">
-    </span>
-                    <header class="post-header">
-                      <h1 class="post-title" itemprop="name headline">
-                        <a href="/swift-renames-c-functions/" class="post-title-link" itemprop="url">Swift重命名C函数</a>
-                      </h1>
-                      <div class="post-meta">
-                        <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-                        <span class="post-meta-item-text">发表于</span>
-                        <time title="创建时间：2019-08-05 01:26:51" itemprop="dateCreated datePublished" datetime="2019-08-05T01:26:51+00:00">2019-08-05</time>
-                        </span>
-                        <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-                        <span class="post-meta-item-text">分类于</span>
-                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
-                        </span>
-                      </div>
-                    </header>
-                    <div class="post-body" itemprop="articleBody">
-                      <p> <strong>Test.h</strong></p>
-                      <pre><code>#ifndef Test_h
-#define Test_h
-#include &lt;stdio.h&gt;
-int sum(int v1, int v2);
-#endif /* Test_h */</code></pre>
-                      <p><strong>Test.c</strong></p>
-                      <pre><code>#include &quot;Test.h&quot;
-int sum(int v1, int v2) {
-    return v1 + v2;
-}</code></pre>
-                      <p><strong>main.swift</strong></p>
-                      <pre><code>// 重命名c函数
-@_silgen_name(&quot;sum&quot;)
-func swift_sum(_ v1: Int32, _ v2: Int32) -&gt; Int32
-print(swift_sum(1, 2))</code></pre>
-                      <p><strong>–EOF–</strong></p>
-
-                      <!--kg-card-end: markdown-->
-                    </div>
-                    <footer class="post-footer">
-                      <div class="post-eof"></div>
-                    </footer>
-                  </div>
-                </article>
               </div>
               <nav class="pagination">
                 <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
@@ -800,7 +785,7 @@ print(swift_sum(1, 2))</code></pre>
                   <nav class="site-state">
                     <div class="site-state-item site-state-posts">
                       <a href="/archives/">
-                        <span class="site-state-item-count">62</span>
+                        <span class="site-state-item-count">63</span>
                         <span class="site-state-item-name">日志</span>
                       </a>
                     </div>
