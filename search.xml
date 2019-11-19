@@ -11,6 +11,7 @@
 
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import Foundation</span><br><span class="line"></span><br><span class="line">class Person &#123;</span><br><span class="line">    var name = &quot;&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Teacher: Person &#123;</span><br><span class="line">    var age = 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let teacher: Person = Teacher()</span><br><span class="line"></span><br><span class="line">// 强转使用</span><br><span class="line">let age = (teacher as! Teacher).age</span><br><span class="line"></span><br><span class="line">// 避免强转</span><br><span class="line">if let tea = Optional(teacher) as? Teacher &#123;</span><br><span class="line">    print(tea.age)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p><strong>–EOF–</strong></p>
 ]]></content>
   </entry>
   <entry>
