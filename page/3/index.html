@@ -209,6 +209,96 @@
               <div id="posts" class="posts-expand">
                 <article itemscope itemtype="http://schema.org/Article">
                   <div class="post-block home">
+                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/finding-the-maximum-subcolumn-sum/">
+                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Optional">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Optional Blog">
+    </span>
+                    <header class="post-header">
+                      <h1 class="post-title" itemprop="name headline">
+                        <a href="/finding-the-maximum-subcolumn-sum/" class="post-title-link" itemprop="url">求最大子列和</a>
+                      </h1>
+                      <div class="post-meta">
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                        <span class="post-meta-item-text">发表于</span>
+                        <time title="创建时间：2019-05-25 11:37:52" itemprop="dateCreated datePublished" datetime="2019-05-25T11:37:52+00:00">2019-05-25</time>
+                        </span>
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+                        <span class="post-meta-item-text">分类于</span>
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a></span>
+                        </span>
+                      </div>
+                    </header>
+                    <div class="post-body" itemprop="articleBody">
+                      <pre><code>var nums = [1, -2, 2, -13, 6, -10, 3, 12]
+/// O(n^3)
+func maxSubSequenceSum1() {
+    var maxSum = 0
+    for i in 0..&lt;nums.count {
+        for j in i..&lt;nums.count {
+            var thisSum = 0
+            for k in i...j {
+                thisSum += nums[k]
+            }
+            if thisSum &gt; maxSum {
+                maxSum = thisSum
+            }
+        }
+    }
+    print(maxSum)
+}
+/// O(n^2)
+func maxSubSequenceSum2() {
+    var maxSum = 0
+    for i in 0..&lt;nums.count {
+        var thisSum = 0
+        for j in i..&lt;nums.count {
+            thisSum += nums[j]
+            if thisSum &gt; maxSum {
+                maxSum = thisSum
+            }
+        }
+    }
+    print(maxSum)
+}
+/// O(n)
+func maxSubSequenceSum3() {
+    var maxSum = 0, thisSum = 0
+    for i in 0..&lt;nums.count {
+        thisSum += nums[i]
+        if thisSum &gt; 0 {
+            maxSum = thisSum
+        } else { //如果thisSum小于0,则不可能使后面的部分和增大,抛弃.
+            thisSum = 0
+        }
+    }
+    print(maxSum)
+}
+maxSubSequenceSum1()
+maxSubSequenceSum2()
+maxSubSequenceSum3()</code></pre>
+                      <p>算法很重要呐 😄😄</p>
+                      <p><strong>–EOF–</strong></p>
+
+                      <!--kg-card-end: markdown-->
+                    </div>
+                    <footer class="post-footer">
+                      <div class="post-eof"></div>
+                    </footer>
+                  </div>
+                </article>
+                <article itemscope itemtype="http://schema.org/Article">
+                  <div class="post-block home">
                     <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/how-to-break-out-of-multiple-loop-levels-using-labeled-statements/">
                     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Optional">
@@ -1468,46 +1558,6 @@ attributes #0 = { noinline nounwind optnone ssp uwtable &quot;correctly-rounded-
                     </footer>
                   </div>
                 </article>
-                <article itemscope itemtype="http://schema.org/Article">
-                  <div class="post-block home">
-                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/battleship/">
-                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Optional">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Optional Blog">
-    </span>
-                    <header class="post-header">
-                      <h1 class="post-title" itemprop="name headline">
-                        <a href="/battleship/" class="post-title-link" itemprop="url">战舰</a>
-                      </h1>
-                      <div class="post-meta">
-                        <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-                        <span class="post-meta-item-text">发表于</span>
-                        <time title="创建时间：2018-09-30 14:53:31" itemprop="dateCreated datePublished" datetime="2018-09-30T14:53:31+00:00">2018-09-30</time>
-                        </span>
-                        <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-                        <span class="post-meta-item-text">分类于</span>
-                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
-                        </span>
-                      </div>
-                    </header>
-                    <div class="post-body" itemprop="articleBody">
-                      <p> <strong>–EOF–</strong></p>
-                    </div>
-                    <footer class="post-footer">
-                      <div class="post-eof"></div>
-                    </footer>
-                  </div>
-                </article>
               </div>
               <nav class="pagination">
                 <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
@@ -1545,7 +1595,7 @@ attributes #0 = { noinline nounwind optnone ssp uwtable &quot;correctly-rounded-
                   <nav class="site-state">
                     <div class="site-state-item site-state-posts">
                       <a href="/archives/">
-                        <span class="site-state-item-count">63</span>
+                        <span class="site-state-item-count">64</span>
                         <span class="site-state-item-name">日志</span>
                       </a>
                     </div>
