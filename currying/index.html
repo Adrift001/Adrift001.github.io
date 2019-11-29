@@ -84,18 +84,18 @@
         sidebarPadding: 40
       };
     </script>
-    <meta name="description" content="现在面临的场景在做项目过程中难免会创建很多ViewModel,这些ViewModel难免有些共同的方法跟属性,这些共同的方法和属性可以单独提取出来,这就用到category.我现在的具体场景是:每个ViewModel都需要请求数据,当ViewController从当前界面切换到另一个画面时,暂停本页面的网络请求. 源码NSObject+ViewModel.h文件   @interface NSOb">
+    <meta name="description" content="柯里化">
     <meta name="keywords" content="Optional Swift">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="通过runtime让属性在category上飞">
-    <meta property="og:url" content="https://jingxuetao.com/by-runtime-to-allow-properties-to-fly-on-category/index.html">
+    <meta property="og:title" content="柯里化">
+    <meta property="og:url" content="https://jingxuetao.com/currying/index.html">
     <meta property="og:site_name" content="Optional Blog">
-    <meta property="og:description" content="现在面临的场景在做项目过程中难免会创建很多ViewModel,这些ViewModel难免有些共同的方法跟属性,这些共同的方法和属性可以单独提取出来,这就用到category.我现在的具体场景是:每个ViewModel都需要请求数据,当ViewController从当前界面切换到另一个画面时,暂停本页面的网络请求. 源码NSObject+ViewModel.h文件   @interface NSOb">
+    <meta property="og:description" content="柯里化">
     <meta property="og:locale" content="zh-CN">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="通过runtime让属性在category上飞">
-    <meta name="twitter:description" content="现在面临的场景在做项目过程中难免会创建很多ViewModel,这些ViewModel难免有些共同的方法跟属性,这些共同的方法和属性可以单独提取出来,这就用到category.我现在的具体场景是:每个ViewModel都需要请求数据,当ViewController从当前界面切换到另一个画面时,暂停本页面的网络请求. 源码NSObject+ViewModel.h文件   @interface NSOb">
-    <link rel="canonical" href="https://jingxuetao.com/by-runtime-to-allow-properties-to-fly-on-category/">
+    <meta name="twitter:title" content="柯里化">
+    <meta name="twitter:description" content="柯里化">
+    <link rel="canonical" href="https://jingxuetao.com/currying/">
     <script id="page-configurations">
       // https://hexo.io/docs/variables.html
       CONFIG.page = {
@@ -106,7 +106,7 @@
         isArchive: false
       };
     </script>
-    <title>通过runtime让属性在category上飞 | Optional Blog</title>
+    <title>柯里化 | Optional Blog</title>
     <noscript>
       <style>
         .use-motion .brand,
@@ -212,7 +212,7 @@
               <div id="posts" class="posts-expand">
                 <article itemscope itemtype="http://schema.org/Article">
                   <div class="post-block post">
-                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/by-runtime-to-allow-properties-to-fly-on-category/">
+                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/currying/">
                     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Optional">
       <meta itemprop="description" content="">
@@ -222,7 +222,7 @@
       <meta itemprop="name" content="Optional Blog">
     </span>
                     <header class="post-header">
-                      <h1 class="post-title" itemprop="name headline">通过runtime让属性在category上飞
+                      <h1 class="post-title" itemprop="name headline">柯里化
                       </h1>
                       <div class="post-meta">
                         <span class="post-meta-item">
@@ -230,74 +230,34 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
                         <span class="post-meta-item-text">发表于</span>
-                        <time title="创建时间：2016-02-19 13:58:00" itemprop="dateCreated datePublished" datetime="2016-02-19T13:58:00+00:00">2016-02-19</time>
+                        <time title="创建时间：2019-11-29 11:34:15" itemprop="dateCreated datePublished" datetime="2019-11-29T11:34:15+00:00">2019-11-29</time>
                         </span>
                         <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
                         <span class="post-meta-item-text">分类于</span>
-                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a></span>
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
                         </span>
                       </div>
                     </header>
                     <div class="post-body" itemprop="articleBody">
-                      <h3 id="现在面临的场景"><a href="#现在面临的场景" class="headerlink" title="现在面临的场景"></a>现在面临的场景</h3>
-                      <p>在做项目过程中难免会创建很多ViewModel,这些ViewModel难免有些共同的方法跟属性,这些共同的方法和属性可以单独提取出来,这就用到category.我现在的具体场景是:每个ViewModel都需要请求数据,当ViewController从当前界面切换到另一个画面时,暂停本页面的网络请求.</p>
-                      <h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3>
-                      <p>NSObject+ViewModel.h文件</p>
-
-                      <!--kg-card-begin: code-->
-                      <pre><code>@interface NSObject (ViewModel)
-@property (nonatomic) NSURLSessionDataTask *dataTask;
-- (void)cancelTask; //取消任务
-- (void)suspendTask; //暂停任务
-- (void)resumeTask; //继续任务
-@end</code></pre>
-
-                      <!--kg-card-end: code-->
-                      <p>NSObject+ViewModel.m文件</p>
-
-                      <!--kg-card-begin: code-->
-                      <pre><code>#import &quot;NSObject+ViewModel.h&quot;
-#import &lt;objc/runtime.h&gt;//得引入runtime
-static const void *dataTaskKey = &amp;dataTaskKey;
-@implementation NSObject (ViewModel)
-//通过运行时, 实现setter方法动态的绑定属性到对象
-/**
-  参数一 源对象,此处是self
-  参数二 唯一静态变量,dataTaskKey保存的是他自己的地址,因为是静态的,所以地址不会重复
-  参数三 关联的对象
-  参数四 关联策略(属性的内存管理方式),关联策略详细解释在下面
-**/
-- (void)setDataTask:(NSURLSessionDataTask *)dataTask{
-    objc_setAssociatedObject(self, dataTaskKey, dataTask, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-/**
-  参数一 源对象,此处是self
-  参数二 唯一静态变量,dataTaskKey保存的是他自己的地址,因为是静态的,所以地址不会重复
-**/
-- (NSURLSessionDataTask *)dataTask{
-    return objc_getAssociatedObject(self, dataTaskKey);
-}
-- (void)resumeTask{
-    [self.dataTask resume];
-}
-- (void)cancelTask{
-    [self.dataTask cancel];
-}
-- (void)suspendTask{
-    [self.dataTask suspend];
-}
-@end</code></pre>
-
-                      <!--kg-card-end: code-->
-                      <h3 id="关联策略"><a href="#关联策略" class="headerlink" title="关联策略"></a>关联策略</h3>
-                      <p>&nbsp; &nbsp; &nbsp;Behavior &nbsp; &nbsp;@property Equivalent &nbsp; &nbsp;Description &nbsp; &nbsp; &nbsp; &nbsp;OBJC_ASSOCIATION_ASSIGN &nbsp; &nbsp;@property (assign) 或 @property (unsafe_unretained) &nbsp; &nbsp;指定一个关联对象的弱引用。 &nbsp; &nbsp; &nbsp; &nbsp;OBJC_ASSOCIATION_RETAIN_NONATOMIC &nbsp; &nbsp;@property (nonatomic, strong) &nbsp; &nbsp;指定一个关联对象的强引用，不能被原子化使用。 &nbsp; &nbsp; &nbsp; &nbsp;OBJC_ASSOCIATION_COPY_NONATOMIC &nbsp; &nbsp;@property (nonatomic, copy) &nbsp; &nbsp;指定一个关联对象的copy引用，不能被原子化使用。 &nbsp; &nbsp; &nbsp; &nbsp;OBJC_ASSOCIATION_RETAIN &nbsp; &nbsp;@property (atomic, strong) &nbsp; &nbsp;指定一个关联对象的强引用，能被原子化使用。 &nbsp; &nbsp; &nbsp; &nbsp;OBJC_ASSOCIATION_COPY &nbsp; &nbsp;@property (atomic, copy) &nbsp; &nbsp;指定一个关联对象的copy引用，能被原子化使用。 &nbsp;</p>
-                      <blockquote>
-                        <p>这两个方法可以让一个对象和另一个对象关联，就是说一个对象可以保持对另一个对象的引用，并获取那个对象。有了这些，就能实现属性功能了。</p>
+                      <p><img alt data-src="https://source.unsplash.com/tJWZ3L9WLnE/1600x900"></p>
+                      <blockquote class="blockquote-center">
+                        柯里化
                       </blockquote>
-                      <h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3>
+                      <a id="more"></a>
+                      <figure class="highlight plain">
+                        <table>
+                          <tr>
+                            <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre>
+                            </td>
+                            <td class="code"><pre><span class="line">import Foundation</span><br><span class="line"></span><br><span class="line">/// 柯里化</span><br><span class="line">/// 将一个接收多参数的函数变换为一系列只接收一个单个参数的函数</span><br><span class="line"></span><br><span class="line">func add1(_ v1: Int, _ v2: Int) -&gt; Int &#123;</span><br><span class="line">    return v1 + v2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func add(_ v: Int) -&gt; (Int) -&gt; Int &#123;</span><br><span class="line">    &#123; $0 + v &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let result1 = add1(10, 20)</span><br><span class="line">let result2 = add(20)(10)</span><br><span class="line">print(result1)</span><br><span class="line">print(result2)</span><br><span class="line"></span><br><span class="line">func add(_ v1: Int, _ v2: Int, _ v3: Int) -&gt; Int &#123;</span><br><span class="line">    return v1 + v2 + v3</span><br><span class="line">&#125;</span><br><span class="line">//                      v2        v1     result</span><br><span class="line">func add2(_ v3: Int) -&gt; (Int) -&gt; (Int) -&gt; Int &#123;</span><br><span class="line">//func add(_ v3: Int) -&gt; ((Int) -&gt; ((Int) -&gt; Int)) &#123;</span><br><span class="line">    // 20</span><br><span class="line">    return &#123; v2 in</span><br><span class="line">        // 10</span><br><span class="line">        return &#123; v1 in</span><br><span class="line">            return v1 + v2 + v3</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let result3 = add(10, 20, 30)</span><br><span class="line">let result4 = add2(30)(20)(10)</span><br><span class="line">print(result3)</span><br><span class="line">print(result4)</span><br><span class="line">/// 不断地函数嵌套, 最里层做计算</span><br><span class="line"></span><br><span class="line">func currying&lt;A, B, C&gt;(_ fn: @escaping (A, B) -&gt; C) -&gt; (B) -&gt; (A) -&gt; C &#123;</span><br><span class="line">    return &#123; b in</span><br><span class="line">        return &#123; a in</span><br><span class="line">            return fn(a, b)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let result5 = currying(add1)(20)(10)</span><br><span class="line">print(result5)</span><br></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                      <p><strong>–EOF–</strong></p>
                     </div>
                     <div>
                       <ul class="post-copyright">
@@ -305,7 +265,7 @@ static const void *dataTaskKey = &amp;dataTaskKey;
                           <strong>本文作者： </strong>Optional</li>
                         <li class="post-copyright-link">
                           <strong>本文链接：</strong>
-                          <a href="https://jingxuetao.com/by-runtime-to-allow-properties-to-fly-on-category/" title="通过runtime让属性在category上飞">https://jingxuetao.com/by-runtime-to-allow-properties-to-fly-on-category/</a>
+                          <a href="https://jingxuetao.com/currying/" title="柯里化">https://jingxuetao.com/currying/</a>
                         </li>
                         <li class="post-copyright-license">
                           <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -314,15 +274,12 @@ static const void *dataTaskKey = &amp;dataTaskKey;
                     <footer class="post-footer">
                       <div class="post-nav">
                         <div class="post-nav-next post-nav-item">
-                          <a href="/implementation-of-https-access-station/" rel="next" title="全站实现HTTPS访问">
-                            <i class="fa fa-chevron-left"></i> 全站实现HTTPS访问
+                          <a href="/generic/" rel="next" title="泛型">
+                            <i class="fa fa-chevron-left"></i> 泛型
                           </a>
                         </div>
                         <span class="post-nav-divider"></span>
                         <div class="post-nav-prev post-nav-item">
-                          <a href="/sorrow-of-a-virtual-machine/" rel="prev" title="一台虚拟机的悲哀">
-                            一台虚拟机的悲哀 <i class="fa fa-chevron-right"></i>
-                          </a>
                         </div>
                       </div>
                     </footer>
@@ -356,14 +313,6 @@ static const void *dataTaskKey = &amp;dataTaskKey;
 
               <!--noindex-->
               <div class="post-toc-wrap sidebar-panel">
-                <div class="post-toc motion-element">
-                  <ol class="nav">
-                    <li class="nav-item nav-level-3"><a class="nav-link" href="#现在面临的场景"><span class="nav-number">1.</span> <span class="nav-text">现在面临的场景</span></a></li>
-                    <li class="nav-item nav-level-3"><a class="nav-link" href="#源码"><span class="nav-number">2.</span> <span class="nav-text">源码</span></a></li>
-                    <li class="nav-item nav-level-3"><a class="nav-link" href="#关联策略"><span class="nav-number">3.</span> <span class="nav-text">关联策略</span></a></li>
-                    <li class="nav-item nav-level-3"><a class="nav-link" href="#END"><span class="nav-number">4.</span> <span class="nav-text">END</span></a></li>
-                  </ol>
-                </div>
               </div> <!--/noindex-->
               <div class="site-overview-wrap sidebar-panel">
                 <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -421,9 +370,9 @@ static const void *dataTaskKey = &amp;dataTaskKey;
     <script src="/js/local-search.js?v=7.4.0"></script>
     <script>
       function disqus_config() {
-        this.page.url = "https://jingxuetao.com/by-runtime-to-allow-properties-to-fly-on-category/";
-        this.page.identifier = "by-runtime-to-allow-properties-to-fly-on-category/";
-        this.page.title = '通过runtime让属性在category上飞';
+        this.page.url = "https://jingxuetao.com/currying/";
+        this.page.identifier = "currying/";
+        this.page.title = '柯里化';
       };
       function loadComments() {
         if (window.DISQUS) {

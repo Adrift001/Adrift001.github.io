@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>柯里化</title>
+    <url>/currying/</url>
+    <content><![CDATA[<p><img alt data-src="https://source.unsplash.com/tJWZ3L9WLnE/1600x900"></p>
+<blockquote class="blockquote-center">
+柯里化
+</blockquote>
+<a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import Foundation</span><br><span class="line"></span><br><span class="line">/// 柯里化</span><br><span class="line">/// 将一个接收多参数的函数变换为一系列只接收一个单个参数的函数</span><br><span class="line"></span><br><span class="line">func add1(_ v1: Int, _ v2: Int) -&gt; Int &#123;</span><br><span class="line">    return v1 + v2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func add(_ v: Int) -&gt; (Int) -&gt; Int &#123;</span><br><span class="line">    &#123; $0 + v &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let result1 = add1(10, 20)</span><br><span class="line">let result2 = add(20)(10)</span><br><span class="line">print(result1)</span><br><span class="line">print(result2)</span><br><span class="line"></span><br><span class="line">func add(_ v1: Int, _ v2: Int, _ v3: Int) -&gt; Int &#123;</span><br><span class="line">    return v1 + v2 + v3</span><br><span class="line">&#125;</span><br><span class="line">//                      v2        v1     result</span><br><span class="line">func add2(_ v3: Int) -&gt; (Int) -&gt; (Int) -&gt; Int &#123;</span><br><span class="line">//func add(_ v3: Int) -&gt; ((Int) -&gt; ((Int) -&gt; Int)) &#123;</span><br><span class="line">    // 20</span><br><span class="line">    return &#123; v2 in</span><br><span class="line">        // 10</span><br><span class="line">        return &#123; v1 in</span><br><span class="line">            return v1 + v2 + v3</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let result3 = add(10, 20, 30)</span><br><span class="line">let result4 = add2(30)(20)(10)</span><br><span class="line">print(result3)</span><br><span class="line">print(result4)</span><br><span class="line">/// 不断地函数嵌套, 最里层做计算</span><br><span class="line"></span><br><span class="line">func currying&lt;A, B, C&gt;(_ fn: @escaping (A, B) -&gt; C) -&gt; (B) -&gt; (A) -&gt; C &#123;</span><br><span class="line">    return &#123; b in</span><br><span class="line">        return &#123; a in</span><br><span class="line">            return fn(a, b)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let result5 = currying(add1)(20)(10)</span><br><span class="line">print(result5)</span><br></pre></td></tr></table></figure>
+
+<p><strong>–EOF–</strong></p>
+]]></content>
+      <categories>
+        <category>Swift</category>
+      </categories>
+  </entry>
+  <entry>
     <title>泛型</title>
     <url>/generic/</url>
     <content><![CDATA[<p><img alt data-src="https://source.unsplash.com/KZIT2OYws-s/1600x900"></p>
