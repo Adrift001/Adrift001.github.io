@@ -209,6 +209,48 @@
               <div id="posts" class="posts-expand">
                 <article itemscope itemtype="http://schema.org/Article">
                   <div class="post-block home">
+                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/custom-operator/">
+                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Optional">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Optional Blog">
+    </span>
+                    <header class="post-header">
+                      <h1 class="post-title" itemprop="name headline">
+                        <a href="/custom-operator/" class="post-title-link" itemprop="url">自定义运算符</a>
+                      </h1>
+                      <div class="post-meta">
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                        <span class="post-meta-item-text">发表于</span>
+                        <time title="创建时间：2019-07-23 13:42:46" itemprop="dateCreated datePublished" datetime="2019-07-23T13:42:46+00:00">2019-07-23</time>
+                        </span>
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+                        <span class="post-meta-item-text">分类于</span>
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
+                        </span>
+                      </div>
+                    </header>
+                    <div class="post-body" itemprop="articleBody">
+                      <p> <strong>–EOF–</strong></p>
+
+                      <!--kg-card-end: markdown-->
+                    </div>
+                    <footer class="post-footer">
+                      <div class="post-eof"></div>
+                    </footer>
+                  </div>
+                </article>
+                <article itemscope itemtype="http://schema.org/Article">
+                  <div class="post-block home">
                     <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/sequential-operation-of-linear-tables/">
                     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Optional">
@@ -1142,282 +1184,6 @@ for thing in things {
                     </footer>
                   </div>
                 </article>
-                <article itemscope itemtype="http://schema.org/Article">
-                  <div class="post-block home">
-                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/generics/">
-                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Optional">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Optional Blog">
-    </span>
-                    <header class="post-header">
-                      <h1 class="post-title" itemprop="name headline">
-                        <a href="/generics/" class="post-title-link" itemprop="url">Generics</a>
-                      </h1>
-                      <div class="post-meta">
-                        <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-                        <span class="post-meta-item-text">发表于</span>
-                        <time title="创建时间：2018-11-17 14:49:13" itemprop="dateCreated datePublished" datetime="2018-11-17T14:49:13+00:00">2018-11-17</time>
-                        </span>
-                        <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-                        <span class="post-meta-item-text">分类于</span>
-                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
-                        </span>
-                      </div>
-                    </header>
-                    <div class="post-body" itemprop="articleBody">
-
-                      <!--kg-card-begin: markdown-->
-                      <p>通用代码使您能够根据您定义的要求编写可以使用任何类型的灵活，可重用的函数和类型。您可以编写避免重复的代码，并以清晰，抽象的方式表达其意图。</p>
-                      <p>泛型是Swift最强大的功能之一，Swift标准库的大部分内容都是使用通用代码构建的。</p>
-                      <pre><code>import Foundation
-//泛型函数
-func swapTwoValues&lt;T&gt;(_ a: inout T, _ b: inout T) {
-    let tmp = a
-    a = b
-    b = tmp
-}
-var a = 1, b = 2
-print(&quot;\(a)====\(b)&quot;)
-swapTwoValues(&amp;a, &amp;b)
-print(&quot;\(a)====\(b)&quot;)
-//泛型类型(泛型类,泛型结构体,泛型枚举),听起来挺高大上,其实就是给自定义类加个泛型
-struct Stack&lt;Element&gt; {
-    var items: [Element] = []
-    mutating func push(_ item: Element) {
-        items.append(item)
-    }
-    mutating func pop() -&gt; Element {
-        return items.removeLast()
-    }
-}
-//扩展泛型类型
-extension Stack {
-    var topItem: Element? {
-        return items.isEmpty ? nil : items[items.count - 1]
-    }
-}
-var strings = Stack&lt;String&gt;()
-strings.push(&quot;hello&quot;)
-print(strings.topItem)
-print(strings.pop())
-//泛型约束(不限于泛型类型,除了泛型类型就是TM的泛型函数)
-//泛型约束不能省略,如果省略value == v就不能运行了,没法玩了.
-//泛型约束必须是特定类继承，或符合特定协议或协议组合
-//这里Equable不能被替换为String,因为String是结构体,不能被继承.Int, Bool, Double, anything else...
-//返回值不能用泛型,🙂because the type to use for T is inferred from the types of values passed to the function.
-// (因为类型都是从传递给函数的值的类型推断出来的),除非再传一个参数,类似:
-// func findIndex1&lt;T: Equatable, S: SignedInteger&gt;(of value: T,in array: [T], _ type: S) -&gt; S?
-// 告诉一下Swift,接下来会发生什么,不然Swift心里会发慌...
-func findIndex1&lt;T: Equatable&gt;(of value: T,in array: [T]) -&gt; Int? {
-    for (i, v) in array.enumerated() {
-        if value == v {
-            return i
-        }
-    }
-    return nil
-}
-let arr = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;]
-let index = findIndex1(of: &quot;a&quot;, in: arr)
-print(index)
-//关联类型
-//协议中的泛型,实现具体类型的时候,由自己指定泛型类型为某种具体类型.
-protocol Container {
-    associatedtype Item
-    mutating func append(_ item: Item)
-    var count: Int { get }
-    subscript(i: Int) -&gt; Item { get }
-}
-//这里typealias item不能等于协议,例如typealias Item = Equatable
-//这样Swift就不知道`EquableStack`应该怎么分配内存了有木有...,谁TM知道`EquableStack`实现了几个协议
-//脚踏了几只船?
-//typealias Item = Int删掉也可以,可以通过append,推断出Item类型
-struct IntStack: Container {
-    mutating func push(_ item: Item) {
-        items.append(item)
-    }
-    mutating func pop() -&gt; Item {
-        return items.removeLast()
-    }
-    typealias Item = Int
-    var items: [Item] = []
-    mutating func append(_ item: Item) {
-        items.append(item)
-    }
-    var count: Int {
-        return items.count
-    }
-    subscript(i: Int) -&gt; Item {
-        return items[i]
-    }
-}
-//上面的Stack可以写作下面方式
-//因为通过append可以知道Element为Item的具体类型,所以typealias可以省略
-//又因为Stack1是泛型类型,Element创建实例对象时具体指出,所以,一下代码完全正确.
-//可以写typealias Item = Element, 然后Element跟Item可以互相交叉替换🙂
-struct Stack1&lt;Element&gt;: Container {
-    var items = [Element]()
-    mutating func push(_ item: Element) {
-        items.append(item)
-    }
-    mutating func pop() -&gt; Element {
-        return items.removeLast()
-    }
-    //conformance to the Container
-    mutating func append(_ item: Element) {
-        push(item)
-    }
-    var count: Int {
-        return items.count
-    }
-    subscript(i: Int) -&gt; Element {
-        return items[i]
-    }
-}
-var strings1 = Stack1&lt;String&gt;()
-strings.push(&quot;hello&quot;)
-print(strings.topItem)
-print(strings.pop())
-//扩展现有类型以指定关联类型
-//array 中有append用来推断具体类型,并且有count,有下标
-//所以以后完全可以使用Array作为Container
-//但是typealias Container = Array也是不错的
-extension Array: Container {}
-//将约束添加到关联类型
-//如果这样定义,得像下面这样搞
-//struct Stack1&lt;Element: Equatable&gt;: Container
-protocol Container1 {
-    associatedtype Item: Equatable
-    mutating func append(_ item: Item)
-    var count: Int { get }
-    subscript(i: Int) -&gt; Item { get }
-}
-//在关联类型的约束中使用协议
-//这个JB关系有点乱,有木有...
-//儿子有一个家,爹有一个家,儿子从爹那继承过来的家跟自己成立的家必须是一个家,不能搞分家...
-//大概就是这样了....
-protocol SuffixableContainer: Container {
-    associatedtype Suffix: SuffixableContainer where Suffix.Item == Item
-    func suffix(_ size: Int) -&gt; Suffix
-}
-extension Stack1: SuffixableContainer {
-    func suffix(_ size: Int) -&gt; Stack1 {
-        var result = Stack1()
-        //max是用来防止程序崩溃的,🙂
-        for index in max((count-size), 0)..&lt;count {
-            result.append(self[index])
-        }
-        return result
-    }
-    // Inferred that Suffix is Stack.
-}
-var stackOfInts = Stack1&lt;Int&gt;()
-stackOfInts.append(10)
-stackOfInts.append(20)
-stackOfInts.append(30)
-let suffix = stackOfInts.suffix(3)
-//Generic Where Clauses(通用条款)
-//泛型条件约束吧... where
-func allItemsMatch&lt;C1: Container, C2: Container&gt;(_ someContainer: C1, _ anotherContainer: C2) -&gt; Bool where C1.Item == C2.Item, C1.Item: Equatable {
-    // Check that both containers contain the same number of items.
-    if someContainer.count != anotherContainer.count {
-        return false
-    }
-    // Check each pair of items to see if they&apos;re equivalent.
-    for i in 0..&lt;someContainer.count {
-        if someContainer[i] != anotherContainer[i] {
-            return false
-        }
-    }
-    // All items match, so return true.
-    return true
-}
-var stackOfStrings = Stack1&lt;String&gt;()
-stackOfStrings.push(&quot;uno&quot;)
-stackOfStrings.push(&quot;dos&quot;)
-stackOfStrings.push(&quot;tres&quot;)
-var arrayOfStrings = [&quot;uno&quot;, &quot;dos&quot;, &quot;tres&quot;]
-if allItemsMatch(stackOfStrings, arrayOfStrings) {
-    print(&quot;All items match.&quot;)
-} else {
-    print(&quot;Not all items match.&quot;)
-}
-extension Stack1 where Element: Equatable {
-    func isTop(_ item: Element) -&gt; Bool {
-        guard let last = items.last else {
-            return false
-        }
-        return item == last
-    }
-}
-//如果将没有遵守Equatable用于该方法,会报错
-if stackOfStrings.isTop(&quot;tres&quot;) {
-    print(&quot;Top element is tres.&quot;)
-} else {
-    print(&quot;Top element is something else.&quot;)
-}
-//上面where扩展类型,下面where扩展协议,这TM就比较6了...
-extension Container where Item: Equatable {
-    func startsWith(_ item: Item) -&gt; Bool {
-        return count &gt;= 1 &amp;&amp; self[0] == item
-    }
-}
-if [9, 9, 9].startsWith(42) {
-    print(&quot;Starts with 42.&quot;)
-} else {
-    print(&quot;Starts with something else.&quot;)
-}
-//Item是特定类型的where子句
-extension Container where Item == Double {
-    func average() -&gt; Double {
-        var sum = 0.0
-        for index in 0..&lt;count {
-            sum += self[index]
-        }
-        return sum / Double(count)
-    }
-}
-print([1260.0, 1200.0, 98.6, 37.0].average())
-//关联类型和泛型子句
-protocol Container2 {
-    associatedtype Item
-    mutating func append(_ item: Item)
-    var count: Int { get }
-    subscript(i: Int) -&gt; Item { get }
-    associatedtype Iterator: IteratorProtocol where Iterator.Element == Item
-    func makeIterator() -&gt; Iterator
-}
-protocol ComparableContainer: Container2 where Item: Comparable {}
-//泛型下标
-extension Container2 {
-    subscript&lt;Indices: Sequence&gt;(indices: Indices) -&gt; [Item]
-        where Indices.Iterator.Element == Int {
-            var result = [Item]()
-            for index in indices {
-                result.append(self[index])
-            }
-            return result
-    }
-}</code></pre>
-                      <p>真是烧脑的玩意……</p>
-                      <p><strong>–EOF–</strong></p>
-
-                      <!--kg-card-end: markdown-->
-                    </div>
-                    <footer class="post-footer">
-                      <div class="post-eof"></div>
-                    </footer>
-                  </div>
-                </article>
               </div>
               <nav class="pagination">
                 <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
@@ -1455,13 +1221,13 @@ extension Container2 {
                   <nav class="site-state">
                     <div class="site-state-item site-state-posts">
                       <a href="/archives/">
-                        <span class="site-state-item-count">66</span>
+                        <span class="site-state-item-count">67</span>
                         <span class="site-state-item-name">日志</span>
                       </a>
                     </div>
                     <div class="site-state-item site-state-categories">
                       <a href="/categories/">
-                        <span class="site-state-item-count">13</span>
+                        <span class="site-state-item-count">14</span>
                         <span class="site-state-item-name">分类</span>
                       </a>
                     </div>
