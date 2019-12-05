@@ -31,6 +31,7 @@
 <li>映射配置文件的操作配置,id属性取值必须是dao接口的方法名.</li>
 </ol>
 <p>实现3, 4, 5后, 在开发中无需再写dao的实现类.</p>
+<p><strong>–EOF–</strong></p>
 ]]></content>
       <categories>
         <category>MyBatis</category>
