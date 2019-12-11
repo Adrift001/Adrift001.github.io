@@ -84,18 +84,15 @@
         sidebarPadding: 40
       };
     </script>
-    <meta name="description" content="总得说点什么,🙂">
     <meta name="keywords" content="Optional Swift">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="避免强转">
-    <meta property="og:url" content="https://jingxuetao.com/avoid-force-exchange/index.html">
+    <meta property="og:title" content="RabbitMQ入门案例">
+    <meta property="og:url" content="https://jingxuetao.com/springboot-rabbitmq/index.html">
     <meta property="og:site_name" content="Optional Blog">
-    <meta property="og:description" content="总得说点什么,🙂">
     <meta property="og:locale" content="zh-CN">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="避免强转">
-    <meta name="twitter:description" content="总得说点什么,🙂">
-    <link rel="canonical" href="https://jingxuetao.com/avoid-force-exchange/">
+    <meta name="twitter:title" content="RabbitMQ入门案例">
+    <link rel="canonical" href="https://jingxuetao.com/springboot-rabbitmq/">
     <script id="page-configurations">
       // https://hexo.io/docs/variables.html
       CONFIG.page = {
@@ -106,7 +103,7 @@
         isArchive: false
       };
     </script>
-    <title>避免强转 | Optional Blog</title>
+    <title>RabbitMQ入门案例 | Optional Blog</title>
     <noscript>
       <style>
         .use-motion .brand,
@@ -212,7 +209,7 @@
               <div id="posts" class="posts-expand">
                 <article itemscope itemtype="http://schema.org/Article">
                   <div class="post-block post">
-                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/avoid-force-exchange/">
+                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/springboot-rabbitmq/">
                     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Optional">
       <meta itemprop="description" content="">
@@ -222,7 +219,7 @@
       <meta itemprop="name" content="Optional Blog">
     </span>
                     <header class="post-header">
-                      <h1 class="post-title" itemprop="name headline">避免强转
+                      <h1 class="post-title" itemprop="name headline">RabbitMQ入门案例
                       </h1>
                       <div class="post-meta">
                         <span class="post-meta-item">
@@ -230,34 +227,64 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
                         <span class="post-meta-item-text">发表于</span>
-                        <time title="创建时间：2019-11-19 09:05:41" itemprop="dateCreated datePublished" datetime="2019-11-19T09:05:41+00:00">2019-11-19</time>
+                        <time title="创建时间：2019-12-11 23:02:10" itemprop="dateCreated datePublished" datetime="2019-12-11T23:02:10+00:00">2019-12-11</time>
                         </span>
                         <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
                         <span class="post-meta-item-text">分类于</span>
-                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SpringBoot/" itemprop="url" rel="index"><span itemprop="name">SpringBoot</span></a></span>
                         </span>
                       </div>
                     </header>
                     <div class="post-body" itemprop="articleBody">
-                      <p><img alt data-src="https://source.unsplash.com/w24KoifPovw/1600x900"></p>
-                      <blockquote class="blockquote-center">
-                        总得说点什么,🙂
-                      </blockquote>
+                      <p><img alt data-src="https://source.unsplash.com/smVvkLmSxpk/1600x900"></p>
                       <a id="more"></a>
+                      <h3 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h3>
+                      <figure class="highlight plain">
+                        <table>
+                          <tr>
+                            <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre>
+                            </td>
+                            <td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-amqp&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                      <h3 id="Sender"><a href="#Sender" class="headerlink" title="Sender"></a>Sender</h3>
                       <figure class="highlight plain">
                         <table>
                           <tr>
                             <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre>
                             </td>
-                            <td class="code"><pre><span class="line">import Foundation</span><br><span class="line"></span><br><span class="line">class Person &#123;</span><br><span class="line">    var name = &quot;&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Teacher: Person &#123;</span><br><span class="line">    var age = 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let teacher: Person = Teacher()</span><br><span class="line"></span><br><span class="line">// 强转使用</span><br><span class="line">let age = (teacher as! Teacher).age</span><br><span class="line"></span><br><span class="line">// 避免强转</span><br><span class="line">if let tea = Optional(teacher) as? Teacher &#123;</span><br><span class="line">    print(tea.age)</span><br><span class="line">&#125;</span><br></pre>
+                            <td class="code"><pre><span class="line">/**</span><br><span class="line"> * 消息发送者</span><br><span class="line"> */</span><br><span class="line">@Component</span><br><span class="line">public class Sender &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private AmqpTemplate rabbitAmqpTemplate;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 发送消息方法</span><br><span class="line">     */</span><br><span class="line">    public void send(String msg) &#123;</span><br><span class="line">        //向消息队列中发送消息</span><br><span class="line">        //参数一: 队列名称</span><br><span class="line">        //参数二: 消息</span><br><span class="line">        this.rabbitAmqpTemplate.convertAndSend(&quot;hello-queue&quot;, msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre>
                             </td>
                           </tr>
                         </table>
                       </figure>
-                      <p><strong>–EOF–</strong></p>
+                      <h3 id="Receiver"><a href="#Receiver" class="headerlink" title="Receiver"></a>Receiver</h3>
+                      <figure class="highlight plain">
+                        <table>
+                          <tr>
+                            <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre>
+                            </td>
+                            <td class="code"><pre><span class="line">package com.swifter;</span><br><span class="line"></span><br><span class="line">import org.springframework.amqp.rabbit.annotation.RabbitListener;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 消息接受者</span><br><span class="line"> */</span><br><span class="line">@Component</span><br><span class="line">public class Receiver &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 接收消息的方法, 采用消息队列监听机制</span><br><span class="line">     * @param msg</span><br><span class="line">     */</span><br><span class="line">    @RabbitListener(queues = &quot;hello-queue&quot;)</span><br><span class="line">    public void process(String msg) &#123;</span><br><span class="line">        System.out.println(&quot;receiver: &quot; + msg);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                      <h3 id="HelloController"><a href="#HelloController" class="headerlink" title="HelloController"></a>HelloController</h3>
+                      <figure class="highlight plain">
+                        <table>
+                          <tr>
+                            <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre>
+                            </td>
+                            <td class="code"><pre><span class="line">import com.swifter.Sender;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line">@RestController</span><br><span class="line">public class HelloController &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private Sender sender;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;quick&quot;)</span><br><span class="line">    public String quick() &#123;</span><br><span class="line">        sender.send(&quot;hello world&quot;);</span><br><span class="line">        return &quot;Hello world!&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
                     </div>
                     <div>
                       <ul class="post-copyright">
@@ -265,7 +292,7 @@
                           <strong>本文作者： </strong>Optional</li>
                         <li class="post-copyright-link">
                           <strong>本文链接：</strong>
-                          <a href="https://jingxuetao.com/avoid-force-exchange/" title="避免强转">https://jingxuetao.com/avoid-force-exchange/</a>
+                          <a href="https://jingxuetao.com/springboot-rabbitmq/" title="RabbitMQ入门案例">https://jingxuetao.com/springboot-rabbitmq/</a>
                         </li>
                         <li class="post-copyright-license">
                           <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -274,15 +301,12 @@
                     <footer class="post-footer">
                       <div class="post-nav">
                         <div class="post-nav-next post-nav-item">
-                          <a href="/jian/" rel="next" title="茧">
-                            <i class="fa fa-chevron-left"></i> 茧
+                          <a href="/springboot-mybatis/" rel="next" title="SpringBoot集成MyBatis">
+                            <i class="fa fa-chevron-left"></i> SpringBoot集成MyBatis
                           </a>
                         </div>
                         <span class="post-nav-divider"></span>
                         <div class="post-nav-prev post-nav-item">
-                          <a href="/generic/" rel="prev" title="泛型">
-                            泛型 <i class="fa fa-chevron-right"></i>
-                          </a>
                         </div>
                       </div>
                     </footer>
@@ -316,6 +340,14 @@
 
               <!--noindex-->
               <div class="post-toc-wrap sidebar-panel">
+                <div class="post-toc motion-element">
+                  <ol class="nav">
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#pom-xml"><span class="nav-number">1.</span> <span class="nav-text">pom.xml</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#Sender"><span class="nav-number">2.</span> <span class="nav-text">Sender</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#Receiver"><span class="nav-number">3.</span> <span class="nav-text">Receiver</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#HelloController"><span class="nav-number">4.</span> <span class="nav-text">HelloController</span></a></li>
+                  </ol>
+                </div>
               </div> <!--/noindex-->
               <div class="site-overview-wrap sidebar-panel">
                 <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -373,9 +405,9 @@
     <script src="/js/local-search.js?v=7.4.0"></script>
     <script>
       function disqus_config() {
-        this.page.url = "https://jingxuetao.com/avoid-force-exchange/";
-        this.page.identifier = "avoid-force-exchange/";
-        this.page.title = '避免强转';
+        this.page.url = "https://jingxuetao.com/springboot-rabbitmq/";
+        this.page.identifier = "springboot-rabbitmq/";
+        this.page.title = 'RabbitMQ入门案例';
       };
       function loadComments() {
         if (window.DISQUS) {
