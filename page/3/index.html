@@ -209,6 +209,119 @@
               <div id="posts" class="posts-expand">
                 <article itemscope itemtype="http://schema.org/Article">
                   <div class="post-block home">
+                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/custom-expression-pattern/">
+                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Optional">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Optional Blog">
+    </span>
+                    <header class="post-header">
+                      <h1 class="post-title" itemprop="name headline">
+                        <a href="/custom-expression-pattern/" class="post-title-link" itemprop="url">Custom expression pattern</a>
+                      </h1>
+                      <div class="post-meta">
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                        <span class="post-meta-item-text">发表于</span>
+                        <time title="创建时间：2019-07-30 14:03:11" itemprop="dateCreated datePublished" datetime="2019-07-30T14:03:11+00:00">2019-07-30</time>
+                        </span>
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+                        <span class="post-meta-item-text">分类于</span>
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
+                        </span>
+                      </div>
+                    </header>
+                    <div class="post-body" itemprop="articleBody">
+                      <pre><code>// 自定义表达式模式
+struct Student {
+    var score = 0, name = &quot;&quot;
+    /// pattern: case 后面内容
+    /// value: switch 后面内容
+    static func ~=(pattern: Int, value: Student) -&gt; Bool {
+        return value.score &gt;= pattern
+    }
+    static func ~=(pattern: Range&lt;Int&gt;, value: Student) -&gt; Bool {
+        return pattern.contains(value.score)
+    }
+    static func ~=(pattern: ClosedRange&lt;Int&gt;, value: Student) -&gt; Bool {
+        return pattern.contains(value.score)
+    }
+}
+var stu = Student(score: 75, name: &quot;Tom&quot;)
+switch stu {
+case 100:
+    print(&quot;&gt;=100&quot;)
+case 90:
+    print(&quot;&gt;=90&quot;)
+case 80..&lt;90:
+    print(&quot;[80, 90]&quot;)
+case 60...79:
+    print(&quot;[60, 79]&quot;)
+case 0:
+    print(&quot;&gt;=0&quot;)
+default:
+    break
+}
+extension String {
+    static func ~=(pattern: (String) -&gt; String, value: String) -&gt; Bool {
+        return pattern(value)
+    }
+}
+func hasPrefix(_ prefix: String) -&gt; ((String) -&gt; Bool) {
+    return { $0.hasPrefix(prefix) }
+}
+func hasSuffix(_ suffix: String) -&gt; ((String) -&gt; Bool) {
+    return { $0.hasSuffix(suffix) }
+}
+var fn = hasPrefix(&quot;123&quot;)
+print(fn(&quot;123456&quot;))
+var str = &quot;123456&quot;
+switch str {
+case hasPrefix(&quot;123&quot;), hasSuffix(&quot;456&quot;):
+    print(&quot;123开头&quot;)
+    print(&quot;456结尾&quot;)
+default:
+    break
+}
+func isEven(_ i: Int) -&gt; Bool {
+    return i % 2 == 0
+}
+func isOdd(_ i: Int) -&gt; Bool {
+    return i % 2 != 0
+}
+extension Int {
+    static func ~=(pattern: (Int) -&gt; Bool, value: Int) -&gt; Bool {
+        return pattern(value)
+    }
+}
+var age = 9
+switch age {
+case isEven: //函数匹配,函数类型
+    print(age,&quot;是个偶数&quot;)
+case isOdd:
+    print(age,&quot;是个奇数&quot;)
+default:
+    break
+}</code></pre>
+                      <p><strong>–EOF–</strong></p>
+
+                      <!--kg-card-end: markdown-->
+                    </div>
+                    <footer class="post-footer">
+                      <div class="post-eof"></div>
+                    </footer>
+                  </div>
+                </article>
+                <article itemscope itemtype="http://schema.org/Article">
+                  <div class="post-block home">
                     <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/lookup-table/">
                     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Optional">
@@ -807,54 +920,6 @@ maxSubSequenceSum3()</code></pre>
                     </footer>
                   </div>
                 </article>
-                <article itemscope itemtype="http://schema.org/Article">
-                  <div class="post-block home">
-                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/sourcetree-could-not-commit-code-by-username/">
-                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Optional">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Optional Blog">
-    </span>
-                    <header class="post-header">
-                      <h1 class="post-title" itemprop="name headline">
-                        <a href="/sourcetree-could-not-commit-code-by-username/" class="post-title-link" itemprop="url">SourceTree不能使用账号密码提交代码</a>
-                      </h1>
-                      <div class="post-meta">
-                        <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-                        <span class="post-meta-item-text">发表于</span>
-                        <time title="创建时间：2019-05-05 11:43:15" itemprop="dateCreated datePublished" datetime="2019-05-05T11:43:15+00:00">2019-05-05</time>
-                        </span>
-                        <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-                        <span class="post-meta-item-text">分类于</span>
-                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a></span>
-                        </span>
-                      </div>
-                    </header>
-                    <div class="post-body" itemprop="articleBody">
-                      <p>总感觉用账号密码提交代码是反人类的🙂</p>
-                      <p>解决方法:</p>
-                      <blockquote>
-                        <p>SourceTree -&gt; 偏好设置-&gt; Git -&gt; 使用系统安装的Git</p>
-                      </blockquote>
-                      <p>好长时间不写博客了,能水一篇是一篇.</p>
-                      <p><strong>–EOF–</strong></p>
-
-                      <!--kg-card-end: markdown-->
-                    </div>
-                    <footer class="post-footer">
-                      <div class="post-eof"></div>
-                    </footer>
-                  </div>
-                </article>
               </div>
               <nav class="pagination">
                 <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
@@ -892,13 +957,13 @@ maxSubSequenceSum3()</code></pre>
                   <nav class="site-state">
                     <div class="site-state-item site-state-posts">
                       <a href="/archives/">
-                        <span class="site-state-item-count">71</span>
+                        <span class="site-state-item-count">72</span>
                         <span class="site-state-item-name">日志</span>
                       </a>
                     </div>
                     <div class="site-state-item site-state-categories">
                       <a href="/categories/">
-                        <span class="site-state-item-count">15</span>
+                        <span class="site-state-item-count">16</span>
                         <span class="site-state-item-name">分类</span>
                       </a>
                     </div>

@@ -209,6 +209,54 @@
               <div id="posts" class="posts-expand">
                 <article itemscope itemtype="http://schema.org/Article">
                   <div class="post-block home">
+                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/sourcetree-could-not-commit-code-by-username/">
+                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Optional">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Optional Blog">
+    </span>
+                    <header class="post-header">
+                      <h1 class="post-title" itemprop="name headline">
+                        <a href="/sourcetree-could-not-commit-code-by-username/" class="post-title-link" itemprop="url">SourceTree不能使用账号密码提交代码</a>
+                      </h1>
+                      <div class="post-meta">
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                        <span class="post-meta-item-text">发表于</span>
+                        <time title="创建时间：2019-05-05 11:43:15" itemprop="dateCreated datePublished" datetime="2019-05-05T11:43:15+00:00">2019-05-05</time>
+                        </span>
+                        <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+                        <span class="post-meta-item-text">分类于</span>
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a></span>
+                        </span>
+                      </div>
+                    </header>
+                    <div class="post-body" itemprop="articleBody">
+                      <p>总感觉用账号密码提交代码是反人类的🙂</p>
+                      <p>解决方法:</p>
+                      <blockquote>
+                        <p>SourceTree -&gt; 偏好设置-&gt; Git -&gt; 使用系统安装的Git</p>
+                      </blockquote>
+                      <p>好长时间不写博客了,能水一篇是一篇.</p>
+                      <p><strong>–EOF–</strong></p>
+
+                      <!--kg-card-end: markdown-->
+                    </div>
+                    <footer class="post-footer">
+                      <div class="post-eof"></div>
+                    </footer>
+                  </div>
+                </article>
+                <article itemscope itemtype="http://schema.org/Article">
+                  <div class="post-block home">
                     <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/summary-of-2018/">
                     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Optional">
@@ -1445,147 +1493,6 @@ attributes #0 = { noinline nounwind optnone ssp uwtable &quot;correctly-rounded-
                     </footer>
                   </div>
                 </article>
-                <article itemscope itemtype="http://schema.org/Article">
-                  <div class="post-block home">
-                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/enum-express-tableview-datasource/">
-                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Optional">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Optional Blog">
-    </span>
-                    <header class="post-header">
-                      <h1 class="post-title" itemprop="name headline">
-                        <a href="/enum-express-tableview-datasource/" class="post-title-link" itemprop="url">Enum表示TableView的数据源</a>
-                      </h1>
-                      <div class="post-meta">
-                        <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-                        <span class="post-meta-item-text">发表于</span>
-                        <time title="创建时间：2018-05-29 14:24:00" itemprop="dateCreated datePublished" datetime="2018-05-29T14:24:00+00:00">2018-05-29</time>
-                        </span>
-                        <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-                        <span class="post-meta-item-text">分类于</span>
-                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a></span>
-                        </span>
-                      </div>
-                    </header>
-                    <div class="post-body" itemprop="articleBody">
-                      <figure class="kg-card kg-image-card"><img class="kg-image" data-src="https://img.hacpai.com/bing/20180330.jpg?imageView2/1/w/960/h/520/interlace/1/q/100"></figure>
-
-                      <!--kg-card-end: image-->
-
-                      <!--kg-card-begin: code-->
-                      <pre><code>//
-// SettingTableViewController.swift
-import UIKit
-protocol SettingViewControllerDelegate: class {
-    func controllerDidChangeDateMode(controller: SettingTableViewController)
-    func controllerDidChangeTemperatureMode(controller: SettingTableViewController)
-}
-class SettingTableViewController: UITableViewController {
-    weak var changeDelegate: SettingViewControllerDelegate?
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.rowHeight = 44
-    }
-}
-extension SettingTableViewController {
-    private enum Section: Int {
-        case date
-        case temperature
-        var numberOfRows: Int {
-            return 2
-        }
-        static var count: Int {
-            return Section.temperature.rawValue + 1
-        }
-    }
-    override func numberOfSections(in tableView: UITableView) -&gt; Int {
-        return Section.count
-    }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int {
-        guard let section = Section(rawValue: section) else {
-            fatalError(&quot;未知section索引&quot;)
-        }
-        return section.numberOfRows
-    }
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -&gt; String? {
-        if section == 0 {
-            return &quot;Date format&quot;
-        }
-        return &quot;Temperature unit&quot;
-    }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.reuseIdentifier, for: indexPath) as? SettingTableViewCell else {
-            fatalError(&quot;未知的tableViewCell&quot;)
-        }
-        guard let section = Section(rawValue: indexPath.section) else {
-            fatalError(&quot;未知的section&quot;)
-        }
-        switch section {
-        case .date:
-            cell.label.text = (indexPath.row == 0) ? &quot;Fri, 01 December&quot; : &quot;F, 12/01&quot;
-            let timeMode = UserDefaults.dateMode()
-            if indexPath.row == timeMode.rawValue {
-                cell.accessoryType = .checkmark
-            } else {
-                cell.accessoryType = .none
-            }
-        case .temperature:
-            cell.label.text = (indexPath.row == 0) ? &quot;Celcius&quot; : &quot;Fahrenheit&quot;
-            let temperatureMode = UserDefaults.temperatureMode()
-            if indexPath.row == temperatureMode.rawValue {
-                cell.accessoryType = .checkmark
-            } else {
-                cell.accessoryType = .none
-            }
-        }
-        return cell
-    }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        guard let section = Section(rawValue: indexPath.section) else {
-            fatalError(&quot;未知的section索引&quot;)
-        }
-        switch section {
-            case .date:
-                let dateMode = UserDefaults.dateMode()
-                guard indexPath.row != dateMode.rawValue else { return }
-                if let newMode = DateMode(rawValue: indexPath.row) {
-                    UserDefaults.setDateMode(to: newMode)
-                }
-                changeDelegate?.controllerDidChangeDateMode(controller: self)
-            case .temperature:
-                let temperatureMode = UserDefaults.temperatureMode()
-                guard indexPath.row != temperatureMode.rawValue else { return }
-                if let newMode = TemperatureMode(rawValue: indexPath.row) {
-                    UserDefaults.setTemperatureMode(to: newMode)
-                }
-                changeDelegate?.controllerDidChangeTemperatureMode(controller: self)
-        }
-        let sections = IndexSet(integer: indexPath.section)
-        tableView.reloadSections(sections, with: .none)
-    }
-}</code></pre>
-
-                      <!--kg-card-end: code-->
-                      <p>提供一种思路</p>
-                      <p>代码来自<a href="https://boxueio.com/" target="_blank" rel="noopener">泊学</a></p>
-                      <p><strong>–EOF–</strong></p>
-                    </div>
-                    <footer class="post-footer">
-                      <div class="post-eof"></div>
-                    </footer>
-                  </div>
-                </article>
               </div>
               <nav class="pagination">
                 <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
@@ -1623,13 +1530,13 @@ extension SettingTableViewController {
                   <nav class="site-state">
                     <div class="site-state-item site-state-posts">
                       <a href="/archives/">
-                        <span class="site-state-item-count">71</span>
+                        <span class="site-state-item-count">72</span>
                         <span class="site-state-item-name">日志</span>
                       </a>
                     </div>
                     <div class="site-state-item site-state-categories">
                       <a href="/categories/">
-                        <span class="site-state-item-count">15</span>
+                        <span class="site-state-item-count">16</span>
                         <span class="site-state-item-name">分类</span>
                       </a>
                     </div>

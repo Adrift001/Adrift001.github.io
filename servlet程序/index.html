@@ -84,18 +84,15 @@
         sidebarPadding: 40
       };
     </script>
-    <meta name="description" content="今天折腾Perfect服务端的时候,出现下面错误:  Can’t connect to local MySQL server through socket ‘’ (2)  然后各种Google,各种试错.最后在这篇文章中看到了IP这个字眼,突然灵感来了,直接把locahost改成127.0.0.1,然后成功了~ 我了个大草,原来还能这么玩… 至于具体原因可以查看这篇文章Localhost 与127">
     <meta name="keywords" content="Optional Swift">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Can&#39;t connect to local MySQL server through socket &#39;&#39; (2)">
-    <meta property="og:url" content="https://jingxuetao.com/cant-connect-to-local-mysql-server-through-socket-2/index.html">
+    <meta property="og:title" content="servlet程序">
+    <meta property="og:url" content="https://jingxuetao.com/servlet程序/index.html">
     <meta property="og:site_name" content="Optional Blog">
-    <meta property="og:description" content="今天折腾Perfect服务端的时候,出现下面错误:  Can’t connect to local MySQL server through socket ‘’ (2)  然后各种Google,各种试错.最后在这篇文章中看到了IP这个字眼,突然灵感来了,直接把locahost改成127.0.0.1,然后成功了~ 我了个大草,原来还能这么玩… 至于具体原因可以查看这篇文章Localhost 与127">
     <meta property="og:locale" content="zh-CN">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Can&#39;t connect to local MySQL server through socket &#39;&#39; (2)">
-    <meta name="twitter:description" content="今天折腾Perfect服务端的时候,出现下面错误:  Can’t connect to local MySQL server through socket ‘’ (2)  然后各种Google,各种试错.最后在这篇文章中看到了IP这个字眼,突然灵感来了,直接把locahost改成127.0.0.1,然后成功了~ 我了个大草,原来还能这么玩… 至于具体原因可以查看这篇文章Localhost 与127">
-    <link rel="canonical" href="https://jingxuetao.com/cant-connect-to-local-mysql-server-through-socket-2/">
+    <meta name="twitter:title" content="servlet程序">
+    <link rel="canonical" href="https://jingxuetao.com/servlet程序/">
     <script id="page-configurations">
       // https://hexo.io/docs/variables.html
       CONFIG.page = {
@@ -106,7 +103,7 @@
         isArchive: false
       };
     </script>
-    <title>Can't connect to local MySQL server through socket '' (2) | Optional Blog</title>
+    <title>servlet程序 | Optional Blog</title>
     <noscript>
       <style>
         .use-motion .brand,
@@ -212,7 +209,7 @@
               <div id="posts" class="posts-expand">
                 <article itemscope itemtype="http://schema.org/Article">
                   <div class="post-block post">
-                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/cant-connect-to-local-mysql-server-through-socket-2/">
+                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/servlet程序/">
                     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Optional">
       <meta itemprop="description" content="">
@@ -222,7 +219,7 @@
       <meta itemprop="name" content="Optional Blog">
     </span>
                     <header class="post-header">
-                      <h1 class="post-title" itemprop="name headline">Can't connect to local MySQL server through socket '' (2)
+                      <h1 class="post-title" itemprop="name headline">servlet程序
                       </h1>
                       <div class="post-meta">
                         <span class="post-meta-item">
@@ -230,26 +227,30 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
                         <span class="post-meta-item-text">发表于</span>
-                        <time title="创建时间：2017-09-12 14:21:00" itemprop="dateCreated datePublished" datetime="2017-09-12T14:21:00+00:00">2017-09-12</time>
+                        <time title="创建时间：2019-12-24 10:30:37" itemprop="dateCreated datePublished" datetime="2019-12-24T10:30:37+00:00">2019-12-24</time>
                         </span>
                         <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
                         <span class="post-meta-item-text">分类于</span>
-                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a></span>
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
                         </span>
                       </div>
                     </header>
                     <div class="post-body" itemprop="articleBody">
-                      <p>今天折腾Perfect服务端的时候,出现下面错误:</p>
-                      <blockquote>
-                        <p>Can’t connect to local MySQL server through socket ‘’ (2)</p>
-                      </blockquote>
-                      <p>然后各种Google,各种试错.最后在这篇文章中看到了<code>IP</code>这个字眼,突然灵感来了,直接把<code>locahost</code>改成<code>127.0.0.1</code>,然后成功了~</p>
-                      <p>我了个大草,原来还能这么玩…</p>
-                      <p>至于具体原因可以查看这篇文章<a href="http://www.jb51.net/article/50421.htm" target="_blank" rel="noopener">Localhost 与127.0.0.1和IP的区别是什么</a></p>
-                      <p>于2017/9/12,我的博客支持emoji啦,😁😁😝</p>
+                      <p><img alt data-src="https://source.unsplash.com/random/1600x900"></p>
+                      <a id="more"></a>
+                      <figure class="highlight plain">
+                        <table>
+                          <tr>
+                            <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre>
+                            </td>
+                            <td class="code"><pre><span class="line">package com.swifter;</span><br><span class="line"></span><br><span class="line">import com.sun.net.httpserver.HttpExchange;</span><br><span class="line">import com.sun.net.httpserver.HttpHandler;</span><br><span class="line">import com.sun.net.httpserver.HttpServer;</span><br><span class="line"></span><br><span class="line">import java.io.File;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.OutputStream;</span><br><span class="line">import java.net.InetSocketAddress;</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        Server server = new Server();</span><br><span class="line">        server.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Server &#123;</span><br><span class="line"></span><br><span class="line">    List &lt;Servlet&gt; servlets = new ArrayList();</span><br><span class="line"></span><br><span class="line">    void start() throws Exception &#123;</span><br><span class="line">        File file = new File(new String(this.getClass().getResource(&quot;./&quot;).getPath()));</span><br><span class="line">        System.out.println(file.getPath());</span><br><span class="line">        File[] files = file.listFiles();</span><br><span class="line">        if (files != null) &#123;</span><br><span class="line">            for (File f : files) &#123;</span><br><span class="line">                String fileName = f.getName();</span><br><span class="line">                fileName = fileName.substring(0,fileName.lastIndexOf(&quot;.&quot;));</span><br><span class="line">                if (!fileName.equals(&quot;Servlet&quot;)) &#123;</span><br><span class="line"></span><br><span class="line">                    System.out.println(this.getClass().getPackage().getName() + &quot;.&quot;+fileName);</span><br><span class="line">                    Class&lt;Servlet&gt; aClass = (Class&lt;Servlet&gt;) Class.forName(this.getClass().getPackage().getName() + &quot;.&quot;+fileName);</span><br><span class="line">                    if (Servlet.class.isAssignableFrom(aClass)) &#123;</span><br><span class="line">                        servlets.add(aClass.newInstance());</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            System.out.println(&quot;list is null&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        HttpServer httpServer = HttpServer.create(new InetSocketAddress(8080), 0);</span><br><span class="line"></span><br><span class="line">        for (Servlet servlet : servlets) &#123;</span><br><span class="line">            System.out.println(servlet.path());</span><br><span class="line">            httpServer.createContext(servlet.path(), new HttpHandler() &#123;</span><br><span class="line">                @Override</span><br><span class="line">                public void handle(HttpExchange httpExchange) throws IOException &#123;</span><br><span class="line">                    servlet.service(httpExchange);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        httpServer.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Hello1Servlet implements Servlet &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String path() &#123;</span><br><span class="line">        return &quot;/hello1&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void service(HttpExchange exchange) throws IOException &#123;</span><br><span class="line">        exchange.sendResponseHeaders(200, 0);</span><br><span class="line">        OutputStream responseBody = exchange.getResponseBody();</span><br><span class="line">        responseBody.write(&quot;hello world1111&quot;.getBytes());</span><br><span class="line">        responseBody.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Hello2Servlet implements Servlet &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String path() &#123;</span><br><span class="line">        return &quot;/hello2&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void service(HttpExchange exchange) throws IOException &#123;</span><br><span class="line">        exchange.sendResponseHeaders(200, 0);</span><br><span class="line">        OutputStream responseBody = exchange.getResponseBody();</span><br><span class="line">        responseBody.write(&quot;hello world2222&quot;.getBytes());</span><br><span class="line">        responseBody.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface Servlet &#123;</span><br><span class="line">    public String path();</span><br><span class="line">    public void service(HttpExchange exchange) throws IOException;</span><br><span class="line">&#125;</span><br></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
                       <p><strong>–EOF–</strong></p>
                     </div>
                     <div>
@@ -258,7 +259,7 @@
                           <strong>本文作者： </strong>Optional</li>
                         <li class="post-copyright-link">
                           <strong>本文链接：</strong>
-                          <a href="https://jingxuetao.com/cant-connect-to-local-mysql-server-through-socket-2/" title="Can't connect to local MySQL server through socket '' (2)">https://jingxuetao.com/cant-connect-to-local-mysql-server-through-socket-2/</a>
+                          <a href="https://jingxuetao.com/servlet程序/" title="servlet程序">https://jingxuetao.com/servlet程序/</a>
                         </li>
                         <li class="post-copyright-license">
                           <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -267,15 +268,12 @@
                     <footer class="post-footer">
                       <div class="post-nav">
                         <div class="post-nav-next post-nav-item">
-                          <a href="/blog-open-https/" rel="next" title="博客开启HTTPS">
-                            <i class="fa fa-chevron-left"></i> 博客开启HTTPS
+                          <a href="/ExpressibleByStringInterpolation/" rel="next" title="Swift 5 字符串插值-AttributedStrings">
+                            <i class="fa fa-chevron-left"></i> Swift 5 字符串插值-AttributedStrings
                           </a>
                         </div>
                         <span class="post-nav-divider"></span>
                         <div class="post-nav-prev post-nav-item">
-                          <a href="/ghost-blog-support-emoji/" rel="prev" title="Ghost博客支持emoji">
-                            Ghost博客支持emoji <i class="fa fa-chevron-right"></i>
-                          </a>
                         </div>
                       </div>
                     </footer>
@@ -366,9 +364,9 @@
     <script src="/js/local-search.js?v=7.4.0"></script>
     <script>
       function disqus_config() {
-        this.page.url = "https://jingxuetao.com/cant-connect-to-local-mysql-server-through-socket-2/";
-        this.page.identifier = "cant-connect-to-local-mysql-server-through-socket-2/";
-        this.page.title = 'Can\'t connect to local MySQL server through socket \'\' (2)';
+        this.page.url = "https://jingxuetao.com/servlet程序/";
+        this.page.identifier = "servlet程序/";
+        this.page.title = 'servlet程序';
       };
       function loadComments() {
         if (window.DISQUS) {
