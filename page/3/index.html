@@ -4,68 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
     <meta name="theme-color" content="#222">
-    <meta name="generator" content="Hexo 3.9.0">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
-    <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
-    <link rel="stylesheet" href="/css/main.css?v=7.4.0">
-    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+    <meta name="generator" content="Hexo 4.2.1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+    <link rel="mask-icon" href="/images/logo.svg" color="#222">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
     <script id="hexo-configurations">
       var NexT = window.NexT || {};
       var CONFIG = {
-        root: '/',
-        scheme: 'Pisces',
-        version: '7.4.0',
-        exturl: false,
-        sidebar: {
+        "hostname": "jingxuetao.com",
+        "root": "/",
+        "scheme": "Pisces",
+        "version": "7.8.0",
+        "exturl": false,
+        "sidebar": {
           "position": "left",
           "display": "post",
           "offset": 12,
           "onmobile": false
         },
-        copycode: {
+        "copycode": {
           "enable": true,
           "show_result": true,
           "style": null
         },
-        back2top: {
+        "back2top": {
           "enable": true,
           "sidebar": false,
           "scrollpercent": true
         },
-        bookmark: {
+        "bookmark": {
           "enable": false,
           "color": "#222",
           "save": "auto"
         },
-        fancybox: true,
-        mediumzoom: false,
-        lazyload: true,
-        pangu: false,
-        algolia: {
-          appID: '',
-          apiKey: '',
-          indexName: '',
-          hits: {
+        "fancybox": true,
+        "mediumzoom": false,
+        "lazyload": true,
+        "pangu": false,
+        "comments": {
+          "style": "tabs",
+          "active": null,
+          "storage": true,
+          "nav": null
+        },
+        "algolia": {
+          "hits": {
             "per_page": 10
           },
-          labels: {
+          "labels": {
             "input_placeholder": "Search for Posts",
             "hits_empty": "We didn't find any results for the search: ${query}",
             "hits_stats": "${hits} results found in ${time} ms"
           }
         },
-        localsearch: {
+        "localsearch": {
           "enable": true,
           "trigger": "auto",
           "top_n_per_article": 1,
           "unescape": false,
           "preload": false
         },
-        path: 'search.xml',
-        motion: {
+        "motion": {
           "enable": true,
           "async": false,
           "transition": {
@@ -76,22 +79,17 @@
             "sidebar": "slideUpIn"
           }
         },
-        translation: {
-          copy_button: '复制',
-          copy_success: '复制成功',
-          copy_failure: '复制失败'
-        },
-        sidebarPadding: 40
+        "path": "search.xml"
       };
     </script>
-    <meta name="keywords" content="Optional Swift">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Optional Blog">
     <meta property="og:url" content="https://jingxuetao.com/page/3/index.html">
     <meta property="og:site_name" content="Optional Blog">
-    <meta property="og:locale" content="zh-CN">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="article:author" content="Optional">
+    <meta property="article:tag" content="Optional Swift">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Optional Blog">
     <link rel="canonical" href="https://jingxuetao.com/page/3/">
     <script id="page-configurations">
       // https://hexo.io/docs/variables.html
@@ -99,8 +97,7 @@
         sidebar: "",
         isHome: true,
         isPost: false,
-        isPage: false,
-        isArchive: false
+        lang: 'zh-CN'
       };
     </script>
     <title>Optional Blog</title>
@@ -117,7 +114,6 @@
         .use-motion .collection-header {
           opacity: initial;
         }
-        .use-motion .logo,
         .use-motion .site-title,
         .use-motion .site-subtitle {
           opacity: initial;
@@ -132,28 +128,31 @@
       </style>
     </noscript>
   </head>
-  <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <body itemscope itemtype="http://schema.org/WebPage">
     <div class="container use-motion">
       <div class="headband"></div>
-      <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader">
         <div class="header-inner">
           <div class="site-brand-container">
-            <div class="site-meta">
-              <div>
-                <a href="/" class="brand" rel="start">
-                  <span class="logo-line-before"><i></i></span>
-                  <span class="site-title">Optional Blog</span>
-                  <span class="logo-line-after"><i></i></span>
-                </a>
-              </div>
-              <p class="site-subtitle">Thoughts, stories and ideas.</p>
-            </div>
             <div class="site-nav-toggle">
-              <button aria-label="切换导航栏">
-                <span class="btn-bar"></span>
-                <span class="btn-bar"></span>
-                <span class="btn-bar"></span>
-              </button>
+              <div class="toggle" aria-label="切换导航栏">
+                <span class="toggle-line toggle-line-first"></span>
+                <span class="toggle-line toggle-line-middle"></span>
+                <span class="toggle-line toggle-line-last"></span>
+              </div>
+            </div>
+            <div class="site-meta">
+              <a href="/" class="brand" rel="start">
+                <span class="logo-line-before"><i></i></span>
+                <h1 class="site-title">Optional Blog</h1>
+                <span class="logo-line-after"><i></i></span>
+              </a>
+              <p class="site-subtitle" itemprop="description">Thoughts, stories and ideas.</p>
+            </div>
+            <div class="site-nav-right">
+              <div class="toggle popup-trigger">
+                <i class="fa fa-search fa-fw fa-lg"></i>
+              </div>
             </div>
           </div>
           <nav class="site-nav">
@@ -174,27 +173,30 @@
                 <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
               </li>
               <li class="menu-item menu-item-search">
-                <a href="javascript:;" class="popup-trigger">
-                  <i class="fa fa-search fa-fw"></i>搜索</a>
+                <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+                </a>
               </li>
             </ul>
           </nav>
-          <div class="site-search">
+          <div class="search-pop-overlay">
             <div class="popup search-popup">
               <div class="search-header">
                 <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
                 <div class="search-input-container">
-                  <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜索..." spellcheck="false" type="text" id="search-input">
+                  <input autocomplete="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
                 </div>
                 <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
   </span>
               </div>
-              <div id="search-result"></div>
+              <div id="search-result">
+                <div id="no-result">
+                  <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+                </div>
+              </div>
             </div>
-            <div class="search-pop-overlay"></div>
           </div>
         </div>
       </header>
@@ -202,87 +204,87 @@
         <i class="fa fa-arrow-up"></i>
         <span>0%</span>
       </div>
-      <main id="main" class="main">
+      <main class="main">
         <div class="main-inner">
           <div class="content-wrap">
-            <div id="content" class="content">
-              <div id="posts" class="posts-expand">
-                <article itemscope itemtype="http://schema.org/Article">
-                  <div class="post-block home">
-                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/custom-operator/">
-                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <div class="content index posts-expand">
+              <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+                <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/custom-operator/">
+                <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Optional">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
-                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Optional Blog">
     </span>
-                    <header class="post-header">
-                      <h1 class="post-title" itemprop="name headline">
-                        <a href="/custom-operator/" class="post-title-link" itemprop="url">自定义运算符</a>
-                      </h1>
-                      <div class="post-meta">
-                        <span class="post-meta-item">
+                <header class="post-header">
+                  <h2 class="post-title" itemprop="name headline">
+                    <a href="/custom-operator/" class="post-title-link" itemprop="url">自定义运算符</a>
+                  </h2>
+                  <div class="post-meta">
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-                        <span class="post-meta-item-text">发表于</span>
-                        <time title="创建时间：2019-07-23 13:42:46" itemprop="dateCreated datePublished" datetime="2019-07-23T13:42:46+00:00">2019-07-23</time>
-                        </span>
-                        <span class="post-meta-item">
+                    <span class="post-meta-item-text">发表于</span>
+                    <time title="创建时间：2019-07-23 13:42:46" itemprop="dateCreated datePublished" datetime="2019-07-23T13:42:46+00:00">2019-07-23</time>
+                    </span>
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-                        <span class="post-meta-item-text">分类于</span>
-                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
-                        </span>
-                      </div>
-                    </header>
-                    <div class="post-body" itemprop="articleBody">
-                      <p> <strong>–EOF–</strong></p>
-
-                      <!--kg-card-end: markdown-->
-                    </div>
-                    <footer class="post-footer">
-                      <div class="post-eof"></div>
-                    </footer>
+                    <span class="post-meta-item-text">分类于</span>
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
+                    </span>
+                    </span>
                   </div>
-                </article>
-                <article itemscope itemtype="http://schema.org/Article">
-                  <div class="post-block home">
-                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/sequential-operation-of-linear-tables/">
-                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                </header>
+                <div class="post-body" itemprop="articleBody">
+                  <p> <strong>–EOF–</strong></p>
+
+                  <!--kg-card-end: markdown-->
+                </div>
+                <footer class="post-footer">
+                  <div class="post-eof"></div>
+                </footer>
+              </article>
+              <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+                <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/sequential-operation-of-linear-tables/">
+                <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Optional">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
-                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Optional Blog">
     </span>
-                    <header class="post-header">
-                      <h1 class="post-title" itemprop="name headline">
-                        <a href="/sequential-operation-of-linear-tables/" class="post-title-link" itemprop="url">线性表的顺序操作</a>
-                      </h1>
-                      <div class="post-meta">
-                        <span class="post-meta-item">
+                <header class="post-header">
+                  <h2 class="post-title" itemprop="name headline">
+                    <a href="/sequential-operation-of-linear-tables/" class="post-title-link" itemprop="url">线性表的顺序操作</a>
+                  </h2>
+                  <div class="post-meta">
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-                        <span class="post-meta-item-text">发表于</span>
-                        <time title="创建时间：2019-06-20 08:29:03" itemprop="dateCreated datePublished" datetime="2019-06-20T08:29:03+00:00">2019-06-20</time>
-                        </span>
-                        <span class="post-meta-item">
+                    <span class="post-meta-item-text">发表于</span>
+                    <time title="创建时间：2019-06-20 08:29:03" itemprop="dateCreated datePublished" datetime="2019-06-20T08:29:03+00:00">2019-06-20</time>
+                    </span>
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-                        <span class="post-meta-item-text">分类于</span>
-                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a></span>
-                        </span>
-                      </div>
-                    </header>
-                    <div class="post-body" itemprop="articleBody">
-                      <pre><code>#include &lt;stdio.h&gt;
+                    <span class="post-meta-item-text">分类于</span>
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+                    </span>
+                    </span>
+                  </div>
+                </header>
+                <div class="post-body" itemprop="articleBody">
+                  <pre><code>#include &lt;stdio.h&gt;
 #define maxsize 10
 #define failure -1
 #define success 1
@@ -356,49 +358,49 @@ int main(int argc, const char * argv[]) {
     printf(&quot;取表元 %d\n&quot;, get(L, 0));
     return 0;
 }</code></pre>
-                      <p><strong>–EOF–</strong></p>
+                  <p><strong>–EOF–</strong></p>
 
-                      <!--kg-card-end: markdown-->
-                    </div>
-                    <footer class="post-footer">
-                      <div class="post-eof"></div>
-                    </footer>
-                  </div>
-                </article>
-                <article itemscope itemtype="http://schema.org/Article">
-                  <div class="post-block home">
-                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/subscript_keypath-propertywrapper/">
-                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                  <!--kg-card-end: markdown-->
+                </div>
+                <footer class="post-footer">
+                  <div class="post-eof"></div>
+                </footer>
+              </article>
+              <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+                <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/subscript_keypath-propertywrapper/">
+                <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Optional">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
-                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Optional Blog">
     </span>
-                    <header class="post-header">
-                      <h1 class="post-title" itemprop="name headline">
-                        <a href="/subscript_keypath-propertywrapper/" class="post-title-link" itemprop="url">subscript_keyPath,propertyWrapper</a>
-                      </h1>
-                      <div class="post-meta">
-                        <span class="post-meta-item">
+                <header class="post-header">
+                  <h2 class="post-title" itemprop="name headline">
+                    <a href="/subscript_keypath-propertywrapper/" class="post-title-link" itemprop="url">subscript_keyPath,propertyWrapper</a>
+                  </h2>
+                  <div class="post-meta">
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-                        <span class="post-meta-item-text">发表于</span>
-                        <time title="创建时间：2019-06-07 13:55:04" itemprop="dateCreated datePublished" datetime="2019-06-07T13:55:04+00:00">2019-06-07</time>
-                        </span>
-                        <span class="post-meta-item">
+                    <span class="post-meta-item-text">发表于</span>
+                    <time title="创建时间：2019-06-07 13:55:04" itemprop="dateCreated datePublished" datetime="2019-06-07T13:55:04+00:00">2019-06-07</time>
+                    </span>
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-                        <span class="post-meta-item-text">分类于</span>
-                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
-                        </span>
-                      </div>
-                    </header>
-                    <div class="post-body" itemprop="articleBody">
-                      <pre><code>import Foundation
+                    <span class="post-meta-item-text">分类于</span>
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
+                    </span>
+                    </span>
+                  </div>
+                </header>
+                <div class="post-body" itemprop="articleBody">
+                  <pre><code>import Foundation
 //dynamicMemberLookup_keyPath
 struct Address {
     let street: String
@@ -461,49 +463,49 @@ struct UserDefaultsConfig {
     static var hasSeenAppIntroduction: Bool
 }
 print(UserDefaultsConfig.hasSeenAppIntroduction)</code></pre>
-                      <p><strong>–EOF–</strong></p>
+                  <p><strong>–EOF–</strong></p>
 
-                      <!--kg-card-end: markdown-->
-                    </div>
-                    <footer class="post-footer">
-                      <div class="post-eof"></div>
-                    </footer>
-                  </div>
-                </article>
-                <article itemscope itemtype="http://schema.org/Article">
-                  <div class="post-block home">
-                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/finding-the-maximum-subcolumn-sum/">
-                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                  <!--kg-card-end: markdown-->
+                </div>
+                <footer class="post-footer">
+                  <div class="post-eof"></div>
+                </footer>
+              </article>
+              <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+                <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/finding-the-maximum-subcolumn-sum/">
+                <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Optional">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
-                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Optional Blog">
     </span>
-                    <header class="post-header">
-                      <h1 class="post-title" itemprop="name headline">
-                        <a href="/finding-the-maximum-subcolumn-sum/" class="post-title-link" itemprop="url">求最大子列和</a>
-                      </h1>
-                      <div class="post-meta">
-                        <span class="post-meta-item">
+                <header class="post-header">
+                  <h2 class="post-title" itemprop="name headline">
+                    <a href="/finding-the-maximum-subcolumn-sum/" class="post-title-link" itemprop="url">求最大子列和</a>
+                  </h2>
+                  <div class="post-meta">
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-                        <span class="post-meta-item-text">发表于</span>
-                        <time title="创建时间：2019-05-25 11:37:52" itemprop="dateCreated datePublished" datetime="2019-05-25T11:37:52+00:00">2019-05-25</time>
-                        </span>
-                        <span class="post-meta-item">
+                    <span class="post-meta-item-text">发表于</span>
+                    <time title="创建时间：2019-05-25 11:37:52" itemprop="dateCreated datePublished" datetime="2019-05-25T11:37:52+00:00">2019-05-25</time>
+                    </span>
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-                        <span class="post-meta-item-text">分类于</span>
-                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a></span>
-                        </span>
-                      </div>
-                    </header>
-                    <div class="post-body" itemprop="articleBody">
-                      <pre><code>var nums = [1, -2, 2, -13, 6, -10, 3, 12]
+                    <span class="post-meta-item-text">分类于</span>
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+                    </span>
+                    </span>
+                  </div>
+                </header>
+                <div class="post-body" itemprop="articleBody">
+                  <pre><code>var nums = [1, -2, 2, -13, 6, -10, 3, 12]
 /// O(n^3)
 func maxSubSequenceSum1() {
     var maxSum = 0
@@ -550,50 +552,50 @@ func maxSubSequenceSum3() {
 maxSubSequenceSum1()
 maxSubSequenceSum2()
 maxSubSequenceSum3()</code></pre>
-                      <p>算法很重要呐 😄😄</p>
-                      <p><strong>–EOF–</strong></p>
+                  <p>算法很重要呐 😄😄</p>
+                  <p><strong>–EOF–</strong></p>
 
-                      <!--kg-card-end: markdown-->
-                    </div>
-                    <footer class="post-footer">
-                      <div class="post-eof"></div>
-                    </footer>
-                  </div>
-                </article>
-                <article itemscope itemtype="http://schema.org/Article">
-                  <div class="post-block home">
-                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/how-to-break-out-of-multiple-loop-levels-using-labeled-statements/">
-                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                  <!--kg-card-end: markdown-->
+                </div>
+                <footer class="post-footer">
+                  <div class="post-eof"></div>
+                </footer>
+              </article>
+              <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+                <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/how-to-break-out-of-multiple-loop-levels-using-labeled-statements/">
+                <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Optional">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
-                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Optional Blog">
     </span>
-                    <header class="post-header">
-                      <h1 class="post-title" itemprop="name headline">
-                        <a href="/how-to-break-out-of-multiple-loop-levels-using-labeled-statements/" class="post-title-link" itemprop="url">打破for循环嵌套</a>
-                      </h1>
-                      <div class="post-meta">
-                        <span class="post-meta-item">
+                <header class="post-header">
+                  <h2 class="post-title" itemprop="name headline">
+                    <a href="/how-to-break-out-of-multiple-loop-levels-using-labeled-statements/" class="post-title-link" itemprop="url">打破for循环嵌套</a>
+                  </h2>
+                  <div class="post-meta">
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-                        <span class="post-meta-item-text">发表于</span>
-                        <time title="创建时间：2019-05-19 11:50:57" itemprop="dateCreated datePublished" datetime="2019-05-19T11:50:57+00:00">2019-05-19</time>
-                        </span>
-                        <span class="post-meta-item">
+                    <span class="post-meta-item-text">发表于</span>
+                    <time title="创建时间：2019-05-19 11:50:57" itemprop="dateCreated datePublished" datetime="2019-05-19T11:50:57+00:00">2019-05-19</time>
+                    </span>
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-                        <span class="post-meta-item-text">分类于</span>
-                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
-                        </span>
-                      </div>
-                    </header>
-                    <div class="post-body" itemprop="articleBody">
-                      <pre><code>exitLoop: for i in 0...100 {
+                    <span class="post-meta-item-text">分类于</span>
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
+                    </span>
+                    </span>
+                  </div>
+                </header>
+                <div class="post-body" itemprop="articleBody">
+                  <pre><code>exitLoop: for i in 0...100 {
     print(&quot;i=\(i)&quot;)
     if i == 50 {
 // break
@@ -606,143 +608,143 @@ maxSubSequenceSum3()</code></pre>
         }
     }
 }</code></pre>
-                      <p>参考: <a href="https://www.hackingwithswift.com/example-code/language/how-to-break-out-of-multiple-loop-levels-using-labeled-statements" target="_blank" rel="noopener">https://www.hackingwithswift.com/example-code/language/how-to-break-out-of-multiple-loop-levels-using-labeled-statements</a></p>
-                      <p><strong>–EOF–</strong></p>
+                  <p>参考: <a href="https://www.hackingwithswift.com/example-code/language/how-to-break-out-of-multiple-loop-levels-using-labeled-statements" target="_blank" rel="noopener">https://www.hackingwithswift.com/example-code/language/how-to-break-out-of-multiple-loop-levels-using-labeled-statements</a></p>
+                  <p><strong>–EOF–</strong></p>
 
-                      <!--kg-card-end: markdown-->
-                    </div>
-                    <footer class="post-footer">
-                      <div class="post-eof"></div>
-                    </footer>
-                  </div>
-                </article>
-                <article itemscope itemtype="http://schema.org/Article">
-                  <div class="post-block home">
-                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/sourcetree-could-not-commit-code-by-username/">
-                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                  <!--kg-card-end: markdown-->
+                </div>
+                <footer class="post-footer">
+                  <div class="post-eof"></div>
+                </footer>
+              </article>
+              <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+                <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/sourcetree-could-not-commit-code-by-username/">
+                <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Optional">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
-                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Optional Blog">
     </span>
-                    <header class="post-header">
-                      <h1 class="post-title" itemprop="name headline">
-                        <a href="/sourcetree-could-not-commit-code-by-username/" class="post-title-link" itemprop="url">SourceTree不能使用账号密码提交代码</a>
-                      </h1>
-                      <div class="post-meta">
-                        <span class="post-meta-item">
+                <header class="post-header">
+                  <h2 class="post-title" itemprop="name headline">
+                    <a href="/sourcetree-could-not-commit-code-by-username/" class="post-title-link" itemprop="url">SourceTree不能使用账号密码提交代码</a>
+                  </h2>
+                  <div class="post-meta">
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-                        <span class="post-meta-item-text">发表于</span>
-                        <time title="创建时间：2019-05-05 11:43:15" itemprop="dateCreated datePublished" datetime="2019-05-05T11:43:15+00:00">2019-05-05</time>
-                        </span>
-                        <span class="post-meta-item">
+                    <span class="post-meta-item-text">发表于</span>
+                    <time title="创建时间：2019-05-05 11:43:15" itemprop="dateCreated datePublished" datetime="2019-05-05T11:43:15+00:00">2019-05-05</time>
+                    </span>
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-                        <span class="post-meta-item-text">分类于</span>
-                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a></span>
-                        </span>
-                      </div>
-                    </header>
-                    <div class="post-body" itemprop="articleBody">
-                      <p>总感觉用账号密码提交代码是反人类的🙂</p>
-                      <p>解决方法:</p>
-                      <blockquote>
-                        <p>SourceTree -&gt; 偏好设置-&gt; Git -&gt; 使用系统安装的Git</p>
-                      </blockquote>
-                      <p>好长时间不写博客了,能水一篇是一篇.</p>
-                      <p><strong>–EOF–</strong></p>
-
-                      <!--kg-card-end: markdown-->
-                    </div>
-                    <footer class="post-footer">
-                      <div class="post-eof"></div>
-                    </footer>
+                    <span class="post-meta-item-text">分类于</span>
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+                    </span>
+                    </span>
                   </div>
-                </article>
-                <article itemscope itemtype="http://schema.org/Article">
-                  <div class="post-block home">
-                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/summary-of-2018/">
-                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                </header>
+                <div class="post-body" itemprop="articleBody">
+                  <p>总感觉用账号密码提交代码是反人类的🙂</p>
+                  <p>解决方法:</p>
+                  <blockquote>
+                    <p>SourceTree -&gt; 偏好设置-&gt; Git -&gt; 使用系统安装的Git</p>
+                  </blockquote>
+                  <p>好长时间不写博客了,能水一篇是一篇.</p>
+                  <p><strong>–EOF–</strong></p>
+
+                  <!--kg-card-end: markdown-->
+                </div>
+                <footer class="post-footer">
+                  <div class="post-eof"></div>
+                </footer>
+              </article>
+              <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+                <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/summary-of-2018/">
+                <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Optional">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
-                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Optional Blog">
     </span>
-                    <header class="post-header">
-                      <h1 class="post-title" itemprop="name headline">
-                        <a href="/summary-of-2018/" class="post-title-link" itemprop="url">2018年总结</a>
-                      </h1>
-                      <div class="post-meta">
-                        <span class="post-meta-item">
+                <header class="post-header">
+                  <h2 class="post-title" itemprop="name headline">
+                    <a href="/summary-of-2018/" class="post-title-link" itemprop="url">2018年总结</a>
+                  </h2>
+                  <div class="post-meta">
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-                        <span class="post-meta-item-text">发表于</span>
-                        <time title="创建时间：2018-12-31 15:50:04" itemprop="dateCreated datePublished" datetime="2018-12-31T15:50:04+00:00">2018-12-31</time>
-                        </span>
-                        <span class="post-meta-item">
+                    <span class="post-meta-item-text">发表于</span>
+                    <time title="创建时间：2018-12-31 15:50:04" itemprop="dateCreated datePublished" datetime="2018-12-31T15:50:04+00:00">2018-12-31</time>
+                    </span>
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-                        <span class="post-meta-item-text">分类于</span>
-                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Me/" itemprop="url" rel="index"><span itemprop="name">Me</span></a></span>
-                        </span>
-                      </div>
-                    </header>
-                    <div class="post-body" itemprop="articleBody">
-                      <h1 id="穷折腾"><a href="#穷折腾" class="headerlink" title="穷折腾"></a>穷折腾</h1>
-                      <h1 id="🙂"><a href="#🙂" class="headerlink" title="🙂"></a>🙂</h1>
-
-                      <!--kg-card-end: html-->
-                    </div>
-                    <footer class="post-footer">
-                      <div class="post-eof"></div>
-                    </footer>
+                    <span class="post-meta-item-text">分类于</span>
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Me/" itemprop="url" rel="index"><span itemprop="name">Me</span></a>
+                    </span>
+                    </span>
                   </div>
-                </article>
-                <article itemscope itemtype="http://schema.org/Article">
-                  <div class="post-block home">
-                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/bit-operation/">
-                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                </header>
+                <div class="post-body" itemprop="articleBody">
+                  <h1 id="穷折腾"><a href="#穷折腾" class="headerlink" title="穷折腾"></a>穷折腾</h1>
+                  <h1 id="🙂"><a href="#🙂" class="headerlink" title="🙂"></a>🙂</h1>
+
+                  <!--kg-card-end: html-->
+                </div>
+                <footer class="post-footer">
+                  <div class="post-eof"></div>
+                </footer>
+              </article>
+              <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+                <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/bit-operation/">
+                <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Optional">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
-                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Optional Blog">
     </span>
-                    <header class="post-header">
-                      <h1 class="post-title" itemprop="name headline">
-                        <a href="/bit-operation/" class="post-title-link" itemprop="url">位运算</a>
-                      </h1>
-                      <div class="post-meta">
-                        <span class="post-meta-item">
+                <header class="post-header">
+                  <h2 class="post-title" itemprop="name headline">
+                    <a href="/bit-operation/" class="post-title-link" itemprop="url">位运算</a>
+                  </h2>
+                  <div class="post-meta">
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-                        <span class="post-meta-item-text">发表于</span>
-                        <time title="创建时间：2018-11-26 08:14:20" itemprop="dateCreated datePublished" datetime="2018-11-26T08:14:20+00:00">2018-11-26</time>
-                        </span>
-                        <span class="post-meta-item">
+                    <span class="post-meta-item-text">发表于</span>
+                    <time title="创建时间：2018-11-26 08:14:20" itemprop="dateCreated datePublished" datetime="2018-11-26T08:14:20+00:00">2018-11-26</time>
+                    </span>
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-                        <span class="post-meta-item-text">分类于</span>
-                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
-                        </span>
-                      </div>
-                    </header>
-                    <div class="post-body" itemprop="articleBody">
-                      <p>位运算了解一下,哈哈哈哈哈哈…</p>
-                      <p>Person.swift</p>
-                      <pre><code>import Foundation
+                    <span class="post-meta-item-text">分类于</span>
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
+                    </span>
+                    </span>
+                  </div>
+                </header>
+                <div class="post-body" itemprop="articleBody">
+                  <p>位运算了解一下,哈哈哈哈哈哈…</p>
+                  <p>Person.swift</p>
+                  <pre><code>import Foundation
 extension Bool {
     init(_ integer: Int){
         self.init(integer != 0)
@@ -784,8 +786,8 @@ struct Person {
         return Bool(_tallRichHandsome &amp; HandsomeMask)
     }
 }</code></pre>
-                      <p>main.swift</p>
-                      <pre><code>import Foundation
+                  <p>main.swift</p>
+                  <pre><code>import Foundation
 var person = Person()
 print(person.isTall())
 print(person.isRich())
@@ -813,49 +815,49 @@ print(&quot;==================&quot;)
 //print(0b00000010)
 print(&quot;==================&quot;)
 print(person._tallRichHandsome)</code></pre>
-                      <p><strong>–EOF–</strong></p>
+                  <p><strong>–EOF–</strong></p>
 
-                      <!--kg-card-end: markdown-->
-                    </div>
-                    <footer class="post-footer">
-                      <div class="post-eof"></div>
-                    </footer>
-                  </div>
-                </article>
-                <article itemscope itemtype="http://schema.org/Article">
-                  <div class="post-block home">
-                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/oc-object-classify/">
-                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                  <!--kg-card-end: markdown-->
+                </div>
+                <footer class="post-footer">
+                  <div class="post-eof"></div>
+                </footer>
+              </article>
+              <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+                <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/oc-object-classify/">
+                <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Optional">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
-                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Optional Blog">
     </span>
-                    <header class="post-header">
-                      <h1 class="post-title" itemprop="name headline">
-                        <a href="/oc-object-classify/" class="post-title-link" itemprop="url">OC对象的分类</a>
-                      </h1>
-                      <div class="post-meta">
-                        <span class="post-meta-item">
+                <header class="post-header">
+                  <h2 class="post-title" itemprop="name headline">
+                    <a href="/oc-object-classify/" class="post-title-link" itemprop="url">OC对象的分类</a>
+                  </h2>
+                  <div class="post-meta">
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-                        <span class="post-meta-item-text">发表于</span>
-                        <time title="创建时间：2018-11-21 14:09:18" itemprop="dateCreated datePublished" datetime="2018-11-21T14:09:18+00:00">2018-11-21</time>
-                        </span>
-                        <span class="post-meta-item">
+                    <span class="post-meta-item-text">发表于</span>
+                    <time title="创建时间：2018-11-21 14:09:18" itemprop="dateCreated datePublished" datetime="2018-11-21T14:09:18+00:00">2018-11-21</time>
+                    </span>
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-                        <span class="post-meta-item-text">分类于</span>
-                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a></span>
-                        </span>
-                      </div>
-                    </header>
-                    <div class="post-body" itemprop="articleBody">
-                      <pre><code>//实例对象(instance对象)
+                    <span class="post-meta-item-text">分类于</span>
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
+                    </span>
+                    </span>
+                  </div>
+                </header>
+                <div class="post-body" itemprop="articleBody">
+                  <pre><code>//实例对象(instance对象)
     //isa指针
     //变量
 //类对象(Class对象)
@@ -895,50 +897,50 @@ int main(int argc, const char * argv[]) {
     }
     return 0;
 }</code></pre>
-                      <p><strong>–EOF–</strong></p>
+                  <p><strong>–EOF–</strong></p>
 
-                      <!--kg-card-end: markdown-->
-                    </div>
-                    <footer class="post-footer">
-                      <div class="post-eof"></div>
-                    </footer>
-                  </div>
-                </article>
-                <article itemscope itemtype="http://schema.org/Article">
-                  <div class="post-block home">
-                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/protocols/">
-                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                  <!--kg-card-end: markdown-->
+                </div>
+                <footer class="post-footer">
+                  <div class="post-eof"></div>
+                </footer>
+              </article>
+              <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+                <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/protocols/">
+                <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Optional">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
-                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Optional Blog">
     </span>
-                    <header class="post-header">
-                      <h1 class="post-title" itemprop="name headline">
-                        <a href="/protocols/" class="post-title-link" itemprop="url">Protocols</a>
-                      </h1>
-                      <div class="post-meta">
-                        <span class="post-meta-item">
+                <header class="post-header">
+                  <h2 class="post-title" itemprop="name headline">
+                    <a href="/protocols/" class="post-title-link" itemprop="url">Protocols</a>
+                  </h2>
+                  <div class="post-meta">
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-                        <span class="post-meta-item-text">发表于</span>
-                        <time title="创建时间：2018-11-18 04:04:14" itemprop="dateCreated datePublished" datetime="2018-11-18T04:04:14+00:00">2018-11-18</time>
-                        </span>
-                        <span class="post-meta-item">
+                    <span class="post-meta-item-text">发表于</span>
+                    <time title="创建时间：2018-11-18 04:04:14" itemprop="dateCreated datePublished" datetime="2018-11-18T04:04:14+00:00">2018-11-18</time>
+                    </span>
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-                        <span class="post-meta-item-text">分类于</span>
-                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
-                        </span>
-                      </div>
-                    </header>
-                    <div class="post-body" itemprop="articleBody">
-                      <p>A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol.</p>
-                      <pre><code>import Foundation
+                    <span class="post-meta-item-text">分类于</span>
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
+                    </span>
+                    </span>
+                  </div>
+                </header>
+                <div class="post-body" itemprop="articleBody">
+                  <p>A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol.</p>
+                  <pre><code>import Foundation
 //协议语法
 protocol SomeProtocol {
 }
@@ -1174,28 +1176,47 @@ for thing in things {
     print(thing.textualDescription)
 }
 //协议继承</code></pre>
-                      <p>还是有点烧脑….</p>
-                      <p><strong>–EOF–</strong></p>
+                  <p>还是有点烧脑….</p>
+                  <p><strong>–EOF–</strong></p>
 
-                      <!--kg-card-end: markdown-->
-                    </div>
-                    <footer class="post-footer">
-                      <div class="post-eof"></div>
-                    </footer>
-                  </div>
-                </article>
-              </div>
+                  <!--kg-card-end: markdown-->
+                </div>
+                <footer class="post-footer">
+                  <div class="post-eof"></div>
+                </footer>
+              </article>
               <nav class="pagination">
                 <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
               </nav>
             </div>
+            <script>
+              window.addEventListener('tabs:register', () => {
+                let {
+                  activeClass
+                } = CONFIG.comments;
+                if (CONFIG.comments.storage) {
+                  activeClass = localStorage.getItem('comments_active') || activeClass;
+                }
+                if (activeClass) {
+                  let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+                  if (activeTab) {
+                    activeTab.click();
+                  }
+                }
+              });
+              if (CONFIG.comments.storage) {
+                window.addEventListener('tabs:click', event => {
+                  if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+                  let commentClass = event.target.classList[1];
+                  localStorage.setItem('comments_active', commentClass);
+                });
+              }
+            </script>
           </div>
-          <div class="sidebar-toggle">
-            <div class="sidebar-toggle-line-wrap">
-              <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-              <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-              <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-            </div>
+          <div class="toggle sidebar-toggle">
+            <span class="toggle-line toggle-line-first"></span>
+            <span class="toggle-line toggle-line-middle"></span>
+            <span class="toggle-line toggle-line-last"></span>
           </div>
           <aside class="sidebar">
             <div class="sidebar-inner">
@@ -1213,7 +1234,7 @@ for thing in things {
               </div> <!--/noindex-->
               <div class="site-overview-wrap sidebar-panel">
                 <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-                  <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Optional">
+                  <img class="site-author-image" itemprop="image" alt="Optional" src="/images/avatar.jpg">
                   <p class="site-author-name" itemprop="name">Optional</p>
                   <div class="site-description" itemprop="description"></div>
                 </div>
@@ -1228,8 +1249,7 @@ for thing in things {
                     <div class="site-state-item site-state-categories">
                       <a href="/categories/">
                         <span class="site-state-item-count">13</span>
-                        <span class="site-state-item-name">分类</span>
-                      </a>
+                        <span class="site-state-item-name">分类</span></a>
                     </div>
                   </nav>
                 </div>
@@ -1239,31 +1259,43 @@ for thing in things {
           <div id="sidebar-dimmer"></div>
         </div>
       </main>
-      <footer id="footer" class="footer">
+      <footer class="footer">
         <div class="footer-inner">
-          <div class="copyright"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">鲁ICP备14023895号-1 </a>
-            <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=" rel="noopener" target="_blank"> </a>&copy; 2014 – <span itemprop="copyrightYear">2020</span>
-            <span class="with-love" id="animate">
+          <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">鲁ICP备14023895号-1 </a>
+          </div>
+          <div class="copyright">
+            &copy; 2014 –
+            <span itemprop="copyrightYear">2020</span>
+            <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
             <span class="author" itemprop="copyrightHolder">Optional</span>
           </div>
-          <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
-          <span class="post-meta-divider">|</span>
-          <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.0</div>
+          <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+          </div>
         </div>
       </footer>
     </div>
-    <script src="/lib/anime.min.js?v=3.1.0"></script>
+    <script src="/lib/anime.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
     <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
-    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-    <script src="/js/utils.js?v=7.4.0"></script>
-    <script src="/js/motion.js?v=7.4.0"></script>
-    <script src="/js/schemes/pisces.js?v=7.4.0"></script>
-    <script src="/js/next-boot.js?v=7.4.0"></script>
-    <script src="/js/local-search.js?v=7.4.0"></script>
+    <script src="/lib/velocity/velocity.min.js"></script>
+    <script src="/lib/velocity/velocity.ui.min.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/motion.js"></script>
+    <script src="/js/schemes/pisces.js"></script>
+    <script src="/js/next-boot.js"></script>
+    <script src="/js/local-search.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+    <script>
+      window.addEventListener('load', () => {
+        quicklink({
+          timeout: 3000,
+          priority: true,
+          ignores: [uri => uri.includes('#'), uri => uri === 'https://jingxuetao.com/page/3/', ]
+        });
+      });
+    </script>
   </body>
 </html>

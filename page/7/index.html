@@ -4,68 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
     <meta name="theme-color" content="#222">
-    <meta name="generator" content="Hexo 3.9.0">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
-    <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
-    <link rel="stylesheet" href="/css/main.css?v=7.4.0">
-    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+    <meta name="generator" content="Hexo 4.2.1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+    <link rel="mask-icon" href="/images/logo.svg" color="#222">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
     <script id="hexo-configurations">
       var NexT = window.NexT || {};
       var CONFIG = {
-        root: '/',
-        scheme: 'Pisces',
-        version: '7.4.0',
-        exturl: false,
-        sidebar: {
+        "hostname": "jingxuetao.com",
+        "root": "/",
+        "scheme": "Pisces",
+        "version": "7.8.0",
+        "exturl": false,
+        "sidebar": {
           "position": "left",
           "display": "post",
           "offset": 12,
           "onmobile": false
         },
-        copycode: {
+        "copycode": {
           "enable": true,
           "show_result": true,
           "style": null
         },
-        back2top: {
+        "back2top": {
           "enable": true,
           "sidebar": false,
           "scrollpercent": true
         },
-        bookmark: {
+        "bookmark": {
           "enable": false,
           "color": "#222",
           "save": "auto"
         },
-        fancybox: true,
-        mediumzoom: false,
-        lazyload: true,
-        pangu: false,
-        algolia: {
-          appID: '',
-          apiKey: '',
-          indexName: '',
-          hits: {
+        "fancybox": true,
+        "mediumzoom": false,
+        "lazyload": true,
+        "pangu": false,
+        "comments": {
+          "style": "tabs",
+          "active": null,
+          "storage": true,
+          "nav": null
+        },
+        "algolia": {
+          "hits": {
             "per_page": 10
           },
-          labels: {
+          "labels": {
             "input_placeholder": "Search for Posts",
             "hits_empty": "We didn't find any results for the search: ${query}",
             "hits_stats": "${hits} results found in ${time} ms"
           }
         },
-        localsearch: {
+        "localsearch": {
           "enable": true,
           "trigger": "auto",
           "top_n_per_article": 1,
           "unescape": false,
           "preload": false
         },
-        path: 'search.xml',
-        motion: {
+        "motion": {
           "enable": true,
           "async": false,
           "transition": {
@@ -76,22 +79,17 @@
             "sidebar": "slideUpIn"
           }
         },
-        translation: {
-          copy_button: '复制',
-          copy_success: '复制成功',
-          copy_failure: '复制失败'
-        },
-        sidebarPadding: 40
+        "path": "search.xml"
       };
     </script>
-    <meta name="keywords" content="Optional Swift">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Optional Blog">
     <meta property="og:url" content="https://jingxuetao.com/page/7/index.html">
     <meta property="og:site_name" content="Optional Blog">
-    <meta property="og:locale" content="zh-CN">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="article:author" content="Optional">
+    <meta property="article:tag" content="Optional Swift">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Optional Blog">
     <link rel="canonical" href="https://jingxuetao.com/page/7/">
     <script id="page-configurations">
       // https://hexo.io/docs/variables.html
@@ -99,8 +97,7 @@
         sidebar: "",
         isHome: true,
         isPost: false,
-        isPage: false,
-        isArchive: false
+        lang: 'zh-CN'
       };
     </script>
     <title>Optional Blog</title>
@@ -117,7 +114,6 @@
         .use-motion .collection-header {
           opacity: initial;
         }
-        .use-motion .logo,
         .use-motion .site-title,
         .use-motion .site-subtitle {
           opacity: initial;
@@ -132,28 +128,31 @@
       </style>
     </noscript>
   </head>
-  <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <body itemscope itemtype="http://schema.org/WebPage">
     <div class="container use-motion">
       <div class="headband"></div>
-      <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader">
         <div class="header-inner">
           <div class="site-brand-container">
-            <div class="site-meta">
-              <div>
-                <a href="/" class="brand" rel="start">
-                  <span class="logo-line-before"><i></i></span>
-                  <span class="site-title">Optional Blog</span>
-                  <span class="logo-line-after"><i></i></span>
-                </a>
-              </div>
-              <p class="site-subtitle">Thoughts, stories and ideas.</p>
-            </div>
             <div class="site-nav-toggle">
-              <button aria-label="切换导航栏">
-                <span class="btn-bar"></span>
-                <span class="btn-bar"></span>
-                <span class="btn-bar"></span>
-              </button>
+              <div class="toggle" aria-label="切换导航栏">
+                <span class="toggle-line toggle-line-first"></span>
+                <span class="toggle-line toggle-line-middle"></span>
+                <span class="toggle-line toggle-line-last"></span>
+              </div>
+            </div>
+            <div class="site-meta">
+              <a href="/" class="brand" rel="start">
+                <span class="logo-line-before"><i></i></span>
+                <h1 class="site-title">Optional Blog</h1>
+                <span class="logo-line-after"><i></i></span>
+              </a>
+              <p class="site-subtitle" itemprop="description">Thoughts, stories and ideas.</p>
+            </div>
+            <div class="site-nav-right">
+              <div class="toggle popup-trigger">
+                <i class="fa fa-search fa-fw fa-lg"></i>
+              </div>
             </div>
           </div>
           <nav class="site-nav">
@@ -174,27 +173,30 @@
                 <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
               </li>
               <li class="menu-item menu-item-search">
-                <a href="javascript:;" class="popup-trigger">
-                  <i class="fa fa-search fa-fw"></i>搜索</a>
+                <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+                </a>
               </li>
             </ul>
           </nav>
-          <div class="site-search">
+          <div class="search-pop-overlay">
             <div class="popup search-popup">
               <div class="search-header">
                 <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
                 <div class="search-input-container">
-                  <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜索..." spellcheck="false" type="text" id="search-input">
+                  <input autocomplete="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
                 </div>
                 <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
   </span>
               </div>
-              <div id="search-result"></div>
+              <div id="search-result">
+                <div id="no-result">
+                  <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+                </div>
+              </div>
             </div>
-            <div class="search-pop-overlay"></div>
           </div>
         </div>
       </header>
@@ -202,72 +204,72 @@
         <i class="fa fa-arrow-up"></i>
         <span>0%</span>
       </div>
-      <main id="main" class="main">
+      <main class="main">
         <div class="main-inner">
           <div class="content-wrap">
-            <div id="content" class="content">
-              <div id="posts" class="posts-expand">
-                <article itemscope itemtype="http://schema.org/Article">
-                  <div class="post-block home">
-                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/centosan-zhuang-ghostbo-ke-bing-shi-xian-quan-zhan-https/">
-                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <div class="content index posts-expand">
+              <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+                <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/centosan-zhuang-ghostbo-ke-bing-shi-xian-quan-zhan-https/">
+                <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Optional">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
-                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Optional Blog">
     </span>
-                    <header class="post-header">
-                      <h1 class="post-title" itemprop="name headline">
-                        <a href="/centosan-zhuang-ghostbo-ke-bing-shi-xian-quan-zhan-https/" class="post-title-link" itemprop="url">CentOS安装Ghost博客并实现全站HTTPS</a>
-                      </h1>
-                      <div class="post-meta">
-                        <span class="post-meta-item">
+                <header class="post-header">
+                  <h2 class="post-title" itemprop="name headline">
+                    <a href="/centosan-zhuang-ghostbo-ke-bing-shi-xian-quan-zhan-https/" class="post-title-link" itemprop="url">CentOS安装Ghost博客并实现全站HTTPS</a>
+                  </h2>
+                  <div class="post-meta">
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-                        <span class="post-meta-item-text">发表于</span>
-                        <time title="创建时间：2016-03-13 14:22:00" itemprop="dateCreated datePublished" datetime="2016-03-13T14:22:00+00:00">2016-03-13</time>
-                        </span>
-                        <span class="post-meta-item">
+                    <span class="post-meta-item-text">发表于</span>
+                    <time title="创建时间：2016-03-13 14:22:00" itemprop="dateCreated datePublished" datetime="2016-03-13T14:22:00+00:00">2016-03-13</time>
+                    </span>
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-                        <span class="post-meta-item-text">分类于</span>
-                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Ghost/" itemprop="url" rel="index"><span itemprop="name">Ghost</span></a></span>
-                        </span>
-                      </div>
-                    </header>
-                    <div class="post-body" itemprop="articleBody">
-                      <h3 id="1-前期准备"><a href="#1-前期准备" class="headerlink" title="1.前期准备"></a>1.前期准备</h3>
+                    <span class="post-meta-item-text">分类于</span>
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Ghost/" itemprop="url" rel="index"><span itemprop="name">Ghost</span></a>
+                    </span>
+                    </span>
+                  </div>
+                </header>
+                <div class="post-body" itemprop="articleBody">
+                  <h3 id="1-前期准备"><a href="#1-前期准备" class="headerlink" title="1.前期准备"></a>1.前期准备</h3>
 
-                      <!--kg-card-begin: code-->
-                      <pre><code>yum update //更新yum源
+                  <!--kg-card-begin: code-->
+                  <pre><code>yum update //更新yum源
 yum groupinstall &quot;Development Tools&quot; //安装开发工具包
 yum install wget //安装wget下载工具</code></pre>
 
-                      <!--kg-card-end: code-->
-                      <h3 id="2-安装Nginx"><a href="#2-安装Nginx" class="headerlink" title="2.安装Nginx"></a>2.安装Nginx</h3>
+                  <!--kg-card-end: code-->
+                  <h3 id="2-安装Nginx"><a href="#2-安装Nginx" class="headerlink" title="2.安装Nginx"></a>2.安装Nginx</h3>
 
-                      <!--kg-card-begin: code-->
-                      <pre><code>yum install nginx -y //安装nginx
+                  <!--kg-card-begin: code-->
+                  <pre><code>yum install nginx -y //安装nginx
 service nginx start //开启nginx
 chkconfig nginx on //设置开机自启动</code></pre>
 
-                      <!--kg-card-end: code-->
-                      <p>Nginx安装完成,现在用IP或者域名就可以访问你的服务器了.</p>
-                      <p>使用Nginx配置反向代理,指向ghost博客的2368端口.</p>
+                  <!--kg-card-end: code-->
+                  <p>Nginx安装完成,现在用IP或者域名就可以访问你的服务器了.</p>
+                  <p>使用Nginx配置反向代理,指向ghost博客的2368端口.</p>
 
-                      <!--kg-card-begin: code-->
-                      <pre><code>cd /etc/nginx/conf.d //cd到nginx目录
+                  <!--kg-card-begin: code-->
+                  <pre><code>cd /etc/nginx/conf.d //cd到nginx目录
 vim default.conf //打开default.conf文件</code></pre>
 
-                      <!--kg-card-end: code-->
-                      <p>在文件中写入一下内容:</p>
+                  <!--kg-card-end: code-->
+                  <p>在文件中写入一下内容:</p>
 
-                      <!--kg-card-begin: code-->
-                      <pre><code>server {  
+                  <!--kg-card-begin: code-->
+                  <pre><code>server {  
     listen 80;
     server_name jingxuetao.com;
     location / {
@@ -279,44 +281,44 @@ vim default.conf //打开default.conf文件</code></pre>
     }
 }</code></pre>
 
-                      <!--kg-card-end: code-->
-                      <p>将上面的server_name 替换成自己的域名,保存退出,并重启Nginx.</p>
+                  <!--kg-card-end: code-->
+                  <p>将上面的server_name 替换成自己的域名,保存退出,并重启Nginx.</p>
 
-                      <!--kg-card-begin: code-->
-                      <pre><code>service nginx restart</code></pre>
+                  <!--kg-card-begin: code-->
+                  <pre><code>service nginx restart</code></pre>
 
-                      <!--kg-card-end: code-->
-                      <h3 id="3-安装MySQL"><a href="#3-安装MySQL" class="headerlink" title="3.安装MySQL"></a>3.安装MySQL</h3>
-                      <blockquote>
-                        <p>Ghost集成了sqlite3数据库,如果不用MySQL,本步可以忽略.</p>
-                      </blockquote>
+                  <!--kg-card-end: code-->
+                  <h3 id="3-安装MySQL"><a href="#3-安装MySQL" class="headerlink" title="3.安装MySQL"></a>3.安装MySQL</h3>
+                  <blockquote>
+                    <p>Ghost集成了sqlite3数据库,如果不用MySQL,本步可以忽略.</p>
+                  </blockquote>
 
-                      <!--kg-card-begin: code-->
-                      <pre><code>yum install mysql mysql-server //安装MySQL
+                  <!--kg-card-begin: code-->
+                  <pre><code>yum install mysql mysql-server //安装MySQL
 service mysqld restart //启动数据库
 chkconfig mysqld on //设置开机启动
 mysql_secure_installation //开始配置数据库</code></pre>
 
-                      <!--kg-card-end: code-->
+                  <!--kg-card-end: code-->
 
-                      <!--kg-card-begin: code-->
-                      <pre><code>Set root password? [Y/n] //设置root密码 -- 根据个人需求  
+                  <!--kg-card-begin: code-->
+                  <pre><code>Set root password? [Y/n] //设置root密码 -- 根据个人需求  
 anonymous users? [Y/n] //删除匿名用户 -- y  
 Disallow root login remotely? [Y/n] //禁止root用户远程登录 --n
 Remove test database and access to it? [Y/n] //删除默认的 test 数据库 --y  
 Reload privilege tables now? [Y/n] //是否马上应用最新的设置 --y  </code></pre>
 
-                      <!--kg-card-end: code-->
-                      <p>为了支持中文,还需要修改MySQL字符支持.</p>
+                  <!--kg-card-end: code-->
+                  <p>为了支持中文,还需要修改MySQL字符支持.</p>
 
-                      <!--kg-card-begin: code-->
-                      <pre><code>vim /etc/my.cnf</code></pre>
+                  <!--kg-card-begin: code-->
+                  <pre><code>vim /etc/my.cnf</code></pre>
 
-                      <!--kg-card-end: code-->
-                      <p>在对应位置填入对应的内容:</p>
+                  <!--kg-card-end: code-->
+                  <p>在对应位置填入对应的内容:</p>
 
-                      <!--kg-card-begin: code-->
-                      <pre><code>[client]
+                  <!--kg-card-begin: code-->
+                  <pre><code>[client]
 default-character-set=utf8  
 [mysql]
 default-character-set=utf8  
@@ -324,11 +326,11 @@ default-character-set=utf8
 character-set-server=utf8  
 collation-server=utf8_general_ci  </code></pre>
 
-                      <!--kg-card-end: code-->
-                      <p>然后新建一个Ghost专用MySQL用户跟database:</p>
+                  <!--kg-card-end: code-->
+                  <p>然后新建一个Ghost专用MySQL用户跟database:</p>
 
-                      <!--kg-card-begin: code-->
-                      <pre><code>mysql -u root -p  
+                  <!--kg-card-begin: code-->
+                  <pre><code>mysql -u root -p  
 //用root用户登录mysql
 create database ghost;  
 //创建ghost数据库
@@ -336,31 +338,31 @@ GRANT ALL PRIVILEGES ON ghost.* To &apos;ghost&apos;@&apos;%&apos; IDENTIFIED BY
 //创建ghost database 和 用户名为ghost的用户
 //%代表能被所有地址访问</code></pre>
 
-                      <!--kg-card-end: code-->
-                      <h3 id="4-安装Node-js"><a href="#4-安装Node-js" class="headerlink" title="4.安装Node.js"></a>4.安装Node.js</h3>
-                      <p>根据Ghost官方建议,安装v0.10.40版本</p>
+                  <!--kg-card-end: code-->
+                  <h3 id="4-安装Node-js"><a href="#4-安装Node-js" class="headerlink" title="4.安装Node.js"></a>4.安装Node.js</h3>
+                  <p>根据Ghost官方建议,安装v0.10.40版本</p>
 
-                      <!--kg-card-begin: code-->
-                      <pre><code>wget http://nodejs.org/dist/v0.10.40/node-v0.10.40.tar.gz
+                  <!--kg-card-begin: code-->
+                  <pre><code>wget http://nodejs.org/dist/v0.10.40/node-v0.10.40.tar.gz
 tar zxvf node-v0.10.40.tar.gz
 cd node-v0.10.40
 ./configure
 make &amp;&amp; make install</code></pre>
 
-                      <!--kg-card-end: code-->
-                      <h3 id="5-安装Ghost"><a href="#5-安装Ghost" class="headerlink" title="5.安装Ghost"></a>5.安装Ghost</h3>
+                  <!--kg-card-end: code-->
+                  <h3 id="5-安装Ghost"><a href="#5-安装Ghost" class="headerlink" title="5.安装Ghost"></a>5.安装Ghost</h3>
 
-                      <!--kg-card-begin: code-->
-                      <pre><code>mkdir /var/www //创建Ghost安装路径
+                  <!--kg-card-begin: code-->
+                  <pre><code>mkdir /var/www //创建Ghost安装路径
 wget http://dl.ghostchina.com/Ghost-0.7.4-zh-full.zip //下载Ghost(中文版)
 unzip Ghost-0.7.4-zh-full.zip //解压zip文件到当前文件夹
 mv config.example.js config.js //重命名,并配置
 vim config.js //打开config.js文件,并在里面填写对应内容.如果用sqlite3,只需要配置url</code></pre>
 
-                      <!--kg-card-end: code-->
+                  <!--kg-card-end: code-->
 
-                      <!--kg-card-begin: code-->
-                      <pre><code>production: {  
+                  <!--kg-card-begin: code-->
+                  <pre><code>production: {  
     url: &apos;http://jingxuetao.com&apos;, //这里是你自己VPS主机的域名，或者IP
     mail: {},
     database: {
@@ -378,13 +380,13 @@ vim config.js //打开config.js文件,并在里面填写对应内容.如果用sq
         }
     }  </code></pre>
 
-                      <!--kg-card-end: code-->
-                      <p>现在在www目录下用命令npm start启动Ghost,网页就可以浏览了.</p>
-                      <h3 id="6-使用PM2让Ghost永远在线"><a href="#6-使用PM2让Ghost永远在线" class="headerlink" title="6.使用PM2让Ghost永远在线"></a>6.使用PM2让Ghost永远在线</h3>
-                      <p>只要我们一断开ssh，Ghost的进程就会被关闭，这里我们使用PM2来守护Ghost服务进程，并让其运行在生产模式production上</p>
+                  <!--kg-card-end: code-->
+                  <p>现在在www目录下用命令npm start启动Ghost,网页就可以浏览了.</p>
+                  <h3 id="6-使用PM2让Ghost永远在线"><a href="#6-使用PM2让Ghost永远在线" class="headerlink" title="6.使用PM2让Ghost永远在线"></a>6.使用PM2让Ghost永远在线</h3>
+                  <p>只要我们一断开ssh，Ghost的进程就会被关闭，这里我们使用PM2来守护Ghost服务进程，并让其运行在生产模式production上</p>
 
-                      <!--kg-card-begin: code-->
-                      <pre><code>//！！首先进到ghost的安装目录
+                  <!--kg-card-begin: code-->
+                  <pre><code>//！！首先进到ghost的安装目录
 //安装pm2
 npm install pm2 -g  
 //让ghost以production模式运作，指定程序的入口index.js，并且此进程命名为ghost
@@ -393,20 +395,20 @@ NODE_ENV=production pm2 start index.js --name &quot;ghost&quot;
 pm2 startup centos  
 pm2 save  </code></pre>
 
-                      <!--kg-card-end: code-->
-                      <p>进程守护做完，顺便提提pm2重启进程的命令是:</p>
+                  <!--kg-card-end: code-->
+                  <p>进程守护做完，顺便提提pm2重启进程的命令是:</p>
 
-                      <!--kg-card-begin: code-->
-                      <pre><code>pm2 restart ghost</code></pre>
+                  <!--kg-card-begin: code-->
+                  <pre><code>pm2 restart ghost</code></pre>
 
-                      <!--kg-card-end: code-->
-                      <p>用<a href="http://jingxuetao.com/ghost">http://jingxuetao.com/ghost</a> 访问后台</p>
-                      <h3 id="7-设置外部存储"><a href="#7-设置外部存储" class="headerlink" title="7.设置外部存储"></a>7.设置外部存储</h3>
-                      <p>Ghost默认是将图片存储在服务器上的,但是服务器存储空间有限,并且外部存储又不花钱.</p>
-                      <p><a href="https://portal.qiniu.com/" target="_blank" rel="noopener">https://portal.qiniu.com/</a> 创建七牛云存储账号,并创建一个空间(公开空间).(使用免费空间之前得冲10块钱),然后修改Ghost配置文件如下:</p>
+                  <!--kg-card-end: code-->
+                  <p>用<a href="http://jingxuetao.com/ghost">http://jingxuetao.com/ghost</a> 访问后台</p>
+                  <h3 id="7-设置外部存储"><a href="#7-设置外部存储" class="headerlink" title="7.设置外部存储"></a>7.设置外部存储</h3>
+                  <p>Ghost默认是将图片存储在服务器上的,但是服务器存储空间有限,并且外部存储又不花钱.</p>
+                  <p><a href="https://portal.qiniu.com/" target="_blank" rel="noopener">https://portal.qiniu.com/</a> 创建七牛云存储账号,并创建一个空间(公开空间).(使用免费空间之前得冲10块钱),然后修改Ghost配置文件如下:</p>
 
-                      <!--kg-card-begin: code-->
-                      <pre><code>/*storage: {
+                  <!--kg-card-begin: code-->
+                  <pre><code>/*storage: {
      provider: &apos;local-file-store&apos;
  }*/ //注释掉本地存储代码.
  storage: {
@@ -418,21 +420,21 @@ pm2 save  </code></pre>
      prefix: &apos;http://o3pxzuakz.qnssl.com&apos;//选择一个空间-&gt;空间设置-&gt;域名设置-&gt;七牛域名,将网址复制到这.
  }</code></pre>
 
-                      <!--kg-card-end: code-->
-                      <p>然后,在default.conf文件的location中添加</p>
+                  <!--kg-card-end: code-->
+                  <p>然后,在default.conf文件的location中添加</p>
 
-                      <!--kg-card-begin: code-->
-                      <pre><code>client_max_body_size 5m; //设置上传图片最大是5M,不设置上传图片会不成功,默认上传图片大小比较小.</code></pre>
+                  <!--kg-card-begin: code-->
+                  <pre><code>client_max_body_size 5m; //设置上传图片最大是5M,不设置上传图片会不成功,默认上传图片大小比较小.</code></pre>
 
-                      <!--kg-card-end: code-->
-                      <p>重启Ghost,上传一张图片试试,看看图片地址.</p>
-                      <h3 id="8-设置HTTPS"><a href="#8-设置HTTPS" class="headerlink" title="8.设置HTTPS"></a>8.设置HTTPS</h3>
-                      <p>①申请沃通免费证书,参考这篇文章.<br><a href="http://www.freehao123.com/cloudflare-wosign-ssl/" target="_blank" rel="noopener">Wosign沃通免费SSL申请开通</a></p>
-                      <p>②选择nginx的证书,改名为cert.crt跟cert.key</p>
-                      <p>③将证书上传到服务器的/etc/nginx目录下,然后配置Nginx.在/etc/nginx/conf.d目录下,除了default.conf文件之外,应该还有一个sslxxxxx.conf文件(没有就创建ssl.conf文件),将下面内容对比填入或者复制进去.</p>
+                  <!--kg-card-end: code-->
+                  <p>重启Ghost,上传一张图片试试,看看图片地址.</p>
+                  <h3 id="8-设置HTTPS"><a href="#8-设置HTTPS" class="headerlink" title="8.设置HTTPS"></a>8.设置HTTPS</h3>
+                  <p>①申请沃通免费证书,参考这篇文章.<br><a href="http://www.freehao123.com/cloudflare-wosign-ssl/" target="_blank" rel="noopener">Wosign沃通免费SSL申请开通</a></p>
+                  <p>②选择nginx的证书,改名为cert.crt跟cert.key</p>
+                  <p>③将证书上传到服务器的/etc/nginx目录下,然后配置Nginx.在/etc/nginx/conf.d目录下,除了default.conf文件之外,应该还有一个sslxxxxx.conf文件(没有就创建ssl.conf文件),将下面内容对比填入或者复制进去.</p>
 
-                      <!--kg-card-begin: code-->
-                      <pre><code># HTTPS server
+                  <!--kg-card-begin: code-->
+                  <pre><code># HTTPS server
 #
 server {
     listen 443 ssl;
@@ -452,190 +454,190 @@ server {
     }
 }</code></pre>
 
-                      <!--kg-card-end: code-->
-                      <p><strong>另外还得在config.js文件中将url字段http后面加个s,例如:</strong></p>
+                  <!--kg-card-end: code-->
+                  <p><strong>另外还得在config.js文件中将url字段http后面加个s,例如:</strong></p>
 
-                      <!--kg-card-begin: code-->
-                      <pre><code>url: &apos;https://jingxuetao.com&apos;</code></pre>
+                  <!--kg-card-begin: code-->
+                  <pre><code>url: &apos;https://jingxuetao.com&apos;</code></pre>
 
-                      <!--kg-card-end: code-->
-                      <p>现在通过<a href="https://jingxuetao.com">https://jingxuetao.com</a> 就可以访问自己的网站了.</p>
-                      <p>要想将HTTP请求自动跳转到HTTPS,在default.conf文件的location中添加下面内容</p>
+                  <!--kg-card-end: code-->
+                  <p>现在通过<a href="https://jingxuetao.com">https://jingxuetao.com</a> 就可以访问自己的网站了.</p>
+                  <p>要想将HTTP请求自动跳转到HTTPS,在default.conf文件的location中添加下面内容</p>
 
-                      <!--kg-card-begin: code-->
-                      <pre><code>return 301 https://$server_name$request_uri;</code></pre>
+                  <!--kg-card-begin: code-->
+                  <pre><code>return 301 https://$server_name$request_uri;</code></pre>
 
-                      <!--kg-card-end: code-->
-                      <p>现在是实现HTTPS了,但是因为网页中含有其他网站的资源文件(图片,一个是头像,另一个就是后台左上角的那个小图标,再就是自己上传到七牛的图片.),所以现在浏览器地址栏中并没有显示安全连接.</p>
-                      <p>往后需要各种注意的细节,文字描述不清楚.不说了,心好累.</p>
-                      <p>博客本来访问量就不多,耐心看到这的就更少了.如果需要,加我QQ吧,1247846317 验证问题:荆学涛.</p>
-                      <p>END</p>
-                    </div>
-                    <footer class="post-footer">
-                      <div class="post-eof"></div>
-                    </footer>
-                  </div>
-                </article>
-                <article itemscope itemtype="http://schema.org/Article">
-                  <div class="post-block home">
-                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/ios-jump-hide-tabbar/">
-                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                  <!--kg-card-end: code-->
+                  <p>现在是实现HTTPS了,但是因为网页中含有其他网站的资源文件(图片,一个是头像,另一个就是后台左上角的那个小图标,再就是自己上传到七牛的图片.),所以现在浏览器地址栏中并没有显示安全连接.</p>
+                  <p>往后需要各种注意的细节,文字描述不清楚.不说了,心好累.</p>
+                  <p>博客本来访问量就不多,耐心看到这的就更少了.如果需要,加我QQ吧,1247846317 验证问题:荆学涛.</p>
+                  <p>END</p>
+                </div>
+                <footer class="post-footer">
+                  <div class="post-eof"></div>
+                </footer>
+              </article>
+              <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+                <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/ios-jump-hide-tabbar/">
+                <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Optional">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
-                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Optional Blog">
     </span>
-                    <header class="post-header">
-                      <h1 class="post-title" itemprop="name headline">
-                        <a href="/ios-jump-hide-tabbar/" class="post-title-link" itemprop="url">iOS界面跳转隐藏tabBar</a>
-                      </h1>
-                      <div class="post-meta">
-                        <span class="post-meta-item">
+                <header class="post-header">
+                  <h2 class="post-title" itemprop="name headline">
+                    <a href="/ios-jump-hide-tabbar/" class="post-title-link" itemprop="url">iOS界面跳转隐藏tabBar</a>
+                  </h2>
+                  <div class="post-meta">
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-                        <span class="post-meta-item-text">发表于</span>
-                        <time title="创建时间：2016-03-10 14:30:00" itemprop="dateCreated datePublished" datetime="2016-03-10T14:30:00+00:00">2016-03-10</time>
-                        </span>
-                        <span class="post-meta-item">
+                    <span class="post-meta-item-text">发表于</span>
+                    <time title="创建时间：2016-03-10 14:30:00" itemprop="dateCreated datePublished" datetime="2016-03-10T14:30:00+00:00">2016-03-10</time>
+                    </span>
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-                        <span class="post-meta-item-text">分类于</span>
-                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a></span>
-                        </span>
-                      </div>
-                    </header>
-                    <div class="post-body" itemprop="articleBody">
-                      <h3 id="一-IOS隐藏tabBar的方法"><a href="#一-IOS隐藏tabBar的方法" class="headerlink" title="一.IOS隐藏tabBar的方法:"></a>一.IOS隐藏tabBar的方法:</h3>
+                    <span class="post-meta-item-text">分类于</span>
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
+                    </span>
+                    </span>
+                  </div>
+                </header>
+                <div class="post-body" itemprop="articleBody">
+                  <h3 id="一-IOS隐藏tabBar的方法"><a href="#一-IOS隐藏tabBar的方法" class="headerlink" title="一.IOS隐藏tabBar的方法:"></a>一.IOS隐藏tabBar的方法:</h3>
 
-                      <!--kg-card-begin: code-->
-                      <pre><code>self.tabBarController.tabBar.hidden = YES;</code></pre>
+                  <!--kg-card-begin: code-->
+                  <pre><code>self.tabBarController.tabBar.hidden = YES;</code></pre>
 
-                      <!--kg-card-end: code-->
-                      <p>但是我们跳转隐藏tabBar需要的不是这段代码.</p>
-                      <h3 id="二-push跳转隐藏tabBar"><a href="#二-push跳转隐藏tabBar" class="headerlink" title="二.push跳转隐藏tabBar"></a>二.push跳转隐藏tabBar</h3>
-                      <p>如果在push跳转时需要隐藏tabBar，设置self.hidesBottomBarWhenPushed=YES;并在push后设置self.hidesBottomBarWhenPushed=NO;这样back回来的时候，tabBar会恢复正常显示。代码如下:</p>
+                  <!--kg-card-end: code-->
+                  <p>但是我们跳转隐藏tabBar需要的不是这段代码.</p>
+                  <h3 id="二-push跳转隐藏tabBar"><a href="#二-push跳转隐藏tabBar" class="headerlink" title="二.push跳转隐藏tabBar"></a>二.push跳转隐藏tabBar</h3>
+                  <p>如果在push跳转时需要隐藏tabBar，设置self.hidesBottomBarWhenPushed=YES;并在push后设置self.hidesBottomBarWhenPushed=NO;这样back回来的时候，tabBar会恢复正常显示。代码如下:</p>
 
-                      <!--kg-card-begin: code-->
-                      <pre><code>NextViewController *next=[[NextViewController alloc]init];
+                  <!--kg-card-begin: code-->
+                  <pre><code>NextViewController *next=[[NextViewController alloc]init];
 next. hidesBottomBarWhenPushed = YES;
 [self.navigationController pushViewController:next animated:YES];</code></pre>
 
-                      <!--kg-card-end: code-->
-                      <p>END</p>
-                    </div>
-                    <footer class="post-footer">
-                      <div class="post-eof"></div>
-                    </footer>
-                  </div>
-                </article>
-                <article itemscope itemtype="http://schema.org/Article">
-                  <div class="post-block home">
-                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/sorrow-of-a-virtual-machine/">
-                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                  <!--kg-card-end: code-->
+                  <p>END</p>
+                </div>
+                <footer class="post-footer">
+                  <div class="post-eof"></div>
+                </footer>
+              </article>
+              <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+                <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/sorrow-of-a-virtual-machine/">
+                <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Optional">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
-                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Optional Blog">
     </span>
-                    <header class="post-header">
-                      <h1 class="post-title" itemprop="name headline">
-                        <a href="/sorrow-of-a-virtual-machine/" class="post-title-link" itemprop="url">一台虚拟机的悲哀</a>
-                      </h1>
-                      <div class="post-meta">
-                        <span class="post-meta-item">
+                <header class="post-header">
+                  <h2 class="post-title" itemprop="name headline">
+                    <a href="/sorrow-of-a-virtual-machine/" class="post-title-link" itemprop="url">一台虚拟机的悲哀</a>
+                  </h2>
+                  <div class="post-meta">
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-                        <span class="post-meta-item-text">发表于</span>
-                        <time title="创建时间：2016-03-07 14:13:00" itemprop="dateCreated datePublished" datetime="2016-03-07T14:13:00+00:00">2016-03-07</time>
-                        </span>
-                        <span class="post-meta-item">
+                    <span class="post-meta-item-text">发表于</span>
+                    <time title="创建时间：2016-03-07 14:13:00" itemprop="dateCreated datePublished" datetime="2016-03-07T14:13:00+00:00">2016-03-07</time>
+                    </span>
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-                        <span class="post-meta-item-text">分类于</span>
-                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Me/" itemprop="url" rel="index"><span itemprop="name">Me</span></a></span>
-                        </span>
-                      </div>
-                    </header>
-                    <div class="post-body" itemprop="articleBody">
-                      <blockquote>
-                        <p>“哈哈,我终于从镜像文件变成变成操作系统啦,O(∩_∩)O~,我的主人每天都会用我办公超过10个小时.虽然我的身体素质不好,但是我有一颗顽强灵魂;虽然每天都会很累,但是我很开心.因为我是主人的操作系统呀!(<em>^_\</em>^<em>)”.<br>______________________________________________________________\</em>—–一台虚拟机的悲哀</p>
-                      </blockquote>
-
-                      <!--kg-card-begin: code-->
-                      <pre><code>或许我们也是虚拟机.</code></pre>
-
-                      <!--kg-card-end: code-->
-                      <ul>
-                        <li>博客从ACE转移到ECS上了.过程比较曲折,结果还算完美.</li>
-                        <li>明天写一下教程,然后再把HTTPS的反代理弄一下.又得翻代码.</li>
-                        <li>以后不折腾了,不折腾了.</li>
-                      </ul>
-                      <p>END</p>
-                    </div>
-                    <footer class="post-footer">
-                      <div class="post-eof"></div>
-                    </footer>
+                    <span class="post-meta-item-text">分类于</span>
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Me/" itemprop="url" rel="index"><span itemprop="name">Me</span></a>
+                    </span>
+                    </span>
                   </div>
-                </article>
-                <article itemscope itemtype="http://schema.org/Article">
-                  <div class="post-block home">
-                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/by-runtime-to-allow-properties-to-fly-on-category/">
-                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                </header>
+                <div class="post-body" itemprop="articleBody">
+                  <blockquote>
+                    <p>“哈哈,我终于从镜像文件变成变成操作系统啦,O(∩_∩)O~,我的主人每天都会用我办公超过10个小时.虽然我的身体素质不好,但是我有一颗顽强灵魂;虽然每天都会很累,但是我很开心.因为我是主人的操作系统呀!(<em>^_\</em>^<em>)”.<br>______________________________________________________________\</em>—–一台虚拟机的悲哀</p>
+                  </blockquote>
+
+                  <!--kg-card-begin: code-->
+                  <pre><code>或许我们也是虚拟机.</code></pre>
+
+                  <!--kg-card-end: code-->
+                  <ul>
+                    <li>博客从ACE转移到ECS上了.过程比较曲折,结果还算完美.</li>
+                    <li>明天写一下教程,然后再把HTTPS的反代理弄一下.又得翻代码.</li>
+                    <li>以后不折腾了,不折腾了.</li>
+                  </ul>
+                  <p>END</p>
+                </div>
+                <footer class="post-footer">
+                  <div class="post-eof"></div>
+                </footer>
+              </article>
+              <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+                <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/by-runtime-to-allow-properties-to-fly-on-category/">
+                <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Optional">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
-                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Optional Blog">
     </span>
-                    <header class="post-header">
-                      <h1 class="post-title" itemprop="name headline">
-                        <a href="/by-runtime-to-allow-properties-to-fly-on-category/" class="post-title-link" itemprop="url">通过runtime让属性在category上飞</a>
-                      </h1>
-                      <div class="post-meta">
-                        <span class="post-meta-item">
+                <header class="post-header">
+                  <h2 class="post-title" itemprop="name headline">
+                    <a href="/by-runtime-to-allow-properties-to-fly-on-category/" class="post-title-link" itemprop="url">通过runtime让属性在category上飞</a>
+                  </h2>
+                  <div class="post-meta">
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-                        <span class="post-meta-item-text">发表于</span>
-                        <time title="创建时间：2016-02-19 13:58:00" itemprop="dateCreated datePublished" datetime="2016-02-19T13:58:00+00:00">2016-02-19</time>
-                        </span>
-                        <span class="post-meta-item">
+                    <span class="post-meta-item-text">发表于</span>
+                    <time title="创建时间：2016-02-19 13:58:00" itemprop="dateCreated datePublished" datetime="2016-02-19T13:58:00+00:00">2016-02-19</time>
+                    </span>
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-                        <span class="post-meta-item-text">分类于</span>
-                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a></span>
-                        </span>
-                      </div>
-                    </header>
-                    <div class="post-body" itemprop="articleBody">
-                      <h3 id="现在面临的场景"><a href="#现在面临的场景" class="headerlink" title="现在面临的场景"></a>现在面临的场景</h3>
-                      <p>在做项目过程中难免会创建很多ViewModel,这些ViewModel难免有些共同的方法跟属性,这些共同的方法和属性可以单独提取出来,这就用到category.我现在的具体场景是:每个ViewModel都需要请求数据,当ViewController从当前界面切换到另一个画面时,暂停本页面的网络请求.</p>
-                      <h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3>
-                      <p>NSObject+ViewModel.h文件</p>
+                    <span class="post-meta-item-text">分类于</span>
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
+                    </span>
+                    </span>
+                  </div>
+                </header>
+                <div class="post-body" itemprop="articleBody">
+                  <h3 id="现在面临的场景"><a href="#现在面临的场景" class="headerlink" title="现在面临的场景"></a>现在面临的场景</h3>
+                  <p>在做项目过程中难免会创建很多ViewModel,这些ViewModel难免有些共同的方法跟属性,这些共同的方法和属性可以单独提取出来,这就用到category.我现在的具体场景是:每个ViewModel都需要请求数据,当ViewController从当前界面切换到另一个画面时,暂停本页面的网络请求.</p>
+                  <h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3>
+                  <p>NSObject+ViewModel.h文件</p>
 
-                      <!--kg-card-begin: code-->
-                      <pre><code>@interface NSObject (ViewModel)
+                  <!--kg-card-begin: code-->
+                  <pre><code>@interface NSObject (ViewModel)
 @property (nonatomic) NSURLSessionDataTask *dataTask;
 - (void)cancelTask; //取消任务
 - (void)suspendTask; //暂停任务
 - (void)resumeTask; //继续任务
 @end</code></pre>
 
-                      <!--kg-card-end: code-->
-                      <p>NSObject+ViewModel.m文件</p>
+                  <!--kg-card-end: code-->
+                  <p>NSObject+ViewModel.m文件</p>
 
-                      <!--kg-card-begin: code-->
-                      <pre><code>#import &quot;NSObject+ViewModel.h&quot;
+                  <!--kg-card-begin: code-->
+                  <pre><code>#import &quot;NSObject+ViewModel.h&quot;
 #import &lt;objc/runtime.h&gt;//得引入runtime
 static const void *dataTaskKey = &amp;dataTaskKey;
 @implementation NSObject (ViewModel)
@@ -667,210 +669,229 @@ static const void *dataTaskKey = &amp;dataTaskKey;
 }
 @end</code></pre>
 
-                      <!--kg-card-end: code-->
-                      <h3 id="关联策略"><a href="#关联策略" class="headerlink" title="关联策略"></a>关联策略</h3>
-                      <p>&nbsp; &nbsp; &nbsp;Behavior &nbsp; &nbsp;@property Equivalent &nbsp; &nbsp;Description &nbsp; &nbsp; &nbsp; &nbsp;OBJC_ASSOCIATION_ASSIGN &nbsp; &nbsp;@property (assign) 或 @property (unsafe_unretained) &nbsp; &nbsp;指定一个关联对象的弱引用。 &nbsp; &nbsp; &nbsp; &nbsp;OBJC_ASSOCIATION_RETAIN_NONATOMIC &nbsp; &nbsp;@property (nonatomic, strong) &nbsp; &nbsp;指定一个关联对象的强引用，不能被原子化使用。 &nbsp; &nbsp; &nbsp; &nbsp;OBJC_ASSOCIATION_COPY_NONATOMIC &nbsp; &nbsp;@property (nonatomic, copy) &nbsp; &nbsp;指定一个关联对象的copy引用，不能被原子化使用。 &nbsp; &nbsp; &nbsp; &nbsp;OBJC_ASSOCIATION_RETAIN &nbsp; &nbsp;@property (atomic, strong) &nbsp; &nbsp;指定一个关联对象的强引用，能被原子化使用。 &nbsp; &nbsp; &nbsp; &nbsp;OBJC_ASSOCIATION_COPY &nbsp; &nbsp;@property (atomic, copy) &nbsp; &nbsp;指定一个关联对象的copy引用，能被原子化使用。 &nbsp;</p>
-                      <blockquote>
-                        <p>这两个方法可以让一个对象和另一个对象关联，就是说一个对象可以保持对另一个对象的引用，并获取那个对象。有了这些，就能实现属性功能了。</p>
-                      </blockquote>
-                      <h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3>
-                    </div>
-                    <footer class="post-footer">
-                      <div class="post-eof"></div>
-                    </footer>
-                  </div>
-                </article>
-                <article itemscope itemtype="http://schema.org/Article">
-                  <div class="post-block home">
-                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/implementation-of-https-access-station/">
-                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                  <!--kg-card-end: code-->
+                  <h3 id="关联策略"><a href="#关联策略" class="headerlink" title="关联策略"></a>关联策略</h3>
+                  <p>&nbsp; &nbsp; &nbsp;Behavior &nbsp; &nbsp;@property Equivalent &nbsp; &nbsp;Description &nbsp; &nbsp; &nbsp; &nbsp;OBJC_ASSOCIATION_ASSIGN &nbsp; &nbsp;@property (assign) 或 @property (unsafe_unretained) &nbsp; &nbsp;指定一个关联对象的弱引用。 &nbsp; &nbsp; &nbsp; &nbsp;OBJC_ASSOCIATION_RETAIN_NONATOMIC &nbsp; &nbsp;@property (nonatomic, strong) &nbsp; &nbsp;指定一个关联对象的强引用，不能被原子化使用。 &nbsp; &nbsp; &nbsp; &nbsp;OBJC_ASSOCIATION_COPY_NONATOMIC &nbsp; &nbsp;@property (nonatomic, copy) &nbsp; &nbsp;指定一个关联对象的copy引用，不能被原子化使用。 &nbsp; &nbsp; &nbsp; &nbsp;OBJC_ASSOCIATION_RETAIN &nbsp; &nbsp;@property (atomic, strong) &nbsp; &nbsp;指定一个关联对象的强引用，能被原子化使用。 &nbsp; &nbsp; &nbsp; &nbsp;OBJC_ASSOCIATION_COPY &nbsp; &nbsp;@property (atomic, copy) &nbsp; &nbsp;指定一个关联对象的copy引用，能被原子化使用。 &nbsp;</p>
+                  <blockquote>
+                    <p>这两个方法可以让一个对象和另一个对象关联，就是说一个对象可以保持对另一个对象的引用，并获取那个对象。有了这些，就能实现属性功能了。</p>
+                  </blockquote>
+                  <h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3>
+                </div>
+                <footer class="post-footer">
+                  <div class="post-eof"></div>
+                </footer>
+              </article>
+              <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+                <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/implementation-of-https-access-station/">
+                <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Optional">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
-                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Optional Blog">
     </span>
-                    <header class="post-header">
-                      <h1 class="post-title" itemprop="name headline">
-                        <a href="/implementation-of-https-access-station/" class="post-title-link" itemprop="url">全站实现HTTPS访问</a>
-                      </h1>
-                      <div class="post-meta">
-                        <span class="post-meta-item">
+                <header class="post-header">
+                  <h2 class="post-title" itemprop="name headline">
+                    <a href="/implementation-of-https-access-station/" class="post-title-link" itemprop="url">全站实现HTTPS访问</a>
+                  </h2>
+                  <div class="post-meta">
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-                        <span class="post-meta-item-text">发表于</span>
-                        <time title="创建时间：2016-02-18 13:53:00" itemprop="dateCreated datePublished" datetime="2016-02-18T13:53:00+00:00">2016-02-18</time>
-                        </span>
-                        <span class="post-meta-item">
+                    <span class="post-meta-item-text">发表于</span>
+                    <time title="创建时间：2016-02-18 13:53:00" itemprop="dateCreated datePublished" datetime="2016-02-18T13:53:00+00:00">2016-02-18</time>
+                    </span>
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-                        <span class="post-meta-item-text">分类于</span>
-                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Me/" itemprop="url" rel="index"><span itemprop="name">Me</span></a></span>
-                        </span>
-                      </div>
-                    </header>
-                    <div class="post-body" itemprop="articleBody">
-                      <p>经过一番折腾,现在博客能通过HTTPS访问了,但是还不完美,主要是图片资源不是通过HTTPS形式访问的.一个是自己上传的图片,这个好解决,修改一下七牛上传的图片地址就行.另一个就是多说的头像,多说的头像不支持HTTPS,这个得通过反代理的形式.不知道ACE支不支持反代理,已经提交了工单.当然自己上传的图片也可以通过反代理的形式.</p>
-                      <p>年轻就是折腾!</p>
-                      <p>END</p>
-                    </div>
-                    <footer class="post-footer">
-                      <div class="post-eof"></div>
-                    </footer>
+                    <span class="post-meta-item-text">分类于</span>
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Me/" itemprop="url" rel="index"><span itemprop="name">Me</span></a>
+                    </span>
+                    </span>
                   </div>
-                </article>
-                <article itemscope itemtype="http://schema.org/Article">
-                  <div class="post-block home">
-                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/went-to-ghost-2/">
-                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                </header>
+                <div class="post-body" itemprop="articleBody">
+                  <p>经过一番折腾,现在博客能通过HTTPS访问了,但是还不完美,主要是图片资源不是通过HTTPS形式访问的.一个是自己上传的图片,这个好解决,修改一下七牛上传的图片地址就行.另一个就是多说的头像,多说的头像不支持HTTPS,这个得通过反代理的形式.不知道ACE支不支持反代理,已经提交了工单.当然自己上传的图片也可以通过反代理的形式.</p>
+                  <p>年轻就是折腾!</p>
+                  <p>END</p>
+                </div>
+                <footer class="post-footer">
+                  <div class="post-eof"></div>
+                </footer>
+              </article>
+              <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+                <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/went-to-ghost-2/">
+                <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Optional">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
-                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Optional Blog">
     </span>
-                    <header class="post-header">
-                      <h1 class="post-title" itemprop="name headline">
-                        <a href="/went-to-ghost-2/" class="post-title-link" itemprop="url">又转到了ghost博客</a>
-                      </h1>
-                      <div class="post-meta">
-                        <span class="post-meta-item">
+                <header class="post-header">
+                  <h2 class="post-title" itemprop="name headline">
+                    <a href="/went-to-ghost-2/" class="post-title-link" itemprop="url">又转到了ghost博客</a>
+                  </h2>
+                  <div class="post-meta">
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-                        <span class="post-meta-item-text">发表于</span>
-                        <time title="创建时间：2016-02-13 14:17:00" itemprop="dateCreated datePublished" datetime="2016-02-13T14:17:00+00:00">2016-02-13</time>
-                        </span>
-                        <span class="post-meta-item">
+                    <span class="post-meta-item-text">发表于</span>
+                    <time title="创建时间：2016-02-13 14:17:00" itemprop="dateCreated datePublished" datetime="2016-02-13T14:17:00+00:00">2016-02-13</time>
+                    </span>
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-                        <span class="post-meta-item-text">分类于</span>
-                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Me/" itemprop="url" rel="index"><span itemprop="name">Me</span></a></span>
-                        </span>
-                      </div>
-                    </header>
-                    <div class="post-body" itemprop="articleBody">
-                      <p>用了有半年多的b3log solo博客程序,虽然solo的博客编辑用的也是markdown格式的,但是个人感觉好难用.尽管我发表写的博文并不多.但是有点完美主义的我(并不是往自己身上贴标签),还是不愿意再用solo了.我会把<a href="http://www.jingxuetao.com指向原来的IP,原来的程序有几十篇博文,转移起来也好麻烦,懒得动了.然后在导航设置一个链接,链接到原来的博客.呵,不知道以后会不会再换回WordPress.呵呵,我并不知道.以后的事以后再说吧" target="_blank" rel="noopener">www.jingxuetao.com指向原来的IP,原来的程序有几十篇博文,转移起来也好麻烦,懒得动了.然后在导航设置一个链接,链接到原来的博客.呵,不知道以后会不会再换回WordPress.呵呵,我并不知道.以后的事以后再说吧</a>.</p>
-                      <p>现在感觉这个markdown格式用起来还是比较不错的.</p>
+                    <span class="post-meta-item-text">分类于</span>
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Me/" itemprop="url" rel="index"><span itemprop="name">Me</span></a>
+                    </span>
+                    </span>
+                  </div>
+                </header>
+                <div class="post-body" itemprop="articleBody">
+                  <p>用了有半年多的b3log solo博客程序,虽然solo的博客编辑用的也是markdown格式的,但是个人感觉好难用.尽管我发表写的博文并不多.但是有点完美主义的我(并不是往自己身上贴标签),还是不愿意再用solo了.我会把<a href="http://www.jingxuetao.com指向原来的IP,原来的程序有几十篇博文,转移起来也好麻烦,懒得动了.然后在导航设置一个链接,链接到原来的博客.呵,不知道以后会不会再换回WordPress.呵呵,我并不知道.以后的事以后再说吧" target="_blank" rel="noopener">www.jingxuetao.com指向原来的IP,原来的程序有几十篇博文,转移起来也好麻烦,懒得动了.然后在导航设置一个链接,链接到原来的博客.呵,不知道以后会不会再换回WordPress.呵呵,我并不知道.以后的事以后再说吧</a>.</p>
+                  <p>现在感觉这个markdown格式用起来还是比较不错的.</p>
 
-                      <!--kg-card-begin: code-->
-                      <pre><code>public static void main(String args[]){
+                  <!--kg-card-begin: code-->
+                  <pre><code>public static void main(String args[]){
     System.out.println(&quot;hello world!!&quot;);
 }</code></pre>
 
-                      <!--kg-card-end: code-->
-                      <p>现在代码插入也很方便,可能原来插入代码就很方便,只不过是因为心里问题,觉得原来好麻烦.</p>
-                      <ol>
-                        <li>现在</li>
-                        <li>现在插入代码</li>
-                        <li>现在插入代码很方便</li>
-                      </ol>
-                      <p>无序列表</p>
-                      <ul>
-                        <li>无序列表1</li>
-                        <li>无序列表2</li>
-                      </ul>
-                      <p>还可以插入图片,插入图片也很方便</p>
+                  <!--kg-card-end: code-->
+                  <p>现在代码插入也很方便,可能原来插入代码就很方便,只不过是因为心里问题,觉得原来好麻烦.</p>
+                  <ol>
+                    <li>现在</li>
+                    <li>现在插入代码</li>
+                    <li>现在插入代码很方便</li>
+                  </ol>
+                  <p>无序列表</p>
+                  <ul>
+                    <li>无序列表1</li>
+                    <li>无序列表2</li>
+                  </ul>
+                  <p>还可以插入图片,插入图片也很方便</p>
 
-                      <!--kg-card-begin: image-->
-                      <figure class="kg-card kg-image-card"><img class="kg-image" alt="这是一张即将要插入的图片" data-src="https://o3pxzuakz.qnssl.com/75b31e23e4e4c22e24daa3de4ed47474.jpeg/image/1/ef/849ba9f8cea329e8faaefa49aa970.jpg"></figure>
+                  <!--kg-card-begin: image-->
+                  <figure class="kg-card kg-image-card"><img data-src="https://o3pxzuakz.qnssl.com/75b31e23e4e4c22e24daa3de4ed47474.jpeg/image/1/ef/849ba9f8cea329e8faaefa49aa970.jpg" class="kg-image" alt="这是一张即将要插入的图片"></figure>
 
-                      <!--kg-card-end: image-->
+                  <!--kg-card-end: image-->
 
-                      <!--kg-card-begin: code-->
-                      <pre><code>public static void main(String args[]){
+                  <!--kg-card-begin: code-->
+                  <pre><code>public static void main(String args[]){
     //这是一个由```写的高亮代码
 }</code></pre>
 
-                      <!--kg-card-end: code-->
-                      <p>添加引用:</p>
-                      <blockquote>
-                        <p>这是一个引用</p>
-                      </blockquote>
-                      <p>添加分割线</p>
+                  <!--kg-card-end: code-->
+                  <p>添加引用:</p>
+                  <blockquote>
+                    <p>这是一个引用</p>
+                  </blockquote>
+                  <p>添加分割线</p>
 
-                      <!--kg-card-begin: hr-->
-                      <hr>
+                  <!--kg-card-begin: hr-->
+                  <hr>
 
-                      <!--kg-card-end: hr-->
-                      <p>一些常用得markdown语法都在这了,用起来还算顺手.</p>
-                      <p>上方配图来自<a href="http://weibo.com/bboyzong" target="_blank" rel="noopener">王源宗Bboy</a></p>
-                    </div>
-                    <footer class="post-footer">
-                      <div class="post-eof"></div>
-                    </footer>
-                  </div>
-                </article>
-                <article itemscope itemtype="http://schema.org/Article">
-                  <div class="post-block home">
-                    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/set-the-corner-for-the-control-in-xib/">
-                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                  <!--kg-card-end: hr-->
+                  <p>一些常用得markdown语法都在这了,用起来还算顺手.</p>
+                  <p>上方配图来自<a href="http://weibo.com/bboyzong" target="_blank" rel="noopener">王源宗Bboy</a></p>
+                </div>
+                <footer class="post-footer">
+                  <div class="post-eof"></div>
+                </footer>
+              </article>
+              <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+                <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/set-the-corner-for-the-control-in-xib/">
+                <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Optional">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
-                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Optional Blog">
     </span>
-                    <header class="post-header">
-                      <h1 class="post-title" itemprop="name headline">
-                        <a href="/set-the-corner-for-the-control-in-xib/" class="post-title-link" itemprop="url">为Xib中的控件设置圆角</a>
-                      </h1>
-                      <div class="post-meta">
-                        <span class="post-meta-item">
+                <header class="post-header">
+                  <h2 class="post-title" itemprop="name headline">
+                    <a href="/set-the-corner-for-the-control-in-xib/" class="post-title-link" itemprop="url">为Xib中的控件设置圆角</a>
+                  </h2>
+                  <div class="post-meta">
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-                        <span class="post-meta-item-text">发表于</span>
-                        <time title="创建时间：2016-02-02 14:11:00" itemprop="dateCreated datePublished" datetime="2016-02-02T14:11:00+00:00">2016-02-02</time>
-                        </span>
-                        <span class="post-meta-item">
+                    <span class="post-meta-item-text">发表于</span>
+                    <time title="创建时间：2016-02-02 14:11:00" itemprop="dateCreated datePublished" datetime="2016-02-02T14:11:00+00:00">2016-02-02</time>
+                    </span>
+                    <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-                        <span class="post-meta-item-text">分类于</span>
-                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a></span>
-                        </span>
-                      </div>
-                    </header>
-                    <div class="post-body" itemprop="articleBody">
-                      <p>今天同学问了我一个问题,Google了一下,以后会用到,所以在这记录一下.</p>
-                      <p>有时候,项目需要引用XIB,但是有些UI属性在面板不好设置,例如设置圆角.那么我们可以采取一种思路,通过拖线连接到.m文件,然后开始进行代码属性的修改,但是切记.设置圆角的方法,不能在ViewDidLoad里边重写,这样会导致无效,我们需要在drawRect进行设置,然后再进行调用即可.代码如下:</p>
+                    <span class="post-meta-item-text">分类于</span>
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
+                    </span>
+                    </span>
+                  </div>
+                </header>
+                <div class="post-body" itemprop="articleBody">
+                  <p>今天同学问了我一个问题,Google了一下,以后会用到,所以在这记录一下.</p>
+                  <p>有时候,项目需要引用XIB,但是有些UI属性在面板不好设置,例如设置圆角.那么我们可以采取一种思路,通过拖线连接到.m文件,然后开始进行代码属性的修改,但是切记.设置圆角的方法,不能在ViewDidLoad里边重写,这样会导致无效,我们需要在drawRect进行设置,然后再进行调用即可.代码如下:</p>
 
-                      <!--kg-card-begin: code-->
-                      <pre><code>- (void)drawRect:(CGRect)rect{
+                  <!--kg-card-begin: code-->
+                  <pre><code>- (void)drawRect:(CGRect)rect{
   [super drawRect:rect];
   self.imgView.layer.cornerRadius = 20;
   self.imgView.clipsToBounds =YES;
 }</code></pre>
 
-                      <!--kg-card-end: code-->
-                      <p>另外,有道云笔记这个工具不错.</p>
-                      <p>再就是推荐一个国外的非常不错的图库<a href="https://unsplash.com/" target="_blank" rel="noopener">Unsplash</a>,上面有很多高清图,可以免费使用.以后写博客,就从这上面盗图了.</p>
-                      <p>END</p>
-                    </div>
-                    <footer class="post-footer">
-                      <div class="post-eof"></div>
-                    </footer>
-                  </div>
-                </article>
-              </div>
+                  <!--kg-card-end: code-->
+                  <p>另外,有道云笔记这个工具不错.</p>
+                  <p>再就是推荐一个国外的非常不错的图库<a href="https://unsplash.com/" target="_blank" rel="noopener">Unsplash</a>,上面有很多高清图,可以免费使用.以后写博客,就从这上面盗图了.</p>
+                  <p>END</p>
+                </div>
+                <footer class="post-footer">
+                  <div class="post-eof"></div>
+                </footer>
+              </article>
               <nav class="pagination">
                 <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span>
               </nav>
             </div>
+            <script>
+              window.addEventListener('tabs:register', () => {
+                let {
+                  activeClass
+                } = CONFIG.comments;
+                if (CONFIG.comments.storage) {
+                  activeClass = localStorage.getItem('comments_active') || activeClass;
+                }
+                if (activeClass) {
+                  let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+                  if (activeTab) {
+                    activeTab.click();
+                  }
+                }
+              });
+              if (CONFIG.comments.storage) {
+                window.addEventListener('tabs:click', event => {
+                  if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+                  let commentClass = event.target.classList[1];
+                  localStorage.setItem('comments_active', commentClass);
+                });
+              }
+            </script>
           </div>
-          <div class="sidebar-toggle">
-            <div class="sidebar-toggle-line-wrap">
-              <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-              <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-              <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-            </div>
+          <div class="toggle sidebar-toggle">
+            <span class="toggle-line toggle-line-first"></span>
+            <span class="toggle-line toggle-line-middle"></span>
+            <span class="toggle-line toggle-line-last"></span>
           </div>
           <aside class="sidebar">
             <div class="sidebar-inner">
@@ -888,7 +909,7 @@ static const void *dataTaskKey = &amp;dataTaskKey;
               </div> <!--/noindex-->
               <div class="site-overview-wrap sidebar-panel">
                 <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-                  <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Optional">
+                  <img class="site-author-image" itemprop="image" alt="Optional" src="/images/avatar.jpg">
                   <p class="site-author-name" itemprop="name">Optional</p>
                   <div class="site-description" itemprop="description"></div>
                 </div>
@@ -903,8 +924,7 @@ static const void *dataTaskKey = &amp;dataTaskKey;
                     <div class="site-state-item site-state-categories">
                       <a href="/categories/">
                         <span class="site-state-item-count">13</span>
-                        <span class="site-state-item-name">分类</span>
-                      </a>
+                        <span class="site-state-item-name">分类</span></a>
                     </div>
                   </nav>
                 </div>
@@ -914,31 +934,43 @@ static const void *dataTaskKey = &amp;dataTaskKey;
           <div id="sidebar-dimmer"></div>
         </div>
       </main>
-      <footer id="footer" class="footer">
+      <footer class="footer">
         <div class="footer-inner">
-          <div class="copyright"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">鲁ICP备14023895号-1 </a>
-            <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=" rel="noopener" target="_blank"> </a>&copy; 2014 – <span itemprop="copyrightYear">2020</span>
-            <span class="with-love" id="animate">
+          <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">鲁ICP备14023895号-1 </a>
+          </div>
+          <div class="copyright">
+            &copy; 2014 –
+            <span itemprop="copyrightYear">2020</span>
+            <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
             <span class="author" itemprop="copyrightHolder">Optional</span>
           </div>
-          <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
-          <span class="post-meta-divider">|</span>
-          <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.0</div>
+          <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+          </div>
         </div>
       </footer>
     </div>
-    <script src="/lib/anime.min.js?v=3.1.0"></script>
+    <script src="/lib/anime.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
     <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
-    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-    <script src="/js/utils.js?v=7.4.0"></script>
-    <script src="/js/motion.js?v=7.4.0"></script>
-    <script src="/js/schemes/pisces.js?v=7.4.0"></script>
-    <script src="/js/next-boot.js?v=7.4.0"></script>
-    <script src="/js/local-search.js?v=7.4.0"></script>
+    <script src="/lib/velocity/velocity.min.js"></script>
+    <script src="/lib/velocity/velocity.ui.min.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/motion.js"></script>
+    <script src="/js/schemes/pisces.js"></script>
+    <script src="/js/next-boot.js"></script>
+    <script src="/js/local-search.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+    <script>
+      window.addEventListener('load', () => {
+        quicklink({
+          timeout: 3000,
+          priority: true,
+          ignores: [uri => uri.includes('#'), uri => uri === 'https://jingxuetao.com/page/7/', ]
+        });
+      });
+    </script>
   </body>
 </html>
