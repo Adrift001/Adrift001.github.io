@@ -297,6 +297,20 @@
                     </div>
                   </nav>
                 </div>
+                <div class="links-of-blogroll motion-element">
+                  <div class="links-of-blogroll-title">
+                    <i class="fa fa-fw fa-link"></i>
+                    Links
+                  </div>
+                  <ul class="links-of-blogroll-list">
+                    <li class="links-of-blogroll-item">
+                      <a href="http://macshuo.com/" title="http:&#x2F;&#x2F;macshuo.com&#x2F;" rel="noopener" target="_blank">MacTalk</a>
+                    </li>
+                    <li class="links-of-blogroll-item">
+                      <a href="http://example.com/" title="http:&#x2F;&#x2F;example.com&#x2F;" rel="noopener" target="_blank">Title</a>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </aside>
@@ -340,6 +354,17 @@
           ignores: [uri => uri.includes('#'), uri => uri === 'https://jingxuetao.com/archives/2018/12/', ]
         });
       });
+    </script>
+    <script>
+      function loadCount() {
+        var d = document,
+          s = d.createElement('script');
+        s.src = 'https://miao-xiao-mi-de-bo-ke.disqus.com/count.js';
+        s.id = 'dsq-count-scr';
+        (d.head || d.body).appendChild(s);
+      }
+      // defer loading until the whole page loading is completed
+      window.addEventListener('load', loadCount, false);
     </script>
   </body>
 </html>

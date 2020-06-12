@@ -90,7 +90,7 @@
     <meta property="og:description" content="系统环境:  #nginx -v nginx version: nginx&#x2F;1.10.2 #openssl version OpenSSL 1.0.1e-fips 11 Feb 2013 #cat &#x2F;etc&#x2F;redhat-release CentOS Linux release 7.3.1611 (Core) 方式一 Certbot选择自己的操作系统以及服务器软件,按照说明安装即可.  安装方式二">
     <meta property="og:locale" content="zh_CN">
     <meta property="article:published_time" content="2017-08-27T13:43:00.000Z">
-    <meta property="article:modified_time" content="2020-06-02T09:14:18.619Z">
+    <meta property="article:modified_time" content="2020-06-12T08:10:51.663Z">
     <meta property="article:author" content="Optional">
     <meta property="article:tag" content="Optional Swift">
     <meta name="twitter:card" content="summary">
@@ -243,6 +243,15 @@
                   <a href="/categories/Ghost/" itemprop="url" rel="index"><span itemprop="name">Ghost</span></a>
                     </span>
                     </span>
+                    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+                    <span class="post-meta-item-text">Disqus：</span>
+                    <a title="disqus" href="/blog-open-https/#disqus_thread" itemprop="discussionUrl">
+                      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="blog-open-https/" itemprop="commentCount"></span>
+                    </a>
+                    </span>
                   </div>
                 </header>
                 <div class="post-body" itemprop="articleBody">
@@ -371,6 +380,20 @@ CentOS Linux release 7.3.1611 (Core)</code></pre>
                     </div>
                   </nav>
                 </div>
+                <div class="links-of-blogroll motion-element">
+                  <div class="links-of-blogroll-title">
+                    <i class="fa fa-fw fa-link"></i>
+                    Links
+                  </div>
+                  <ul class="links-of-blogroll-list">
+                    <li class="links-of-blogroll-item">
+                      <a href="http://macshuo.com/" title="http:&#x2F;&#x2F;macshuo.com&#x2F;" rel="noopener" target="_blank">MacTalk</a>
+                    </li>
+                    <li class="links-of-blogroll-item">
+                      <a href="http://example.com/" title="http:&#x2F;&#x2F;example.com&#x2F;" rel="noopener" target="_blank">Title</a>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </aside>
@@ -405,6 +428,17 @@ CentOS Linux release 7.3.1611 (Core)</code></pre>
     <script src="/js/schemes/pisces.js"></script>
     <script src="/js/next-boot.js"></script>
     <script src="/js/local-search.js"></script>
+    <script>
+      function loadCount() {
+        var d = document,
+          s = d.createElement('script');
+        s.src = 'https://miao-xiao-mi-de-bo-ke.disqus.com/count.js';
+        s.id = 'dsq-count-scr';
+        (d.head || d.body).appendChild(s);
+      }
+      // defer loading until the whole page loading is completed
+      window.addEventListener('load', loadCount, false);
+    </script>
     <script>
       var disqus_config = function() {
         this.page.url = "https://jingxuetao.com/blog-open-https/";
