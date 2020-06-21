@@ -209,6 +209,54 @@
           <div class="content-wrap">
             <div class="content index posts-expand">
               <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+                <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/cant-connect-to-local-mysql-server-through-socket-2/">
+                <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Optional">
+      <meta itemprop="description" content="">
+    </span>
+                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Optional Blog">
+    </span>
+                <header class="post-header">
+                  <h2 class="post-title" itemprop="name headline">
+                    <a href="/cant-connect-to-local-mysql-server-through-socket-2/" class="post-title-link" itemprop="url">Can't connect to local MySQL server through socket '' (2)</a>
+                  </h2>
+                  <div class="post-meta">
+                    <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                    <span class="post-meta-item-text">发表于</span>
+                    <time title="创建时间：2017-09-12 14:21:00" itemprop="dateCreated datePublished" datetime="2017-09-12T14:21:00+00:00">2017-09-12</time>
+                    </span>
+                    <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+                    <span class="post-meta-item-text">分类于</span>
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
+                    </span>
+                    </span>
+                  </div>
+                </header>
+                <div class="post-body" itemprop="articleBody">
+                  <p>今天折腾Perfect服务端的时候,出现下面错误:</p>
+                  <blockquote>
+                    <p>Can’t connect to local MySQL server through socket ‘’ (2)</p>
+                  </blockquote>
+                  <p>然后各种Google,各种试错.最后在这篇文章中看到了<code>IP</code>这个字眼,突然灵感来了,直接把<code>locahost</code>改成<code>127.0.0.1</code>,然后成功了~</p>
+                  <p>我了个大草,原来还能这么玩…</p>
+                  <p>至于具体原因可以查看这篇文章<a href="http://www.jb51.net/article/50421.htm" target="_blank" rel="noopener">Localhost 与127.0.0.1和IP的区别是什么</a></p>
+                  <p>于2017/9/12,我的博客支持emoji啦,😁😁😝</p>
+                  <p><strong>–EOF–</strong></p>
+                </div>
+                <footer class="post-footer">
+                  <div class="post-eof"></div>
+                </footer>
+              </article>
+              <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
                 <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/blog-open-https/">
                 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -835,66 +883,6 @@ class MainViewController: UITabBarController {
                   <div class="post-eof"></div>
                 </footer>
               </article>
-              <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-                <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/github-mistakenly-delete-remote-library-solution/">
-                <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Optional">
-      <meta itemprop="description" content="">
-    </span>
-                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Optional Blog">
-    </span>
-                <header class="post-header">
-                  <h2 class="post-title" itemprop="name headline">
-                    <a href="/github-mistakenly-delete-remote-library-solution/" class="post-title-link" itemprop="url">github上误删远程库解决方法</a>
-                  </h2>
-                  <div class="post-meta">
-                    <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-                    <span class="post-meta-item-text">发表于</span>
-                    <time title="创建时间：2016-05-18 14:30:00" itemprop="dateCreated datePublished" datetime="2016-05-18T14:30:00+00:00">2016-05-18</time>
-                    </span>
-                    <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-                    <span class="post-meta-item-text">分类于</span>
-                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
-                    </span>
-                    </span>
-                  </div>
-                </header>
-                <div class="post-body" itemprop="articleBody">
-                  <p>迷你码农遇到的个性化问题.遇到这个问题还得上网查,说明对Git不了解.有时间看看廖雪峰的<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">Git教程</a>.</p>
-                  <h3 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h3>
-
-                  <!--kg-card-begin: image-->
-                  <figure class="kg-card kg-image-card"><img data-src="https://o3pxzuakz.qnssl.com/image/d/77/18cb880e3e602afddb9c9ece95d52.png" class="kg-image" alt="报错信息"></figure>
-
-                  <!--kg-card-end: image-->
-                  <h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3>
-                  <ol>
-                    <li>在Github Desktop客户端<code>右击项目</code>,然后<code>Open in Terminal</code></li>
-                    <li>输入命令:<code>ls -al</code>,会看到.git文件夹</li>
-                    <li>输入命令:<code>cd .git</code>,打开.git文件夹</li>
-                    <li>输入命令:<code>ls -al</code>,会看到config文件</li>
-                    <li>输入命令:<code>vim config</code>,打开config文件</li>
-                    <li>按键盘<code>下</code>键,将光标移动到<code>[remote &quot;origin&quot;]</code>这行,按键盘<code>i</code>键进入插入模式.</li>
-                    <li>按<code>delete</code>键删除包括本行在内的三行</li>
-                    <li>删除完之后,按<code>Esc</code>键,退出编辑模式.然后英文状态下输入<code>shift+:</code>,输入<code>wq</code>,保存退出.</li>
-                    <li>将<code>Github Desktop</code>完全退出重新打开,现在就能<code>Sync</code>了.</li>
-                  </ol>
-                  <p>参考链接:<a href="http://www.jamesrobertson.eu/blog/2013/mar/17/solved-error-repository-not-found.html" target="_blank" rel="noopener">Solved: ERROR: Repository not found</a></p>
-                  <p><strong>–EOF–</strong></p>
-                </div>
-                <footer class="post-footer">
-                  <div class="post-eof"></div>
-                </footer>
-              </article>
               <nav class="pagination">
                 <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
               </nav>
@@ -952,7 +940,7 @@ class MainViewController: UITabBarController {
                   <nav class="site-state">
                     <div class="site-state-item site-state-posts">
                       <a href="/archives/">
-                        <span class="site-state-item-count">67</span>
+                        <span class="site-state-item-count">68</span>
                         <span class="site-state-item-name">日志</span>
                       </a>
                     </div>

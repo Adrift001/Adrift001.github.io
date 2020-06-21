@@ -209,6 +209,286 @@
           <div class="content-wrap">
             <div class="content index posts-expand">
               <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+                <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/protocols/">
+                <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Optional">
+      <meta itemprop="description" content="">
+    </span>
+                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Optional Blog">
+    </span>
+                <header class="post-header">
+                  <h2 class="post-title" itemprop="name headline">
+                    <a href="/protocols/" class="post-title-link" itemprop="url">Protocols</a>
+                  </h2>
+                  <div class="post-meta">
+                    <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                    <span class="post-meta-item-text">发表于</span>
+                    <time title="创建时间：2018-11-18 04:04:14" itemprop="dateCreated datePublished" datetime="2018-11-18T04:04:14+00:00">2018-11-18</time>
+                    </span>
+                    <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+                    <span class="post-meta-item-text">分类于</span>
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
+                    </span>
+                    </span>
+                  </div>
+                </header>
+                <div class="post-body" itemprop="articleBody">
+                  <p>A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol.</p>
+                  <pre><code>import Foundation
+//协议语法
+protocol SomeProtocol {
+}
+struct SomeStructure: SomeProtocol {}
+class SomeClass: SomeProtocol {}
+//属性要求
+//如果属性标注了(set get),则不能通过常量存储属性和只读计算属性来实现
+//如果属性只设置了(get),那么任何类型都可以满足,包括变量存储属性
+protocol SomeProtocol1 {
+    var mustBeSettable: Int { get set }
+    var doesNotNeedToBeSettable: Int { get }
+}
+//协议中用static修饰时,实现中用static或者class实现都行
+protocol AnotherProtocol {
+    static var someTypeProperty: Int { get set }
+}
+protocol FullyNamed {
+    var fullName: String { get }
+}
+struct Person: FullyNamed {
+    var fullName: String
+}
+//可set 可 get
+let john = Person(fullName: &quot;Tom&quot;)
+class Starship: FullyNamed {
+    var prefix: String?
+    var name: String
+    init(name: String, prefix: String? = nil) {
+        self.name = name
+        self.prefix = prefix
+    }
+    var fullName: String {
+        return (prefix != nil ? prefix!+&quot; &quot; : &quot;&quot;) + name
+    }
+}
+var ncc1701 = Starship(name: &quot;Enterprise&quot;, prefix: &quot;USS&quot;)
+//方法要求
+//不能在协议方法中指定默认值
+protocol SomeProtocol2 {
+    static func someTypeMethod()
+}
+protocol RandomNumberGenerator {
+    func random() -&gt; Double
+}
+//线性同余生成器的伪随机数生成器算法,好高大上有木有...
+class LinearCongruentialGenerator: RandomNumberGenerator {
+    var lastRandom = 42.0
+    let m = 139968.0
+    let a = 3877.0
+    let c = 29573.0
+    func random() -&gt; Double {
+        lastRandom = ((lastRandom * a + c).truncatingRemainder(dividingBy: m))
+        return lastRandom / m
+    }
+}
+let generator = LinearCongruentialGenerator()
+print(generator.random())
+print(generator.random())
+//变异方法要求 mutating method requirements
+//如果希望实现协议的任何类型(类,结构体,枚举)要修改实例或者实例中的任何属性
+//得在func前加mutating关键字
+//类实现时,无需加mutating,结构体,枚举需要加
+protocol Toggleable {
+    mutating func toggle()
+}
+enum OnOffSwitch: Toggleable {
+    case off, on
+    mutating func toggle() {
+        switch self {
+        case .on:
+            self = .off
+        case .off:
+            self = .on
+        }
+    }
+}
+var lightSwitch = OnOffSwitch.off
+print(lightSwitch)
+lightSwitch.toggle()
+print(lightSwitch)
+//初始化程序要求
+protocol SomeProtocol3 {
+    init(someParameter: Int)
+}
+//required 方便子类继承,从而遵守SomeProtocol3协议
+//如果给类加上final,则required可以省略
+final class SomeClass3: SomeProtocol3 {
+    required init(someParameter: Int) {
+        //在这进行初始化实现
+    }
+}
+//如果子类重写父类中init方法,并且这个init也是协议中的实现,则需要用
+//`required`和`override`修饰
+protocol SomeProtocol4 {
+    init()
+}
+class SomeSuperClass {
+    init() {
+    }
+}
+class SomeSubClass: SomeSuperClass, SomeProtocol4 {
+    required override init() {
+        //good job
+    }
+}
+//协议还可以定义可失败构造器
+//协议作为类型
+//协议本身不实现任何功能,但是,创建的任何协议都会变成代码中成熟的类型.
+//可以用协议的地方:
+//1. 在函数,方法或初始化方法中作为参数或返回值
+//2. 作为常量,变量,或者属性的类型
+//3. 作为数组,字典或其他容器类型的元素类型
+class Dice {
+    let sides: Int
+    let generator: RandomNumberGenerator
+    init(sides: Int, generator: RandomNumberGenerator) {
+        self.sides = sides
+        self.generator = generator
+    }
+    func roll() -&gt; Int {
+        return Int(generator.random() * Double(sides)) + 1
+    }
+}
+var d6 = Dice(sides: 6, generator: LinearCongruentialGenerator())
+for _ in 1...5 {
+    print(&quot;Random dice roll is \(d6.roll())&quot;)
+}
+//委托
+//响应特定操作或者从外部检索数据
+protocol DiceGame {
+    var dice: Dice { get }
+    func play()
+}
+protocol DiceGameDelegate: AnyObject {
+    func gameDidStart(_ game: DiceGame)
+    func game(_ game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int)
+    func gameDidEnd(_ game: DiceGame)
+}
+class SnakesAndLadders: DiceGame {
+    let finalSquare = 25
+    let dice = Dice(sides: 6, generator: LinearCongruentialGenerator())
+    var square = 0
+    var board: [Int]
+    init() {
+        board = Array(repeating: 0, count: finalSquare + 1)
+        board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02
+        board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08
+    }
+    weak var delegate: DiceGameDelegate?
+    func play() {
+        square = 0
+        delegate?.gameDidStart(self)
+        gameLoop: while square != finalSquare {
+            let diceRoll = dice.roll()
+            delegate?.game(self, didStartNewTurnWithDiceRoll: diceRoll)
+            switch square + diceRoll {
+            case finalSquare:
+                break gameLoop
+            case let newSquare where newSquare &gt; finalSquare:
+                continue gameLoop
+            default:
+                square += diceRoll
+                square += board[square]
+            }
+        }
+        delegate?.gameDidEnd(self)
+    }
+}
+class DiceGameTracker: DiceGameDelegate {
+    var numberOfTurns = 0
+    func gameDidStart(_ game: DiceGame) {
+        numberOfTurns = 0
+        if game is SnakesAndLadders {
+            print(&quot;Started a new game of Snakes and Ladders&quot;)
+        }
+        print(&quot;The game is using a \(game.dice.sides)-sided dice&quot;)
+    }
+    func game(_ game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int) {
+        numberOfTurns += 1
+        print(&quot;Rolled a \(diceRoll)&quot;)
+    }
+    func gameDidEnd(_ game: DiceGame) {
+        print(&quot;The game lasted for \(numberOfTurns) turns&quot;)
+    }
+}
+let tracker = DiceGameTracker()
+let game = SnakesAndLadders()
+game.delegate = tracker
+game.play()
+//通过扩展遵守某个协议
+protocol TextRepresentable {
+    var textualDescription: String { get }
+}
+extension Dice: TextRepresentable {
+    var textualDescription: String {
+        return &quot;A \(sides)-sided dice&quot;
+    }
+}
+let d12 = Dice(sides: 12, generator: LinearCongruentialGenerator())
+print(d12.textualDescription)
+// Prints &quot;A 12-sided dice&quot;
+extension SnakesAndLadders: TextRepresentable {
+    var textualDescription: String {
+        return &quot;A game of Snakes and Ladders with \(finalSquare) squares&quot;
+    }
+}
+print(game.textualDescription)
+//有条件的遵守协议
+extension Array: TextRepresentable where Element: TextRepresentable {
+    var textualDescription: String {
+        let itemsAsText = self.map { $0.textualDescription }
+        return &quot;[&quot; + itemsAsText.joined(separator: &quot;, &quot;) + &quot;]&quot;
+    }
+}
+let myDice = [d6, d12]
+print(myDice.textualDescription)
+//通过协议适应某种类型
+//如果某个类型已经符合协议的所有要求，但尚未声明它采用该协议，则可以使其采用带有空扩展的协议
+struct Hamster {
+    var name: String
+    var textualDescription: String {
+        return &quot;A hamster named \(name)&quot;
+    }
+}
+extension Hamster: TextRepresentable {}
+let simonTheHamster = Hamster(name: &quot;Simon&quot;)
+let somethingTextRepresentable: TextRepresentable = simonTheHamster
+print(somethingTextRepresentable.textualDescription)
+// Prints &quot;A hamster named Simon&quot;
+//协议类型的集合
+let things: [TextRepresentable] = [game, d12, simonTheHamster]
+for thing in things {
+    print(thing.textualDescription)
+}
+//协议继承</code></pre>
+                  <p>还是有点烧脑….</p>
+                  <p><strong>–EOF–</strong></p>
+
+                  <!--kg-card-end: markdown-->
+                </div>
+                <footer class="post-footer">
+                  <div class="post-eof"></div>
+                </footer>
+              </article>
+              <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
                 <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/generics/">
                 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -1278,54 +1558,6 @@ mysql&gt; ALTER TABLE posts CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_uni
                   <div class="post-eof"></div>
                 </footer>
               </article>
-              <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-                <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/cant-connect-to-local-mysql-server-through-socket-2/">
-                <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Optional">
-      <meta itemprop="description" content="">
-    </span>
-                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Optional Blog">
-    </span>
-                <header class="post-header">
-                  <h2 class="post-title" itemprop="name headline">
-                    <a href="/cant-connect-to-local-mysql-server-through-socket-2/" class="post-title-link" itemprop="url">Can't connect to local MySQL server through socket '' (2)</a>
-                  </h2>
-                  <div class="post-meta">
-                    <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-                    <span class="post-meta-item-text">发表于</span>
-                    <time title="创建时间：2017-09-12 14:21:00" itemprop="dateCreated datePublished" datetime="2017-09-12T14:21:00+00:00">2017-09-12</time>
-                    </span>
-                    <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-                    <span class="post-meta-item-text">分类于</span>
-                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
-                    </span>
-                    </span>
-                  </div>
-                </header>
-                <div class="post-body" itemprop="articleBody">
-                  <p>今天折腾Perfect服务端的时候,出现下面错误:</p>
-                  <blockquote>
-                    <p>Can’t connect to local MySQL server through socket ‘’ (2)</p>
-                  </blockquote>
-                  <p>然后各种Google,各种试错.最后在这篇文章中看到了<code>IP</code>这个字眼,突然灵感来了,直接把<code>locahost</code>改成<code>127.0.0.1</code>,然后成功了~</p>
-                  <p>我了个大草,原来还能这么玩…</p>
-                  <p>至于具体原因可以查看这篇文章<a href="http://www.jb51.net/article/50421.htm" target="_blank" rel="noopener">Localhost 与127.0.0.1和IP的区别是什么</a></p>
-                  <p>于2017/9/12,我的博客支持emoji啦,😁😁😝</p>
-                  <p><strong>–EOF–</strong></p>
-                </div>
-                <footer class="post-footer">
-                  <div class="post-eof"></div>
-                </footer>
-              </article>
               <nav class="pagination">
                 <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
               </nav>
@@ -1383,7 +1615,7 @@ mysql&gt; ALTER TABLE posts CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_uni
                   <nav class="site-state">
                     <div class="site-state-item site-state-posts">
                       <a href="/archives/">
-                        <span class="site-state-item-count">67</span>
+                        <span class="site-state-item-count">68</span>
                         <span class="site-state-item-name">日志</span>
                       </a>
                     </div>

@@ -2420,8 +2420,7 @@ try app.run()</code></pre><p><strong>–EOF–</strong></p>
   <entry>
     <title>Moya-HandyJSON</title>
     <url>/moya-handyjson/</url>
-    <content><![CDATA[<img data-src="/moya-handyjson/julia-caesar-DpoMKEARZe4-unsplash.jpg" class="">
-
+    <content><![CDATA[<p><img data-src="https://jingxuetao.com/Images/julia-caesar-DpoMKEARZe4-unsplash.jpg" alt=""></p>
 <blockquote class="blockquote-center">
 水一篇,好像以前不水一样...
 </blockquote>
@@ -2569,6 +2568,35 @@ Swift泛型
       <categories>
         <category>Swift</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Github签名提交</title>
+    <url>/github-signing-commits/</url>
+    <content><![CDATA[<p><img data-src="https://source.unsplash.com/kf3OjuBafhA/1600x900" alt=""></p>
+<a id="more"></a>
+
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><img data-src="https://jingxuetao.com/Images/截屏2020-06-21 下午1.22.56.png" style="zoom:67%;" />
+
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li><p>下载<a href="https://gpgtools.org/" target="_blank" rel="noopener">GPG_Suite</a></p>
+</li>
+<li><p>生成密钥</p>
+<p><img data-src="https://jingxuetao.com/Images/20200621133346.jpg" alt=""></p>
+</li>
+<li><p>导出公钥</p>
+<p><img data-src="https://jingxuetao.com/Images/20200621133935.jpg" alt=""></p>
+</li>
+<li><p>将公钥全部复制, 填写到GitHub</p>
+<p><img data-src="https://jingxuetao.com/Images/20200621134229.jpg" alt=""></p>
+</li>
+<li><p>设置SourceTree</p>
+<p><img data-src="https://jingxuetao.com/Images/20200621134527.png" alt=""></p>
+<p><img data-src="https://jingxuetao.com/Images/20200621134703.jpg" alt=""></p>
+<p><img data-src="https://jingxuetao.com/Images/20200621134743.jpg" alt=""></p>
+</li>
+</ol>
+<p><strong>–EOF–</strong></p>
+]]></content>
   </entry>
   <entry>
     <title>CentOS安装Ghost博客并实现全站HTTPS</title>
