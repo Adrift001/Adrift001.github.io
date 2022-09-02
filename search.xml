@@ -184,6 +184,214 @@ next. hidesBottomBarWhenPushed = YES;
       </categories>
   </entry>
   <entry>
+    <title>CentOS安装Ghost博客并实现全站HTTPS</title>
+    <url>/centosan-zhuang-ghostbo-ke-bing-shi-xian-quan-zhan-https/</url>
+    <content><![CDATA[<h3 id="1-前期准备"><a href="#1-前期准备" class="headerlink" title="1.前期准备"></a>1.前期准备</h3><!--kg-card-begin: code-->
+
+<pre><code>yum update //更新yum源
+yum groupinstall &quot;Development Tools&quot; //安装开发工具包
+yum install wget //安装wget下载工具</code></pre><!--kg-card-end: code-->
+<h3 id="2-安装Nginx"><a href="#2-安装Nginx" class="headerlink" title="2.安装Nginx"></a>2.安装Nginx</h3><!--kg-card-begin: code-->
+
+<pre><code>yum install nginx -y //安装nginx
+service nginx start //开启nginx
+chkconfig nginx on //设置开机自启动</code></pre><!--kg-card-end: code-->
+
+<p>Nginx安装完成,现在用IP或者域名就可以访问你的服务器了.</p>
+<p>使用Nginx配置反向代理,指向ghost博客的2368端口.</p>
+<!--kg-card-begin: code-->
+
+<pre><code>cd /etc/nginx/conf.d //cd到nginx目录
+vim default.conf //打开default.conf文件</code></pre><!--kg-card-end: code-->
+
+<p>在文件中写入一下内容:</p>
+<!--kg-card-begin: code-->
+
+<pre><code>server {  
+    listen 80;
+    server_name jingxuetao.com;
+    location / {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $http_host;
+        proxy_pass http://127.0.0.1:2368;
+        proxy_set_header REMOTE-HOST $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}</code></pre><!--kg-card-end: code-->
+
+<p>将上面的server_name 替换成自己的域名,保存退出,并重启Nginx.</p>
+<!--kg-card-begin: code-->
+
+<pre><code>service nginx restart</code></pre><!--kg-card-end: code-->
+<h3 id="3-安装MySQL"><a href="#3-安装MySQL" class="headerlink" title="3.安装MySQL"></a>3.安装MySQL</h3><blockquote>
+<p>Ghost集成了sqlite3数据库,如果不用MySQL,本步可以忽略.</p>
+</blockquote>
+<!--kg-card-begin: code-->
+
+<pre><code>yum install mysql mysql-server //安装MySQL
+service mysqld restart //启动数据库
+chkconfig mysqld on //设置开机启动
+mysql_secure_installation //开始配置数据库</code></pre><!--kg-card-end: code--><!--kg-card-begin: code-->
+
+<pre><code>Set root password? [Y/n] //设置root密码 -- 根据个人需求  
+anonymous users? [Y/n] //删除匿名用户 -- y  
+Disallow root login remotely? [Y/n] //禁止root用户远程登录 --n
+Remove test database and access to it? [Y/n] //删除默认的 test 数据库 --y  
+Reload privilege tables now? [Y/n] //是否马上应用最新的设置 --y  </code></pre><!--kg-card-end: code-->
+
+<p>为了支持中文,还需要修改MySQL字符支持.</p>
+<!--kg-card-begin: code-->
+
+<pre><code>vim /etc/my.cnf</code></pre><!--kg-card-end: code-->
+
+<p>在对应位置填入对应的内容:</p>
+<!--kg-card-begin: code-->
+
+<pre><code>[client]
+default-character-set=utf8  
+[mysql]
+default-character-set=utf8  
+[mysqld]
+character-set-server=utf8  
+collation-server=utf8_general_ci  </code></pre><!--kg-card-end: code-->
+
+<p>然后新建一个Ghost专用MySQL用户跟database:</p>
+<!--kg-card-begin: code-->
+
+<pre><code>mysql -u root -p  
+//用root用户登录mysql
+
+create database ghost;  
+//创建ghost数据库
+
+GRANT ALL PRIVILEGES ON ghost.* To &apos;ghost&apos;@&apos;%&apos; IDENTIFIED BY &apos;密码&apos;;  
+//创建ghost database 和 用户名为ghost的用户
+//%代表能被所有地址访问</code></pre><!--kg-card-end: code-->
+<h3 id="4-安装Node-js"><a href="#4-安装Node-js" class="headerlink" title="4.安装Node.js"></a>4.安装Node.js</h3><p>根据Ghost官方建议,安装v0.10.40版本</p>
+<!--kg-card-begin: code-->
+
+<pre><code>wget http://nodejs.org/dist/v0.10.40/node-v0.10.40.tar.gz
+tar zxvf node-v0.10.40.tar.gz
+cd node-v0.10.40
+./configure
+make &amp;&amp; make install</code></pre><!--kg-card-end: code-->
+<h3 id="5-安装Ghost"><a href="#5-安装Ghost" class="headerlink" title="5.安装Ghost"></a>5.安装Ghost</h3><!--kg-card-begin: code-->
+
+<pre><code>mkdir /var/www //创建Ghost安装路径
+wget http://dl.ghostchina.com/Ghost-0.7.4-zh-full.zip //下载Ghost(中文版)
+unzip Ghost-0.7.4-zh-full.zip //解压zip文件到当前文件夹
+mv config.example.js config.js //重命名,并配置
+vim config.js //打开config.js文件,并在里面填写对应内容.如果用sqlite3,只需要配置url</code></pre><!--kg-card-end: code--><!--kg-card-begin: code-->
+
+<pre><code>production: {  
+    url: &apos;http://jingxuetao.com&apos;, //这里是你自己VPS主机的域名，或者IP
+    mail: {},
+    database: {
+        client: &apos;mysql&apos;这里我选择使用mysql作为我博客的数据库
+        connection: {
+            host : &apos;127.0.0.1&apos;,
+            user : &apos;ghost&apos;, //mysql用户名
+            password : &apos;&apos;, //密码
+            database : &apos;ghost&apos;, //之前创建的ghost数据库名称
+            charset : &apos;utf8&apos;
+        },
+    server: {
+            host: &apos;127.0.0.1&apos;,
+            port: &apos;2368&apos;//若修改该端口记得在nginx中做相应改变
+        }
+    }  </code></pre><!--kg-card-end: code-->
+
+<p>现在在www目录下用命令npm start启动Ghost,网页就可以浏览了.</p>
+<h3 id="6-使用PM2让Ghost永远在线"><a href="#6-使用PM2让Ghost永远在线" class="headerlink" title="6.使用PM2让Ghost永远在线"></a>6.使用PM2让Ghost永远在线</h3><p>只要我们一断开ssh，Ghost的进程就会被关闭，这里我们使用PM2来守护Ghost服务进程，并让其运行在生产模式production上</p>
+<!--kg-card-begin: code-->
+
+<pre><code>//！！首先进到ghost的安装目录
+//安装pm2
+npm install pm2 -g  
+//让ghost以production模式运作，指定程序的入口index.js，并且此进程命名为ghost
+NODE_ENV=production pm2 start index.js --name &quot;ghost&quot;  
+//开机启动
+pm2 startup centos  
+pm2 save  </code></pre><!--kg-card-end: code-->
+
+<p>进程守护做完，顺便提提pm2重启进程的命令是:</p>
+<!--kg-card-begin: code-->
+
+<pre><code>pm2 restart ghost</code></pre><!--kg-card-end: code-->
+
+<p>用<a href="http://jingxuetao.com/ghost">http://jingxuetao.com/ghost</a> 访问后台</p>
+<h3 id="7-设置外部存储"><a href="#7-设置外部存储" class="headerlink" title="7.设置外部存储"></a>7.设置外部存储</h3><p>Ghost默认是将图片存储在服务器上的,但是服务器存储空间有限,并且外部存储又不花钱.</p>
+<p><a href="https://portal.qiniu.com/" target="_blank" rel="noopener">https://portal.qiniu.com/</a> 创建七牛云存储账号,并创建一个空间(公开空间).(使用免费空间之前得冲10块钱),然后修改Ghost配置文件如下:</p>
+<!--kg-card-begin: code-->
+
+<pre><code>/*storage: {
+     provider: &apos;local-file-store&apos;
+ }*/ //注释掉本地存储代码.
+ storage: {
+     provider: &apos;qiniu&apos;,
+     bucketname: &apos;blog-pic&apos;,//空间名称
+     ACCESS_KEY: &apos;d05f31DxWMuCdnqxxxxHOFc5cMJ4rQbdpnPJGB4F&apos;,//账号-&gt;密钥(左边菜单栏),将AK,SK分别对应ACCESS_KEY,SECRET_KEY填入
+     SECRET_KEY: &apos;q6l8YgfxOdxGSR8U5_DwBhtyC5133xurgBGyjIHt&apos;,
+     root: &apos;/image/&apos;,
+     prefix: &apos;http://o3pxzuakz.qnssl.com&apos;//选择一个空间-&gt;空间设置-&gt;域名设置-&gt;七牛域名,将网址复制到这.
+ }</code></pre><!--kg-card-end: code-->
+
+<p>然后,在default.conf文件的location中添加</p>
+<!--kg-card-begin: code-->
+
+<pre><code>client_max_body_size 5m; //设置上传图片最大是5M,不设置上传图片会不成功,默认上传图片大小比较小.</code></pre><!--kg-card-end: code-->
+
+<p>重启Ghost,上传一张图片试试,看看图片地址.</p>
+<h3 id="8-设置HTTPS"><a href="#8-设置HTTPS" class="headerlink" title="8.设置HTTPS"></a>8.设置HTTPS</h3><p>①申请沃通免费证书,参考这篇文章.<br><a href="http://www.freehao123.com/cloudflare-wosign-ssl/" target="_blank" rel="noopener">Wosign沃通免费SSL申请开通</a></p>
+<p>②选择nginx的证书,改名为cert.crt跟cert.key</p>
+<p>③将证书上传到服务器的/etc/nginx目录下,然后配置Nginx.在/etc/nginx/conf.d目录下,除了default.conf文件之外,应该还有一个sslxxxxx.conf文件(没有就创建ssl.conf文件),将下面内容对比填入或者复制进去.</p>
+<!--kg-card-begin: code-->
+
+<pre><code># HTTPS server
+#
+server {
+    listen 443 ssl;
+    server_name jingxuetao.com;
+
+    ssl_certificate /etc/nginx/cert.crt;
+    ssl_certificate_key /etc/nginx/cert.key;
+
+    ssl_session_cache shared:SSL:1m;
+    ssl_session_timeout 5m;
+
+    ssl_ciphers HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers on;
+
+    location / {
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_pass http://127.0.0.1:2368;
+        client_max_body_size 5m;
+    }
+}</code></pre><!--kg-card-end: code-->
+
+<p><strong>另外还得在config.js文件中将url字段http后面加个s,例如:</strong></p>
+<!--kg-card-begin: code-->
+
+<pre><code>url: &apos;https://jingxuetao.com&apos;</code></pre><!--kg-card-end: code-->
+
+<p>现在通过<a href="https://jingxuetao.com">https://jingxuetao.com</a> 就可以访问自己的网站了.</p>
+<p>要想将HTTP请求自动跳转到HTTPS,在default.conf文件的location中添加下面内容</p>
+<!--kg-card-begin: code-->
+
+<pre><code>return 301 https://$server_name$request_uri;</code></pre><!--kg-card-end: code-->
+
+<p>现在是实现HTTPS了,但是因为网页中含有其他网站的资源文件(图片,一个是头像,另一个就是后台左上角的那个小图标,再就是自己上传到七牛的图片.),所以现在浏览器地址栏中并没有显示安全连接.</p>
+<p>往后需要各种注意的细节,文字描述不清楚.不说了,心好累.</p>
+<p>博客本来访问量就不多,耐心看到这的就更少了.如果需要,加我QQ吧,1247846317 验证问题:荆学涛.</p>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>Ghost</category>
+      </categories>
+  </entry>
+  <entry>
     <title>如何配置使用HSTS</title>
     <url>/configure-the-use-of-hsts/</url>
     <content><![CDATA[<p>HTTP严格传输安全（英语：HTTP Strict Transport Security，缩写：HSTS）是一套由互联网工程任务组发布的互联网安全策略机制。网站可以选择使用HSTS策略，来让浏览器强制使用HTTPS与网站进行通信，以减少会话劫持风险.</p>
@@ -1667,11 +1875,292 @@ extension SettingTableViewController {
       </categories>
   </entry>
   <entry>
-    <title>同步的方式编写异步代码</title>
-    <url>/sync-way-code-async-code/</url>
-    <content><![CDATA[<p>代码来自泊学</p>
+    <title>Protocols</title>
+    <url>/protocols/</url>
+    <content><![CDATA[<p>A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol.</p>
+<pre><code>import Foundation
+
+//协议语法
+protocol SomeProtocol {
+
+}
+
+struct SomeStructure: SomeProtocol {}
+class SomeClass: SomeProtocol {}
+
+//属性要求
+//如果属性标注了(set get),则不能通过常量存储属性和只读计算属性来实现
+//如果属性只设置了(get),那么任何类型都可以满足,包括变量存储属性
+
+protocol SomeProtocol1 {
+    var mustBeSettable: Int { get set }
+    var doesNotNeedToBeSettable: Int { get }
+}
+
+//协议中用static修饰时,实现中用static或者class实现都行
+protocol AnotherProtocol {
+    static var someTypeProperty: Int { get set }
+}
+
+protocol FullyNamed {
+    var fullName: String { get }
+}
+
+struct Person: FullyNamed {
+    var fullName: String
+}
+//可set 可 get
+let john = Person(fullName: &quot;Tom&quot;)
+
+class Starship: FullyNamed {
+    var prefix: String?
+    var name: String
+
+    init(name: String, prefix: String? = nil) {
+        self.name = name
+        self.prefix = prefix
+    }
+
+    var fullName: String {
+        return (prefix != nil ? prefix!+&quot; &quot; : &quot;&quot;) + name
+    }
+}
+
+var ncc1701 = Starship(name: &quot;Enterprise&quot;, prefix: &quot;USS&quot;)
+
+//方法要求
+
+//不能在协议方法中指定默认值
+
+protocol SomeProtocol2 {
+    static func someTypeMethod()
+}
+
+protocol RandomNumberGenerator {
+    func random() -&gt; Double
+}
+
+//线性同余生成器的伪随机数生成器算法,好高大上有木有...
+class LinearCongruentialGenerator: RandomNumberGenerator {
+    var lastRandom = 42.0
+    let m = 139968.0
+    let a = 3877.0
+    let c = 29573.0
+    func random() -&gt; Double {
+        lastRandom = ((lastRandom * a + c).truncatingRemainder(dividingBy: m))
+        return lastRandom / m
+    }
+}
+
+let generator = LinearCongruentialGenerator()
+print(generator.random())
+print(generator.random())
+
+//变异方法要求 mutating method requirements
+//如果希望实现协议的任何类型(类,结构体,枚举)要修改实例或者实例中的任何属性
+//得在func前加mutating关键字
+//类实现时,无需加mutating,结构体,枚举需要加
+protocol Toggleable {
+    mutating func toggle()
+}
+
+enum OnOffSwitch: Toggleable {
+    case off, on
+    mutating func toggle() {
+        switch self {
+        case .on:
+            self = .off
+        case .off:
+            self = .on
+        }
+    }
+}
+
+var lightSwitch = OnOffSwitch.off
+print(lightSwitch)
+lightSwitch.toggle()
+print(lightSwitch)
+
+//初始化程序要求
+protocol SomeProtocol3 {
+    init(someParameter: Int)
+}
+
+//required 方便子类继承,从而遵守SomeProtocol3协议
+//如果给类加上final,则required可以省略
+final class SomeClass3: SomeProtocol3 {
+    required init(someParameter: Int) {
+        //在这进行初始化实现
+    }
+}
+
+//如果子类重写父类中init方法,并且这个init也是协议中的实现,则需要用
+//`required`和`override`修饰
+protocol SomeProtocol4 {
+    init()
+}
+
+class SomeSuperClass {
+    init() {
+
+    }
+}
+
+class SomeSubClass: SomeSuperClass, SomeProtocol4 {
+    required override init() {
+        //good job
+    }
+}
+
+//协议还可以定义可失败构造器
+
+//协议作为类型
+//协议本身不实现任何功能,但是,创建的任何协议都会变成代码中成熟的类型.
+//可以用协议的地方:
+//1. 在函数,方法或初始化方法中作为参数或返回值
+//2. 作为常量,变量,或者属性的类型
+//3. 作为数组,字典或其他容器类型的元素类型
+
+class Dice {
+    let sides: Int
+    let generator: RandomNumberGenerator
+    init(sides: Int, generator: RandomNumberGenerator) {
+        self.sides = sides
+        self.generator = generator
+    }
+    func roll() -&gt; Int {
+        return Int(generator.random() * Double(sides)) + 1
+    }
+}
+var d6 = Dice(sides: 6, generator: LinearCongruentialGenerator())
+for _ in 1...5 {
+    print(&quot;Random dice roll is \(d6.roll())&quot;)
+}
+
+//委托
+//响应特定操作或者从外部检索数据
+protocol DiceGame {
+    var dice: Dice { get }
+    func play()
+}
+
+protocol DiceGameDelegate: AnyObject {
+    func gameDidStart(_ game: DiceGame)
+    func game(_ game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int)
+    func gameDidEnd(_ game: DiceGame)
+}
+
+class SnakesAndLadders: DiceGame {
+    let finalSquare = 25
+    let dice = Dice(sides: 6, generator: LinearCongruentialGenerator())
+    var square = 0
+    var board: [Int]
+
+    init() {
+        board = Array(repeating: 0, count: finalSquare + 1)
+        board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02
+        board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08
+    }
+
+    weak var delegate: DiceGameDelegate?
+    func play() {
+        square = 0
+        delegate?.gameDidStart(self)
+        gameLoop: while square != finalSquare {
+            let diceRoll = dice.roll()
+            delegate?.game(self, didStartNewTurnWithDiceRoll: diceRoll)
+            switch square + diceRoll {
+            case finalSquare:
+                break gameLoop
+            case let newSquare where newSquare &gt; finalSquare:
+                continue gameLoop
+            default:
+                square += diceRoll
+                square += board[square]
+            }
+        }
+        delegate?.gameDidEnd(self)
+    }
+}
+
+class DiceGameTracker: DiceGameDelegate {
+    var numberOfTurns = 0
+    func gameDidStart(_ game: DiceGame) {
+        numberOfTurns = 0
+        if game is SnakesAndLadders {
+            print(&quot;Started a new game of Snakes and Ladders&quot;)
+        }
+        print(&quot;The game is using a \(game.dice.sides)-sided dice&quot;)
+    }
+    func game(_ game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int) {
+        numberOfTurns += 1
+        print(&quot;Rolled a \(diceRoll)&quot;)
+    }
+    func gameDidEnd(_ game: DiceGame) {
+        print(&quot;The game lasted for \(numberOfTurns) turns&quot;)
+    }
+}
+
+let tracker = DiceGameTracker()
+let game = SnakesAndLadders()
+game.delegate = tracker
+game.play()
+
+//通过扩展遵守某个协议
+protocol TextRepresentable {
+    var textualDescription: String { get }
+}
+
+extension Dice: TextRepresentable {
+    var textualDescription: String {
+        return &quot;A \(sides)-sided dice&quot;
+    }
+}
+
+let d12 = Dice(sides: 12, generator: LinearCongruentialGenerator())
+print(d12.textualDescription)
+// Prints &quot;A 12-sided dice&quot;
+
+extension SnakesAndLadders: TextRepresentable {
+    var textualDescription: String {
+        return &quot;A game of Snakes and Ladders with \(finalSquare) squares&quot;
+    }
+}
+print(game.textualDescription)
+
+//有条件的遵守协议
+extension Array: TextRepresentable where Element: TextRepresentable {
+    var textualDescription: String {
+        let itemsAsText = self.map { $0.textualDescription }
+        return &quot;[&quot; + itemsAsText.joined(separator: &quot;, &quot;) + &quot;]&quot;
+    }
+}
+let myDice = [d6, d12]
+print(myDice.textualDescription)
+
+//通过协议适应某种类型
+//如果某个类型已经符合协议的所有要求，但尚未声明它采用该协议，则可以使其采用带有空扩展的协议
+struct Hamster {
+    var name: String
+    var textualDescription: String {
+        return &quot;A hamster named \(name)&quot;
+    }
+}
+extension Hamster: TextRepresentable {}
+let simonTheHamster = Hamster(name: &quot;Simon&quot;)
+let somethingTextRepresentable: TextRepresentable = simonTheHamster
+print(somethingTextRepresentable.textualDescription)
+// Prints &quot;A hamster named Simon&quot;
+
+//协议类型的集合
+let things: [TextRepresentable] = [game, d12, simonTheHamster]
+for thing in things {
+    print(thing.textualDescription)
+}
+
+//协议继承</code></pre><p>还是有点烧脑….</p>
 <p><strong>–EOF–</strong></p>
-]]></content>
+<!--kg-card-end: markdown-->]]></content>
       <categories>
         <category>Swift</category>
       </categories>
@@ -2602,211 +3091,15 @@ Swift泛型
       </categories>
   </entry>
   <entry>
-    <title>CentOS安装Ghost博客并实现全站HTTPS</title>
-    <url>/centosan-zhuang-ghostbo-ke-bing-shi-xian-quan-zhan-https/</url>
-    <content><![CDATA[<h3 id="1-前期准备"><a href="#1-前期准备" class="headerlink" title="1.前期准备"></a>1.前期准备</h3><!--kg-card-begin: code-->
+    <title>generate-xcframework</title>
+    <url>/generate-xcframework/</url>
+    <content><![CDATA[<p><img data-src="https://source.unsplash.com/09k72oU7qYU/1600x900" alt=""></p>
+<a id="more"></a>
 
-<pre><code>yum update //更新yum源
-yum groupinstall &quot;Development Tools&quot; //安装开发工具包
-yum install wget //安装wget下载工具</code></pre><!--kg-card-end: code-->
-<h3 id="2-安装Nginx"><a href="#2-安装Nginx" class="headerlink" title="2.安装Nginx"></a>2.安装Nginx</h3><!--kg-card-begin: code-->
-
-<pre><code>yum install nginx -y //安装nginx
-service nginx start //开启nginx
-chkconfig nginx on //设置开机自启动</code></pre><!--kg-card-end: code-->
-
-<p>Nginx安装完成,现在用IP或者域名就可以访问你的服务器了.</p>
-<p>使用Nginx配置反向代理,指向ghost博客的2368端口.</p>
-<!--kg-card-begin: code-->
-
-<pre><code>cd /etc/nginx/conf.d //cd到nginx目录
-vim default.conf //打开default.conf文件</code></pre><!--kg-card-end: code-->
-
-<p>在文件中写入一下内容:</p>
-<!--kg-card-begin: code-->
-
-<pre><code>server {  
-    listen 80;
-    server_name jingxuetao.com;
-    location / {
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header Host $http_host;
-        proxy_pass http://127.0.0.1:2368;
-        proxy_set_header REMOTE-HOST $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    }
-}</code></pre><!--kg-card-end: code-->
-
-<p>将上面的server_name 替换成自己的域名,保存退出,并重启Nginx.</p>
-<!--kg-card-begin: code-->
-
-<pre><code>service nginx restart</code></pre><!--kg-card-end: code-->
-<h3 id="3-安装MySQL"><a href="#3-安装MySQL" class="headerlink" title="3.安装MySQL"></a>3.安装MySQL</h3><blockquote>
-<p>Ghost集成了sqlite3数据库,如果不用MySQL,本步可以忽略.</p>
-</blockquote>
-<!--kg-card-begin: code-->
-
-<pre><code>yum install mysql mysql-server //安装MySQL
-service mysqld restart //启动数据库
-chkconfig mysqld on //设置开机启动
-mysql_secure_installation //开始配置数据库</code></pre><!--kg-card-end: code--><!--kg-card-begin: code-->
-
-<pre><code>Set root password? [Y/n] //设置root密码 -- 根据个人需求  
-anonymous users? [Y/n] //删除匿名用户 -- y  
-Disallow root login remotely? [Y/n] //禁止root用户远程登录 --n
-Remove test database and access to it? [Y/n] //删除默认的 test 数据库 --y  
-Reload privilege tables now? [Y/n] //是否马上应用最新的设置 --y  </code></pre><!--kg-card-end: code-->
-
-<p>为了支持中文,还需要修改MySQL字符支持.</p>
-<!--kg-card-begin: code-->
-
-<pre><code>vim /etc/my.cnf</code></pre><!--kg-card-end: code-->
-
-<p>在对应位置填入对应的内容:</p>
-<!--kg-card-begin: code-->
-
-<pre><code>[client]
-default-character-set=utf8  
-[mysql]
-default-character-set=utf8  
-[mysqld]
-character-set-server=utf8  
-collation-server=utf8_general_ci  </code></pre><!--kg-card-end: code-->
-
-<p>然后新建一个Ghost专用MySQL用户跟database:</p>
-<!--kg-card-begin: code-->
-
-<pre><code>mysql -u root -p  
-//用root用户登录mysql
-
-create database ghost;  
-//创建ghost数据库
-
-GRANT ALL PRIVILEGES ON ghost.* To &apos;ghost&apos;@&apos;%&apos; IDENTIFIED BY &apos;密码&apos;;  
-//创建ghost database 和 用户名为ghost的用户
-//%代表能被所有地址访问</code></pre><!--kg-card-end: code-->
-<h3 id="4-安装Node-js"><a href="#4-安装Node-js" class="headerlink" title="4.安装Node.js"></a>4.安装Node.js</h3><p>根据Ghost官方建议,安装v0.10.40版本</p>
-<!--kg-card-begin: code-->
-
-<pre><code>wget http://nodejs.org/dist/v0.10.40/node-v0.10.40.tar.gz
-tar zxvf node-v0.10.40.tar.gz
-cd node-v0.10.40
-./configure
-make &amp;&amp; make install</code></pre><!--kg-card-end: code-->
-<h3 id="5-安装Ghost"><a href="#5-安装Ghost" class="headerlink" title="5.安装Ghost"></a>5.安装Ghost</h3><!--kg-card-begin: code-->
-
-<pre><code>mkdir /var/www //创建Ghost安装路径
-wget http://dl.ghostchina.com/Ghost-0.7.4-zh-full.zip //下载Ghost(中文版)
-unzip Ghost-0.7.4-zh-full.zip //解压zip文件到当前文件夹
-mv config.example.js config.js //重命名,并配置
-vim config.js //打开config.js文件,并在里面填写对应内容.如果用sqlite3,只需要配置url</code></pre><!--kg-card-end: code--><!--kg-card-begin: code-->
-
-<pre><code>production: {  
-    url: &apos;http://jingxuetao.com&apos;, //这里是你自己VPS主机的域名，或者IP
-    mail: {},
-    database: {
-        client: &apos;mysql&apos;这里我选择使用mysql作为我博客的数据库
-        connection: {
-            host : &apos;127.0.0.1&apos;,
-            user : &apos;ghost&apos;, //mysql用户名
-            password : &apos;&apos;, //密码
-            database : &apos;ghost&apos;, //之前创建的ghost数据库名称
-            charset : &apos;utf8&apos;
-        },
-    server: {
-            host: &apos;127.0.0.1&apos;,
-            port: &apos;2368&apos;//若修改该端口记得在nginx中做相应改变
-        }
-    }  </code></pre><!--kg-card-end: code-->
-
-<p>现在在www目录下用命令npm start启动Ghost,网页就可以浏览了.</p>
-<h3 id="6-使用PM2让Ghost永远在线"><a href="#6-使用PM2让Ghost永远在线" class="headerlink" title="6.使用PM2让Ghost永远在线"></a>6.使用PM2让Ghost永远在线</h3><p>只要我们一断开ssh，Ghost的进程就会被关闭，这里我们使用PM2来守护Ghost服务进程，并让其运行在生产模式production上</p>
-<!--kg-card-begin: code-->
-
-<pre><code>//！！首先进到ghost的安装目录
-//安装pm2
-npm install pm2 -g  
-//让ghost以production模式运作，指定程序的入口index.js，并且此进程命名为ghost
-NODE_ENV=production pm2 start index.js --name &quot;ghost&quot;  
-//开机启动
-pm2 startup centos  
-pm2 save  </code></pre><!--kg-card-end: code-->
-
-<p>进程守护做完，顺便提提pm2重启进程的命令是:</p>
-<!--kg-card-begin: code-->
-
-<pre><code>pm2 restart ghost</code></pre><!--kg-card-end: code-->
-
-<p>用<a href="http://jingxuetao.com/ghost">http://jingxuetao.com/ghost</a> 访问后台</p>
-<h3 id="7-设置外部存储"><a href="#7-设置外部存储" class="headerlink" title="7.设置外部存储"></a>7.设置外部存储</h3><p>Ghost默认是将图片存储在服务器上的,但是服务器存储空间有限,并且外部存储又不花钱.</p>
-<p><a href="https://portal.qiniu.com/" target="_blank" rel="noopener">https://portal.qiniu.com/</a> 创建七牛云存储账号,并创建一个空间(公开空间).(使用免费空间之前得冲10块钱),然后修改Ghost配置文件如下:</p>
-<!--kg-card-begin: code-->
-
-<pre><code>/*storage: {
-     provider: &apos;local-file-store&apos;
- }*/ //注释掉本地存储代码.
- storage: {
-     provider: &apos;qiniu&apos;,
-     bucketname: &apos;blog-pic&apos;,//空间名称
-     ACCESS_KEY: &apos;d05f31DxWMuCdnqxxxxHOFc5cMJ4rQbdpnPJGB4F&apos;,//账号-&gt;密钥(左边菜单栏),将AK,SK分别对应ACCESS_KEY,SECRET_KEY填入
-     SECRET_KEY: &apos;q6l8YgfxOdxGSR8U5_DwBhtyC5133xurgBGyjIHt&apos;,
-     root: &apos;/image/&apos;,
-     prefix: &apos;http://o3pxzuakz.qnssl.com&apos;//选择一个空间-&gt;空间设置-&gt;域名设置-&gt;七牛域名,将网址复制到这.
- }</code></pre><!--kg-card-end: code-->
-
-<p>然后,在default.conf文件的location中添加</p>
-<!--kg-card-begin: code-->
-
-<pre><code>client_max_body_size 5m; //设置上传图片最大是5M,不设置上传图片会不成功,默认上传图片大小比较小.</code></pre><!--kg-card-end: code-->
-
-<p>重启Ghost,上传一张图片试试,看看图片地址.</p>
-<h3 id="8-设置HTTPS"><a href="#8-设置HTTPS" class="headerlink" title="8.设置HTTPS"></a>8.设置HTTPS</h3><p>①申请沃通免费证书,参考这篇文章.<br><a href="http://www.freehao123.com/cloudflare-wosign-ssl/" target="_blank" rel="noopener">Wosign沃通免费SSL申请开通</a></p>
-<p>②选择nginx的证书,改名为cert.crt跟cert.key</p>
-<p>③将证书上传到服务器的/etc/nginx目录下,然后配置Nginx.在/etc/nginx/conf.d目录下,除了default.conf文件之外,应该还有一个sslxxxxx.conf文件(没有就创建ssl.conf文件),将下面内容对比填入或者复制进去.</p>
-<!--kg-card-begin: code-->
-
-<pre><code># HTTPS server
-#
-server {
-    listen 443 ssl;
-    server_name jingxuetao.com;
-
-    ssl_certificate /etc/nginx/cert.crt;
-    ssl_certificate_key /etc/nginx/cert.key;
-
-    ssl_session_cache shared:SSL:1m;
-    ssl_session_timeout 5m;
-
-    ssl_ciphers HIGH:!aNULL:!MD5;
-    ssl_prefer_server_ciphers on;
-
-    location / {
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header Host $http_host;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_pass http://127.0.0.1:2368;
-        client_max_body_size 5m;
-    }
-}</code></pre><!--kg-card-end: code-->
-
-<p><strong>另外还得在config.js文件中将url字段http后面加个s,例如:</strong></p>
-<!--kg-card-begin: code-->
-
-<pre><code>url: &apos;https://jingxuetao.com&apos;</code></pre><!--kg-card-end: code-->
-
-<p>现在通过<a href="https://jingxuetao.com">https://jingxuetao.com</a> 就可以访问自己的网站了.</p>
-<p>要想将HTTP请求自动跳转到HTTPS,在default.conf文件的location中添加下面内容</p>
-<!--kg-card-begin: code-->
-
-<pre><code>return 301 https://$server_name$request_uri;</code></pre><!--kg-card-end: code-->
-
-<p>现在是实现HTTPS了,但是因为网页中含有其他网站的资源文件(图片,一个是头像,另一个就是后台左上角的那个小图标,再就是自己上传到七牛的图片.),所以现在浏览器地址栏中并没有显示安全连接.</p>
-<p>往后需要各种注意的细节,文字描述不清楚.不说了,心好累.</p>
-<p>博客本来访问量就不多,耐心看到这的就更少了.如果需要,加我QQ吧,1247846317 验证问题:荆学涛.</p>
-<p>END</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GPUImage3</span><br><span class="line"></span><br><span class="line">xcodebuild archive \</span><br><span class="line">-scheme GPUImage_iOS \</span><br><span class="line">-configuration Release \</span><br><span class="line">-destination <span class="string">'generic/platform=iOS'</span> \</span><br><span class="line">-archivePath <span class="string">'./build/GPUImage.framework-iphoneos.xcarchive'</span> \</span><br><span class="line">SKIP_INSTALL=NO \</span><br><span class="line">BUILD_LIBRARIES_FOR_DISTRIBUTION=YES</span><br><span class="line"></span><br><span class="line">xcodebuild archive \</span><br><span class="line">-scheme GPUImage_iOS \</span><br><span class="line">-configuration Release \</span><br><span class="line">-destination <span class="string">'generic/platform=iOS Simulator'</span> \</span><br><span class="line">-archivePath <span class="string">'./build/GPUImage.framework-iphonesimulator.xcarchive'</span> \</span><br><span class="line">SKIP_INSTALL=NO \</span><br><span class="line">BUILD_LIBRARIES_FOR_DISTRIBUTION=YES</span><br><span class="line"></span><br><span class="line">xcodebuild -create-xcframework \</span><br><span class="line">-framework <span class="string">'./build/GPUImage.framework-iphonesimulator.xcarchive/Products/Library/Frameworks/GPUImage.framework'</span> \</span><br><span class="line">-framework <span class="string">'./build/GPUImage.framework-iphoneos.xcarchive/Products/Library/Frameworks/GPUImage.framework'</span> \</span><br><span class="line">-output <span class="string">'./build/GPUImage.xcframework'</span></span><br><span class="line"></span><br><span class="line">==================GPUImage.framework .h</span><br><span class="line">xcodebuild archive \</span><br><span class="line">-project GPUImage.xcodeproj \</span><br><span class="line">-scheme GPUImageFramework \</span><br><span class="line">-configuration Release \</span><br><span class="line">-destination <span class="string">'generic/platform=iOS'</span> \</span><br><span class="line">-archivePath <span class="string">'./build/GPUImage.framework-iphoneos.xcarchive'</span> \</span><br><span class="line">SKIP_INSTALL=NO \</span><br><span class="line">BUILD_LIBRARIES_FOR_DISTRIBUTION=YES</span><br><span class="line"></span><br><span class="line">xcodebuild archive \</span><br><span class="line">-project GPUImage.xcodeproj \</span><br><span class="line">-scheme GPUImageFramework \</span><br><span class="line">-configuration Release \</span><br><span class="line">-destination <span class="string">'generic/platform=iOS Simulator'</span> \</span><br><span class="line">-archivePath <span class="string">'./build/GPUImage.framework-iphonesimulator.xcarchive'</span> \</span><br><span class="line">SKIP_INSTALL=NO \</span><br><span class="line">BUILD_LIBRARIES_FOR_DISTRIBUTION=YES</span><br><span class="line"></span><br><span class="line">xcodebuild -create-xcframework \</span><br><span class="line">-framework <span class="string">'./build/GPUImage.framework-iphonesimulator.xcarchive/Products/Library/Frameworks/GPUImage.framework'</span> \</span><br><span class="line">-framework <span class="string">'./build/GPUImage.framework-iphoneos.xcarchive/Products/Library/Frameworks/GPUImage.framework'</span> \</span><br><span class="line">-output <span class="string">'./build/GPUImage.xcframework'</span></span><br><span class="line"></span><br><span class="line">================GPUImage.a</span><br><span class="line">xcodebuild archive \</span><br><span class="line">-project GPUImage.xcodeproj \</span><br><span class="line">-scheme GPUImage \</span><br><span class="line">-configuration Release \</span><br><span class="line">-destination <span class="string">'generic/platform=iOS'</span> \</span><br><span class="line">-archivePath <span class="string">'./build/GPUImage.framework-iphoneos.xcarchive'</span> \</span><br><span class="line">SKIP_INSTALL=NO \</span><br><span class="line">BUILD_LIBRARIES_FOR_DISTRIBUTION=YES</span><br><span class="line"></span><br><span class="line">xcodebuild archive \</span><br><span class="line">-project GPUImage.xcodeproj \</span><br><span class="line">-scheme GPUImage \</span><br><span class="line">-configuration Release \</span><br><span class="line">-destination <span class="string">'generic/platform=iOS Simulator'</span> \</span><br><span class="line">-archivePath <span class="string">'./build/GPUImage.framework-iphonesimulator.xcarchive'</span> \</span><br><span class="line">SKIP_INSTALL=NO \</span><br><span class="line">BUILD_LIBRARIES_FOR_DISTRIBUTION=YES</span><br><span class="line"></span><br><span class="line">xcodebuild -create-xcframework \</span><br><span class="line">-library <span class="string">'./build/GPUImage.framework-iphonesimulator.xcarchive/Products/usr/local/lib/libGPUImage.a'</span> \</span><br><span class="line">-library <span class="string">'./build/GPUImage.framework-iphoneos.xcarchive/Products/usr/local/lib/libGPUImage.a'</span> \</span><br><span class="line">-output <span class="string">'./build/GPUImage.xcframework'</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Ghost</category>
+        <category>iOS</category>
       </categories>
   </entry>
   <entry>
@@ -3374,292 +3667,11 @@ extension Container2 {
       </categories>
   </entry>
   <entry>
-    <title>Protocols</title>
-    <url>/protocols/</url>
-    <content><![CDATA[<p>A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol.</p>
-<pre><code>import Foundation
-
-//协议语法
-protocol SomeProtocol {
-
-}
-
-struct SomeStructure: SomeProtocol {}
-class SomeClass: SomeProtocol {}
-
-//属性要求
-//如果属性标注了(set get),则不能通过常量存储属性和只读计算属性来实现
-//如果属性只设置了(get),那么任何类型都可以满足,包括变量存储属性
-
-protocol SomeProtocol1 {
-    var mustBeSettable: Int { get set }
-    var doesNotNeedToBeSettable: Int { get }
-}
-
-//协议中用static修饰时,实现中用static或者class实现都行
-protocol AnotherProtocol {
-    static var someTypeProperty: Int { get set }
-}
-
-protocol FullyNamed {
-    var fullName: String { get }
-}
-
-struct Person: FullyNamed {
-    var fullName: String
-}
-//可set 可 get
-let john = Person(fullName: &quot;Tom&quot;)
-
-class Starship: FullyNamed {
-    var prefix: String?
-    var name: String
-
-    init(name: String, prefix: String? = nil) {
-        self.name = name
-        self.prefix = prefix
-    }
-
-    var fullName: String {
-        return (prefix != nil ? prefix!+&quot; &quot; : &quot;&quot;) + name
-    }
-}
-
-var ncc1701 = Starship(name: &quot;Enterprise&quot;, prefix: &quot;USS&quot;)
-
-//方法要求
-
-//不能在协议方法中指定默认值
-
-protocol SomeProtocol2 {
-    static func someTypeMethod()
-}
-
-protocol RandomNumberGenerator {
-    func random() -&gt; Double
-}
-
-//线性同余生成器的伪随机数生成器算法,好高大上有木有...
-class LinearCongruentialGenerator: RandomNumberGenerator {
-    var lastRandom = 42.0
-    let m = 139968.0
-    let a = 3877.0
-    let c = 29573.0
-    func random() -&gt; Double {
-        lastRandom = ((lastRandom * a + c).truncatingRemainder(dividingBy: m))
-        return lastRandom / m
-    }
-}
-
-let generator = LinearCongruentialGenerator()
-print(generator.random())
-print(generator.random())
-
-//变异方法要求 mutating method requirements
-//如果希望实现协议的任何类型(类,结构体,枚举)要修改实例或者实例中的任何属性
-//得在func前加mutating关键字
-//类实现时,无需加mutating,结构体,枚举需要加
-protocol Toggleable {
-    mutating func toggle()
-}
-
-enum OnOffSwitch: Toggleable {
-    case off, on
-    mutating func toggle() {
-        switch self {
-        case .on:
-            self = .off
-        case .off:
-            self = .on
-        }
-    }
-}
-
-var lightSwitch = OnOffSwitch.off
-print(lightSwitch)
-lightSwitch.toggle()
-print(lightSwitch)
-
-//初始化程序要求
-protocol SomeProtocol3 {
-    init(someParameter: Int)
-}
-
-//required 方便子类继承,从而遵守SomeProtocol3协议
-//如果给类加上final,则required可以省略
-final class SomeClass3: SomeProtocol3 {
-    required init(someParameter: Int) {
-        //在这进行初始化实现
-    }
-}
-
-//如果子类重写父类中init方法,并且这个init也是协议中的实现,则需要用
-//`required`和`override`修饰
-protocol SomeProtocol4 {
-    init()
-}
-
-class SomeSuperClass {
-    init() {
-
-    }
-}
-
-class SomeSubClass: SomeSuperClass, SomeProtocol4 {
-    required override init() {
-        //good job
-    }
-}
-
-//协议还可以定义可失败构造器
-
-//协议作为类型
-//协议本身不实现任何功能,但是,创建的任何协议都会变成代码中成熟的类型.
-//可以用协议的地方:
-//1. 在函数,方法或初始化方法中作为参数或返回值
-//2. 作为常量,变量,或者属性的类型
-//3. 作为数组,字典或其他容器类型的元素类型
-
-class Dice {
-    let sides: Int
-    let generator: RandomNumberGenerator
-    init(sides: Int, generator: RandomNumberGenerator) {
-        self.sides = sides
-        self.generator = generator
-    }
-    func roll() -&gt; Int {
-        return Int(generator.random() * Double(sides)) + 1
-    }
-}
-var d6 = Dice(sides: 6, generator: LinearCongruentialGenerator())
-for _ in 1...5 {
-    print(&quot;Random dice roll is \(d6.roll())&quot;)
-}
-
-//委托
-//响应特定操作或者从外部检索数据
-protocol DiceGame {
-    var dice: Dice { get }
-    func play()
-}
-
-protocol DiceGameDelegate: AnyObject {
-    func gameDidStart(_ game: DiceGame)
-    func game(_ game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int)
-    func gameDidEnd(_ game: DiceGame)
-}
-
-class SnakesAndLadders: DiceGame {
-    let finalSquare = 25
-    let dice = Dice(sides: 6, generator: LinearCongruentialGenerator())
-    var square = 0
-    var board: [Int]
-
-    init() {
-        board = Array(repeating: 0, count: finalSquare + 1)
-        board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02
-        board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08
-    }
-
-    weak var delegate: DiceGameDelegate?
-    func play() {
-        square = 0
-        delegate?.gameDidStart(self)
-        gameLoop: while square != finalSquare {
-            let diceRoll = dice.roll()
-            delegate?.game(self, didStartNewTurnWithDiceRoll: diceRoll)
-            switch square + diceRoll {
-            case finalSquare:
-                break gameLoop
-            case let newSquare where newSquare &gt; finalSquare:
-                continue gameLoop
-            default:
-                square += diceRoll
-                square += board[square]
-            }
-        }
-        delegate?.gameDidEnd(self)
-    }
-}
-
-class DiceGameTracker: DiceGameDelegate {
-    var numberOfTurns = 0
-    func gameDidStart(_ game: DiceGame) {
-        numberOfTurns = 0
-        if game is SnakesAndLadders {
-            print(&quot;Started a new game of Snakes and Ladders&quot;)
-        }
-        print(&quot;The game is using a \(game.dice.sides)-sided dice&quot;)
-    }
-    func game(_ game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int) {
-        numberOfTurns += 1
-        print(&quot;Rolled a \(diceRoll)&quot;)
-    }
-    func gameDidEnd(_ game: DiceGame) {
-        print(&quot;The game lasted for \(numberOfTurns) turns&quot;)
-    }
-}
-
-let tracker = DiceGameTracker()
-let game = SnakesAndLadders()
-game.delegate = tracker
-game.play()
-
-//通过扩展遵守某个协议
-protocol TextRepresentable {
-    var textualDescription: String { get }
-}
-
-extension Dice: TextRepresentable {
-    var textualDescription: String {
-        return &quot;A \(sides)-sided dice&quot;
-    }
-}
-
-let d12 = Dice(sides: 12, generator: LinearCongruentialGenerator())
-print(d12.textualDescription)
-// Prints &quot;A 12-sided dice&quot;
-
-extension SnakesAndLadders: TextRepresentable {
-    var textualDescription: String {
-        return &quot;A game of Snakes and Ladders with \(finalSquare) squares&quot;
-    }
-}
-print(game.textualDescription)
-
-//有条件的遵守协议
-extension Array: TextRepresentable where Element: TextRepresentable {
-    var textualDescription: String {
-        let itemsAsText = self.map { $0.textualDescription }
-        return &quot;[&quot; + itemsAsText.joined(separator: &quot;, &quot;) + &quot;]&quot;
-    }
-}
-let myDice = [d6, d12]
-print(myDice.textualDescription)
-
-//通过协议适应某种类型
-//如果某个类型已经符合协议的所有要求，但尚未声明它采用该协议，则可以使其采用带有空扩展的协议
-struct Hamster {
-    var name: String
-    var textualDescription: String {
-        return &quot;A hamster named \(name)&quot;
-    }
-}
-extension Hamster: TextRepresentable {}
-let simonTheHamster = Hamster(name: &quot;Simon&quot;)
-let somethingTextRepresentable: TextRepresentable = simonTheHamster
-print(somethingTextRepresentable.textualDescription)
-// Prints &quot;A hamster named Simon&quot;
-
-//协议类型的集合
-let things: [TextRepresentable] = [game, d12, simonTheHamster]
-for thing in things {
-    print(thing.textualDescription)
-}
-
-//协议继承</code></pre><p>还是有点烧脑….</p>
+    <title>同步的方式编写异步代码</title>
+    <url>/sync-way-code-async-code/</url>
+    <content><![CDATA[<p>代码来自泊学</p>
 <p><strong>–EOF–</strong></p>
-<!--kg-card-end: markdown-->]]></content>
+]]></content>
       <categories>
         <category>Swift</category>
       </categories>
