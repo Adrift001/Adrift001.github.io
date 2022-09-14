@@ -196,6 +196,96 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/swift-access-control/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Optional">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Optional Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/swift-access-control/" class="post-title-link" itemprop="url">Swift Access Control</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-25 13:15:33" itemprop="dateCreated datePublished" datetime="2019-07-25T13:15:33+00:00">2019-07-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li>open: 允许在定义实体的模块,其他模块中访问,允许其他模块进行继承,重写(open只能用在类,类成员上)</li>
+<li>public: 允许在定义实体的模块,其他模块中访问,不允许继承,重写(模块内可以)</li>
+<li>internal: 只允许在定义实体的模块中访问,不允许在其他模块中访问(默认)</li>
+<li>fileprivate: 在同一文件中访问</li>
+<li>private: 在实体内访问</li>
+</ol>
+<blockquote>
+<p>全局内用private修饰类,变量或扩展,就是用fileprivate</p>
+</blockquote>
+<pre><code>class Test {
+    private struct Dog {
+        var age = 0 //Test内可用,如果显式用private修饰,则Person内不能使用age
+        func run() { }
+    }
+
+    private struct Person {
+        var dog = Dog()
+        mutating func walk() {
+            dog.run()
+            dog.age = 1
+        }
+    }
+}</code></pre><p><strong>–EOF–</strong></p>
+<!--kg-card-end: markdown-->
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/queue-implement/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1028,161 +1118,6 @@ maxSubSequenceSum3()</code></pre><p>算法很重要呐 😄😄</p>
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/bit-operation/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Optional">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Optional Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/bit-operation/" class="post-title-link" itemprop="url">位运算</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-11-26 08:14:20" itemprop="dateCreated datePublished" datetime="2018-11-26T08:14:20+00:00">2018-11-26</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>位运算了解一下,哈哈哈哈哈哈…</p>
-<p>Person.swift</p>
-<pre><code>import Foundation
-
-extension Bool {
-    init(_ integer: Int){
-        self.init(integer != 0)
-    }
-}
-
-struct Person {
-
-    let TallMask = (0b00000001 &lt;&lt; 0b00000000)
-    let RichMask = (0b00000001 &lt;&lt; 0b00000001)
-    let HandsomeMask = (0b00000001 &lt;&lt; 0b00000010)
-
-    var _tallRichHandsome = 0b00000000
-
-    mutating func setTall(_ tall: Bool) {
-        if tall {
-            _tallRichHandsome = (_tallRichHandsome | TallMask)
-        } else {
-            _tallRichHandsome = (_tallRichHandsome &amp; ~TallMask)
-        }
-    }
-
-    func isTall() -&gt; Bool {
-        return Bool(_tallRichHandsome &amp; TallMask)
-    }
-
-    mutating func setRich(_ rich: Bool) {
-        if rich {
-            _tallRichHandsome = (_tallRichHandsome | RichMask)
-        } else {
-            _tallRichHandsome = (_tallRichHandsome &amp; ~RichMask)
-        }
-    }
-
-    func isRich() -&gt; Bool {
-        return Bool(_tallRichHandsome &amp; RichMask)
-    }
-
-    mutating func setHandsome(_ handsome: Bool) {
-        if handsome {
-            _tallRichHandsome = (_tallRichHandsome | HandsomeMask)
-        } else {
-            _tallRichHandsome = (_tallRichHandsome &amp; ~HandsomeMask)
-        }
-    }
-
-    func isHandsome() -&gt; Bool {
-        return Bool(_tallRichHandsome &amp; HandsomeMask)
-    }
-}</code></pre><p>main.swift</p>
-<pre><code>import Foundation
-
-
-var person = Person()
-
-print(person.isTall())
-print(person.isRich())
-print(person.isHandsome())
-print(&quot;================&quot;)
-print(person._tallRichHandsome)
-print(&quot;===================&quot;)
-person.setTall(true)
-person.setRich(true)
-person.setHandsome(true)
-print(person.isTall())
-print(person.isRich())
-print(person.isHandsome())
-
-print(&quot;===================&quot;)
-//print(person.TallMask)
-//print(person.RichMask)
-//print(person.HandsomeMask)
-person.setTall(false)
-print(person.isTall())
-print(person.isRich())
-print(person.isHandsome())
-
-print(&quot;==================&quot;)
-//print(0b00000000)
-//print(0b00000001)
-//print(0b00000010)
-
-print(&quot;==================&quot;)
-
-print(person._tallRichHandsome)</code></pre><p><strong>–EOF–</strong></p>
-<!--kg-card-end: markdown-->
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1254,14 +1189,14 @@ print(person._tallRichHandsome)</code></pre><p><strong>–EOF–</strong></p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">70</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>

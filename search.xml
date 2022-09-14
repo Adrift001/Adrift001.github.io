@@ -3101,6 +3101,28 @@ Swift泛型
       </categories>
   </entry>
   <entry>
+    <title>PostgreSQL客户端时区差异</title>
+    <url>/postgresql-client-time-zone-difference/</url>
+    <content><![CDATA[<p><img data-src="https://source.unsplash.com/_4_e5MGyquM/1600x900" alt=""></p>
+<a id="more"></a>
+
+<p>Navicat链接数据库用的是数据库时区.<br>DBeaver链接数据库用的是本地市区.</p>
+]]></content>
+      <categories>
+        <category>PostgreSQL</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>同步的方式编写异步代码</title>
+    <url>/sync-way-code-async-code/</url>
+    <content><![CDATA[<p>代码来自泊学</p>
+<p><strong>–EOF–</strong></p>
+]]></content>
+      <categories>
+        <category>Swift</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Generics</title>
     <url>/generics/</url>
     <content><![CDATA[<!--kg-card-begin: markdown-->
@@ -3375,16 +3397,6 @@ extension Container2 {
 <p><strong>–EOF–</strong></p>
 <!--kg-card-end: markdown-->
 
-]]></content>
-      <categories>
-        <category>Swift</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>同步的方式编写异步代码</title>
-    <url>/sync-way-code-async-code/</url>
-    <content><![CDATA[<p>代码来自泊学</p>
-<p><strong>–EOF–</strong></p>
 ]]></content>
       <categories>
         <category>Swift</category>

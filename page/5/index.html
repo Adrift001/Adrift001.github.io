@@ -196,6 +196,74 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/chang-yong-ming-ling-xing/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Optional">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Optional Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/chang-yong-ming-ling-xing/" class="post-title-link" itemprop="url">常用命令行</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-12-13 13:46:00" itemprop="dateCreated datePublished" datetime="2017-12-13T13:46:00+00:00">2017-12-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/macOS/" itemprop="url" rel="index"><span itemprop="name">macOS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <pre><code>find . -name &quot;*.gif&quot;|sed &apos;s/.gif//&apos;|xargs -n1 -I {} mv {}.gif {}.png //批量修改文件后缀名
+sips -Z 75 *.png //批量修改文件像素
+sudo python -m SimpleHTTPServer 80 //开启一个简单的服务器,用于网页访问文件夹内容.</code></pre><!--kg-card-end: code-->
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/ghost-blog-support-emoji/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -970,224 +1038,6 @@ mysql -uroot -ppassword
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/dynamic-loading-view/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Optional">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Optional Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/dynamic-loading-view/" class="post-title-link" itemprop="url">动态加载视图</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2016-06-05 13:48:00" itemprop="dateCreated datePublished" datetime="2016-06-05T13:48:00+00:00">2016-06-05</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
-<li>获取JSON文件路径</li>
-<li>根据路径创建NSData对象</li>
-<li>根据NSData对象对JSON进行序列化,得到一个数组</li>
-<li>遍历数组,提取出<code>视图名</code>,<code>标题</code>,<code>图片名</code>,根据这三项创建视图,并用UINavigationViewController包裹起来,将navi添加到tabBarViewController中.</li>
-</ol>
-<h3 id="MainVCSettings-json文件"><a href="#MainVCSettings-json文件" class="headerlink" title="MainVCSettings.json文件"></a>MainVCSettings.json文件</h3><!--kg-card-begin: code-->
-
-<pre><code>[
- {
-    &quot;vcName&quot;: &quot;HomeTableViewController&quot;,
-    &quot;title&quot;: &quot;首页&quot;,
-    &quot;imageName&quot;: &quot;tabbar_home&quot;
- },
- {
-     &quot;vcName&quot;: &quot;MessageTableViewController&quot;,
-     &quot;title&quot;: &quot;消息&quot;,
-     &quot;imageName&quot;: &quot;tabbar_message_center&quot;
- },
- {
- &quot;vcName&quot;: &quot;NullViewController&quot;,
- &quot;title&quot;: &quot;&quot;,
- &quot;imageName&quot;: &quot;&quot;
- },
- {
-     &quot;vcName&quot;: &quot;DiscoverTableViewController&quot;,
-     &quot;title&quot;: &quot;广场&quot;,
-     &quot;imageName&quot;: &quot;tabbar_discover&quot;
- },
- {
-     &quot;vcName&quot;: &quot;ProfileTableViewController&quot;,
-     &quot;title&quot;: &quot;我&quot;,
-     &quot;imageName&quot;: &quot;tabbar_profile&quot;
- }
- ]</code></pre><!--kg-card-end: code-->
-<h3 id="具体实现代码"><a href="#具体实现代码" class="headerlink" title="具体实现代码"></a>具体实现代码</h3><!--kg-card-begin: code-->
-
-<pre><code>//
-// MainViewController.swift
-// weibo
-//
-// Created by Adrift on 16/6/5.
-// Copyright © 2016年 Adrift. All rights reserved.
-//
-
-import UIKit
-
-class MainViewController: UITabBarController {
-
-    //MARK: - 生命周期
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        //设置当前控制器对应的tabBar的颜色,iOS7之前如果设置了tintClor只有文字会变,而图片不会变
-        tabBar.tintColor = UIColor.orangeColor()
-        addChildViewControllers()
-    }
-
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-        tabBar.addSubview(composeBtn)
-        //计算宽度
-        let width = UIScreen.mainScreen().bounds.width / CGFloat(viewControllers!.count)
-        //创建 frame
-        let rect = CGRect(x: 0, y: 0, width: width, height: tabBar.bounds.height)
-        //设置 frame 跟 偏移量
-        composeBtn.frame = CGRectOffset(rect, width * 2, 0)
-
-    }
-
-    //MARK: - 方法
-    /**
-     添加所有子控制器
-     */
-    func addChildViewControllers() {
-        //获取json文件路径
-        let path = NSBundle.mainBundle().pathForResource(&quot;MainVCSettings&quot;, ofType: &quot;json&quot;)
-        //通过文件路径创建NSData
-        if let tempPath = path {
-            let jsonData = NSData(contentsOfFile: tempPath)
-            do {
-                //序列化
-                let dictArr = try NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as! [[String: String]]
-                //遍历数组,并创建视图控制器
-                for dict in dictArr {
-                    addChildViewController(dict[&quot;vcName&quot;]!, title: dict[&quot;title&quot;]!, imageName: dict[&quot;imageName&quot;]!)
-                }
-            }catch{
-                print(&quot;crash&quot;)
-                //并添加到TabBarViewController
-                addChildViewController(&quot;HomeTableViewController&quot;, title: &quot;首页&quot;, imageName: &quot;tabbar_home&quot;)
-                addChildViewController(&quot;MessageTableViewController&quot;, title: &quot;消息&quot;, imageName: &quot;tabbar_message_center&quot;)
-                addChildViewController(&quot;NullViewController&quot;, title: &quot;&quot;, imageName: &quot;&quot;)
-                addChildViewController(&quot;DiscoverTableViewController&quot;, title: &quot;发现&quot;, imageName: &quot;tabbar_discover&quot;)
-                addChildViewController(&quot;ProfileTableViewController&quot;, title: &quot;我的&quot;, imageName: &quot;tabbar_profile&quot;)
-            }
-        }
-    }
-
-    /**
-     将navigationViewController 添加到 TabBarViewController
-
-     - parameter childController: 子控制图
-     - parameter title: 标题
-     - parameter imageName: 非高亮图片名称
-     */
-    private func addChildViewController(childControllerName: String, title: String, imageName: String) {
-        //获取命名空间
-        let speaceName = NSBundle.mainBundle().infoDictionary![&quot;CFBundleExecutable&quot;] as! String
-
-        //通过字符串转换为类
-        let cls:AnyClass? = NSClassFromString(speaceName + &quot;.&quot; + childControllerName)
-
-        //通过类创建对象
-        let vcCls = cls as! UIViewController.Type
-        let vc = vcCls.init()
-
-// 设置首页
-        vc.tabBarItem.image = UIImage(named: imageName)
-        vc.tabBarItem.selectedImage = UIImage(named: imageName + &quot;_highlighted&quot;)
-        vc.title = title
-        //2.给首页包装一个导航器
-        let navi = UINavigationController()
-        navi.addChildViewController(vc)
-        //3.将导航控制器添加到当前控制器
-        addChildViewController(navi)
-    }
-
-    func composeBtnClick() {
-        print(&quot;被点击...&quot;)
-    }
-
-    //MARK: - 懒加载
-    private lazy var composeBtn:UIButton = {
-
-        let button = UIButton()
-
-        //设置button图片
-        button.setImage(UIImage(named: &quot;tabbar_compose_icon_add&quot;), forState: UIControlState.Normal)
-        button.setImage(UIImage(named: &quot;tabbar_compose_icon_add_highlighted&quot;), forState: UIControlState.Highlighted)
-
-        //设置button背景图片
-        button.setBackgroundImage(UIImage(named: &quot;tabbar_compose_button&quot;), forState: UIControlState.Normal)
-        button.setBackgroundImage(UIImage(named: &quot;tabbar_compose_button_highlighted&quot;), forState: UIControlState.Highlighted)
-
-        //添加监听事件
-        button.addTarget(self, action: #selector(MainViewController.composeBtnClick), forControlEvents: UIControlEvents.TouchUpInside)
-
-        return button
-    }()
-}</code></pre><!--kg-card-end: code-->
-
-<p><strong>–EOF–</strong></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1259,14 +1109,14 @@ class MainViewController: UITabBarController {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">70</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
