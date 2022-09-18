@@ -1864,6 +1864,15 @@ extension SettingTableViewController {
       </categories>
   </entry>
   <entry>
+    <title>封装CoreImage</title>
+    <url>/package-coreimage/</url>
+    <content><![CDATA[<p> <strong>–EOF–</strong></p>
+]]></content>
+      <categories>
+        <category>Swift</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Protocols</title>
     <url>/protocols/</url>
     <content><![CDATA[<p>A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol.</p>
@@ -3104,6 +3113,16 @@ Swift泛型
       </categories>
   </entry>
   <entry>
+    <title>同步的方式编写异步代码</title>
+    <url>/sync-way-code-async-code/</url>
+    <content><![CDATA[<p>代码来自泊学</p>
+<p><strong>–EOF–</strong></p>
+]]></content>
+      <categories>
+        <category>Swift</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Generics</title>
     <url>/generics/</url>
     <content><![CDATA[<!--kg-card-begin: markdown-->
@@ -3665,25 +3684,6 @@ attributes #0 = { noinline nounwind optnone ssp uwtable &quot;correctly-rounded-
 <!--kg-card-end: markdown-->]]></content>
       <categories>
         <category>LLVM</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>同步的方式编写异步代码</title>
-    <url>/sync-way-code-async-code/</url>
-    <content><![CDATA[<p>代码来自泊学</p>
-<p><strong>–EOF–</strong></p>
-]]></content>
-      <categories>
-        <category>Swift</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>封装CoreImage</title>
-    <url>/package-coreimage/</url>
-    <content><![CDATA[<p> <strong>–EOF–</strong></p>
-]]></content>
-      <categories>
-        <category>Swift</category>
       </categories>
   </entry>
 </search>
