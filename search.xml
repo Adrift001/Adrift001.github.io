@@ -82,6 +82,26 @@
       </categories>
   </entry>
   <entry>
+    <title>一台虚拟机的悲哀</title>
+    <url>/sorrow-of-a-virtual-machine/</url>
+    <content><![CDATA[<blockquote>
+<p>“哈哈,我终于从镜像文件变成变成操作系统啦,O(∩_∩)O~,我的主人每天都会用我办公超过10个小时.虽然我的身体素质不好,但是我有一颗顽强灵魂;虽然每天都会很累,但是我很开心.因为我是主人的操作系统呀!(<em>^_\</em>^<em>)”.<br>______________________________________________________________\</em>—–一台虚拟机的悲哀</p>
+</blockquote>
+<!--kg-card-begin: code-->
+
+<pre><code>或许我们也是虚拟机.</code></pre><!--kg-card-end: code-->
+<ul>
+<li>博客从ACE转移到ECS上了.过程比较曲折,结果还算完美.</li>
+<li>明天写一下教程,然后再把HTTPS的反代理弄一下.又得翻代码.</li>
+<li>以后不折腾了,不折腾了.</li>
+</ul>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>Me</category>
+      </categories>
+  </entry>
+  <entry>
     <title>通过runtime让属性在category上飞</title>
     <url>/by-runtime-to-allow-properties-to-fly-on-category/</url>
     <content><![CDATA[<h3 id="现在面临的场景"><a href="#现在面临的场景" class="headerlink" title="现在面临的场景"></a>现在面临的场景</h3><p>在做项目过程中难免会创建很多ViewModel,这些ViewModel难免有些共同的方法跟属性,这些共同的方法和属性可以单独提取出来,这就用到category.我现在的具体场景是:每个ViewModel都需要请求数据,当ViewController从当前界面切换到另一个画面时,暂停本页面的网络请求.</p>
@@ -143,26 +163,6 @@ static const void *dataTaskKey = &amp;dataTaskKey;
       </categories>
   </entry>
   <entry>
-    <title>一台虚拟机的悲哀</title>
-    <url>/sorrow-of-a-virtual-machine/</url>
-    <content><![CDATA[<blockquote>
-<p>“哈哈,我终于从镜像文件变成变成操作系统啦,O(∩_∩)O~,我的主人每天都会用我办公超过10个小时.虽然我的身体素质不好,但是我有一颗顽强灵魂;虽然每天都会很累,但是我很开心.因为我是主人的操作系统呀!(<em>^_\</em>^<em>)”.<br>______________________________________________________________\</em>—–一台虚拟机的悲哀</p>
-</blockquote>
-<!--kg-card-begin: code-->
-
-<pre><code>或许我们也是虚拟机.</code></pre><!--kg-card-end: code-->
-<ul>
-<li>博客从ACE转移到ECS上了.过程比较曲折,结果还算完美.</li>
-<li>明天写一下教程,然后再把HTTPS的反代理弄一下.又得翻代码.</li>
-<li>以后不折腾了,不折腾了.</li>
-</ul>
-<p>END</p>
-]]></content>
-      <categories>
-        <category>Me</category>
-      </categories>
-  </entry>
-  <entry>
     <title>iOS界面跳转隐藏tabBar</title>
     <url>/ios-jump-hide-tabbar/</url>
     <content><![CDATA[<h3 id="一-IOS隐藏tabBar的方法"><a href="#一-IOS隐藏tabBar的方法" class="headerlink" title="一.IOS隐藏tabBar的方法:"></a>一.IOS隐藏tabBar的方法:</h3><!--kg-card-begin: code-->
@@ -181,54 +181,6 @@ next. hidesBottomBarWhenPushed = YES;
 ]]></content>
       <categories>
         <category>iOS</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>如何配置使用HSTS</title>
-    <url>/configure-the-use-of-hsts/</url>
-    <content><![CDATA[<p>HTTP严格传输安全（英语：HTTP Strict Transport Security，缩写：HSTS）是一套由互联网工程任务组发布的互联网安全策略机制。网站可以选择使用HSTS策略，来让浏览器强制使用HTTPS与网站进行通信，以减少会话劫持风险.</p>
-<h3 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h3><p>HSTS的作用是强制客户端（如浏览器）使用HTTPS与服务器创建连接。服务器开启HSTS的方法是，当客户端通过HTTPS发出请求时，在服务器返回的超文本传输协议响应头中包含Strict-Transport-Security字段。非加密传输时设置的HSTS字段无效。</p>
-<p>比如，<a href="https://example.com/" target="_blank" rel="noopener">https://example.com/</a> 的响应头含有Strict-Transport-Security: max-age=31536000; includeSubDomains。这意味着两点：</p>
-<ol>
-<li>在接下来的一年（即31536000秒）中，浏览器只要向example.com或其子域名发送HTTP请求时，必须采用HTTPS来发起连接。比如，用户点击超链接或在地址栏输入<a href="http://www.example.com/" target="_blank" rel="noopener">http://www.example.com/</a> ，浏览器应当自动将 http 转写成 https，然后直接向 <a href="https://www.example.com/" target="_blank" rel="noopener">https://www.example.com/</a> 发送请求。</li>
-<li>在接下来的一年中，如果 example.com 服务器发送的TLS证书无效，用户不能忽略浏览器警告继续访问网站.</li>
-</ol>
-<h3 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h3><p>HSTS的雏形来自于2008年4月在北京召开的第十七届国际万维网大会上柯林·杰克逊（Collin Jackson）和亚当·巴斯（Adam Barth）的题为“ForceHTTPS: Protecting High-Security Web Sites from Network Attacks”的演讲。他们的提议是使用“ForceHTTPS” Cookie来强制浏览器使用HTTPS。</p>
-<p>2009年9月18日，他们和杰夫·霍奇斯（Jeff Hodges）发布了最初的草案，题目为”Strict Transport Security”[5]，这个草案基于ForceHTTPS，并有所修改。</p>
-<p>2010年6月17日，这三位作者经由互联网工程任务组发布了首版互联网草案，”HTTP Strict Transport Security”。</p>
-<p>2012年10月2日，互联网工程指导组批准了将第14版HSTS草案发布为RFC的请求。</p>
-<p>2012年11月19日，互联网工程任务组发布RFC 6797</p>
-<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>HSTS可以用来抵御SSL剥离攻击。SSL剥离攻击是中间人攻击的一种，由Moxie Marlinspike于2009年发明。他在当年的黑帽大会上发表的题为“New Tricks For Defeating SSL In Practice”的演讲中将这种攻击方式公开。SSL剥离的实施方法是阻止浏览器与服务器创建HTTPS连接。它的前提是用户很少直接在地址栏输入 https:// ，用户总是通过点击链接或3xx重定向，从HTTP页面进入HTTPS页面。所以攻击者可以在用户访问HTTP页面时替换所有 https:// 开头的链接为 http:// ，达到阻止HTTPS的目的.</p>
-<p>HSTS可以很大程度上解决SSL剥离攻击，因为只要浏览器曾经与服务器创建过一次安全连接，之后浏览器会强制使用HTTPS，即使链接被换成了HTTP。</p>
-<p>另外，如果中间人使用自己的自签名证书来进行攻击，浏览器会给出警告，但是许多用户会忽略警告。HSTS解决了这一问题，一旦服务器发送了HSTS字段，用户将不再允许忽略警告。</p>
-<h3 id="不足"><a href="#不足" class="headerlink" title="不足"></a>不足</h3><p>用户首次访问某网站是不受HSTS保护的。这是因为首次访问时，浏览器还未收到HSTS，所以仍有可能通过明文HTTP来访问。解决这个不足目前有两种方案，一是浏览器预置HSTS域名列表，Google Chrome、Firefox、Internet Explorer和Microsoft Edge实现了这一方案。二是将HSTS信息加入到域名系统记录中。但这需要保证DNS的安全性，也就是需要部署域名系统安全扩展。截至2014年这一方案没有大规模部署。</p>
-<p>由于HSTS会在一定时间后失效（有效期由max-age指定），所以浏览器是否强制HSTS策略取决于当前系统时间。部分操作系统经常通过网络时间协议更新系统时间，如Ubuntu每次连接网络时，OS X Lion每隔9分钟会自动连接时间服务器。攻击者可以通过伪造NTP信息，设置错误时间来绕过HSTS。解决方法是认证NTP信息，或者禁止NTP大幅度增减时间。比如Windows 8每7天更新一次时间，并且要求每次NTP设置的时间与当前时间不得超过15小时。</p>
-<h3 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h3><ul>
-<li>Chromium和Google Chrome从4.0.211.0版本开始支持HSTS</li>
-<li>Firefox 4及以上版本</li>
-<li>Opera 12及以上版本</li>
-<li>Safari从OS X Mavericks起</li>
-<li>Internet Explorer从Windows 10技术预览版开始支持</li>
-</ul>
-<h3 id="网站支持"><a href="#网站支持" class="headerlink" title="网站支持"></a>网站支持</h3><p>根据SSL Pulse的调查，截至2015年2月，仅有2.7%的网站开启了HSTS。目前支持HSTS的主流网站有：支付宝、PayPal、Twitter、维基百科邮件列表、上善若水等。</p>
-<blockquote>
-<p>以上内容来自<a href="https://zh.wikipedia.org/wiki/HTTP%E4%B8%A5%E6%A0%BC%E4%BC%A0%E8%BE%93%E5%AE%89%E5%85%A8" target="_blank" rel="noopener">维基百科</a>,维基百科真是个好网站.</p>
-</blockquote>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>啰嗦了这么多,其实就是为了凑字数.Nginx配置在ssl.conf文件中的server字段下添加如下代码:</p>
-<!--kg-card-begin: code-->
-
-<pre><code>add_header Strict-Transport-Security &quot;max-age=31536000; includeSubdomains; preload&quot;;//第二个跟第三个参数一般来说没用,支付宝的首页就只用了第一个参数.所以添加下面一行配置就行
-add_header Strict-Transport-Security &quot;max-age=31536000;&quot;;</code></pre><!--kg-card-end: code-->
-
-<p><strong>max-age</strong> ，单位是秒，用来告诉浏览器在指定时间内，这个网站必须通过 HTTPS 协议来访问。也就是对于这个网站的 HTTP 地址，浏览器需要先在本地替换为 HTTPS 之后再发送请求。</p>
-<p><strong>includeSubDomains</strong> ，可选参数，如果指定这个参数，表明这个网站所有子域名也必须通过 HTTPS 协议来访问。</p>
-<p><strong>preload</strong> ,将域名加入HSTS Preload List,但是有这个参数也不一定能加入.</p>
-<p>HSTS 这个响应头只能用于 HTTPS 响应；网站必须使用默认的 443 端口；必须使用域名，不能是 IP。而且启用 HSTS 之后，一旦网站证书错误，用户无法选择忽略。</p>
-<h3 id="配置生效"><a href="#配置生效" class="headerlink" title="配置生效"></a>配置生效</h3><p>最后打开 <strong>chrome://net-internals/#hsts</strong> ,在Query domain中输入自己的域名(不加http),搜索一下试试.往后,只要用户不清缓存,就会直接通过<a href="https://xxxx.com:443" target="_blank" rel="noopener">https://xxxx.com:443</a> 访问网站,而不是通过http重定向到https的方式了.</p>
-<p><strong>–EOF–</strong></p>
-]]></content>
-      <categories>
-        <category>NGINX</category>
       </categories>
   </entry>
   <entry>
@@ -438,6 +390,136 @@ server {
       </categories>
   </entry>
   <entry>
+    <title>如何配置使用HSTS</title>
+    <url>/configure-the-use-of-hsts/</url>
+    <content><![CDATA[<p>HTTP严格传输安全（英语：HTTP Strict Transport Security，缩写：HSTS）是一套由互联网工程任务组发布的互联网安全策略机制。网站可以选择使用HSTS策略，来让浏览器强制使用HTTPS与网站进行通信，以减少会话劫持风险.</p>
+<h3 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h3><p>HSTS的作用是强制客户端（如浏览器）使用HTTPS与服务器创建连接。服务器开启HSTS的方法是，当客户端通过HTTPS发出请求时，在服务器返回的超文本传输协议响应头中包含Strict-Transport-Security字段。非加密传输时设置的HSTS字段无效。</p>
+<p>比如，<a href="https://example.com/" target="_blank" rel="noopener">https://example.com/</a> 的响应头含有Strict-Transport-Security: max-age=31536000; includeSubDomains。这意味着两点：</p>
+<ol>
+<li>在接下来的一年（即31536000秒）中，浏览器只要向example.com或其子域名发送HTTP请求时，必须采用HTTPS来发起连接。比如，用户点击超链接或在地址栏输入<a href="http://www.example.com/" target="_blank" rel="noopener">http://www.example.com/</a> ，浏览器应当自动将 http 转写成 https，然后直接向 <a href="https://www.example.com/" target="_blank" rel="noopener">https://www.example.com/</a> 发送请求。</li>
+<li>在接下来的一年中，如果 example.com 服务器发送的TLS证书无效，用户不能忽略浏览器警告继续访问网站.</li>
+</ol>
+<h3 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h3><p>HSTS的雏形来自于2008年4月在北京召开的第十七届国际万维网大会上柯林·杰克逊（Collin Jackson）和亚当·巴斯（Adam Barth）的题为“ForceHTTPS: Protecting High-Security Web Sites from Network Attacks”的演讲。他们的提议是使用“ForceHTTPS” Cookie来强制浏览器使用HTTPS。</p>
+<p>2009年9月18日，他们和杰夫·霍奇斯（Jeff Hodges）发布了最初的草案，题目为”Strict Transport Security”[5]，这个草案基于ForceHTTPS，并有所修改。</p>
+<p>2010年6月17日，这三位作者经由互联网工程任务组发布了首版互联网草案，”HTTP Strict Transport Security”。</p>
+<p>2012年10月2日，互联网工程指导组批准了将第14版HSTS草案发布为RFC的请求。</p>
+<p>2012年11月19日，互联网工程任务组发布RFC 6797</p>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>HSTS可以用来抵御SSL剥离攻击。SSL剥离攻击是中间人攻击的一种，由Moxie Marlinspike于2009年发明。他在当年的黑帽大会上发表的题为“New Tricks For Defeating SSL In Practice”的演讲中将这种攻击方式公开。SSL剥离的实施方法是阻止浏览器与服务器创建HTTPS连接。它的前提是用户很少直接在地址栏输入 https:// ，用户总是通过点击链接或3xx重定向，从HTTP页面进入HTTPS页面。所以攻击者可以在用户访问HTTP页面时替换所有 https:// 开头的链接为 http:// ，达到阻止HTTPS的目的.</p>
+<p>HSTS可以很大程度上解决SSL剥离攻击，因为只要浏览器曾经与服务器创建过一次安全连接，之后浏览器会强制使用HTTPS，即使链接被换成了HTTP。</p>
+<p>另外，如果中间人使用自己的自签名证书来进行攻击，浏览器会给出警告，但是许多用户会忽略警告。HSTS解决了这一问题，一旦服务器发送了HSTS字段，用户将不再允许忽略警告。</p>
+<h3 id="不足"><a href="#不足" class="headerlink" title="不足"></a>不足</h3><p>用户首次访问某网站是不受HSTS保护的。这是因为首次访问时，浏览器还未收到HSTS，所以仍有可能通过明文HTTP来访问。解决这个不足目前有两种方案，一是浏览器预置HSTS域名列表，Google Chrome、Firefox、Internet Explorer和Microsoft Edge实现了这一方案。二是将HSTS信息加入到域名系统记录中。但这需要保证DNS的安全性，也就是需要部署域名系统安全扩展。截至2014年这一方案没有大规模部署。</p>
+<p>由于HSTS会在一定时间后失效（有效期由max-age指定），所以浏览器是否强制HSTS策略取决于当前系统时间。部分操作系统经常通过网络时间协议更新系统时间，如Ubuntu每次连接网络时，OS X Lion每隔9分钟会自动连接时间服务器。攻击者可以通过伪造NTP信息，设置错误时间来绕过HSTS。解决方法是认证NTP信息，或者禁止NTP大幅度增减时间。比如Windows 8每7天更新一次时间，并且要求每次NTP设置的时间与当前时间不得超过15小时。</p>
+<h3 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h3><ul>
+<li>Chromium和Google Chrome从4.0.211.0版本开始支持HSTS</li>
+<li>Firefox 4及以上版本</li>
+<li>Opera 12及以上版本</li>
+<li>Safari从OS X Mavericks起</li>
+<li>Internet Explorer从Windows 10技术预览版开始支持</li>
+</ul>
+<h3 id="网站支持"><a href="#网站支持" class="headerlink" title="网站支持"></a>网站支持</h3><p>根据SSL Pulse的调查，截至2015年2月，仅有2.7%的网站开启了HSTS。目前支持HSTS的主流网站有：支付宝、PayPal、Twitter、维基百科邮件列表、上善若水等。</p>
+<blockquote>
+<p>以上内容来自<a href="https://zh.wikipedia.org/wiki/HTTP%E4%B8%A5%E6%A0%BC%E4%BC%A0%E8%BE%93%E5%AE%89%E5%85%A8" target="_blank" rel="noopener">维基百科</a>,维基百科真是个好网站.</p>
+</blockquote>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>啰嗦了这么多,其实就是为了凑字数.Nginx配置在ssl.conf文件中的server字段下添加如下代码:</p>
+<!--kg-card-begin: code-->
+
+<pre><code>add_header Strict-Transport-Security &quot;max-age=31536000; includeSubdomains; preload&quot;;//第二个跟第三个参数一般来说没用,支付宝的首页就只用了第一个参数.所以添加下面一行配置就行
+add_header Strict-Transport-Security &quot;max-age=31536000;&quot;;</code></pre><!--kg-card-end: code-->
+
+<p><strong>max-age</strong> ，单位是秒，用来告诉浏览器在指定时间内，这个网站必须通过 HTTPS 协议来访问。也就是对于这个网站的 HTTP 地址，浏览器需要先在本地替换为 HTTPS 之后再发送请求。</p>
+<p><strong>includeSubDomains</strong> ，可选参数，如果指定这个参数，表明这个网站所有子域名也必须通过 HTTPS 协议来访问。</p>
+<p><strong>preload</strong> ,将域名加入HSTS Preload List,但是有这个参数也不一定能加入.</p>
+<p>HSTS 这个响应头只能用于 HTTPS 响应；网站必须使用默认的 443 端口；必须使用域名，不能是 IP。而且启用 HSTS 之后，一旦网站证书错误，用户无法选择忽略。</p>
+<h3 id="配置生效"><a href="#配置生效" class="headerlink" title="配置生效"></a>配置生效</h3><p>最后打开 <strong>chrome://net-internals/#hsts</strong> ,在Query domain中输入自己的域名(不加http),搜索一下试试.往后,只要用户不清缓存,就会直接通过<a href="https://xxxx.com:443" target="_blank" rel="noopener">https://xxxx.com:443</a> 访问网站,而不是通过http重定向到https的方式了.</p>
+<p><strong>–EOF–</strong></p>
+]]></content>
+      <categories>
+        <category>NGINX</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>深夜矫情</title>
+    <url>/night-hypocritical/</url>
+    <content><![CDATA[<p>前一天过得不踏实,心里不安,胡思乱想中想起博客名,就想起了高中,然后又想起了初中.然后百度了一下初中跟高中的官网,于是就找了一些图片,回忆一下我的初中跟高中.多图预警</p>
+<h3 id="平度市朝-zhao-阳中学"><a href="#平度市朝-zhao-阳中学" class="headerlink" title="平度市朝(zhao)阳中学"></a>平度市朝(zhao)阳中学</h3><p>教学楼正面,教学楼从上面看是呈一个蝴蝶状的.初三的时候做课间操就是在教学楼前的广场上做.我们班在做操的时候是在广场中央,因为喇叭是安装在两边的教学楼上的并且对称,所以在做操的时候会有不一样的听觉效果.第一张图片是当时我们的朝阳中学的原图,下面三张图是后来的华侨高中.因为乡镇高中要迁往市里,所以就把我们学校给征收了,变成了华侨高中.好好的母校,被别人征去当高中,真是亏.</p>
+<!--kg-card-begin: markdown-->
+
+<p><img data-src="https://pic.jingxuetao.com/image/b/12/6691cc3c2226c662f69c11cf2a773.jpg" alt=""><br> <img data-src="https://pic.jingxuetao.com/image/6/ce/498ac686a12e1871981a304080f30.jpg" alt=""><br> <img data-src="https://pic.jingxuetao.com/image/7/33/58af8addd353e152a809ca194b343.jpg" alt=""><br> <img data-src="https://pic.jingxuetao.com/image/2/b2/a7e7e07c2dea8468175bd55c479b6.jpg" alt=""></p>
+<!--kg-card-end: markdown-->
+
+<p>教学楼背面.由于花钱不太节制,家里给的生活费第一个周花的差不多了,到了第二个周就只剩二三十块钱左右,二三十块钱要过五天,平均每天也就五六块钱.所以每当中午放学的时候,听着喇叭里放的<code>斯卡波罗集市</code>,走在这条回宿舍的路上(没钱,只能回宿舍,就着调料啃馒头:(),心里有点淡淡的忧伤.歌曲如下:</p>
+<p>&lt;斯卡波罗集市-莎拉布莱曼&gt;</p>
+<!--kg-card-begin: markdown-->
+
+<p><img data-src="https://pic.jingxuetao.com/image/a/08/d944a589b50f71c52c66ed2304855.jpg" alt=""></p>
+<!--kg-card-end: markdown-->
+
+<p>操场,应该是初二的时候修起来的.之前都叫草场,杂草丛生,草有人那么高.</p>
+<!--kg-card-begin: markdown-->
+
+<p><img data-src="https://pic.jingxuetao.com/image/0/4c/5d22031ce6dddad5c2f616af6edc3.jpg" alt=""></p>
+<!--kg-card-end: markdown-->
+
+<p>左边是一个小操场,初二的时候做广播体操,早晨跑操都在这.右边是女生宿舍,当时好像没窗帘..</p>
+<!--kg-card-begin: markdown-->
+
+<p><img data-src="https://pic.jingxuetao.com/image/3/79/d4e97f33cb987aab4989e6ed8caf8.jpg" alt=""></p>
+<!--kg-card-end: markdown-->
+
+<p>餐厅拐角处的一棵树.树的右边是一个大花坛(图中没有),想当年’老邱’(学生处主任,武警出身)在这整过两个带刀外校学生.</p>
+<!--kg-card-begin: markdown-->
+
+<p><img data-src="https://pic.jingxuetao.com/image/2/65/9efc435ba32a20daf5be39e4e7230.jpg" alt=""></p>
+<!--kg-card-end: markdown-->
+
+<p>教学楼,宿舍楼东边的一条路,灯是后来装的</p>
+<!--kg-card-begin: markdown-->
+
+<p><img data-src="https://pic.jingxuetao.com/image/4/54/da0017701197c7e5b1e0b9a8c0a39.jpg" alt=""></p>
+<!--kg-card-end: markdown-->
+
+<p>对了,我们那一级是16个班,然而其他初中就算全校也没有16个班啊有木有,所以我们会说’拉我们一个级部出去可以打其他学校的整个学校’.不过后来招的学生就慢慢变少了,我们下一级好像是14个班.这几年好像8个班…</p>
+<h3 id="平度市开发区高中"><a href="#平度市开发区高中" class="headerlink" title="平度市开发区高中"></a>平度市开发区高中</h3><p>高中跟初中比起来就比较老旧了,因为初中是06年刚搬到新校区.而高中一直是这个校区.然而一中,九中都换了新校区,并且其他几所高中由于跟一中九中合并,同样也是新校区,就我们学校.万恶的资本主义,唉.</p>
+<p>仁卿楼,主教学楼,楼前一本大书,内容是<code>劝学</code>(劝学是个什么鬼,劝你退学,恩!),左边是中文版,右边是英文版</p>
+<!--kg-card-begin: markdown-->
+
+<p><img data-src="https://pic.jingxuetao.com/image/9/28/bdbad9b58ca6f2582e8293dbff073.jpg" alt=""><br> <img data-src="https://pic.jingxuetao.com/image/b/1c/dba6ba975e532af568308e9920a46.jpg" alt=""></p>
+<!--kg-card-end: markdown-->
+
+<p>仁卿楼广场西边,餐厅南边的小花坛,再往西是高二西教学楼</p>
+<!--kg-card-begin: markdown-->
+
+<p><img data-src="https://pic.jingxuetao.com/image/e/59/702c36e0445227fd6fa57dbe2f358.jpg" alt=""></p>
+<!--kg-card-end: markdown-->
+
+<p>高二西教学楼前的草坪,想起了被班主任没收的手机…</p>
+<!--kg-card-begin: markdown-->
+
+<p><img data-src="https://pic.jingxuetao.com/image/7/0b/c62bb75aac26bffd5c4624f4f8860.jpg" alt=""></p>
+<!--kg-card-end: markdown-->
+
+<p>高二西教学楼前的走廊</p>
+<!--kg-card-begin: markdown-->
+
+<p><img data-src="https://pic.jingxuetao.com/image/a/f5/fcc685c478b3bb72a9f2d79266fd6.jpg" alt=""></p>
+<!--kg-card-end: markdown-->
+
+<p>仁卿楼广场西面的办公楼,高三临近毕业的时候正式入团(共青团)就是在这弄得^_^,少交了好几年团费,不亏.</p>
+<!--kg-card-begin: markdown-->
+
+<p><img data-src="https://pic.jingxuetao.com/image/0/0b/01322c280b0c6dc8b089072d19bbc.jpg" alt=""></p>
+<!--kg-card-end: markdown-->
+
+<p>高中官网上的图片差不多就这些了,大一的时候高中又重修了一座教学楼跟操场,说好的重建校区呢??看来重建校区是没希望了..</p>
+<p>有时间一定回去看看，但是什么时候有时间呢？这是个问题.</p>
+<p>好了,矫情完毕,睡觉.</p>
+<p><strong>–EOF–</strong></p>
+]]></content>
+      <categories>
+        <category>Me</category>
+      </categories>
+  </entry>
+  <entry>
     <title>配置CentOS密钥验证登录</title>
     <url>/config-centos-secretkey-authentication-login/</url>
     <content><![CDATA[<p>用密码登录SSH好不方便,并且安全性不高,为了提升安全性那我们就用密钥登录.</p>
@@ -521,88 +603,6 @@ Last login: Wed Jul 30 21:37:19 2014 from www.server.world
 ]]></content>
       <categories>
         <category>CentOS</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>深夜矫情</title>
-    <url>/night-hypocritical/</url>
-    <content><![CDATA[<p>前一天过得不踏实,心里不安,胡思乱想中想起博客名,就想起了高中,然后又想起了初中.然后百度了一下初中跟高中的官网,于是就找了一些图片,回忆一下我的初中跟高中.多图预警</p>
-<h3 id="平度市朝-zhao-阳中学"><a href="#平度市朝-zhao-阳中学" class="headerlink" title="平度市朝(zhao)阳中学"></a>平度市朝(zhao)阳中学</h3><p>教学楼正面,教学楼从上面看是呈一个蝴蝶状的.初三的时候做课间操就是在教学楼前的广场上做.我们班在做操的时候是在广场中央,因为喇叭是安装在两边的教学楼上的并且对称,所以在做操的时候会有不一样的听觉效果.第一张图片是当时我们的朝阳中学的原图,下面三张图是后来的华侨高中.因为乡镇高中要迁往市里,所以就把我们学校给征收了,变成了华侨高中.好好的母校,被别人征去当高中,真是亏.</p>
-<!--kg-card-begin: markdown-->
-
-<p><img data-src="https://pic.jingxuetao.com/image/b/12/6691cc3c2226c662f69c11cf2a773.jpg" alt=""><br> <img data-src="https://pic.jingxuetao.com/image/6/ce/498ac686a12e1871981a304080f30.jpg" alt=""><br> <img data-src="https://pic.jingxuetao.com/image/7/33/58af8addd353e152a809ca194b343.jpg" alt=""><br> <img data-src="https://pic.jingxuetao.com/image/2/b2/a7e7e07c2dea8468175bd55c479b6.jpg" alt=""></p>
-<!--kg-card-end: markdown-->
-
-<p>教学楼背面.由于花钱不太节制,家里给的生活费第一个周花的差不多了,到了第二个周就只剩二三十块钱左右,二三十块钱要过五天,平均每天也就五六块钱.所以每当中午放学的时候,听着喇叭里放的<code>斯卡波罗集市</code>,走在这条回宿舍的路上(没钱,只能回宿舍,就着调料啃馒头:(),心里有点淡淡的忧伤.歌曲如下:</p>
-<p>&lt;斯卡波罗集市-莎拉布莱曼&gt;</p>
-<!--kg-card-begin: markdown-->
-
-<p><img data-src="https://pic.jingxuetao.com/image/a/08/d944a589b50f71c52c66ed2304855.jpg" alt=""></p>
-<!--kg-card-end: markdown-->
-
-<p>操场,应该是初二的时候修起来的.之前都叫草场,杂草丛生,草有人那么高.</p>
-<!--kg-card-begin: markdown-->
-
-<p><img data-src="https://pic.jingxuetao.com/image/0/4c/5d22031ce6dddad5c2f616af6edc3.jpg" alt=""></p>
-<!--kg-card-end: markdown-->
-
-<p>左边是一个小操场,初二的时候做广播体操,早晨跑操都在这.右边是女生宿舍,当时好像没窗帘..</p>
-<!--kg-card-begin: markdown-->
-
-<p><img data-src="https://pic.jingxuetao.com/image/3/79/d4e97f33cb987aab4989e6ed8caf8.jpg" alt=""></p>
-<!--kg-card-end: markdown-->
-
-<p>餐厅拐角处的一棵树.树的右边是一个大花坛(图中没有),想当年’老邱’(学生处主任,武警出身)在这整过两个带刀外校学生.</p>
-<!--kg-card-begin: markdown-->
-
-<p><img data-src="https://pic.jingxuetao.com/image/2/65/9efc435ba32a20daf5be39e4e7230.jpg" alt=""></p>
-<!--kg-card-end: markdown-->
-
-<p>教学楼,宿舍楼东边的一条路,灯是后来装的</p>
-<!--kg-card-begin: markdown-->
-
-<p><img data-src="https://pic.jingxuetao.com/image/4/54/da0017701197c7e5b1e0b9a8c0a39.jpg" alt=""></p>
-<!--kg-card-end: markdown-->
-
-<p>对了,我们那一级是16个班,然而其他初中就算全校也没有16个班啊有木有,所以我们会说’拉我们一个级部出去可以打其他学校的整个学校’.不过后来招的学生就慢慢变少了,我们下一级好像是14个班.这几年好像8个班…</p>
-<h3 id="平度市开发区高中"><a href="#平度市开发区高中" class="headerlink" title="平度市开发区高中"></a>平度市开发区高中</h3><p>高中跟初中比起来就比较老旧了,因为初中是06年刚搬到新校区.而高中一直是这个校区.然而一中,九中都换了新校区,并且其他几所高中由于跟一中九中合并,同样也是新校区,就我们学校.万恶的资本主义,唉.</p>
-<p>仁卿楼,主教学楼,楼前一本大书,内容是<code>劝学</code>(劝学是个什么鬼,劝你退学,恩!),左边是中文版,右边是英文版</p>
-<!--kg-card-begin: markdown-->
-
-<p><img data-src="https://pic.jingxuetao.com/image/9/28/bdbad9b58ca6f2582e8293dbff073.jpg" alt=""><br> <img data-src="https://pic.jingxuetao.com/image/b/1c/dba6ba975e532af568308e9920a46.jpg" alt=""></p>
-<!--kg-card-end: markdown-->
-
-<p>仁卿楼广场西边,餐厅南边的小花坛,再往西是高二西教学楼</p>
-<!--kg-card-begin: markdown-->
-
-<p><img data-src="https://pic.jingxuetao.com/image/e/59/702c36e0445227fd6fa57dbe2f358.jpg" alt=""></p>
-<!--kg-card-end: markdown-->
-
-<p>高二西教学楼前的草坪,想起了被班主任没收的手机…</p>
-<!--kg-card-begin: markdown-->
-
-<p><img data-src="https://pic.jingxuetao.com/image/7/0b/c62bb75aac26bffd5c4624f4f8860.jpg" alt=""></p>
-<!--kg-card-end: markdown-->
-
-<p>高二西教学楼前的走廊</p>
-<!--kg-card-begin: markdown-->
-
-<p><img data-src="https://pic.jingxuetao.com/image/a/f5/fcc685c478b3bb72a9f2d79266fd6.jpg" alt=""></p>
-<!--kg-card-end: markdown-->
-
-<p>仁卿楼广场西面的办公楼,高三临近毕业的时候正式入团(共青团)就是在这弄得^_^,少交了好几年团费,不亏.</p>
-<!--kg-card-begin: markdown-->
-
-<p><img data-src="https://pic.jingxuetao.com/image/0/0b/01322c280b0c6dc8b089072d19bbc.jpg" alt=""></p>
-<!--kg-card-end: markdown-->
-
-<p>高中官网上的图片差不多就这些了,大一的时候高中又重修了一座教学楼跟操场,说好的重建校区呢??看来重建校区是没希望了..</p>
-<p>有时间一定回去看看，但是什么时候有时间呢？这是个问题.</p>
-<p>好了,矫情完毕,睡觉.</p>
-<p><strong>–EOF–</strong></p>
-]]></content>
-      <categories>
-        <category>Me</category>
       </categories>
   </entry>
   <entry>
@@ -918,75 +918,6 @@ view.size = CGSizeMake(100, 100);</code></pre><!--kg-card-end: code-->
       </categories>
   </entry>
   <entry>
-    <title>用分类自定义UIBarButtonItem</title>
-    <url>/use-category-define-uibarbuttonitem/</url>
-    <content><![CDATA[<blockquote>
-<p>原因：</p>
-</blockquote>
-<ol>
-<li>项目中多次用到自定义UIBarButtonItem，所以需要抽取出来</li>
-<li>代码该干什么就干什么，因为这段代码是自定义。UIBarButtonItem，所以应该由UIBarButtonItem做。所以创建一个分类。</li>
-<li>命名习惯，代码规范。要用[UIBarButtonItem itemWith…]这种形式。</li>
-</ol>
-<h3 id="自定义UIBarButtonItem"><a href="#自定义UIBarButtonItem" class="headerlink" title="自定义UIBarButtonItem"></a>自定义UIBarButtonItem</h3><p>UIBarButtonItem+Category.h文件</p>
-<!--kg-card-begin: code-->
-
-<pre><code>#import &lt;UIKit/UIKit.h&gt;
-
-@interface UIBarButtonItem (Category)
-+ (NSArray *)itemWithTarget:(id)target action:(SEL)action image:(NSString *)image lighlightImage:(NSString *)lighlightImage;
-@end</code></pre><!--kg-card-end: code-->
-
-<p>UIBarButtonItem+Category.m文件</p>
-<!--kg-card-begin: code-->
-
-<pre><code>#import &quot;UIBarButtonItem+Category.h&quot;
-
-@implementation UIBarButtonItem (Category)
-
-/**
- * 自定义一个UIBarButtomItem
- *
- * @param target 点击之后调用哪个对象
- * @param action 点击之后调用对象里面的哪个方法
- * @param image 普通状态下图片
- * @param lighlightImage 高亮状态下图片
- *
- * @return 创建完的一个UIBarButtomItem数组
- */
-+ (NSArray *)itemWithTarget:(id)target action:(SEL)action image:(NSString *)image lighlightImage:(NSString *)lighlightImage {
-
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
-    [button setImage:[UIImage imageNamed:lighlightImage] forState:UIControlStateHighlighted];
-    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
-    button.size = button.currentImage.size;
-
-    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
-    UIBarButtonItem *speaceItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    speaceItem.width = -5;
-
-    return @[speaceItem,buttonItem];
-}
-
-@end</code></pre><!--kg-card-end: code-->
-<h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><p>在ViewController调用或者在自定义的UINavigationController的push方法里面调用。</p>
-<!--kg-card-begin: code-->
-
-<pre><code>//ViewController调用
-self.navigationItem.leftBarButtonItems = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@&quot;back_icon_red&quot; lighlightImage:@&quot;back_icon_red&quot;];
-//自定义UINavigationController的push方法调用
-viewController.navigationItem.leftBarButtonItems = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@&quot;back_icon_red&quot; lighlightImage:@&quot;back_icon_red&quot;];</code></pre><!--kg-card-end: code-->
-
-<p>注意：action方法写在ViewController或自定义UINavigationController里面。</p>
-<p>当然还可以在分类里做其他自定义的样式。</p>
-<p><strong>–EOF–</strong></p>
-]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-  </entry>
-  <entry>
     <title>统一设置UINavigationController左上角图标</title>
     <url>/unified-set-navi-upper-left-corner-icon/</url>
     <content><![CDATA[<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>通过工厂方法，然后在需要左上角显示图标的ViewController的viewDidLoad方法调用。代码如下：</p>
@@ -1074,6 +1005,75 @@ viewController.navigationItem.leftBarButtonItems = [UIBarButtonItem itemWithTarg
 &gt; 所谓的拦截，大部分都是通过自定义类，然后重写自带方法实现的。
 
 **--EOF--**</code></pre><!--kg-card-end: code-->]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>用分类自定义UIBarButtonItem</title>
+    <url>/use-category-define-uibarbuttonitem/</url>
+    <content><![CDATA[<blockquote>
+<p>原因：</p>
+</blockquote>
+<ol>
+<li>项目中多次用到自定义UIBarButtonItem，所以需要抽取出来</li>
+<li>代码该干什么就干什么，因为这段代码是自定义。UIBarButtonItem，所以应该由UIBarButtonItem做。所以创建一个分类。</li>
+<li>命名习惯，代码规范。要用[UIBarButtonItem itemWith…]这种形式。</li>
+</ol>
+<h3 id="自定义UIBarButtonItem"><a href="#自定义UIBarButtonItem" class="headerlink" title="自定义UIBarButtonItem"></a>自定义UIBarButtonItem</h3><p>UIBarButtonItem+Category.h文件</p>
+<!--kg-card-begin: code-->
+
+<pre><code>#import &lt;UIKit/UIKit.h&gt;
+
+@interface UIBarButtonItem (Category)
++ (NSArray *)itemWithTarget:(id)target action:(SEL)action image:(NSString *)image lighlightImage:(NSString *)lighlightImage;
+@end</code></pre><!--kg-card-end: code-->
+
+<p>UIBarButtonItem+Category.m文件</p>
+<!--kg-card-begin: code-->
+
+<pre><code>#import &quot;UIBarButtonItem+Category.h&quot;
+
+@implementation UIBarButtonItem (Category)
+
+/**
+ * 自定义一个UIBarButtomItem
+ *
+ * @param target 点击之后调用哪个对象
+ * @param action 点击之后调用对象里面的哪个方法
+ * @param image 普通状态下图片
+ * @param lighlightImage 高亮状态下图片
+ *
+ * @return 创建完的一个UIBarButtomItem数组
+ */
++ (NSArray *)itemWithTarget:(id)target action:(SEL)action image:(NSString *)image lighlightImage:(NSString *)lighlightImage {
+
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:lighlightImage] forState:UIControlStateHighlighted];
+    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    button.size = button.currentImage.size;
+
+    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
+    UIBarButtonItem *speaceItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    speaceItem.width = -5;
+
+    return @[speaceItem,buttonItem];
+}
+
+@end</code></pre><!--kg-card-end: code-->
+<h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><p>在ViewController调用或者在自定义的UINavigationController的push方法里面调用。</p>
+<!--kg-card-begin: code-->
+
+<pre><code>//ViewController调用
+self.navigationItem.leftBarButtonItems = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@&quot;back_icon_red&quot; lighlightImage:@&quot;back_icon_red&quot;];
+//自定义UINavigationController的push方法调用
+viewController.navigationItem.leftBarButtonItems = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@&quot;back_icon_red&quot; lighlightImage:@&quot;back_icon_red&quot;];</code></pre><!--kg-card-end: code-->
+
+<p>注意：action方法写在ViewController或自定义UINavigationController里面。</p>
+<p>当然还可以在分类里做其他自定义的样式。</p>
+<p><strong>–EOF–</strong></p>
+]]></content>
       <categories>
         <category>iOS</category>
       </categories>
@@ -1267,24 +1267,6 @@ viewController.navigationItem.leftBarButtonItems = [UIBarButtonItem itemWithTarg
       </categories>
   </entry>
   <entry>
-    <title>embedded dylibs/frameworks are only supported编译报错</title>
-    <url>/embedded-dylibs-frameworks-are-only-supportedbian-yi-bao-cuo/</url>
-    <content><![CDATA[<h3 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h3><!--kg-card-begin: code-->
-
-<pre><code>ld: embedded dylibs/frameworks are only supported on iOS 8.0 and later (@rpath/Alamofire.framework/Alamofire) for architecture x86_64</code></pre><!--kg-card-end: code-->
-
-<p>其实从名字大概也能猜出来,某个库支持的最低部署环境是8.0.</p>
-<h3 id="修改方法"><a href="#修改方法" class="headerlink" title="修改方法"></a>修改方法</h3><!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img data-src="https://o3pxzuakz.qnssl.com/image/4/64/cbfb32287545352e67ba92d4ae471.png" class="kg-image"></figure><!--kg-card-end: image-->
-
-<p>我这应该修改成8.0</p>
-<p>本文参考<a href="http://blog.csdn.net/xyxjn/article/details/42100425" target="_blank" rel="noopener">xyxjn的专栏</a></p>
-<p><strong>–EOF–</strong></p>
-]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-  </entry>
-  <entry>
     <title>动态加载视图</title>
     <url>/dynamic-loading-view/</url>
     <content><![CDATA[<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
@@ -1445,6 +1427,24 @@ class MainViewController: UITabBarController {
       </categories>
   </entry>
   <entry>
+    <title>embedded dylibs/frameworks are only supported编译报错</title>
+    <url>/embedded-dylibs-frameworks-are-only-supportedbian-yi-bao-cuo/</url>
+    <content><![CDATA[<h3 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h3><!--kg-card-begin: code-->
+
+<pre><code>ld: embedded dylibs/frameworks are only supported on iOS 8.0 and later (@rpath/Alamofire.framework/Alamofire) for architecture x86_64</code></pre><!--kg-card-end: code-->
+
+<p>其实从名字大概也能猜出来,某个库支持的最低部署环境是8.0.</p>
+<h3 id="修改方法"><a href="#修改方法" class="headerlink" title="修改方法"></a>修改方法</h3><!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img data-src="https://o3pxzuakz.qnssl.com/image/4/64/cbfb32287545352e67ba92d4ae471.png" class="kg-image"></figure><!--kg-card-end: image-->
+
+<p>我这应该修改成8.0</p>
+<p>本文参考<a href="http://blog.csdn.net/xyxjn/article/details/42100425" target="_blank" rel="noopener">xyxjn的专栏</a></p>
+<p><strong>–EOF–</strong></p>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+  </entry>
+  <entry>
     <title>项目上架问题总结</title>
     <url>/summary-of-project-problems/</url>
     <content><![CDATA[<h3 id="定位问题"><a href="#定位问题" class="headerlink" title="定位问题"></a>定位问题</h3><!--kg-card-begin: code-->
@@ -1602,64 +1602,6 @@ CentOS Linux release 7.3.1611 (Core)</code></pre><!--kg-card-end: code-->
       </categories>
   </entry>
   <entry>
-    <title>Can&#39;t connect to local MySQL server through socket &#39;&#39; (2)</title>
-    <url>/cant-connect-to-local-mysql-server-through-socket-2/</url>
-    <content><![CDATA[<p>今天折腾Perfect服务端的时候,出现下面错误:</p>
-<blockquote>
-<p>Can’t connect to local MySQL server through socket ‘’ (2)</p>
-</blockquote>
-<p>然后各种Google,各种试错.最后在这篇文章中看到了<code>IP</code>这个字眼,突然灵感来了,直接把<code>locahost</code>改成<code>127.0.0.1</code>,然后成功了~</p>
-<p>我了个大草,原来还能这么玩…</p>
-<p>至于具体原因可以查看这篇文章<a href="http://www.jb51.net/article/50421.htm" target="_blank" rel="noopener">Localhost 与127.0.0.1和IP的区别是什么</a></p>
-<p>于2017/9/12,我的博客支持emoji啦,😁😁😝</p>
-<p><strong>–EOF–</strong></p>
-]]></content>
-      <categories>
-        <category>MySQL</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>常用命令行</title>
-    <url>/chang-yong-ming-ling-xing/</url>
-    <content><![CDATA[<pre><code>find . -name &quot;*.gif&quot;|sed &apos;s/.gif//&apos;|xargs -n1 -I {} mv {}.gif {}.png //批量修改文件后缀名
-sips -Z 75 *.png //批量修改文件像素
-sudo python -m SimpleHTTPServer 80 //开启一个简单的服务器,用于网页访问文件夹内容.</code></pre><!--kg-card-end: code-->]]></content>
-      <categories>
-        <category>macOS</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>反向代理</title>
-    <url>/reverse-proxy/</url>
-    <content><![CDATA[<pre><code>server {
-    listen 80;
-    listen 443 ssl;
-    server_name localhost;
-
-    ssl_certificate /etc/nginx/ssl/fullchain.cer;
-    ssl_certificate_key /etc/nginx/ssl/unsplash.jingxuetao.com.key;
-
-    location /api {
-        rewrite ^.+api/?(.*)$ /$1 break;
-        proxy_pass https://api.unsplash.com;
-    }
-
-    location /images {
-        rewrite ^.+images/?(.*)$ /$1 break;
-        proxy_pass https://images.unsplash.com;
-    }
-
-}</code></pre><!--kg-card-end: code-->
-
-<p><strong>参考链接</strong></p>
-<p><a href="https://www.cnblogs.com/gabrielchen/p/5066120.html" target="_blank" rel="noopener">https://www.cnblogs.com/gabrielchen/p/5066120.html</a><br><a href="https://www.jianshu.com/p/b34a57129d6c?from=timeline" target="_blank" rel="noopener">https://www.jianshu.com/p/b34a57129d6c?from=timeline</a></p>
-<p><strong>–EOF–</strong></p>
-]]></content>
-      <categories>
-        <category>NGINX</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Ghost博客支持emoji</title>
     <url>/ghost-blog-support-emoji/</url>
     <content><![CDATA[<p><a href="https://xiao.lu/solve-the-ghost-blog-can-not-display-emoji/" target="_blank" rel="noopener">原文链接</a></p>
@@ -1736,12 +1678,61 @@ mysql&gt; ALTER TABLE posts CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_uni
       </categories>
   </entry>
   <entry>
-    <title>战舰</title>
-    <url>/battleship/</url>
-    <content><![CDATA[<p> <strong>–EOF–</strong></p>
+    <title>Can&#39;t connect to local MySQL server through socket &#39;&#39; (2)</title>
+    <url>/cant-connect-to-local-mysql-server-through-socket-2/</url>
+    <content><![CDATA[<p>今天折腾Perfect服务端的时候,出现下面错误:</p>
+<blockquote>
+<p>Can’t connect to local MySQL server through socket ‘’ (2)</p>
+</blockquote>
+<p>然后各种Google,各种试错.最后在这篇文章中看到了<code>IP</code>这个字眼,突然灵感来了,直接把<code>locahost</code>改成<code>127.0.0.1</code>,然后成功了~</p>
+<p>我了个大草,原来还能这么玩…</p>
+<p>至于具体原因可以查看这篇文章<a href="http://www.jb51.net/article/50421.htm" target="_blank" rel="noopener">Localhost 与127.0.0.1和IP的区别是什么</a></p>
+<p>于2017/9/12,我的博客支持emoji啦,😁😁😝</p>
+<p><strong>–EOF–</strong></p>
 ]]></content>
       <categories>
-        <category>Swift</category>
+        <category>MySQL</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>常用命令行</title>
+    <url>/chang-yong-ming-ling-xing/</url>
+    <content><![CDATA[<pre><code>find . -name &quot;*.gif&quot;|sed &apos;s/.gif//&apos;|xargs -n1 -I {} mv {}.gif {}.png //批量修改文件后缀名
+sips -Z 75 *.png //批量修改文件像素
+sudo python -m SimpleHTTPServer 80 //开启一个简单的服务器,用于网页访问文件夹内容.</code></pre><!--kg-card-end: code-->]]></content>
+      <categories>
+        <category>macOS</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>反向代理</title>
+    <url>/reverse-proxy/</url>
+    <content><![CDATA[<pre><code>server {
+    listen 80;
+    listen 443 ssl;
+    server_name localhost;
+
+    ssl_certificate /etc/nginx/ssl/fullchain.cer;
+    ssl_certificate_key /etc/nginx/ssl/unsplash.jingxuetao.com.key;
+
+    location /api {
+        rewrite ^.+api/?(.*)$ /$1 break;
+        proxy_pass https://api.unsplash.com;
+    }
+
+    location /images {
+        rewrite ^.+images/?(.*)$ /$1 break;
+        proxy_pass https://images.unsplash.com;
+    }
+
+}</code></pre><!--kg-card-end: code-->
+
+<p><strong>参考链接</strong></p>
+<p><a href="https://www.cnblogs.com/gabrielchen/p/5066120.html" target="_blank" rel="noopener">https://www.cnblogs.com/gabrielchen/p/5066120.html</a><br><a href="https://www.jianshu.com/p/b34a57129d6c?from=timeline" target="_blank" rel="noopener">https://www.jianshu.com/p/b34a57129d6c?from=timeline</a></p>
+<p><strong>–EOF–</strong></p>
+]]></content>
+      <categories>
+        <category>NGINX</category>
       </categories>
   </entry>
   <entry>
@@ -1864,8 +1855,8 @@ extension SettingTableViewController {
       </categories>
   </entry>
   <entry>
-    <title>封装CoreImage</title>
-    <url>/package-coreimage/</url>
+    <title>战舰</title>
+    <url>/battleship/</url>
     <content><![CDATA[<p> <strong>–EOF–</strong></p>
 ]]></content>
       <categories>
@@ -1873,150 +1864,10 @@ extension SettingTableViewController {
       </categories>
   </entry>
   <entry>
-    <title>OC对象的分类</title>
-    <url>/oc-object-classify/</url>
-    <content><![CDATA[<pre><code>//实例对象(instance对象)
-    //isa指针
-    //变量
-//类对象(Class对象)
-    //每个类有且只有一个类对象
-    //class对象在内存中存储的主要信息有:
-    //isa指针
-    //superclass指针
-    //类属性信息(@property), 类的对象信息(instance method)
-    //类的协议信息(protocol),成员变量信息(ivar)
-//元类对象(meta class)
-    //每个类只有一个元类对象
-    //元类对象跟类对象内存结构是一样的
-    //包括:
-    //isa指针
-    //superclass指针
-    //类的类方法信息 (class method,+号开头)
-
-#import &lt;Foundation/Foundation.h&gt;
-#import &lt;objc/runtime.h&gt;
-
-int main(int argc, const char * argv[]) {
-    @autoreleasepool {
-        //实例对象(instance对象)
-        NSObject *obj1 = [[NSObject alloc] init];
-        NSObject *obj2 = [[NSObject alloc] init];
-
-        //类对象(Class对象)
-        Class objClass1 = [obj1 class]; //类对象
-        Class objClass2 = [obj2 class];
-        Class objClass3 = object_getClass(obj2);
-        Class objClass4 = object_getClass(obj1);
-        Class objClass5 = [NSObject class];
-        NSLog(@&quot;%p&quot;, objClass1);
-        NSLog(@&quot;%p&quot;, objClass2);
-        NSLog(@&quot;%p&quot;, objClass3);
-        NSLog(@&quot;%p&quot;, objClass4);
-        NSLog(@&quot;%p&quot;, objClass5);
-
-        //元类对象(meta class对象)
-        Class metaClass = object_getClass([NSObject class]);
-    }
-    return 0;
-}</code></pre><p><strong>–EOF–</strong></p>
-<!--kg-card-end: markdown-->]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>位运算</title>
-    <url>/bit-operation/</url>
-    <content><![CDATA[<p>位运算了解一下,哈哈哈哈哈哈…</p>
-<p>Person.swift</p>
-<pre><code>import Foundation
-
-extension Bool {
-    init(_ integer: Int){
-        self.init(integer != 0)
-    }
-}
-
-struct Person {
-
-    let TallMask = (0b00000001 &lt;&lt; 0b00000000)
-    let RichMask = (0b00000001 &lt;&lt; 0b00000001)
-    let HandsomeMask = (0b00000001 &lt;&lt; 0b00000010)
-
-    var _tallRichHandsome = 0b00000000
-
-    mutating func setTall(_ tall: Bool) {
-        if tall {
-            _tallRichHandsome = (_tallRichHandsome | TallMask)
-        } else {
-            _tallRichHandsome = (_tallRichHandsome &amp; ~TallMask)
-        }
-    }
-
-    func isTall() -&gt; Bool {
-        return Bool(_tallRichHandsome &amp; TallMask)
-    }
-
-    mutating func setRich(_ rich: Bool) {
-        if rich {
-            _tallRichHandsome = (_tallRichHandsome | RichMask)
-        } else {
-            _tallRichHandsome = (_tallRichHandsome &amp; ~RichMask)
-        }
-    }
-
-    func isRich() -&gt; Bool {
-        return Bool(_tallRichHandsome &amp; RichMask)
-    }
-
-    mutating func setHandsome(_ handsome: Bool) {
-        if handsome {
-            _tallRichHandsome = (_tallRichHandsome | HandsomeMask)
-        } else {
-            _tallRichHandsome = (_tallRichHandsome &amp; ~HandsomeMask)
-        }
-    }
-
-    func isHandsome() -&gt; Bool {
-        return Bool(_tallRichHandsome &amp; HandsomeMask)
-    }
-}</code></pre><p>main.swift</p>
-<pre><code>import Foundation
-
-
-var person = Person()
-
-print(person.isTall())
-print(person.isRich())
-print(person.isHandsome())
-print(&quot;================&quot;)
-print(person._tallRichHandsome)
-print(&quot;===================&quot;)
-person.setTall(true)
-person.setRich(true)
-person.setHandsome(true)
-print(person.isTall())
-print(person.isRich())
-print(person.isHandsome())
-
-print(&quot;===================&quot;)
-//print(person.TallMask)
-//print(person.RichMask)
-//print(person.HandsomeMask)
-person.setTall(false)
-print(person.isTall())
-print(person.isRich())
-print(person.isHandsome())
-
-print(&quot;==================&quot;)
-//print(0b00000000)
-//print(0b00000001)
-//print(0b00000010)
-
-print(&quot;==================&quot;)
-
-print(person._tallRichHandsome)</code></pre><p><strong>–EOF–</strong></p>
-<!--kg-card-end: markdown-->]]></content>
+    <title>封装CoreImage</title>
+    <url>/package-coreimage/</url>
+    <content><![CDATA[<p> <strong>–EOF–</strong></p>
+]]></content>
       <categories>
         <category>Swift</category>
       </categories>
@@ -2313,11 +2164,175 @@ for thing in things {
       </categories>
   </entry>
   <entry>
+    <title>OC对象的分类</title>
+    <url>/oc-object-classify/</url>
+    <content><![CDATA[<pre><code>//实例对象(instance对象)
+    //isa指针
+    //变量
+//类对象(Class对象)
+    //每个类有且只有一个类对象
+    //class对象在内存中存储的主要信息有:
+    //isa指针
+    //superclass指针
+    //类属性信息(@property), 类的对象信息(instance method)
+    //类的协议信息(protocol),成员变量信息(ivar)
+//元类对象(meta class)
+    //每个类只有一个元类对象
+    //元类对象跟类对象内存结构是一样的
+    //包括:
+    //isa指针
+    //superclass指针
+    //类的类方法信息 (class method,+号开头)
+
+#import &lt;Foundation/Foundation.h&gt;
+#import &lt;objc/runtime.h&gt;
+
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+        //实例对象(instance对象)
+        NSObject *obj1 = [[NSObject alloc] init];
+        NSObject *obj2 = [[NSObject alloc] init];
+
+        //类对象(Class对象)
+        Class objClass1 = [obj1 class]; //类对象
+        Class objClass2 = [obj2 class];
+        Class objClass3 = object_getClass(obj2);
+        Class objClass4 = object_getClass(obj1);
+        Class objClass5 = [NSObject class];
+        NSLog(@&quot;%p&quot;, objClass1);
+        NSLog(@&quot;%p&quot;, objClass2);
+        NSLog(@&quot;%p&quot;, objClass3);
+        NSLog(@&quot;%p&quot;, objClass4);
+        NSLog(@&quot;%p&quot;, objClass5);
+
+        //元类对象(meta class对象)
+        Class metaClass = object_getClass([NSObject class]);
+    }
+    return 0;
+}</code></pre><p><strong>–EOF–</strong></p>
+<!--kg-card-end: markdown-->]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>位运算</title>
+    <url>/bit-operation/</url>
+    <content><![CDATA[<p>位运算了解一下,哈哈哈哈哈哈…</p>
+<p>Person.swift</p>
+<pre><code>import Foundation
+
+extension Bool {
+    init(_ integer: Int){
+        self.init(integer != 0)
+    }
+}
+
+struct Person {
+
+    let TallMask = (0b00000001 &lt;&lt; 0b00000000)
+    let RichMask = (0b00000001 &lt;&lt; 0b00000001)
+    let HandsomeMask = (0b00000001 &lt;&lt; 0b00000010)
+
+    var _tallRichHandsome = 0b00000000
+
+    mutating func setTall(_ tall: Bool) {
+        if tall {
+            _tallRichHandsome = (_tallRichHandsome | TallMask)
+        } else {
+            _tallRichHandsome = (_tallRichHandsome &amp; ~TallMask)
+        }
+    }
+
+    func isTall() -&gt; Bool {
+        return Bool(_tallRichHandsome &amp; TallMask)
+    }
+
+    mutating func setRich(_ rich: Bool) {
+        if rich {
+            _tallRichHandsome = (_tallRichHandsome | RichMask)
+        } else {
+            _tallRichHandsome = (_tallRichHandsome &amp; ~RichMask)
+        }
+    }
+
+    func isRich() -&gt; Bool {
+        return Bool(_tallRichHandsome &amp; RichMask)
+    }
+
+    mutating func setHandsome(_ handsome: Bool) {
+        if handsome {
+            _tallRichHandsome = (_tallRichHandsome | HandsomeMask)
+        } else {
+            _tallRichHandsome = (_tallRichHandsome &amp; ~HandsomeMask)
+        }
+    }
+
+    func isHandsome() -&gt; Bool {
+        return Bool(_tallRichHandsome &amp; HandsomeMask)
+    }
+}</code></pre><p>main.swift</p>
+<pre><code>import Foundation
+
+
+var person = Person()
+
+print(person.isTall())
+print(person.isRich())
+print(person.isHandsome())
+print(&quot;================&quot;)
+print(person._tallRichHandsome)
+print(&quot;===================&quot;)
+person.setTall(true)
+person.setRich(true)
+person.setHandsome(true)
+print(person.isTall())
+print(person.isRich())
+print(person.isHandsome())
+
+print(&quot;===================&quot;)
+//print(person.TallMask)
+//print(person.RichMask)
+//print(person.HandsomeMask)
+person.setTall(false)
+print(person.isTall())
+print(person.isRich())
+print(person.isHandsome())
+
+print(&quot;==================&quot;)
+//print(0b00000000)
+//print(0b00000001)
+//print(0b00000010)
+
+print(&quot;==================&quot;)
+
+print(person._tallRichHandsome)</code></pre><p><strong>–EOF–</strong></p>
+<!--kg-card-end: markdown-->]]></content>
+      <categories>
+        <category>Swift</category>
+      </categories>
+  </entry>
+  <entry>
     <title>2018年总结</title>
     <url>/summary-of-2018/</url>
     <content><![CDATA[<h1 id="穷折腾"><a href="#穷折腾" class="headerlink" title="穷折腾"></a>穷折腾</h1><h1 id="🙂"><a href="#🙂" class="headerlink" title="🙂"></a>🙂</h1><!--kg-card-end: html-->]]></content>
       <categories>
         <category>Me</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>SourceTree不能使用账号密码提交代码</title>
+    <url>/sourcetree-could-not-commit-code-by-username/</url>
+    <content><![CDATA[<p>总感觉用账号密码提交代码是反人类的🙂</p>
+<p>解决方法:</p>
+<blockquote>
+<p>SourceTree -&gt; 偏好设置-&gt; Git -&gt; 使用系统安装的Git</p>
+</blockquote>
+<p>好长时间不写博客了,能水一篇是一篇.</p>
+<p><strong>–EOF–</strong></p>
+<!--kg-card-end: markdown-->]]></content>
+      <categories>
+        <category>Git</category>
       </categories>
   </entry>
   <entry>
@@ -2489,21 +2504,6 @@ print(UserDefaultsConfig.hasSeenAppIntroduction)</code></pre><p><strong>–EOF�
       </categories>
   </entry>
   <entry>
-    <title>SourceTree不能使用账号密码提交代码</title>
-    <url>/sourcetree-could-not-commit-code-by-username/</url>
-    <content><![CDATA[<p>总感觉用账号密码提交代码是反人类的🙂</p>
-<p>解决方法:</p>
-<blockquote>
-<p>SourceTree -&gt; 偏好设置-&gt; Git -&gt; 使用系统安装的Git</p>
-</blockquote>
-<p>好长时间不写博客了,能水一篇是一篇.</p>
-<p><strong>–EOF–</strong></p>
-<!--kg-card-end: markdown-->]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-  </entry>
-  <entry>
     <title>线性表的顺序操作</title>
     <url>/sequential-operation-of-linear-tables/</url>
     <content><![CDATA[<pre><code>#include &lt;stdio.h&gt;
@@ -2627,15 +2627,6 @@ int main(int argc, const char * argv[]) {
       </categories>
   </entry>
   <entry>
-    <title>查找表</title>
-    <url>/lookup-table/</url>
-    <content><![CDATA[<p> <strong>–EOF–</strong></p>
-<!--kg-card-end: markdown-->]]></content>
-      <categories>
-        <category>Algorithm</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Swift Access Control</title>
     <url>/swift-access-control/</url>
     <content><![CDATA[<ol>
@@ -2665,6 +2656,15 @@ int main(int argc, const char * argv[]) {
 <!--kg-card-end: markdown-->]]></content>
       <categories>
         <category>Swift</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>查找表</title>
+    <url>/lookup-table/</url>
+    <content><![CDATA[<p> <strong>–EOF–</strong></p>
+<!--kg-card-end: markdown-->]]></content>
+      <categories>
+        <category>Algorithm</category>
       </categories>
   </entry>
   <entry>
@@ -2784,6 +2784,24 @@ print(swift_sum(1, 2))</code></pre><p><strong>–EOF–</strong></p>
       </categories>
   </entry>
   <entry>
+    <title>Swift实现可选协议</title>
+    <url>/swift-implements-optional-protocol/</url>
+    <content><![CDATA[<h4 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h4><pre><code>protocol Runnable1: class { }
+
+extension Runnable1 {
+    func run() {
+
+    }
+}</code></pre><h4 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h4><pre><code>@objc protocol Runnable2 {
+    @objc optional func run()
+    func stop()
+}</code></pre><p><strong>–EOF–</strong></p>
+<!--kg-card-end: markdown-->]]></content>
+      <categories>
+        <category>Swift</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Swift 属性绑定</title>
     <url>/swift-property-binding/</url>
     <content><![CDATA[<pre><code>class Person { }
@@ -2822,24 +2840,6 @@ p.age = 10
 print(p.age)
 p.weight = 50
 print(p.weight)</code></pre><p><strong>–EOF–</strong></p>
-<!--kg-card-end: markdown-->]]></content>
-      <categories>
-        <category>Swift</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Swift实现可选协议</title>
-    <url>/swift-implements-optional-protocol/</url>
-    <content><![CDATA[<h4 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h4><pre><code>protocol Runnable1: class { }
-
-extension Runnable1 {
-    func run() {
-
-    }
-}</code></pre><h4 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h4><pre><code>@objc protocol Runnable2 {
-    @objc optional func run()
-    func stop()
-}</code></pre><p><strong>–EOF–</strong></p>
 <!--kg-card-end: markdown-->]]></content>
       <categories>
         <category>Swift</category>
@@ -2995,23 +2995,6 @@ try app.run()</code></pre><p><strong>–EOF–</strong></p>
       </categories>
   </entry>
   <entry>
-    <title>柯里化</title>
-    <url>/currying/</url>
-    <content><![CDATA[<p><img data-src="https://source.unsplash.com/tJWZ3L9WLnE/1600x900" alt=""></p>
-<blockquote class="blockquote-center">
-柯里化
-</blockquote>
-<a id="more"></a>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import Foundation</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;&#x2F; 柯里化</span><br><span class="line">&#x2F;&#x2F;&#x2F; 将一个接收多参数的函数变换为一系列只接收一个单个参数的函数</span><br><span class="line"></span><br><span class="line">func add1(_ v1: Int, _ v2: Int) -&gt; Int &#123;</span><br><span class="line">    return v1 + v2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func add(_ v: Int) -&gt; (Int) -&gt; Int &#123;</span><br><span class="line">    &#123; $0 + v &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let result1 &#x3D; add1(10, 20)</span><br><span class="line">let result2 &#x3D; add(20)(10)</span><br><span class="line">print(result1)</span><br><span class="line">print(result2)</span><br><span class="line"></span><br><span class="line">func add(_ v1: Int, _ v2: Int, _ v3: Int) -&gt; Int &#123;</span><br><span class="line">    return v1 + v2 + v3</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;                      v2        v1     result</span><br><span class="line">func add2(_ v3: Int) -&gt; (Int) -&gt; (Int) -&gt; Int &#123;</span><br><span class="line">&#x2F;&#x2F;func add(_ v3: Int) -&gt; ((Int) -&gt; ((Int) -&gt; Int)) &#123;</span><br><span class="line">    &#x2F;&#x2F; 20</span><br><span class="line">    return &#123; v2 in</span><br><span class="line">        &#x2F;&#x2F; 10</span><br><span class="line">        return &#123; v1 in</span><br><span class="line">            return v1 + v2 + v3</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let result3 &#x3D; add(10, 20, 30)</span><br><span class="line">let result4 &#x3D; add2(30)(20)(10)</span><br><span class="line">print(result3)</span><br><span class="line">print(result4)</span><br><span class="line">&#x2F;&#x2F;&#x2F; 不断地函数嵌套, 最里层做计算</span><br><span class="line"></span><br><span class="line">func currying&lt;A, B, C&gt;(_ fn: @escaping (A, B) -&gt; C) -&gt; (B) -&gt; (A) -&gt; C &#123;</span><br><span class="line">    return &#123; b in</span><br><span class="line">        return &#123; a in</span><br><span class="line">            return fn(a, b)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let result5 &#x3D; currying(add1)(20)(10)</span><br><span class="line">print(result5)</span><br></pre></td></tr></table></figure>
-
-<p><strong>–EOF–</strong></p>
-]]></content>
-      <categories>
-        <category>Swift</category>
-      </categories>
-  </entry>
-  <entry>
     <title>泛型</title>
     <url>/generic/</url>
     <content><![CDATA[<p><img data-src="https://source.unsplash.com/KZIT2OYws-s/1600x900" alt=""></p>
@@ -3029,12 +3012,44 @@ Swift泛型
       </categories>
   </entry>
   <entry>
+    <title>柯里化</title>
+    <url>/currying/</url>
+    <content><![CDATA[<p><img data-src="https://source.unsplash.com/tJWZ3L9WLnE/1600x900" alt=""></p>
+<blockquote class="blockquote-center">
+柯里化
+</blockquote>
+<a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import Foundation</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;&#x2F; 柯里化</span><br><span class="line">&#x2F;&#x2F;&#x2F; 将一个接收多参数的函数变换为一系列只接收一个单个参数的函数</span><br><span class="line"></span><br><span class="line">func add1(_ v1: Int, _ v2: Int) -&gt; Int &#123;</span><br><span class="line">    return v1 + v2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func add(_ v: Int) -&gt; (Int) -&gt; Int &#123;</span><br><span class="line">    &#123; $0 + v &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let result1 &#x3D; add1(10, 20)</span><br><span class="line">let result2 &#x3D; add(20)(10)</span><br><span class="line">print(result1)</span><br><span class="line">print(result2)</span><br><span class="line"></span><br><span class="line">func add(_ v1: Int, _ v2: Int, _ v3: Int) -&gt; Int &#123;</span><br><span class="line">    return v1 + v2 + v3</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;                      v2        v1     result</span><br><span class="line">func add2(_ v3: Int) -&gt; (Int) -&gt; (Int) -&gt; Int &#123;</span><br><span class="line">&#x2F;&#x2F;func add(_ v3: Int) -&gt; ((Int) -&gt; ((Int) -&gt; Int)) &#123;</span><br><span class="line">    &#x2F;&#x2F; 20</span><br><span class="line">    return &#123; v2 in</span><br><span class="line">        &#x2F;&#x2F; 10</span><br><span class="line">        return &#123; v1 in</span><br><span class="line">            return v1 + v2 + v3</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let result3 &#x3D; add(10, 20, 30)</span><br><span class="line">let result4 &#x3D; add2(30)(20)(10)</span><br><span class="line">print(result3)</span><br><span class="line">print(result4)</span><br><span class="line">&#x2F;&#x2F;&#x2F; 不断地函数嵌套, 最里层做计算</span><br><span class="line"></span><br><span class="line">func currying&lt;A, B, C&gt;(_ fn: @escaping (A, B) -&gt; C) -&gt; (B) -&gt; (A) -&gt; C &#123;</span><br><span class="line">    return &#123; b in</span><br><span class="line">        return &#123; a in</span><br><span class="line">            return fn(a, b)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let result5 &#x3D; currying(add1)(20)(10)</span><br><span class="line">print(result5)</span><br></pre></td></tr></table></figure>
+
+<p><strong>–EOF–</strong></p>
+]]></content>
+      <categories>
+        <category>Swift</category>
+      </categories>
+  </entry>
+  <entry>
     <title>指针</title>
     <url>/pointer/</url>
     <content><![CDATA[<p><img data-src="https://source.unsplash.com/alamoUCs2FY/1600x900" alt=""></p>
 <a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;&#x2F; Swift里面也有专门的指针类型,这些都被定性为 &#96;Unsafe&#96;(不安全的), 常见的4种类型</span><br><span class="line">&#x2F;&#x2F;&#x2F; UnsafePointer&lt;Pointee&gt; 类似于 const Pointee *</span><br><span class="line">&#x2F;&#x2F;&#x2F; UnsafeMutablePointer&lt;Pointee&gt; 类似于  Pointee *</span><br><span class="line">&#x2F;&#x2F;&#x2F; UnsafeRawPointer 类似于 const void * 指向类型不确定</span><br><span class="line">&#x2F;&#x2F;&#x2F; UnsafeMutableRawPointer 类似于 void * 指向类型不确定</span><br><span class="line"></span><br><span class="line">var age &#x3D; 10</span><br><span class="line">func test1(_ ptr: UnsafeMutablePointer&lt;Int&gt;) &#123;&#x2F;&#x2F; int *</span><br><span class="line">    ptr.pointee &#x3D; 20</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func test2(_ ptr: UnsafePointer&lt;Int&gt;) &#123; &#x2F;&#x2F; const int *</span><br><span class="line">    print(&quot;test2&quot;, ptr.pointee)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func test3(_ ptr: UnsafeRawPointer) &#123; &#x2F;&#x2F; const void *</span><br><span class="line">    print(&quot;test3&quot;, ptr.load(as: Int.self))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func test4(_ ptr: UnsafeMutableRawPointer) &#123; &#x2F;&#x2F; void *</span><br><span class="line">    ptr.storeBytes(of: 30, as: Int.self)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;func test3(_ num: inout Int) &#123;</span><br><span class="line">&#x2F;&#x2F;</span><br><span class="line">&#x2F;&#x2F;&#125;</span><br><span class="line"></span><br><span class="line">test1(&amp;age)</span><br><span class="line">test2(&amp;age)</span><br><span class="line">test3(&amp;age)</span><br><span class="line">test4(&amp;age)</span><br><span class="line">&#x2F;&#x2F;test3(&amp;age)</span><br><span class="line">print(age)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;&#x2F; 使用场景</span><br><span class="line">&#x2F;&#x2F;&#x2F; OC -&gt; BOOL *</span><br><span class="line">&#x2F;&#x2F;&#x2F; Swift -&gt; UnsafeMutablePointer&lt;ObjeCBool&gt;</span><br><span class="line">var arr &#x3D; NSArray(objects: 11, 22, 33, 44)</span><br><span class="line">arr.enumerateObjects &#123; (element, idx, stop) in</span><br><span class="line">    if idx &#x3D;&#x3D; 2 &#123;</span><br><span class="line">        stop.pointee &#x3D; true</span><br><span class="line">    &#125;</span><br><span class="line">    print(idx, element)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;&#x2F; 获得指向某个变量的指针</span><br><span class="line">&#x2F;&#x2F;&#x2F; withUnsafePointer 跟body返回类型一样</span><br><span class="line">var ptrAge1 &#x3D; withUnsafePointer(to: &amp;age)&#123; $0 &#125;</span><br><span class="line">print(ptrAge1.pointee)</span><br><span class="line">var ptrAge2 &#x3D; withUnsafeMutablePointer(to: &amp;age) &#123; (pointer) -&gt; UnsafeMutablePointer&lt;Int&gt; in</span><br><span class="line">    return pointer</span><br><span class="line">&#125;</span><br><span class="line">var ptrAge3 &#x3D; withUnsafePointer(to: &amp;age, &#123; UnsafeRawPointer($0) &#125;)</span><br><span class="line">var ptrAge4 &#x3D; withUnsafeMutablePointer(to: &amp;age, &#123; UnsafeMutableRawPointer($0) &#125;)</span><br><span class="line">ptrAge4.storeBytes(of: 40, as: Int.self)</span><br><span class="line">print(age)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;&#x2F; 获取指向堆空间的指针</span><br><span class="line">class Person &#123;</span><br><span class="line">    var age &#x3D; 0</span><br><span class="line">    deinit &#123;</span><br><span class="line">        print(&quot;Person deinit&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var person &#x3D; Person()</span><br><span class="line">var ptrPerson1 &#x3D; withUnsafePointer(to: &amp;person, &#123; $0 &#125;) &#x2F;&#x2F;保存person对象的地址值</span><br><span class="line">print(ptrPerson1.pointee.age)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;&#x2F; 创建指针</span><br><span class="line">var mPtr &#x3D; malloc(16)</span><br><span class="line">mPtr?.storeBytes(of: 11, as: Int.self)</span><br><span class="line">mPtr?.storeBytes(of: 22, toByteOffset: 8, as: Int.self)</span><br><span class="line">print(mPtr?.load(as: Int.self))</span><br><span class="line">print(mPtr?.load(fromByteOffset: 8, as: Int.self))</span><br><span class="line">free(mPtr)</span><br><span class="line"></span><br><span class="line">var allPtr &#x3D; UnsafeMutableRawPointer.allocate(byteCount: 16, alignment: 1)</span><br><span class="line">allPtr.storeBytes(of: 11, as: Int.self)</span><br><span class="line">allPtr.storeBytes(of: 22, toByteOffset: 8, as: Int.self)</span><br><span class="line">allPtr.advanced(by: 8) &#x2F;&#x2F;移动8个字节,返回一个新指针</span><br><span class="line">allPtr.deallocate()</span><br><span class="line"></span><br><span class="line">var capPtr &#x3D; UnsafeMutablePointer&lt;Int&gt;.allocate(capacity: 3)</span><br><span class="line">capPtr.initialize(to: 11)</span><br><span class="line">capPtr.successor().initialize(to: 22)</span><br><span class="line">capPtr.successor().successor().initialize(to: 33)</span><br><span class="line">print(capPtr.pointee)</span><br><span class="line">print((capPtr + 1).pointee)</span><br><span class="line">print((capPtr + 2).pointee)</span><br><span class="line"></span><br><span class="line">print(capPtr[0])</span><br><span class="line">print(capPtr[1])</span><br><span class="line">print(capPtr[2])</span><br><span class="line">capPtr.deinitialize(count: 3)</span><br><span class="line">capPtr.deallocate()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var pPtr &#x3D; UnsafeMutablePointer&lt;Person&gt;.allocate(capacity: 3)</span><br><span class="line">pPtr.initialize(to: Person())</span><br><span class="line">(pPtr + 1).initialize(to: Person())</span><br><span class="line">(pPtr + 2).initialize(to: Person())</span><br><span class="line">pPtr.deinitialize(count: 3)</span><br><span class="line">pPtr.deallocate()</span><br></pre></td></tr></table></figure>
 
+<p><strong>–EOF–</strong></p>
+]]></content>
+      <categories>
+        <category>Swift</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Swift 5 字符串插值-AttributedStrings</title>
+    <url>/ExpressibleByStringInterpolation/</url>
+    <content><![CDATA[<p><img data-src="https://source.unsplash.com/KYjsoR9MCRE/1600x900" alt=""></p>
+<a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; https:&#x2F;&#x2F;swift.gg&#x2F;2019&#x2F;10&#x2F;18&#x2F;swift5-stringinterpolation-part2&#x2F;</span><br><span class="line">struct AttrString &#123;</span><br><span class="line">    let attributedString: NSAttributedString</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension AttrString: ExpressibleByStringLiteral &#123;</span><br><span class="line">    init(stringLiteral: String) &#123;</span><br><span class="line">        self.attributedString &#x3D; NSAttributedString(string: stringLiteral)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension AttrString: CustomStringConvertible &#123;</span><br><span class="line">    var description: String &#123;</span><br><span class="line">        return String(describing: self.attributedString)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension AttrString: ExpressibleByStringInterpolation &#123;</span><br><span class="line">  init(stringInterpolation: StringInterpolation) &#123;</span><br><span class="line">    self.attributedString &#x3D; NSAttributedString(attributedString: stringInterpolation.attributedString)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  struct StringInterpolation: StringInterpolationProtocol &#123;</span><br><span class="line">    var attributedString: NSMutableAttributedString</span><br><span class="line"></span><br><span class="line">    init(literalCapacity: Int, interpolationCount: Int) &#123;</span><br><span class="line">      self.attributedString &#x3D; NSMutableAttributedString()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    func appendLiteral(_ literal: String) &#123;</span><br><span class="line">      let astr &#x3D; NSAttributedString(string: literal)</span><br><span class="line">      self.attributedString.append(astr)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    func appendInterpolation(_ string: String, attributes: [NSAttributedString.Key: Any]) &#123;</span><br><span class="line">      let astr &#x3D; NSAttributedString(string: string, attributes: attributes)</span><br><span class="line">      self.attributedString.append(astr)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension AttrString &#123;</span><br><span class="line">    struct Style &#123;</span><br><span class="line">        let attributes: [NSAttributedString.Key: Any]</span><br><span class="line">        static func font(_ font: UIFont) -&gt; Style &#123;</span><br><span class="line">            return Style(attributes: [.font: font])</span><br><span class="line">        &#125;</span><br><span class="line">        static func color(_ color: UIColor) -&gt; Style &#123;</span><br><span class="line">            return Style(attributes: [.foregroundColor: color])</span><br><span class="line">        &#125;</span><br><span class="line">        static func bgColor(_ color: UIColor) -&gt; Style &#123;</span><br><span class="line">            return Style(attributes: [.backgroundColor: color])</span><br><span class="line">        &#125;</span><br><span class="line">        static func link(_ link: String) -&gt; Style &#123;</span><br><span class="line">            return .link(URL(string: link)!)</span><br><span class="line">        &#125;</span><br><span class="line">        static func link(_ link: URL) -&gt; Style &#123;</span><br><span class="line">            return Style(attributes: [.link: link])</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        static let oblique &#x3D; Style(attributes: [.obliqueness: 0.1])</span><br><span class="line">        </span><br><span class="line">        static func underline(_ color: UIColor, _ style: NSUnderlineStyle) -&gt; Style &#123;</span><br><span class="line">            return Style(attributes: [</span><br><span class="line">                .underlineColor: color,</span><br><span class="line">                .underlineStyle: style.rawValue</span><br><span class="line">            ])</span><br><span class="line">        &#125;</span><br><span class="line">        static func alignment(_ alignment: NSTextAlignment) -&gt; Style &#123;</span><br><span class="line">            let ps &#x3D; NSMutableParagraphStyle()</span><br><span class="line">            ps.alignment &#x3D; alignment</span><br><span class="line">            return Style(attributes: [.paragraphStyle: ps])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension AttrString.StringInterpolation &#123;</span><br><span class="line">    func appendInterpolation(_ string: String, _ style: AttrString.Style...) &#123;</span><br><span class="line">        var attrs: [NSAttributedString.Key: Any] &#x3D; [:]</span><br><span class="line">        style.forEach &#123; attrs.merge($0.attributes, uniquingKeysWith: &#123;$1&#125;) &#125;</span><br><span class="line">        let astr &#x3D; NSAttributedString(string: string, attributes: attrs)</span><br><span class="line">        self.attributedString.append(astr)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension AttrString.StringInterpolation &#123;</span><br><span class="line">    func appendInterpolation(image: UIImage, scale: CGFloat &#x3D; 1.0) &#123;</span><br><span class="line">        let attachment &#x3D; NSTextAttachment()</span><br><span class="line">        if let cgImage &#x3D; image.cgImage &#123;</span><br><span class="line">            attachment.image &#x3D; UIImage(cgImage: cgImage, scale: scale, orientation: .left)</span><br><span class="line">            self.attributedString.append(NSAttributedString(attachment: attachment))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension AttrString.StringInterpolation &#123;</span><br><span class="line">    func appendInterpolation(wrap string: AttrString, _ style: AttrString.Style...) &#123;</span><br><span class="line">        var attrs: [NSAttributedString.Key: Any] &#x3D; [:]</span><br><span class="line">        style.forEach &#123; attrs.merge($0.attributes, uniquingKeysWith: &#123;$1&#125;) &#125;</span><br><span class="line">        let mas &#x3D; NSMutableAttributedString(attributedString: string.attributedString)</span><br><span class="line">        let fullRange &#x3D; NSRange(mas.string.startIndex..&lt;mas.string.endIndex, in: mas.string)</span><br><span class="line">        mas.addAttributes(attrs, range: fullRange)</span><br><span class="line">        self.attributedString.append(mas)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://swift.gg/2019/10/18/swift5-stringinterpolation-part2/" target="_blank" rel="noopener">原文链接</a></p>
 <p><strong>–EOF–</strong></p>
 ]]></content>
       <categories>
@@ -3074,21 +3089,6 @@ Swift泛型
       </categories>
   </entry>
   <entry>
-    <title>Swift 5 字符串插值-AttributedStrings</title>
-    <url>/ExpressibleByStringInterpolation/</url>
-    <content><![CDATA[<p><img data-src="https://source.unsplash.com/KYjsoR9MCRE/1600x900" alt=""></p>
-<a id="more"></a>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; https:&#x2F;&#x2F;swift.gg&#x2F;2019&#x2F;10&#x2F;18&#x2F;swift5-stringinterpolation-part2&#x2F;</span><br><span class="line">struct AttrString &#123;</span><br><span class="line">    let attributedString: NSAttributedString</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension AttrString: ExpressibleByStringLiteral &#123;</span><br><span class="line">    init(stringLiteral: String) &#123;</span><br><span class="line">        self.attributedString &#x3D; NSAttributedString(string: stringLiteral)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension AttrString: CustomStringConvertible &#123;</span><br><span class="line">    var description: String &#123;</span><br><span class="line">        return String(describing: self.attributedString)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension AttrString: ExpressibleByStringInterpolation &#123;</span><br><span class="line">  init(stringInterpolation: StringInterpolation) &#123;</span><br><span class="line">    self.attributedString &#x3D; NSAttributedString(attributedString: stringInterpolation.attributedString)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  struct StringInterpolation: StringInterpolationProtocol &#123;</span><br><span class="line">    var attributedString: NSMutableAttributedString</span><br><span class="line"></span><br><span class="line">    init(literalCapacity: Int, interpolationCount: Int) &#123;</span><br><span class="line">      self.attributedString &#x3D; NSMutableAttributedString()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    func appendLiteral(_ literal: String) &#123;</span><br><span class="line">      let astr &#x3D; NSAttributedString(string: literal)</span><br><span class="line">      self.attributedString.append(astr)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    func appendInterpolation(_ string: String, attributes: [NSAttributedString.Key: Any]) &#123;</span><br><span class="line">      let astr &#x3D; NSAttributedString(string: string, attributes: attributes)</span><br><span class="line">      self.attributedString.append(astr)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension AttrString &#123;</span><br><span class="line">    struct Style &#123;</span><br><span class="line">        let attributes: [NSAttributedString.Key: Any]</span><br><span class="line">        static func font(_ font: UIFont) -&gt; Style &#123;</span><br><span class="line">            return Style(attributes: [.font: font])</span><br><span class="line">        &#125;</span><br><span class="line">        static func color(_ color: UIColor) -&gt; Style &#123;</span><br><span class="line">            return Style(attributes: [.foregroundColor: color])</span><br><span class="line">        &#125;</span><br><span class="line">        static func bgColor(_ color: UIColor) -&gt; Style &#123;</span><br><span class="line">            return Style(attributes: [.backgroundColor: color])</span><br><span class="line">        &#125;</span><br><span class="line">        static func link(_ link: String) -&gt; Style &#123;</span><br><span class="line">            return .link(URL(string: link)!)</span><br><span class="line">        &#125;</span><br><span class="line">        static func link(_ link: URL) -&gt; Style &#123;</span><br><span class="line">            return Style(attributes: [.link: link])</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        static let oblique &#x3D; Style(attributes: [.obliqueness: 0.1])</span><br><span class="line">        </span><br><span class="line">        static func underline(_ color: UIColor, _ style: NSUnderlineStyle) -&gt; Style &#123;</span><br><span class="line">            return Style(attributes: [</span><br><span class="line">                .underlineColor: color,</span><br><span class="line">                .underlineStyle: style.rawValue</span><br><span class="line">            ])</span><br><span class="line">        &#125;</span><br><span class="line">        static func alignment(_ alignment: NSTextAlignment) -&gt; Style &#123;</span><br><span class="line">            let ps &#x3D; NSMutableParagraphStyle()</span><br><span class="line">            ps.alignment &#x3D; alignment</span><br><span class="line">            return Style(attributes: [.paragraphStyle: ps])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension AttrString.StringInterpolation &#123;</span><br><span class="line">    func appendInterpolation(_ string: String, _ style: AttrString.Style...) &#123;</span><br><span class="line">        var attrs: [NSAttributedString.Key: Any] &#x3D; [:]</span><br><span class="line">        style.forEach &#123; attrs.merge($0.attributes, uniquingKeysWith: &#123;$1&#125;) &#125;</span><br><span class="line">        let astr &#x3D; NSAttributedString(string: string, attributes: attrs)</span><br><span class="line">        self.attributedString.append(astr)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension AttrString.StringInterpolation &#123;</span><br><span class="line">    func appendInterpolation(image: UIImage, scale: CGFloat &#x3D; 1.0) &#123;</span><br><span class="line">        let attachment &#x3D; NSTextAttachment()</span><br><span class="line">        if let cgImage &#x3D; image.cgImage &#123;</span><br><span class="line">            attachment.image &#x3D; UIImage(cgImage: cgImage, scale: scale, orientation: .left)</span><br><span class="line">            self.attributedString.append(NSAttributedString(attachment: attachment))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension AttrString.StringInterpolation &#123;</span><br><span class="line">    func appendInterpolation(wrap string: AttrString, _ style: AttrString.Style...) &#123;</span><br><span class="line">        var attrs: [NSAttributedString.Key: Any] &#x3D; [:]</span><br><span class="line">        style.forEach &#123; attrs.merge($0.attributes, uniquingKeysWith: &#123;$1&#125;) &#125;</span><br><span class="line">        let mas &#x3D; NSMutableAttributedString(attributedString: string.attributedString)</span><br><span class="line">        let fullRange &#x3D; NSRange(mas.string.startIndex..&lt;mas.string.endIndex, in: mas.string)</span><br><span class="line">        mas.addAttributes(attrs, range: fullRange)</span><br><span class="line">        self.attributedString.append(mas)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://swift.gg/2019/10/18/swift5-stringinterpolation-part2/" target="_blank" rel="noopener">原文链接</a></p>
-<p><strong>–EOF–</strong></p>
-]]></content>
-      <categories>
-        <category>Swift</category>
-      </categories>
-  </entry>
-  <entry>
     <title>generate-xcframework</title>
     <url>/generate-xcframework/</url>
     <content><![CDATA[<p><img data-src="https://source.unsplash.com/09k72oU7qYU/1600x900" alt=""></p>
@@ -3110,16 +3110,6 @@ Swift泛型
 ]]></content>
       <categories>
         <category>PostgreSQL</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>同步的方式编写异步代码</title>
-    <url>/sync-way-code-async-code/</url>
-    <content><![CDATA[<p>代码来自泊学</p>
-<p><strong>–EOF–</strong></p>
-]]></content>
-      <categories>
-        <category>Swift</category>
       </categories>
   </entry>
   <entry>
@@ -3404,6 +3394,16 @@ attributes #0 = { noinline nounwind optnone ssp uwtable &quot;correctly-rounded-
 <!--kg-card-end: markdown-->]]></content>
       <categories>
         <category>LLVM</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>同步的方式编写异步代码</title>
+    <url>/sync-way-code-async-code/</url>
+    <content><![CDATA[<p>代码来自泊学</p>
+<p><strong>–EOF–</strong></p>
+]]></content>
+      <categories>
+        <category>Swift</category>
       </categories>
   </entry>
   <entry>
