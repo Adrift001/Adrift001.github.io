@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 7.0.0-rc1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://source.unsplash.com/TJ3Xl4YgHVs/1600x900">
 <meta property="article:published_time" content="2023-01-29T21:48:32.000Z">
-<meta property="article:modified_time" content="2023-01-30T05:47:17.153Z">
+<meta property="article:modified_time" content="2023-04-07T07:47:37.850Z">
 <meta property="article:author" content="Optional">
 <meta property="article:tag" content="Optional Swift">
 <meta name="twitter:card" content="summary">
@@ -256,36 +256,36 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img data-src="https://source.unsplash.com/TJ3Xl4YgHVs/1600x900" alt=""></p>
-<a id="more"></a>
+        <p><img data-src="https://source.unsplash.com/TJ3Xl4YgHVs/1600x900"></p>
+<span id="more"></span>
 
-<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">通过命令行传递参数</span><br><span class="line">把App后缀,App名传给原生</span><br><span class="line">baseURL传给flutter</span><br></pre></td></tr></table></figure>
+<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">通过命令行传递参数</span><br><span class="line">把App后缀,App名传给原生</span><br><span class="line">baseURL传给flutter</span><br></pre></td></tr></table></figure>
 
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p><strong>release.json</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;DEFINE_APP_NAME&quot;: &quot;微信&quot;,</span><br><span class="line">  &quot;DEFINE_APP_URL&quot;: &quot;https:&#x2F;&#x2F;wechat.qq.com&quot;,</span><br><span class="line">  &quot;DEFINE_APP_SUFFIX&quot;: &quot;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;DEFINE_APP_NAME&quot;: &quot;微信&quot;,</span><br><span class="line">  &quot;DEFINE_APP_URL&quot;: &quot;https://wechat.qq.com&quot;,</span><br><span class="line">  &quot;DEFINE_APP_SUFFIX&quot;: &quot;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>dev.json</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;DEFINE_APP_NAME&quot;: &quot;微信Dev&quot;,</span><br><span class="line">  &quot;DEFINE_APP_URL&quot;: &quot;https:&#x2F;&#x2F;dev.wechat.qq.com&quot;,</span><br><span class="line">  &quot;DEFINE_APP_SUFFIX&quot;: &quot;.dev&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;DEFINE_APP_NAME&quot;: &quot;微信Dev&quot;,</span><br><span class="line">  &quot;DEFINE_APP_URL&quot;: &quot;https://dev.wechat.qq.com&quot;,</span><br><span class="line">  &quot;DEFINE_APP_SUFFIX&quot;: &quot;.dev&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">flutter build ipa \</span><br><span class="line">--export-method&#x3D;ad-hoc \</span><br><span class="line">--obfuscate \</span><br><span class="line">--split-debug-info&#x3D;.&#x2F;build&#x2F;split-debug-info \</span><br><span class="line">--dart-define-from-file&#x3D;.&#x2F;env&#x2F;dev.json</span><br></pre></td></tr></table></figure>
+<h3 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">flutter build ipa \</span><br><span class="line">--export-method=ad-hoc \</span><br><span class="line">--obfuscate \</span><br><span class="line">--split-debug-info=./build/split-debug-info \</span><br><span class="line">--dart-define-from-file=./env/dev.json</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">flutter build ipa \</span><br><span class="line">--export-method&#x3D;ad-hoc \</span><br><span class="line">--obfuscate \</span><br><span class="line">--split-debug-info&#x3D;.&#x2F;build&#x2F;split-debug-info \</span><br><span class="line">--dart-define-from-file&#x3D;.&#x2F;env&#x2F;release.json</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">flutter build ipa \</span><br><span class="line">--export-method=ad-hoc \</span><br><span class="line">--obfuscate \</span><br><span class="line">--split-debug-info=./build/split-debug-info \</span><br><span class="line">--dart-define-from-file=./env/release.json</span><br></pre></td></tr></table></figure>
 
 <h3 id="iOS-配置"><a href="#iOS-配置" class="headerlink" title="iOS 配置"></a>iOS 配置</h3><p><strong>project.pbxproj</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PRODUCT_BUNDLE_IDENTIFIER &#x3D; &quot;com.wechat$(DEFINE_APP_SUFFIX)&quot;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PRODUCT_BUNDLE_IDENTIFIER = &quot;com.wechat$(DEFINE_APP_SUFFIX)&quot;;</span><br></pre></td></tr></table></figure>
 
 <p><strong>Info.plist</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;key&gt;CFBundleDisplayName&lt;&#x2F;key&gt;</span><br><span class="line">	&lt;string&gt;$(DEFINE_APP_NAME)&lt;&#x2F;string&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;key&gt;CFBundleDisplayName&lt;/key&gt;</span><br><span class="line">	&lt;string&gt;$(DEFINE_APP_NAME)&lt;/string&gt;</span><br></pre></td></tr></table></figure>
 
 <h3 id="Android-配置"><a href="#Android-配置" class="headerlink" title="Android 配置"></a>Android 配置</h3><p><strong>build.gradle</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">applicationIdSuffix DEFINE_APP_SUFFIX</span><br><span class="line">resValue &quot;string&quot;, &quot;app_name&quot;, DEFINE_APP_NAME</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">applicationIdSuffix DEFINE_APP_SUFFIX</span><br><span class="line">resValue &quot;string&quot;, &quot;app_name&quot;, DEFINE_APP_NAME</span><br></pre></td></tr></table></figure>
 
 <p><strong>AndroidManifest.xml</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:label&#x3D;&quot;@string&#x2F;app_name&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:label=&quot;@string/app_name&quot;</span><br></pre></td></tr></table></figure>
 
-<h3 id="Flutter-配置"><a href="#Flutter-配置" class="headerlink" title="Flutter 配置"></a>Flutter 配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String.fromEnvironment(&#39;DEFINE_APP_URL&#39;, defaultValue: &#39;&#39;)</span><br></pre></td></tr></table></figure>
+<h3 id="Flutter-配置"><a href="#Flutter-配置" class="headerlink" title="Flutter 配置"></a>Flutter 配置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String.fromEnvironment(&#x27;DEFINE_APP_URL&#x27;, defaultValue: &#x27;&#x27;)</span><br></pre></td></tr></table></figure>
 
-<h3 id="Android-studio"><a href="#Android-studio" class="headerlink" title="Android studio"></a>Android studio</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--dart-define-from-file&#x3D;.&#x2F;env&#x2F;dev.json</span><br></pre></td></tr></table></figure>
+<h3 id="Android-studio"><a href="#Android-studio" class="headerlink" title="Android studio"></a>Android studio</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--dart-define-from-file=./env/dev.json</span><br></pre></td></tr></table></figure>
 
 <p>还可以选中 <code>Store as project file</code></p>
 <p><strong>–EOF–</strong></p>
@@ -324,7 +324,10 @@
     <a href="/postgresql-client-time-zone-difference/" rel="prev" title="PostgreSQL客户端时区差异">
       <i class="fa fa-chevron-left"></i> PostgreSQL客户端时区差异
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/macos-jenkins-flutter-pack-upload-pgyer/" rel="next" title="Jenkins Flutter打包上传蒲公英">
+      Jenkins Flutter打包上传蒲公英 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -390,7 +393,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#需求"><span class="nav-number">1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">2.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置文件"><span class="nav-number">2.1.</span> <span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令行"><span class="nav-number">2.2.</span> <span class="nav-text">命令行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iOS-配置"><span class="nav-number">2.3.</span> <span class="nav-text">iOS 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-配置"><span class="nav-number">2.4.</span> <span class="nav-text">Android 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flutter-配置"><span class="nav-number">2.5.</span> <span class="nav-text">Flutter 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-studio"><span class="nav-number">2.6.</span> <span class="nav-text">Android studio</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9C%80%E6%B1%82"><span class="nav-number">1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C"><span class="nav-number">2.2.</span> <span class="nav-text">命令行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iOS-%E9%85%8D%E7%BD%AE"><span class="nav-number">2.3.</span> <span class="nav-text">iOS 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-%E9%85%8D%E7%BD%AE"><span class="nav-number">2.4.</span> <span class="nav-text">Android 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flutter-%E9%85%8D%E7%BD%AE"><span class="nav-number">2.5.</span> <span class="nav-text">Flutter 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-studio"><span class="nav-number">2.6.</span> <span class="nav-text">Android studio</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -406,7 +409,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">72</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

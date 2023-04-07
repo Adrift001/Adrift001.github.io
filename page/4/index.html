@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 7.0.0-rc1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -205,6 +205,79 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/sourcetree-could-not-commit-code-by-username/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Optional">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Optional Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/sourcetree-could-not-commit-code-by-username/" class="post-title-link" itemprop="url">SourceTree不能使用账号密码提交代码</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-05 11:43:15" itemprop="dateCreated datePublished" datetime="2019-05-05T11:43:15+00:00">2019-05-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>总感觉用账号密码提交代码是反人类的🙂</p>
+<p>解决方法:</p>
+<blockquote>
+<p>SourceTree -&gt; 偏好设置-&gt; Git -&gt; 使用系统安装的Git</p>
+</blockquote>
+<p>好长时间不写博客了,能水一篇是一篇.</p>
+<p><strong>–EOF–</strong></p>
+<!--kg-card-end: markdown-->
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/summary-of-2018/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -322,56 +395,58 @@
 <p>Person.swift</p>
 <pre><code>import Foundation
 
-extension Bool {
-    init(_ integer: Int){
+extension Bool &#123;
+    init(_ integer: Int)&#123;
         self.init(integer != 0)
-    }
-}
+    &#125;
+&#125;
 
-struct Person {
-
+struct Person &#123;
+    
     let TallMask = (0b00000001 &lt;&lt; 0b00000000)
     let RichMask = (0b00000001 &lt;&lt; 0b00000001)
     let HandsomeMask = (0b00000001 &lt;&lt; 0b00000010)
-
+    
     var _tallRichHandsome = 0b00000000
-
-    mutating func setTall(_ tall: Bool) {
-        if tall {
+    
+    mutating func setTall(_ tall: Bool) &#123;
+        if tall &#123;
             _tallRichHandsome = (_tallRichHandsome | TallMask)
-        } else {
+        &#125; else &#123;
             _tallRichHandsome = (_tallRichHandsome &amp; ~TallMask)
-        }
-    }
-
-    func isTall() -&gt; Bool {
+        &#125;
+    &#125;
+    
+    func isTall() -&gt; Bool &#123;
         return Bool(_tallRichHandsome &amp; TallMask)
-    }
-
-    mutating func setRich(_ rich: Bool) {
-        if rich {
+    &#125;
+    
+    mutating func setRich(_ rich: Bool) &#123;
+        if rich &#123;
             _tallRichHandsome = (_tallRichHandsome | RichMask)
-        } else {
+        &#125; else &#123;
             _tallRichHandsome = (_tallRichHandsome &amp; ~RichMask)
-        }
-    }
-
-    func isRich() -&gt; Bool {
+        &#125;
+    &#125;
+    
+    func isRich() -&gt; Bool &#123;
         return Bool(_tallRichHandsome &amp; RichMask)
-    }
-
-    mutating func setHandsome(_ handsome: Bool) {
-        if handsome {
+    &#125;
+    
+    mutating func setHandsome(_ handsome: Bool) &#123;
+        if handsome &#123;
             _tallRichHandsome = (_tallRichHandsome | HandsomeMask)
-        } else {
+        &#125; else &#123;
             _tallRichHandsome = (_tallRichHandsome &amp; ~HandsomeMask)
-        }
-    }
-
-    func isHandsome() -&gt; Bool {
+        &#125;
+    &#125;
+    
+    func isHandsome() -&gt; Bool &#123;
         return Bool(_tallRichHandsome &amp; HandsomeMask)
-    }
-}</code></pre><p>main.swift</p>
+    &#125;
+&#125;
+</code></pre>
+<p>main.swift</p>
 <pre><code>import Foundation
 
 
@@ -406,7 +481,9 @@ print(&quot;==================&quot;)
 
 print(&quot;==================&quot;)
 
-print(person._tallRichHandsome)</code></pre><p><strong>–EOF–</strong></p>
+print(person._tallRichHandsome)
+</code></pre>
+<p><strong>–EOF–</strong></p>
 <!--kg-card-end: markdown-->
       
     </div>
@@ -494,12 +571,12 @@ print(person._tallRichHandsome)</code></pre><p><strong>–EOF–</strong></p>
 #import &lt;Foundation/Foundation.h&gt;
 #import &lt;objc/runtime.h&gt;
 
-int main(int argc, const char * argv[]) {
-    @autoreleasepool {
+int main(int argc, const char * argv[]) &#123;
+    @autoreleasepool &#123;
         //实例对象(instance对象)
         NSObject *obj1 = [[NSObject alloc] init];
         NSObject *obj2 = [[NSObject alloc] init];
-
+        
         //类对象(Class对象)
         Class objClass1 = [obj1 class]; //类对象
         Class objClass2 = [obj2 class];
@@ -511,12 +588,14 @@ int main(int argc, const char * argv[]) {
         NSLog(@&quot;%p&quot;, objClass3);
         NSLog(@&quot;%p&quot;, objClass4);
         NSLog(@&quot;%p&quot;, objClass5);
-
+        
         //元类对象(meta class对象)
         Class metaClass = object_getClass([NSObject class]);
-    }
+    &#125;
     return 0;
-}</code></pre><p><strong>–EOF–</strong></p>
+&#125;
+</code></pre>
+<p><strong>–EOF–</strong></p>
 <!--kg-card-end: markdown-->
       
     </div>
@@ -587,50 +666,50 @@ int main(int argc, const char * argv[]) {
 <pre><code>import Foundation
 
 //协议语法
-protocol SomeProtocol {
+protocol SomeProtocol &#123;
+    
+&#125;
 
-}
-
-struct SomeStructure: SomeProtocol {}
-class SomeClass: SomeProtocol {}
+struct SomeStructure: SomeProtocol &#123;&#125;
+class SomeClass: SomeProtocol &#123;&#125;
 
 //属性要求
 //如果属性标注了(set get),则不能通过常量存储属性和只读计算属性来实现
 //如果属性只设置了(get),那么任何类型都可以满足,包括变量存储属性
 
-protocol SomeProtocol1 {
-    var mustBeSettable: Int { get set }
-    var doesNotNeedToBeSettable: Int { get }
-}
+protocol SomeProtocol1 &#123;
+    var mustBeSettable: Int &#123; get set &#125;
+    var doesNotNeedToBeSettable: Int &#123; get &#125;
+&#125;
 
 //协议中用static修饰时,实现中用static或者class实现都行
-protocol AnotherProtocol {
-    static var someTypeProperty: Int { get set }
-}
+protocol AnotherProtocol &#123;
+    static var someTypeProperty: Int &#123; get set &#125;
+&#125;
 
-protocol FullyNamed {
-    var fullName: String { get }
-}
+protocol FullyNamed &#123;
+    var fullName: String &#123; get &#125;
+&#125;
 
-struct Person: FullyNamed {
+struct Person: FullyNamed &#123;
     var fullName: String
-}
+&#125;
 //可set 可 get
 let john = Person(fullName: &quot;Tom&quot;)
 
-class Starship: FullyNamed {
+class Starship: FullyNamed &#123;
     var prefix: String?
     var name: String
-
-    init(name: String, prefix: String? = nil) {
+    
+    init(name: String, prefix: String? = nil) &#123;
         self.name = name
         self.prefix = prefix
-    }
-
-    var fullName: String {
+    &#125;
+    
+    var fullName: String &#123;
         return (prefix != nil ? prefix!+&quot; &quot; : &quot;&quot;) + name
-    }
-}
+    &#125;
+&#125;
 
 var ncc1701 = Starship(name: &quot;Enterprise&quot;, prefix: &quot;USS&quot;)
 
@@ -638,25 +717,25 @@ var ncc1701 = Starship(name: &quot;Enterprise&quot;, prefix: &quot;USS&quot;)
 
 //不能在协议方法中指定默认值
 
-protocol SomeProtocol2 {
+protocol SomeProtocol2 &#123;
     static func someTypeMethod()
-}
+&#125;
 
-protocol RandomNumberGenerator {
+protocol RandomNumberGenerator &#123;
     func random() -&gt; Double
-}
+&#125;
 
 //线性同余生成器的伪随机数生成器算法,好高大上有木有...
-class LinearCongruentialGenerator: RandomNumberGenerator {
+class LinearCongruentialGenerator: RandomNumberGenerator &#123;
     var lastRandom = 42.0
     let m = 139968.0
     let a = 3877.0
     let c = 29573.0
-    func random() -&gt; Double {
+    func random() -&gt; Double &#123;
         lastRandom = ((lastRandom * a + c).truncatingRemainder(dividingBy: m))
         return lastRandom / m
-    }
-}
+    &#125;
+&#125;
 
 let generator = LinearCongruentialGenerator()
 print(generator.random())
@@ -666,21 +745,21 @@ print(generator.random())
 //如果希望实现协议的任何类型(类,结构体,枚举)要修改实例或者实例中的任何属性
 //得在func前加mutating关键字
 //类实现时,无需加mutating,结构体,枚举需要加
-protocol Toggleable {
+protocol Toggleable &#123;
     mutating func toggle()
-}
+&#125;
 
-enum OnOffSwitch: Toggleable {
+enum OnOffSwitch: Toggleable &#123;
     case off, on
-    mutating func toggle() {
-        switch self {
+    mutating func toggle() &#123;
+        switch self &#123;
         case .on:
             self = .off
         case .off:
             self = .on
-        }
-    }
-}
+        &#125;
+    &#125;
+&#125;
 
 var lightSwitch = OnOffSwitch.off
 print(lightSwitch)
@@ -688,35 +767,35 @@ lightSwitch.toggle()
 print(lightSwitch)
 
 //初始化程序要求
-protocol SomeProtocol3 {
+protocol SomeProtocol3 &#123;
     init(someParameter: Int)
-}
+&#125;
 
 //required 方便子类继承,从而遵守SomeProtocol3协议
 //如果给类加上final,则required可以省略
-final class SomeClass3: SomeProtocol3 {
-    required init(someParameter: Int) {
+final class SomeClass3: SomeProtocol3 &#123;
+    required init(someParameter: Int) &#123;
         //在这进行初始化实现
-    }
-}
+    &#125;
+&#125;
 
 //如果子类重写父类中init方法,并且这个init也是协议中的实现,则需要用
 //`required`和`override`修饰
-protocol SomeProtocol4 {
+protocol SomeProtocol4 &#123;
     init()
-}
+&#125;
 
-class SomeSuperClass {
-    init() {
+class SomeSuperClass &#123;
+    init() &#123;
+        
+    &#125;
+&#125;
 
-    }
-}
-
-class SomeSubClass: SomeSuperClass, SomeProtocol4 {
-    required override init() {
+class SomeSubClass: SomeSuperClass, SomeProtocol4 &#123;
+    required override init() &#123;
         //good job
-    }
-}
+    &#125;
+&#125;
 
 //协议还可以定义可失败构造器
 
@@ -727,55 +806,55 @@ class SomeSubClass: SomeSuperClass, SomeProtocol4 {
 //2. 作为常量,变量,或者属性的类型
 //3. 作为数组,字典或其他容器类型的元素类型
 
-class Dice {
+class Dice &#123;
     let sides: Int
     let generator: RandomNumberGenerator
-    init(sides: Int, generator: RandomNumberGenerator) {
+    init(sides: Int, generator: RandomNumberGenerator) &#123;
         self.sides = sides
         self.generator = generator
-    }
-    func roll() -&gt; Int {
+    &#125;
+    func roll() -&gt; Int &#123;
         return Int(generator.random() * Double(sides)) + 1
-    }
-}
+    &#125;
+&#125;
 var d6 = Dice(sides: 6, generator: LinearCongruentialGenerator())
-for _ in 1...5 {
+for _ in 1...5 &#123;
     print(&quot;Random dice roll is \(d6.roll())&quot;)
-}
+&#125;
 
 //委托
 //响应特定操作或者从外部检索数据
-protocol DiceGame {
-    var dice: Dice { get }
+protocol DiceGame &#123;
+    var dice: Dice &#123; get &#125;
     func play()
-}
+&#125;
 
-protocol DiceGameDelegate: AnyObject {
+protocol DiceGameDelegate: AnyObject &#123;
     func gameDidStart(_ game: DiceGame)
     func game(_ game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int)
     func gameDidEnd(_ game: DiceGame)
-}
+&#125;
 
-class SnakesAndLadders: DiceGame {
+class SnakesAndLadders: DiceGame &#123;
     let finalSquare = 25
     let dice = Dice(sides: 6, generator: LinearCongruentialGenerator())
     var square = 0
     var board: [Int]
-
-    init() {
+    
+    init() &#123;
         board = Array(repeating: 0, count: finalSquare + 1)
         board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02
         board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08
-    }
-
+    &#125;
+    
     weak var delegate: DiceGameDelegate?
-    func play() {
+    func play() &#123;
         square = 0
         delegate?.gameDidStart(self)
-        gameLoop: while square != finalSquare {
+        gameLoop: while square != finalSquare &#123;
             let diceRoll = dice.roll()
             delegate?.game(self, didStartNewTurnWithDiceRoll: diceRoll)
-            switch square + diceRoll {
+            switch square + diceRoll &#123;
             case finalSquare:
                 break gameLoop
             case let newSquare where newSquare &gt; finalSquare:
@@ -783,29 +862,29 @@ class SnakesAndLadders: DiceGame {
             default:
                 square += diceRoll
                 square += board[square]
-            }
-        }
+            &#125;
+        &#125;
         delegate?.gameDidEnd(self)
-    }
-}
+    &#125;
+&#125;
 
-class DiceGameTracker: DiceGameDelegate {
+class DiceGameTracker: DiceGameDelegate &#123;
     var numberOfTurns = 0
-    func gameDidStart(_ game: DiceGame) {
+    func gameDidStart(_ game: DiceGame) &#123;
         numberOfTurns = 0
-        if game is SnakesAndLadders {
+        if game is SnakesAndLadders &#123;
             print(&quot;Started a new game of Snakes and Ladders&quot;)
-        }
+        &#125;
         print(&quot;The game is using a \(game.dice.sides)-sided dice&quot;)
-    }
-    func game(_ game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int) {
+    &#125;
+    func game(_ game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int) &#123;
         numberOfTurns += 1
         print(&quot;Rolled a \(diceRoll)&quot;)
-    }
-    func gameDidEnd(_ game: DiceGame) {
+    &#125;
+    func gameDidEnd(_ game: DiceGame) &#123;
         print(&quot;The game lasted for \(numberOfTurns) turns&quot;)
-    }
-}
+    &#125;
+&#125;
 
 let tracker = DiceGameTracker()
 let game = SnakesAndLadders()
@@ -813,46 +892,46 @@ game.delegate = tracker
 game.play()
 
 //通过扩展遵守某个协议
-protocol TextRepresentable {
-    var textualDescription: String { get }
-}
+protocol TextRepresentable &#123;
+    var textualDescription: String &#123; get &#125;
+&#125;
 
-extension Dice: TextRepresentable {
-    var textualDescription: String {
+extension Dice: TextRepresentable &#123;
+    var textualDescription: String &#123;
         return &quot;A \(sides)-sided dice&quot;
-    }
-}
+    &#125;
+&#125;
 
 let d12 = Dice(sides: 12, generator: LinearCongruentialGenerator())
 print(d12.textualDescription)
 // Prints &quot;A 12-sided dice&quot;
 
-extension SnakesAndLadders: TextRepresentable {
-    var textualDescription: String {
+extension SnakesAndLadders: TextRepresentable &#123;
+    var textualDescription: String &#123;
         return &quot;A game of Snakes and Ladders with \(finalSquare) squares&quot;
-    }
-}
+    &#125;
+&#125;
 print(game.textualDescription)
 
 //有条件的遵守协议
-extension Array: TextRepresentable where Element: TextRepresentable {
-    var textualDescription: String {
-        let itemsAsText = self.map { $0.textualDescription }
+extension Array: TextRepresentable where Element: TextRepresentable &#123;
+    var textualDescription: String &#123;
+        let itemsAsText = self.map &#123; $0.textualDescription &#125;
         return &quot;[&quot; + itemsAsText.joined(separator: &quot;, &quot;) + &quot;]&quot;
-    }
-}
+    &#125;
+&#125;
 let myDice = [d6, d12]
 print(myDice.textualDescription)
 
 //通过协议适应某种类型
 //如果某个类型已经符合协议的所有要求，但尚未声明它采用该协议，则可以使其采用带有空扩展的协议
-struct Hamster {
+struct Hamster &#123;
     var name: String
-    var textualDescription: String {
+    var textualDescription: String &#123;
         return &quot;A hamster named \(name)&quot;
-    }
-}
-extension Hamster: TextRepresentable {}
+    &#125;
+&#125;
+extension Hamster: TextRepresentable &#123;&#125;
 let simonTheHamster = Hamster(name: &quot;Simon&quot;)
 let somethingTextRepresentable: TextRepresentable = simonTheHamster
 print(somethingTextRepresentable.textualDescription)
@@ -860,11 +939,13 @@ print(somethingTextRepresentable.textualDescription)
 
 //协议类型的集合
 let things: [TextRepresentable] = [game, d12, simonTheHamster]
-for thing in things {
+for thing in things &#123;
     print(thing.textualDescription)
-}
+&#125;
 
-//协议继承</code></pre><p>还是有点烧脑….</p>
+//协议继承
+</code></pre>
+<p>还是有点烧脑….</p>
 <p><strong>–EOF–</strong></p>
 <!--kg-card-end: markdown-->
       
@@ -939,11 +1020,11 @@ for thing in things {
 <pre><code>import Foundation
 
 //泛型函数
-func swapTwoValues&lt;T&gt;(_ a: inout T, _ b: inout T) {
+func swapTwoValues&lt;T&gt;(_ a: inout T, _ b: inout T) &#123;
     let tmp = a
     a = b
     b = tmp
-}
+&#125;
 
 var a = 1, b = 2
 print(&quot;\(a)====\(b)&quot;)
@@ -951,22 +1032,22 @@ swapTwoValues(&amp;a, &amp;b)
 print(&quot;\(a)====\(b)&quot;)
 
 //泛型类型(泛型类,泛型结构体,泛型枚举),听起来挺高大上,其实就是给自定义类加个泛型
-struct Stack&lt;Element&gt; {
+struct Stack&lt;Element&gt; &#123;
     var items: [Element] = []
-    mutating func push(_ item: Element) {
+    mutating func push(_ item: Element) &#123;
         items.append(item)
-    }
-
-    mutating func pop() -&gt; Element {
+    &#125;
+    
+    mutating func pop() -&gt; Element &#123;
         return items.removeLast()
-    }
-}
+    &#125;
+&#125;
 //扩展泛型类型
-extension Stack {
-    var topItem: Element? {
+extension Stack &#123;
+    var topItem: Element? &#123;
         return items.isEmpty ? nil : items[items.count - 1]
-    }
-}
+    &#125;
+&#125;
 
 var strings = Stack&lt;String&gt;()
 strings.push(&quot;hello&quot;)
@@ -981,14 +1062,14 @@ print(strings.pop())
 // (因为类型都是从传递给函数的值的类型推断出来的),除非再传一个参数,类似:
 // func findIndex1&lt;T: Equatable, S: SignedInteger&gt;(of value: T,in array: [T], _ type: S) -&gt; S?
 // 告诉一下Swift,接下来会发生什么,不然Swift心里会发慌...
-func findIndex1&lt;T: Equatable&gt;(of value: T,in array: [T]) -&gt; Int? {
-    for (i, v) in array.enumerated() {
-        if value == v {
+func findIndex1&lt;T: Equatable&gt;(of value: T,in array: [T]) -&gt; Int? &#123;
+    for (i, v) in array.enumerated() &#123;
+        if value == v &#123;
             return i
-        }
-    }
+        &#125;
+    &#125;
     return nil
-}
+&#125;
 
 let arr = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;]
 let index = findIndex1(of: &quot;a&quot;, in: arr)
@@ -997,65 +1078,65 @@ print(index)
 
 //关联类型
 //协议中的泛型,实现具体类型的时候,由自己指定泛型类型为某种具体类型.
-protocol Container {
+protocol Container &#123;
     associatedtype Item
     mutating func append(_ item: Item)
-    var count: Int { get }
-    subscript(i: Int) -&gt; Item { get }
-}
+    var count: Int &#123; get &#125;
+    subscript(i: Int) -&gt; Item &#123; get &#125;
+&#125;
 
 //这里typealias item不能等于协议,例如typealias Item = Equatable
 //这样Swift就不知道`EquableStack`应该怎么分配内存了有木有...,谁TM知道`EquableStack`实现了几个协议
 //脚踏了几只船?
 //typealias Item = Int删掉也可以,可以通过append,推断出Item类型
-struct IntStack: Container {
-
-    mutating func push(_ item: Item) {
+struct IntStack: Container &#123;
+    
+    mutating func push(_ item: Item) &#123;
         items.append(item)
-    }
-
-    mutating func pop() -&gt; Item {
+    &#125;
+    
+    mutating func pop() -&gt; Item &#123;
         return items.removeLast()
-    }
-
+    &#125;
+    
     typealias Item = Int
     var items: [Item] = []
-    mutating func append(_ item: Item) {
+    mutating func append(_ item: Item) &#123;
         items.append(item)
-    }
-    var count: Int {
+    &#125;
+    var count: Int &#123;
         return items.count
-    }
-
-    subscript(i: Int) -&gt; Item {
+    &#125;
+    
+    subscript(i: Int) -&gt; Item &#123;
         return items[i]
-    }
-}
+    &#125;
+&#125;
 
 //上面的Stack可以写作下面方式
 //因为通过append可以知道Element为Item的具体类型,所以typealias可以省略
 //又因为Stack1是泛型类型,Element创建实例对象时具体指出,所以,一下代码完全正确.
 //可以写typealias Item = Element, 然后Element跟Item可以互相交叉替换🙂
-struct Stack1&lt;Element&gt;: Container {
+struct Stack1&lt;Element&gt;: Container &#123;
     var items = [Element]()
-    mutating func push(_ item: Element) {
+    mutating func push(_ item: Element) &#123;
         items.append(item)
-    }
+    &#125;
 
-    mutating func pop() -&gt; Element {
+    mutating func pop() -&gt; Element &#123;
         return items.removeLast()
-    }
+    &#125;
     //conformance to the Container
-    mutating func append(_ item: Element) {
+    mutating func append(_ item: Element) &#123;
         push(item)
-    }
-    var count: Int {
+    &#125;
+    var count: Int &#123;
         return items.count
-    }
-    subscript(i: Int) -&gt; Element {
+    &#125;
+    subscript(i: Int) -&gt; Element &#123;
         return items[i]
-    }
-}
+    &#125;
+&#125;
 
 var strings1 = Stack1&lt;String&gt;()
 strings.push(&quot;hello&quot;)
@@ -1066,38 +1147,38 @@ print(strings.pop())
 //array 中有append用来推断具体类型,并且有count,有下标
 //所以以后完全可以使用Array作为Container
 //但是typealias Container = Array也是不错的
-extension Array: Container {}
+extension Array: Container &#123;&#125;
 
 //将约束添加到关联类型
 //如果这样定义,得像下面这样搞
 //struct Stack1&lt;Element: Equatable&gt;: Container
-protocol Container1 {
+protocol Container1 &#123;
     associatedtype Item: Equatable
     mutating func append(_ item: Item)
-    var count: Int { get }
-    subscript(i: Int) -&gt; Item { get }
-}
+    var count: Int &#123; get &#125;
+    subscript(i: Int) -&gt; Item &#123; get &#125;
+&#125;
 
 //在关联类型的约束中使用协议
 //这个JB关系有点乱,有木有...
 //儿子有一个家,爹有一个家,儿子从爹那继承过来的家跟自己成立的家必须是一个家,不能搞分家...
 //大概就是这样了....
-protocol SuffixableContainer: Container {
+protocol SuffixableContainer: Container &#123;
     associatedtype Suffix: SuffixableContainer where Suffix.Item == Item
     func suffix(_ size: Int) -&gt; Suffix
-}
+&#125;
 
-extension Stack1: SuffixableContainer {
-    func suffix(_ size: Int) -&gt; Stack1 {
+extension Stack1: SuffixableContainer &#123;
+    func suffix(_ size: Int) -&gt; Stack1 &#123;
         var result = Stack1()
         //max是用来防止程序崩溃的,🙂
-        for index in max((count-size), 0)..&lt;count {
+        for index in max((count-size), 0)..&lt;count &#123;
             result.append(self[index])
-        }
+        &#125;
         return result
-    }
+    &#125;
     // Inferred that Suffix is Stack.
-}
+&#125;
 
 var stackOfInts = Stack1&lt;Int&gt;()
 stackOfInts.append(10)
@@ -1108,20 +1189,20 @@ let suffix = stackOfInts.suffix(3)
 //Generic Where Clauses(通用条款)
 //泛型条件约束吧... where
 
-func allItemsMatch&lt;C1: Container, C2: Container&gt;(_ someContainer: C1, _ anotherContainer: C2) -&gt; Bool where C1.Item == C2.Item, C1.Item: Equatable {
+func allItemsMatch&lt;C1: Container, C2: Container&gt;(_ someContainer: C1, _ anotherContainer: C2) -&gt; Bool where C1.Item == C2.Item, C1.Item: Equatable &#123;
     // Check that both containers contain the same number of items.
-    if someContainer.count != anotherContainer.count {
+    if someContainer.count != anotherContainer.count &#123;
         return false
-    }
-    // Check each pair of items to see if they&apos;re equivalent.
-    for i in 0..&lt;someContainer.count {
-        if someContainer[i] != anotherContainer[i] {
+    &#125;
+    // Check each pair of items to see if they&#39;re equivalent.
+    for i in 0..&lt;someContainer.count &#123;
+        if someContainer[i] != anotherContainer[i] &#123;
             return false
-        }
-    }
+        &#125;
+    &#125;
     // All items match, so return true.
     return true
-}
+&#125;
 
 var stackOfStrings = Stack1&lt;String&gt;()
 stackOfStrings.push(&quot;uno&quot;)
@@ -1130,77 +1211,79 @@ stackOfStrings.push(&quot;tres&quot;)
 
 var arrayOfStrings = [&quot;uno&quot;, &quot;dos&quot;, &quot;tres&quot;]
 
-if allItemsMatch(stackOfStrings, arrayOfStrings) {
+if allItemsMatch(stackOfStrings, arrayOfStrings) &#123;
     print(&quot;All items match.&quot;)
-} else {
+&#125; else &#123;
     print(&quot;Not all items match.&quot;)
-}
+&#125;
 
-extension Stack1 where Element: Equatable {
-    func isTop(_ item: Element) -&gt; Bool {
-        guard let last = items.last else {
+extension Stack1 where Element: Equatable &#123;
+    func isTop(_ item: Element) -&gt; Bool &#123;
+        guard let last = items.last else &#123;
             return false
-        }
+        &#125;
         return item == last
-    }
-}
+    &#125;
+&#125;
 //如果将没有遵守Equatable用于该方法,会报错
-if stackOfStrings.isTop(&quot;tres&quot;) {
+if stackOfStrings.isTop(&quot;tres&quot;) &#123;
     print(&quot;Top element is tres.&quot;)
-} else {
+&#125; else &#123;
     print(&quot;Top element is something else.&quot;)
-}
+&#125;
 
 //上面where扩展类型,下面where扩展协议,这TM就比较6了...
-extension Container where Item: Equatable {
-    func startsWith(_ item: Item) -&gt; Bool {
+extension Container where Item: Equatable &#123;
+    func startsWith(_ item: Item) -&gt; Bool &#123;
         return count &gt;= 1 &amp;&amp; self[0] == item
-    }
-}
-if [9, 9, 9].startsWith(42) {
+    &#125;
+&#125;
+if [9, 9, 9].startsWith(42) &#123;
     print(&quot;Starts with 42.&quot;)
-} else {
+&#125; else &#123;
     print(&quot;Starts with something else.&quot;)
-}
+&#125;
 
 //Item是特定类型的where子句
-extension Container where Item == Double {
-    func average() -&gt; Double {
+extension Container where Item == Double &#123;
+    func average() -&gt; Double &#123;
         var sum = 0.0
-        for index in 0..&lt;count {
+        for index in 0..&lt;count &#123;
             sum += self[index]
-        }
+        &#125;
         return sum / Double(count)
-    }
-}
+    &#125;
+&#125;
 print([1260.0, 1200.0, 98.6, 37.0].average())
 
 
 //关联类型和泛型子句
-protocol Container2 {
+protocol Container2 &#123;
     associatedtype Item
     mutating func append(_ item: Item)
-    var count: Int { get }
-    subscript(i: Int) -&gt; Item { get }
-
+    var count: Int &#123; get &#125;
+    subscript(i: Int) -&gt; Item &#123; get &#125;
+    
     associatedtype Iterator: IteratorProtocol where Iterator.Element == Item
-
+    
     func makeIterator() -&gt; Iterator
-}
+&#125;
 
-protocol ComparableContainer: Container2 where Item: Comparable {}
+protocol ComparableContainer: Container2 where Item: Comparable &#123;&#125;
 
 //泛型下标
-extension Container2 {
+extension Container2 &#123;
     subscript&lt;Indices: Sequence&gt;(indices: Indices) -&gt; [Item]
-        where Indices.Iterator.Element == Int {
+        where Indices.Iterator.Element == Int &#123;
             var result = [Item]()
-            for index in indices {
+            for index in indices &#123;
                 result.append(self[index])
-            }
+            &#125;
             return result
-    }
-}</code></pre><p>真是烧脑的玩意……</p>
+    &#125;
+&#125;
+</code></pre>
+<p>真是烧脑的玩意……</p>
 <p><strong>–EOF–</strong></p>
 <!--kg-card-end: markdown-->
 
@@ -1304,7 +1387,7 @@ extension Container2 {
 </ul>
 <h3 id="Clang"><a href="#Clang" class="headerlink" title="Clang"></a>Clang</h3><ul>
 <li>LLVM一个子项目</li>
-<li>基于LVVM架构的C/C++/Objective-C编译器前端</li>
+<li>基于LVVM架构的C&#x2F;C++&#x2F;Objective-C编译器前端</li>
 </ul>
 <p>优点:</p>
 <ul>
@@ -1333,17 +1416,19 @@ extension Container2 {
 </blockquote>
 <pre><code>➜ TestSwift clang -ccc-print-phases main.swift
 0: input, &quot;main.swift&quot;, object
-1: linker, {0}, image
-2: bind-arch, &quot;x86_64&quot;, {1}, image
+1: linker, &#123;0&#125;, image
+2: bind-arch, &quot;x86_64&quot;, &#123;1&#125;, image
 
 ➜ TestOC clang -ccc-print-phases main.m
 0: input, &quot;main.m&quot;, objective-c
-1: preprocessor, {0}, objective-c-cpp-output
-2: compiler, {1}, ir
-3: backend, {2}, assembler
-4: assembler, {3}, object
-5: linker, {4}, image
-6: bind-arch, &quot;x86_64&quot;, {5}, image</code></pre><blockquote>
+1: preprocessor, &#123;0&#125;, objective-c-cpp-output
+2: compiler, &#123;1&#125;, ir
+3: backend, &#123;2&#125;, assembler
+4: assembler, &#123;3&#125;, object
+5: linker, &#123;4&#125;, image
+6: bind-arch, &quot;x86_64&quot;, &#123;5&#125;, image
+</code></pre>
+<blockquote>
 <p>Swift比OC少了4个编译阶段呐,有木有…</p>
 </blockquote>
 <h3 id="查看preprocessor-预处理-的结果"><a href="#查看preprocessor-预处理-的结果" class="headerlink" title="查看preprocessor(预处理)的结果"></a>查看preprocessor(预处理)的结果</h3><blockquote>
@@ -1353,19 +1438,19 @@ extension Container2 {
 print(&quot;Hello World&quot;)
 //预处理输出
 ➜ TestSwift clang -E main.swift
-clang: warning: main.swift: &apos;linker&apos; input unused [-Wunused-command-line-argument]
+clang: warning: main.swift: &#39;linker&#39; input unused [-Wunused-command-line-argument]
 
 //源文件
 #define AGE 10
 
-int main(int argc, const char * argv[]) {
-
+int main(int argc, const char * argv[]) &#123;
+    
     int a = 10;
     int b = 20;
     int c = a + b + AGE;
-
+    
     return 0;
-}
+&#125;
 //预处理输出
 ➜ TestOC clang -E main.m
 # 1 &quot;main.m&quot;
@@ -1376,130 +1461,136 @@ int main(int argc, const char * argv[]) {
 # 1 &quot;&lt;built-in&gt;&quot; 2
 # 1 &quot;main.m&quot; 2
 # 11 &quot;main.m&quot;
-int main(int argc, const char * argv[]) {
+int main(int argc, const char * argv[]) &#123;
 
     int a = 10;
     int b = 20;
     int c = a + b + 10;
 
     return 0;
-}</code></pre><h2 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h2><ul>
+&#125;
+</code></pre>
+<h2 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h2><ul>
 <li>词法分析,生成Token(类似英语中主语,谓语,宾语,宾补…)</li>
 </ul>
 <blockquote>
 <p>clang -fmodules -E -Xclang -dump-tokens main.m</p>
 </blockquote>
 <pre><code>➜ TestSwift clang -fmodules -E -Xclang -dump-tokens main.swift
-clang: warning: main.swift: &apos;linker&apos; input unused [-Wunused-command-line-argument]
-clang: warning: argument unused during compilation: &apos;-fmodules&apos; [-Wunused-command-line-argument]
-clang: warning: argument unused during compilation: &apos;-Xclang -dump-tokens&apos; [-Wunused-command-line-argument]
+clang: warning: main.swift: &#39;linker&#39; input unused [-Wunused-command-line-argument]
+clang: warning: argument unused during compilation: &#39;-fmodules&#39; [-Wunused-command-line-argument]
+clang: warning: argument unused during compilation: &#39;-Xclang -dump-tokens&#39; [-Wunused-command-line-argument]
 
 ➜ TestOC clang -fmodules -E -Xclang -dump-tokens main.m
-int &apos;int&apos; [StartOfLine]    Loc=&lt;main.m:11:1&gt;
-identifier &apos;main&apos; [LeadingSpace]    Loc=&lt;main.m:11:5&gt;
-l_paren &apos;(&apos; Loc=&lt;main.m:11:9&gt;
-int &apos;int&apos; Loc=&lt;main.m:11:10&gt;
-identifier &apos;argc&apos; [LeadingSpace]    Loc=&lt;main.m:11:14&gt;
-comma &apos;,&apos; Loc=&lt;main.m:11:18&gt;
-const &apos;const&apos; [LeadingSpace]    Loc=&lt;main.m:11:20&gt;
-char &apos;char&apos; [LeadingSpace]    Loc=&lt;main.m:11:26&gt;
-star &apos;*&apos; [LeadingSpace]    Loc=&lt;main.m:11:31&gt;
-identifier &apos;argv&apos; [LeadingSpace]    Loc=&lt;main.m:11:33&gt;
-l_square &apos;[&apos; Loc=&lt;main.m:11:37&gt;
-r_square &apos;]&apos; Loc=&lt;main.m:11:38&gt;
-r_paren &apos;)&apos; Loc=&lt;main.m:11:39&gt;
-l_brace &apos;{&apos; [LeadingSpace]    Loc=&lt;main.m:11:41&gt;
-int &apos;int&apos; [StartOfLine] [LeadingSpace]    Loc=&lt;main.m:13:5&gt;
-identifier &apos;a&apos; [LeadingSpace]    Loc=&lt;main.m:13:9&gt;
-equal &apos;=&apos; [LeadingSpace]    Loc=&lt;main.m:13:11&gt;
-numeric_constant &apos;10&apos; [LeadingSpace]    Loc=&lt;main.m:13:13&gt;
-semi &apos;;&apos; Loc=&lt;main.m:13:15&gt;
-int &apos;int&apos; [StartOfLine] [LeadingSpace]    Loc=&lt;main.m:14:5&gt;
-identifier &apos;b&apos; [LeadingSpace]    Loc=&lt;main.m:14:9&gt;
-equal &apos;=&apos; [LeadingSpace]    Loc=&lt;main.m:14:11&gt;
-numeric_constant &apos;20&apos; [LeadingSpace]    Loc=&lt;main.m:14:13&gt;
-semi &apos;;&apos; Loc=&lt;main.m:14:15&gt;
-int &apos;int&apos; [StartOfLine] [LeadingSpace]    Loc=&lt;main.m:15:5&gt;
-identifier &apos;c&apos; [LeadingSpace]    Loc=&lt;main.m:15:9&gt;
-equal &apos;=&apos; [LeadingSpace]    Loc=&lt;main.m:15:11&gt;
-identifier &apos;a&apos; [LeadingSpace]    Loc=&lt;main.m:15:13&gt;
-plus &apos;+&apos; [LeadingSpace]    Loc=&lt;main.m:15:15&gt;
-identifier &apos;b&apos; [LeadingSpace]    Loc=&lt;main.m:15:17&gt;
-plus &apos;+&apos; [LeadingSpace]    Loc=&lt;main.m:15:19&gt;
-numeric_constant &apos;10&apos; [LeadingSpace]    Loc=&lt;main.m:15:21 &lt;Spelling=main.m:9:13&gt;&gt;
-semi &apos;;&apos; Loc=&lt;main.m:15:24&gt;
-return &apos;return&apos; [StartOfLine] [LeadingSpace]    Loc=&lt;main.m:17:5&gt;
-numeric_constant &apos;0&apos; [LeadingSpace]    Loc=&lt;main.m:17:12&gt;
-semi &apos;;&apos; Loc=&lt;main.m:17:13&gt;
-r_brace &apos;}&apos; [StartOfLine]    Loc=&lt;main.m:18:1&gt;
-eof &apos;&apos; Loc=&lt;main.m:18:2&gt;</code></pre><h2 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h2><ul>
+int &#39;int&#39; [StartOfLine]	Loc=&lt;main.m:11:1&gt;
+identifier &#39;main&#39; [LeadingSpace]	Loc=&lt;main.m:11:5&gt;
+l_paren &#39;(&#39; Loc=&lt;main.m:11:9&gt;
+int &#39;int&#39; Loc=&lt;main.m:11:10&gt;
+identifier &#39;argc&#39; [LeadingSpace]	Loc=&lt;main.m:11:14&gt;
+comma &#39;,&#39; Loc=&lt;main.m:11:18&gt;
+const &#39;const&#39; [LeadingSpace]	Loc=&lt;main.m:11:20&gt;
+char &#39;char&#39; [LeadingSpace]	Loc=&lt;main.m:11:26&gt;
+star &#39;*&#39; [LeadingSpace]	Loc=&lt;main.m:11:31&gt;
+identifier &#39;argv&#39; [LeadingSpace]	Loc=&lt;main.m:11:33&gt;
+l_square &#39;[&#39; Loc=&lt;main.m:11:37&gt;
+r_square &#39;]&#39; Loc=&lt;main.m:11:38&gt;
+r_paren &#39;)&#39; Loc=&lt;main.m:11:39&gt;
+l_brace &#39;&#123;&#39; [LeadingSpace]	Loc=&lt;main.m:11:41&gt;
+int &#39;int&#39; [StartOfLine] [LeadingSpace]	Loc=&lt;main.m:13:5&gt;
+identifier &#39;a&#39; [LeadingSpace]	Loc=&lt;main.m:13:9&gt;
+equal &#39;=&#39; [LeadingSpace]	Loc=&lt;main.m:13:11&gt;
+numeric_constant &#39;10&#39; [LeadingSpace]	Loc=&lt;main.m:13:13&gt;
+semi &#39;;&#39; Loc=&lt;main.m:13:15&gt;
+int &#39;int&#39; [StartOfLine] [LeadingSpace]	Loc=&lt;main.m:14:5&gt;
+identifier &#39;b&#39; [LeadingSpace]	Loc=&lt;main.m:14:9&gt;
+equal &#39;=&#39; [LeadingSpace]	Loc=&lt;main.m:14:11&gt;
+numeric_constant &#39;20&#39; [LeadingSpace]	Loc=&lt;main.m:14:13&gt;
+semi &#39;;&#39; Loc=&lt;main.m:14:15&gt;
+int &#39;int&#39; [StartOfLine] [LeadingSpace]	Loc=&lt;main.m:15:5&gt;
+identifier &#39;c&#39; [LeadingSpace]	Loc=&lt;main.m:15:9&gt;
+equal &#39;=&#39; [LeadingSpace]	Loc=&lt;main.m:15:11&gt;
+identifier &#39;a&#39; [LeadingSpace]	Loc=&lt;main.m:15:13&gt;
+plus &#39;+&#39; [LeadingSpace]	Loc=&lt;main.m:15:15&gt;
+identifier &#39;b&#39; [LeadingSpace]	Loc=&lt;main.m:15:17&gt;
+plus &#39;+&#39; [LeadingSpace]	Loc=&lt;main.m:15:19&gt;
+numeric_constant &#39;10&#39; [LeadingSpace]	Loc=&lt;main.m:15:21 &lt;Spelling=main.m:9:13&gt;&gt;
+semi &#39;;&#39; Loc=&lt;main.m:15:24&gt;
+return &#39;return&#39; [StartOfLine] [LeadingSpace]	Loc=&lt;main.m:17:5&gt;
+numeric_constant &#39;0&#39; [LeadingSpace]	Loc=&lt;main.m:17:12&gt;
+semi &#39;;&#39; Loc=&lt;main.m:17:13&gt;
+r_brace &#39;&#125;&#39; [StartOfLine]	Loc=&lt;main.m:18:1&gt;
+eof &#39;&#39; Loc=&lt;main.m:18:2&gt;
+</code></pre>
+<h2 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h2><ul>
 <li>语法分析,生成语法树(AST, Abstract Syntax Tree)</li>
 </ul>
 <blockquote>
 <p>clang -fmodules -fsyntax-only -Xclang -ast-dump main.m</p>
 </blockquote>
 <pre><code>➜ Test clang -fmodules -fsyntax-only -Xclang -ast-dump main.swift
-clang: warning: main.swift: &apos;linker&apos; input unused [-Wunused-command-line-argument]
-clang: warning: argument unused during compilation: &apos;-fmodules&apos; [-Wunused-command-line-argument]
-clang: warning: argument unused during compilation: &apos;-Xclang -ast-dump&apos; [-Wunused-command-line-argument]
+clang: warning: main.swift: &#39;linker&#39; input unused [-Wunused-command-line-argument]
+clang: warning: argument unused during compilation: &#39;-fmodules&#39; [-Wunused-command-line-argument]
+clang: warning: argument unused during compilation: &#39;-Xclang -ast-dump&#39; [-Wunused-command-line-argument]
 
 ➜ TestOC clang -fmodules -fsyntax-only -Xclang -ast-dump main.m
 TranslationUnitDecl 0x7ff3730298e8 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt;
-|-TypedefDecl 0x7ff373029e60 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit __int128_t &apos;__ int128&apos;
-| `-BuiltinType 0x7ff373029b80 &apos;__int128&apos;
-|-TypedefDecl 0x7ff373029ed0 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit __uint128_t &apos;unsigned__ int128&apos;
-| `-BuiltinType 0x7ff373029ba0 &apos;unsigned __int128&apos;
-|-TypedefDecl 0x7ff373029f70 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit SEL &apos;SEL *&apos;
-| `-PointerType 0x7ff373029f30 &apos;SEL *&apos;
-| `-BuiltinType 0x7ff373029dc0 &apos;SEL&apos;
-|-TypedefDecl 0x7ff37302a058 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit id &apos;id&apos;
-| `-ObjCObjectPointerType 0x7ff37302a000 &apos;id&apos;
-| `-ObjCObjectType 0x7ff373029fd0 &apos;id&apos;
-|-TypedefDecl 0x7ff37302a138 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit Class &apos;Class&apos;
-| `-ObjCObjectPointerType 0x7ff37302a0e0 &apos;Class&apos;
-| `-ObjCObjectType 0x7ff37302a0b0 &apos;Class&apos;
+|-TypedefDecl 0x7ff373029e60 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit __int128_t &#39;__ int128&#39;
+| `-BuiltinType 0x7ff373029b80 &#39;__int128&#39;
+|-TypedefDecl 0x7ff373029ed0 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit __uint128_t &#39;unsigned__ int128&#39;
+| `-BuiltinType 0x7ff373029ba0 &#39;unsigned __int128&#39;
+|-TypedefDecl 0x7ff373029f70 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit SEL &#39;SEL *&#39;
+| `-PointerType 0x7ff373029f30 &#39;SEL *&#39;
+| `-BuiltinType 0x7ff373029dc0 &#39;SEL&#39;
+|-TypedefDecl 0x7ff37302a058 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit id &#39;id&#39;
+| `-ObjCObjectPointerType 0x7ff37302a000 &#39;id&#39;
+| `-ObjCObjectType 0x7ff373029fd0 &#39;id&#39;
+|-TypedefDecl 0x7ff37302a138 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit Class &#39;Class&#39;
+| `-ObjCObjectPointerType 0x7ff37302a0e0 &#39;Class&#39;
+| `-ObjCObjectType 0x7ff37302a0b0 &#39;Class&#39;
 |-ObjCInterfaceDecl 0x7ff37302a190 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit Protocol
-|-TypedefDecl 0x7ff37302a4f8 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit __NSConstantString &apos;struct__ NSConstantString_tag&apos;
-| `-RecordType 0x7ff37302a300 &apos;struct __NSConstantString_tag&apos;
-| `-Record 0x7ff37302a260 &apos;__NSConstantString_tag&apos;
-|-TypedefDecl 0x7ff37302a590 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit __builtin_ms_va_list &apos;char *&apos;
-| `-PointerType 0x7ff37302a550 &apos;char *&apos;
-| `-BuiltinType 0x7ff373029980 &apos;char&apos;
-|-TypedefDecl 0x7ff373062488 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit __builtin_va_list &apos;struct__ va_list_tag [1]&apos;
-| `-ConstantArrayType 0x7ff373062430 &apos;struct __va_list_tag [1]&apos; 1
-| `-RecordType 0x7ff3730622a0 &apos;struct __va_list_tag&apos;
-| `-Record 0x7ff373062200 &apos;__va_list_tag&apos;
-`-FunctionDecl 0x7ff373062758 &lt;main.m:11:1, line:18:1&gt; line:11:5 main &apos;int (int, const char **)&apos;
-  |-ParmVarDecl 0x7ff3730624f8 &lt;col:10, col:14&gt; col:14 argc &apos;int&apos;
-  |-ParmVarDecl 0x7ff373062610 &lt;col:20, col:38&gt; col:33 argv &apos;const char **&apos;:&apos;const char**&apos;
+|-TypedefDecl 0x7ff37302a4f8 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit __NSConstantString &#39;struct__ NSConstantString_tag&#39;
+| `-RecordType 0x7ff37302a300 &#39;struct __NSConstantString_tag&#39;
+| `-Record 0x7ff37302a260 &#39;__NSConstantString_tag&#39;
+|-TypedefDecl 0x7ff37302a590 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit __builtin_ms_va_list &#39;char *&#39;
+| `-PointerType 0x7ff37302a550 &#39;char *&#39;
+| `-BuiltinType 0x7ff373029980 &#39;char&#39;
+|-TypedefDecl 0x7ff373062488 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit __builtin_va_list &#39;struct__ va_list_tag [1]&#39;
+| `-ConstantArrayType 0x7ff373062430 &#39;struct __va_list_tag [1]&#39; 1
+| `-RecordType 0x7ff3730622a0 &#39;struct __va_list_tag&#39;
+| `-Record 0x7ff373062200 &#39;__va_list_tag&#39;
+`-FunctionDecl 0x7ff373062758 &lt;main.m:11:1, line:18:1&gt; line:11:5 main &#39;int (int, const char **)&#39;
+  |-ParmVarDecl 0x7ff3730624f8 &lt;col:10, col:14&gt; col:14 argc &#39;int&#39;
+  |-ParmVarDecl 0x7ff373062610 &lt;col:20, col:38&gt; col:33 argv &#39;const char **&#39;:&#39;const char**&#39;
   `-CompoundStmt 0x7ff373062bd8 &lt;col:41, line:18:1&gt;
     |-DeclStmt 0x7ff373062928 &lt;line:13:5, col:15&gt;
-    | `-VarDecl 0x7ff3730628a8 &lt;col:5, col:13&gt; col:9 used a &apos;int&apos; cinit
-    | `-IntegerLiteral 0x7ff373062908 &lt;col:13&gt; &apos;int&apos; 10
+    | `-VarDecl 0x7ff3730628a8 &lt;col:5, col:13&gt; col:9 used a &#39;int&#39; cinit
+    | `-IntegerLiteral 0x7ff373062908 &lt;col:13&gt; &#39;int&#39; 10
     |-DeclStmt 0x7ff3730629d8 &lt;line:14:5, col:15&gt;
-    | `-VarDecl 0x7ff373062958 &lt;col:5, col:13&gt; col:9 used b &apos;int&apos; cinit
-    | `-IntegerLiteral 0x7ff3730629b8 &lt;col:13&gt; &apos;int&apos; 20
+    | `-VarDecl 0x7ff373062958 &lt;col:5, col:13&gt; col:9 used b &#39;int&#39; cinit
+    | `-IntegerLiteral 0x7ff3730629b8 &lt;col:13&gt; &#39;int&#39; 20
     |-DeclStmt 0x7ff373062b88 &lt;line:15:5, col:24&gt;
-    | `-VarDecl 0x7ff373062a08 &lt;col:5, line:9:13&gt; line:15:9 c &apos;int&apos; cinit
-    | `-BinaryOperator 0x7ff373062b60 &lt;col:13, line:9:13&gt; &apos;int&apos; &apos;+&apos;
-    | |-BinaryOperator 0x7ff373062b18 &lt;line:15:13, col:17&gt; &apos;int&apos; &apos;+&apos;
-    | | |-ImplicitCastExpr 0x7ff373062ae8 &lt;col:13&gt; &apos;int&apos; &lt;LValueToRValue&gt;
-    | | | `-DeclRefExpr 0x7ff373062a68 &lt;col:13&gt; &apos;int&apos; lvalue Var 0x7ff3730628a8 &apos;a&apos; &apos;int&apos;
-    | | `-ImplicitCastExpr 0x7ff373062b00 &lt;col:17&gt; &apos;int&apos; &lt;LValueToRValue&gt;
-    | | `-DeclRefExpr 0x7ff373062aa8 &lt;col:17&gt; &apos;int&apos; lvalue Var 0x7ff373062958 &apos;b&apos; &apos;int&apos;
-    | `-IntegerLiteral 0x7ff373062b40 &lt;line:9:13&gt; &apos;int&apos; 10
+    | `-VarDecl 0x7ff373062a08 &lt;col:5, line:9:13&gt; line:15:9 c &#39;int&#39; cinit
+    | `-BinaryOperator 0x7ff373062b60 &lt;col:13, line:9:13&gt; &#39;int&#39; &#39;+&#39;
+    | |-BinaryOperator 0x7ff373062b18 &lt;line:15:13, col:17&gt; &#39;int&#39; &#39;+&#39;
+    | | |-ImplicitCastExpr 0x7ff373062ae8 &lt;col:13&gt; &#39;int&#39; &lt;LValueToRValue&gt;
+    | | | `-DeclRefExpr 0x7ff373062a68 &lt;col:13&gt; &#39;int&#39; lvalue Var 0x7ff3730628a8 &#39;a&#39; &#39;int&#39;
+    | | `-ImplicitCastExpr 0x7ff373062b00 &lt;col:17&gt; &#39;int&#39; &lt;LValueToRValue&gt;
+    | | `-DeclRefExpr 0x7ff373062aa8 &lt;col:17&gt; &#39;int&#39; lvalue Var 0x7ff373062958 &#39;b&#39; &#39;int&#39;
+    | `-IntegerLiteral 0x7ff373062b40 &lt;line:9:13&gt; &#39;int&#39; 10
     `-ReturnStmt 0x7ff373062bc0 &lt;line:17:5, col:12&gt;
-      `-IntegerLiteral 0x7ff373062ba0 &lt;col:12&gt; &apos;int&apos; 0</code></pre><h2 id="LLVM-IR"><a href="#LLVM-IR" class="headerlink" title="LLVM IR"></a>LLVM IR</h2><p>LLVM IR有三种表示形式(本质等价,好比水的气态,液态,固态)</p>
+      `-IntegerLiteral 0x7ff373062ba0 &lt;col:12&gt; &#39;int&#39; 0
+</code></pre>
+<h2 id="LLVM-IR"><a href="#LLVM-IR" class="headerlink" title="LLVM IR"></a>LLVM IR</h2><p>LLVM IR有三种表示形式(本质等价,好比水的气态,液态,固态)</p>
 <p>1.text: 便于阅读的文本格式,类似于汇编语言,扩展名<code>.ll</code></p>
 <pre><code>&gt; clang -S -emit-llvm main.m
 
-; ModuleID = &apos;main.m&apos;
+; ModuleID = &#39;main.m&#39;
 source_filename = &quot;main.m&quot;
 target datalayout = &quot;e-m:o-i64:64-f80:128-n8:16:32:64-S128&quot;
 target triple = &quot;x86_64-apple-macosx10.14.0&quot;
 
 ; Function Attrs: noinline nounwind optnone ssp uwtable
-define i32 @main(i32, i8**) #0 {
+define i32 @main(i32, i8**) #0 &#123;
   %3 = alloca i32, align 4
   %4 = alloca i32, align 4
   %5 = alloca i8**, align 8
@@ -1517,22 +1608,24 @@ define i32 @main(i32, i8**) #0 {
   %12 = add nsw i32 %11, 10
   store i32 %12, i32* %8, align 4
   ret i32 0
-}
+&#125;
 
-attributes #0 = { noinline nounwind optnone ssp uwtable &quot;correctly-rounded-divide-sqrt-fp-math&quot;=&quot;false&quot; &quot;disable-tail-calls&quot;=&quot;false&quot; &quot;less-precise-fpmad&quot;=&quot;false&quot; &quot;no-frame-pointer-elim&quot;=&quot;true&quot; &quot;no-frame-pointer-elim-non-leaf&quot; &quot;no-infs-fp-math&quot;=&quot;false&quot; &quot;no-jump-tables&quot;=&quot;false&quot; &quot;no-nans-fp-math&quot;=&quot;false&quot; &quot;no-signed-zeros-fp-math&quot;=&quot;false&quot; &quot;no-trapping-math&quot;=&quot;false&quot; &quot;stack-protector-buffer-size&quot;=&quot;8&quot; &quot;target-cpu&quot;=&quot;penryn&quot; &quot;target-features&quot;=&quot;+cx16,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87&quot; &quot;unsafe-fp-math&quot;=&quot;false&quot; &quot;use-soft-float&quot;=&quot;false&quot; }
+attributes #0 = &#123; noinline nounwind optnone ssp uwtable &quot;correctly-rounded-divide-sqrt-fp-math&quot;=&quot;false&quot; &quot;disable-tail-calls&quot;=&quot;false&quot; &quot;less-precise-fpmad&quot;=&quot;false&quot; &quot;no-frame-pointer-elim&quot;=&quot;true&quot; &quot;no-frame-pointer-elim-non-leaf&quot; &quot;no-infs-fp-math&quot;=&quot;false&quot; &quot;no-jump-tables&quot;=&quot;false&quot; &quot;no-nans-fp-math&quot;=&quot;false&quot; &quot;no-signed-zeros-fp-math&quot;=&quot;false&quot; &quot;no-trapping-math&quot;=&quot;false&quot; &quot;stack-protector-buffer-size&quot;=&quot;8&quot; &quot;target-cpu&quot;=&quot;penryn&quot; &quot;target-features&quot;=&quot;+cx16,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87&quot; &quot;unsafe-fp-math&quot;=&quot;false&quot; &quot;use-soft-float&quot;=&quot;false&quot; &#125;
 
-!llvm.module.flags = !{!0, !1, !2, !3, !4, !5, !6}
-!llvm.ident = !{!7}
+!llvm.module.flags = !&#123;!0, !1, !2, !3, !4, !5, !6&#125;
+!llvm.ident = !&#123;!7&#125;
 
-!0 = !{i32 1, !&quot;Objective-C Version&quot;, i32 2}
-!1 = !{i32 1, !&quot;Objective-C Image Info Version&quot;, i32 0}
-!2 = !{i32 1, !&quot;Objective-C Image Info Section&quot;, !&quot; __DATA,__ objc_imageinfo,regular,no_dead_strip&quot;}
-!3 = !{i32 4, !&quot;Objective-C Garbage Collection&quot;, i32 0}
-!4 = !{i32 1, !&quot;Objective-C Class Properties&quot;, i32 64}
-!5 = !{i32 1, !&quot;wchar_size&quot;, i32 4}
-!6 = !{i32 7, !&quot;PIC Level&quot;, i32 2}
-!7 = !{!&quot;Apple LLVM version 10.0.0 (clang-1000.11.45.2)&quot;}
-//什么鬼东西</code></pre><p>2.memory: 内存格式<br>3.bitcode: 二进制格式,扩展名<code>.bc</code></p>
+!0 = !&#123;i32 1, !&quot;Objective-C Version&quot;, i32 2&#125;
+!1 = !&#123;i32 1, !&quot;Objective-C Image Info Version&quot;, i32 0&#125;
+!2 = !&#123;i32 1, !&quot;Objective-C Image Info Section&quot;, !&quot; __DATA,__ objc_imageinfo,regular,no_dead_strip&quot;&#125;
+!3 = !&#123;i32 4, !&quot;Objective-C Garbage Collection&quot;, i32 0&#125;
+!4 = !&#123;i32 1, !&quot;Objective-C Class Properties&quot;, i32 64&#125;
+!5 = !&#123;i32 1, !&quot;wchar_size&quot;, i32 4&#125;
+!6 = !&#123;i32 7, !&quot;PIC Level&quot;, i32 2&#125;
+!7 = !&#123;!&quot;Apple LLVM version 10.0.0 (clang-1000.11.45.2)&quot;&#125;
+//什么鬼东西
+</code></pre>
+<p>2.memory: 内存格式<br>3.bitcode: 二进制格式,扩展名<code>.bc</code></p>
 <blockquote>
 <p>clang -c -emit-llvm main.m</p>
 </blockquote>
@@ -1763,183 +1856,6 @@ attributes #0 = { noinline nounwind optnone ssp uwtable &quot;correctly-rounded-
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/enum-express-tableview-datasource/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Optional">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Optional Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/enum-express-tableview-datasource/" class="post-title-link" itemprop="url">Enum表示TableView的数据源</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-05-29 14:24:00" itemprop="dateCreated datePublished" datetime="2018-05-29T14:24:00+00:00">2018-05-29</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="kg-card kg-image-card"><img data-src="https://img.hacpai.com/bing/20180330.jpg?imageView2/1/w/960/h/520/interlace/1/q/100" class="kg-image"></figure><!--kg-card-end: image--><!--kg-card-begin: code-->
-
-<pre><code>//
-// SettingTableViewController.swift
-
-
-import UIKit
-
-protocol SettingViewControllerDelegate: class {
-    func controllerDidChangeDateMode(controller: SettingTableViewController)
-    func controllerDidChangeTemperatureMode(controller: SettingTableViewController)
-}
-
-class SettingTableViewController: UITableViewController {
-
-    weak var changeDelegate: SettingViewControllerDelegate?
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.rowHeight = 44
-    }
-}
-
-extension SettingTableViewController {
-    private enum Section: Int {
-        case date
-        case temperature
-
-        var numberOfRows: Int {
-            return 2
-        }
-
-        static var count: Int {
-            return Section.temperature.rawValue + 1
-        }
-    }
-
-    override func numberOfSections(in tableView: UITableView) -&gt; Int {
-        return Section.count
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int {
-        guard let section = Section(rawValue: section) else {
-            fatalError(&quot;未知section索引&quot;)
-        }
-        return section.numberOfRows
-    }
-
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -&gt; String? {
-        if section == 0 {
-            return &quot;Date format&quot;
-        }
-        return &quot;Temperature unit&quot;
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.reuseIdentifier, for: indexPath) as? SettingTableViewCell else {
-            fatalError(&quot;未知的tableViewCell&quot;)
-        }
-        guard let section = Section(rawValue: indexPath.section) else {
-            fatalError(&quot;未知的section&quot;)
-        }
-        switch section {
-        case .date:
-            cell.label.text = (indexPath.row == 0) ? &quot;Fri, 01 December&quot; : &quot;F, 12/01&quot;
-            let timeMode = UserDefaults.dateMode()
-            if indexPath.row == timeMode.rawValue {
-                cell.accessoryType = .checkmark
-            } else {
-                cell.accessoryType = .none
-            }
-        case .temperature:
-            cell.label.text = (indexPath.row == 0) ? &quot;Celcius&quot; : &quot;Fahrenheit&quot;
-            let temperatureMode = UserDefaults.temperatureMode()
-            if indexPath.row == temperatureMode.rawValue {
-                cell.accessoryType = .checkmark
-            } else {
-                cell.accessoryType = .none
-            }
-        }
-        return cell
-    }
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        guard let section = Section(rawValue: indexPath.section) else {
-            fatalError(&quot;未知的section索引&quot;)
-        }
-        switch section {
-            case .date:
-                let dateMode = UserDefaults.dateMode()
-                guard indexPath.row != dateMode.rawValue else { return }
-                if let newMode = DateMode(rawValue: indexPath.row) {
-                    UserDefaults.setDateMode(to: newMode)
-                }
-                changeDelegate?.controllerDidChangeDateMode(controller: self)
-            case .temperature:
-                let temperatureMode = UserDefaults.temperatureMode()
-                guard indexPath.row != temperatureMode.rawValue else { return }
-                if let newMode = TemperatureMode(rawValue: indexPath.row) {
-                    UserDefaults.setTemperatureMode(to: newMode)
-                }
-                changeDelegate?.controllerDidChangeTemperatureMode(controller: self)
-        }
-        let sections = IndexSet(integer: indexPath.section)
-        tableView.reloadSections(sections, with: .none)
-    }
-}</code></pre><!--kg-card-end: code-->
-
-<p>提供一种思路</p>
-<p>代码来自<a href="https://boxueio.com/" target="_blank" rel="noopener">泊学</a></p>
-<p><strong>–EOF–</strong></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2011,7 +1927,7 @@ extension SettingTableViewController {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">72</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

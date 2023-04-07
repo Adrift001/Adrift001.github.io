@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 7.0.0-rc1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -21,15 +21,15 @@
     var CONFIG = {"hostname":"jingxuetao.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="通用代码使您能够根据您定义的要求编写可以使用任何类型的灵活，可重用的函数和类型。您可以编写避免重复的代码，并以清晰，抽象的方式表达其意图。 泛型是Swift最强大的功能之一，Swift标准库的大部分内容都是使用通用代码构建的。 import Foundation  &#x2F;&#x2F;泛型函数 func swapTwoValues&lt;T&gt;(_ a: inout T, _ b: inout T) {">
+  <meta name="description" content="通用代码使您能够根据您定义的要求编写可以使用任何类型的灵活，可重用的函数和类型。您可以编写避免重复的代码，并以清晰，抽象的方式表达其意图。 泛型是Swift最强大的功能之一，Swift标准库的大部分内容都是使用通用代码构建的。 import Foundation  &#x2F;&#x2F;泛型函数 func swapTwoValues&lt;T&gt;(_ a: inout T, _ b: inout T) &amp;#">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Generics">
 <meta property="og:url" content="https://jingxuetao.com/generics/index.html">
 <meta property="og:site_name" content="Optional Blog">
-<meta property="og:description" content="通用代码使您能够根据您定义的要求编写可以使用任何类型的灵活，可重用的函数和类型。您可以编写避免重复的代码，并以清晰，抽象的方式表达其意图。 泛型是Swift最强大的功能之一，Swift标准库的大部分内容都是使用通用代码构建的。 import Foundation  &#x2F;&#x2F;泛型函数 func swapTwoValues&lt;T&gt;(_ a: inout T, _ b: inout T) {">
+<meta property="og:description" content="通用代码使您能够根据您定义的要求编写可以使用任何类型的灵活，可重用的函数和类型。您可以编写避免重复的代码，并以清晰，抽象的方式表达其意图。 泛型是Swift最强大的功能之一，Swift标准库的大部分内容都是使用通用代码构建的。 import Foundation  &#x2F;&#x2F;泛型函数 func swapTwoValues&lt;T&gt;(_ a: inout T, _ b: inout T) &amp;#">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-11-17T14:49:13.000Z">
-<meta property="article:modified_time" content="2023-01-30T05:47:17.153Z">
+<meta property="article:modified_time" content="2023-04-07T07:47:37.850Z">
 <meta property="article:author" content="Optional">
 <meta property="article:tag" content="Optional Swift">
 <meta name="twitter:card" content="summary">
@@ -263,11 +263,11 @@
 <pre><code>import Foundation
 
 //泛型函数
-func swapTwoValues&lt;T&gt;(_ a: inout T, _ b: inout T) {
+func swapTwoValues&lt;T&gt;(_ a: inout T, _ b: inout T) &#123;
     let tmp = a
     a = b
     b = tmp
-}
+&#125;
 
 var a = 1, b = 2
 print(&quot;\(a)====\(b)&quot;)
@@ -275,22 +275,22 @@ swapTwoValues(&amp;a, &amp;b)
 print(&quot;\(a)====\(b)&quot;)
 
 //泛型类型(泛型类,泛型结构体,泛型枚举),听起来挺高大上,其实就是给自定义类加个泛型
-struct Stack&lt;Element&gt; {
+struct Stack&lt;Element&gt; &#123;
     var items: [Element] = []
-    mutating func push(_ item: Element) {
+    mutating func push(_ item: Element) &#123;
         items.append(item)
-    }
-
-    mutating func pop() -&gt; Element {
+    &#125;
+    
+    mutating func pop() -&gt; Element &#123;
         return items.removeLast()
-    }
-}
+    &#125;
+&#125;
 //扩展泛型类型
-extension Stack {
-    var topItem: Element? {
+extension Stack &#123;
+    var topItem: Element? &#123;
         return items.isEmpty ? nil : items[items.count - 1]
-    }
-}
+    &#125;
+&#125;
 
 var strings = Stack&lt;String&gt;()
 strings.push(&quot;hello&quot;)
@@ -305,14 +305,14 @@ print(strings.pop())
 // (因为类型都是从传递给函数的值的类型推断出来的),除非再传一个参数,类似:
 // func findIndex1&lt;T: Equatable, S: SignedInteger&gt;(of value: T,in array: [T], _ type: S) -&gt; S?
 // 告诉一下Swift,接下来会发生什么,不然Swift心里会发慌...
-func findIndex1&lt;T: Equatable&gt;(of value: T,in array: [T]) -&gt; Int? {
-    for (i, v) in array.enumerated() {
-        if value == v {
+func findIndex1&lt;T: Equatable&gt;(of value: T,in array: [T]) -&gt; Int? &#123;
+    for (i, v) in array.enumerated() &#123;
+        if value == v &#123;
             return i
-        }
-    }
+        &#125;
+    &#125;
     return nil
-}
+&#125;
 
 let arr = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;]
 let index = findIndex1(of: &quot;a&quot;, in: arr)
@@ -321,65 +321,65 @@ print(index)
 
 //关联类型
 //协议中的泛型,实现具体类型的时候,由自己指定泛型类型为某种具体类型.
-protocol Container {
+protocol Container &#123;
     associatedtype Item
     mutating func append(_ item: Item)
-    var count: Int { get }
-    subscript(i: Int) -&gt; Item { get }
-}
+    var count: Int &#123; get &#125;
+    subscript(i: Int) -&gt; Item &#123; get &#125;
+&#125;
 
 //这里typealias item不能等于协议,例如typealias Item = Equatable
 //这样Swift就不知道`EquableStack`应该怎么分配内存了有木有...,谁TM知道`EquableStack`实现了几个协议
 //脚踏了几只船?
 //typealias Item = Int删掉也可以,可以通过append,推断出Item类型
-struct IntStack: Container {
-
-    mutating func push(_ item: Item) {
+struct IntStack: Container &#123;
+    
+    mutating func push(_ item: Item) &#123;
         items.append(item)
-    }
-
-    mutating func pop() -&gt; Item {
+    &#125;
+    
+    mutating func pop() -&gt; Item &#123;
         return items.removeLast()
-    }
-
+    &#125;
+    
     typealias Item = Int
     var items: [Item] = []
-    mutating func append(_ item: Item) {
+    mutating func append(_ item: Item) &#123;
         items.append(item)
-    }
-    var count: Int {
+    &#125;
+    var count: Int &#123;
         return items.count
-    }
-
-    subscript(i: Int) -&gt; Item {
+    &#125;
+    
+    subscript(i: Int) -&gt; Item &#123;
         return items[i]
-    }
-}
+    &#125;
+&#125;
 
 //上面的Stack可以写作下面方式
 //因为通过append可以知道Element为Item的具体类型,所以typealias可以省略
 //又因为Stack1是泛型类型,Element创建实例对象时具体指出,所以,一下代码完全正确.
 //可以写typealias Item = Element, 然后Element跟Item可以互相交叉替换🙂
-struct Stack1&lt;Element&gt;: Container {
+struct Stack1&lt;Element&gt;: Container &#123;
     var items = [Element]()
-    mutating func push(_ item: Element) {
+    mutating func push(_ item: Element) &#123;
         items.append(item)
-    }
+    &#125;
 
-    mutating func pop() -&gt; Element {
+    mutating func pop() -&gt; Element &#123;
         return items.removeLast()
-    }
+    &#125;
     //conformance to the Container
-    mutating func append(_ item: Element) {
+    mutating func append(_ item: Element) &#123;
         push(item)
-    }
-    var count: Int {
+    &#125;
+    var count: Int &#123;
         return items.count
-    }
-    subscript(i: Int) -&gt; Element {
+    &#125;
+    subscript(i: Int) -&gt; Element &#123;
         return items[i]
-    }
-}
+    &#125;
+&#125;
 
 var strings1 = Stack1&lt;String&gt;()
 strings.push(&quot;hello&quot;)
@@ -390,38 +390,38 @@ print(strings.pop())
 //array 中有append用来推断具体类型,并且有count,有下标
 //所以以后完全可以使用Array作为Container
 //但是typealias Container = Array也是不错的
-extension Array: Container {}
+extension Array: Container &#123;&#125;
 
 //将约束添加到关联类型
 //如果这样定义,得像下面这样搞
 //struct Stack1&lt;Element: Equatable&gt;: Container
-protocol Container1 {
+protocol Container1 &#123;
     associatedtype Item: Equatable
     mutating func append(_ item: Item)
-    var count: Int { get }
-    subscript(i: Int) -&gt; Item { get }
-}
+    var count: Int &#123; get &#125;
+    subscript(i: Int) -&gt; Item &#123; get &#125;
+&#125;
 
 //在关联类型的约束中使用协议
 //这个JB关系有点乱,有木有...
 //儿子有一个家,爹有一个家,儿子从爹那继承过来的家跟自己成立的家必须是一个家,不能搞分家...
 //大概就是这样了....
-protocol SuffixableContainer: Container {
+protocol SuffixableContainer: Container &#123;
     associatedtype Suffix: SuffixableContainer where Suffix.Item == Item
     func suffix(_ size: Int) -&gt; Suffix
-}
+&#125;
 
-extension Stack1: SuffixableContainer {
-    func suffix(_ size: Int) -&gt; Stack1 {
+extension Stack1: SuffixableContainer &#123;
+    func suffix(_ size: Int) -&gt; Stack1 &#123;
         var result = Stack1()
         //max是用来防止程序崩溃的,🙂
-        for index in max((count-size), 0)..&lt;count {
+        for index in max((count-size), 0)..&lt;count &#123;
             result.append(self[index])
-        }
+        &#125;
         return result
-    }
+    &#125;
     // Inferred that Suffix is Stack.
-}
+&#125;
 
 var stackOfInts = Stack1&lt;Int&gt;()
 stackOfInts.append(10)
@@ -432,20 +432,20 @@ let suffix = stackOfInts.suffix(3)
 //Generic Where Clauses(通用条款)
 //泛型条件约束吧... where
 
-func allItemsMatch&lt;C1: Container, C2: Container&gt;(_ someContainer: C1, _ anotherContainer: C2) -&gt; Bool where C1.Item == C2.Item, C1.Item: Equatable {
+func allItemsMatch&lt;C1: Container, C2: Container&gt;(_ someContainer: C1, _ anotherContainer: C2) -&gt; Bool where C1.Item == C2.Item, C1.Item: Equatable &#123;
     // Check that both containers contain the same number of items.
-    if someContainer.count != anotherContainer.count {
+    if someContainer.count != anotherContainer.count &#123;
         return false
-    }
-    // Check each pair of items to see if they&apos;re equivalent.
-    for i in 0..&lt;someContainer.count {
-        if someContainer[i] != anotherContainer[i] {
+    &#125;
+    // Check each pair of items to see if they&#39;re equivalent.
+    for i in 0..&lt;someContainer.count &#123;
+        if someContainer[i] != anotherContainer[i] &#123;
             return false
-        }
-    }
+        &#125;
+    &#125;
     // All items match, so return true.
     return true
-}
+&#125;
 
 var stackOfStrings = Stack1&lt;String&gt;()
 stackOfStrings.push(&quot;uno&quot;)
@@ -454,77 +454,79 @@ stackOfStrings.push(&quot;tres&quot;)
 
 var arrayOfStrings = [&quot;uno&quot;, &quot;dos&quot;, &quot;tres&quot;]
 
-if allItemsMatch(stackOfStrings, arrayOfStrings) {
+if allItemsMatch(stackOfStrings, arrayOfStrings) &#123;
     print(&quot;All items match.&quot;)
-} else {
+&#125; else &#123;
     print(&quot;Not all items match.&quot;)
-}
+&#125;
 
-extension Stack1 where Element: Equatable {
-    func isTop(_ item: Element) -&gt; Bool {
-        guard let last = items.last else {
+extension Stack1 where Element: Equatable &#123;
+    func isTop(_ item: Element) -&gt; Bool &#123;
+        guard let last = items.last else &#123;
             return false
-        }
+        &#125;
         return item == last
-    }
-}
+    &#125;
+&#125;
 //如果将没有遵守Equatable用于该方法,会报错
-if stackOfStrings.isTop(&quot;tres&quot;) {
+if stackOfStrings.isTop(&quot;tres&quot;) &#123;
     print(&quot;Top element is tres.&quot;)
-} else {
+&#125; else &#123;
     print(&quot;Top element is something else.&quot;)
-}
+&#125;
 
 //上面where扩展类型,下面where扩展协议,这TM就比较6了...
-extension Container where Item: Equatable {
-    func startsWith(_ item: Item) -&gt; Bool {
+extension Container where Item: Equatable &#123;
+    func startsWith(_ item: Item) -&gt; Bool &#123;
         return count &gt;= 1 &amp;&amp; self[0] == item
-    }
-}
-if [9, 9, 9].startsWith(42) {
+    &#125;
+&#125;
+if [9, 9, 9].startsWith(42) &#123;
     print(&quot;Starts with 42.&quot;)
-} else {
+&#125; else &#123;
     print(&quot;Starts with something else.&quot;)
-}
+&#125;
 
 //Item是特定类型的where子句
-extension Container where Item == Double {
-    func average() -&gt; Double {
+extension Container where Item == Double &#123;
+    func average() -&gt; Double &#123;
         var sum = 0.0
-        for index in 0..&lt;count {
+        for index in 0..&lt;count &#123;
             sum += self[index]
-        }
+        &#125;
         return sum / Double(count)
-    }
-}
+    &#125;
+&#125;
 print([1260.0, 1200.0, 98.6, 37.0].average())
 
 
 //关联类型和泛型子句
-protocol Container2 {
+protocol Container2 &#123;
     associatedtype Item
     mutating func append(_ item: Item)
-    var count: Int { get }
-    subscript(i: Int) -&gt; Item { get }
-
+    var count: Int &#123; get &#125;
+    subscript(i: Int) -&gt; Item &#123; get &#125;
+    
     associatedtype Iterator: IteratorProtocol where Iterator.Element == Item
-
+    
     func makeIterator() -&gt; Iterator
-}
+&#125;
 
-protocol ComparableContainer: Container2 where Item: Comparable {}
+protocol ComparableContainer: Container2 where Item: Comparable &#123;&#125;
 
 //泛型下标
-extension Container2 {
+extension Container2 &#123;
     subscript&lt;Indices: Sequence&gt;(indices: Indices) -&gt; [Item]
-        where Indices.Iterator.Element == Int {
+        where Indices.Iterator.Element == Int &#123;
             var result = [Item]()
-            for index in indices {
+            for index in indices &#123;
                 result.append(self[index])
-            }
+            &#125;
             return result
-    }
-}</code></pre><p>真是烧脑的玩意……</p>
+    &#125;
+&#125;
+</code></pre>
+<p>真是烧脑的玩意……</p>
 <p><strong>–EOF–</strong></p>
 <!--kg-card-end: markdown-->
 
@@ -647,7 +649,7 @@ extension Container2 {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">72</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

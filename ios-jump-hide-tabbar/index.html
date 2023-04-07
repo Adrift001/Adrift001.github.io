@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 7.0.0-rc1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -21,15 +21,15 @@
     var CONFIG = {"hostname":"jingxuetao.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="一.IOS隐藏tabBar的方法:  self.tabBarController.tabBar.hidden &#x3D; YES;  但是我们跳转隐藏tabBar需要的不是这段代码. 二.push跳转隐藏tabBar如果在push跳转时需要隐藏tabBar，设置self.hidesBottomBarWhenPushed&#x3D;YES;并在push后设置self.hidesBottomBarWhenPushed&#x3D;">
+  <meta name="description" content="一.IOS隐藏tabBar的方法:  self.tabBarController.tabBar.hidden &#x3D; YES;    但是我们跳转隐藏tabBar需要的不是这段代码. 二.push跳转隐藏tabBar如果在push跳转时需要隐藏tabBar，设置self.hidesBottomBarWhenPushed&#x3D;YES;并在push后设置self.hidesBottomBarWhen">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS界面跳转隐藏tabBar">
 <meta property="og:url" content="https://jingxuetao.com/ios-jump-hide-tabbar/index.html">
 <meta property="og:site_name" content="Optional Blog">
-<meta property="og:description" content="一.IOS隐藏tabBar的方法:  self.tabBarController.tabBar.hidden &#x3D; YES;  但是我们跳转隐藏tabBar需要的不是这段代码. 二.push跳转隐藏tabBar如果在push跳转时需要隐藏tabBar，设置self.hidesBottomBarWhenPushed&#x3D;YES;并在push后设置self.hidesBottomBarWhenPushed&#x3D;">
+<meta property="og:description" content="一.IOS隐藏tabBar的方法:  self.tabBarController.tabBar.hidden &#x3D; YES;    但是我们跳转隐藏tabBar需要的不是这段代码. 二.push跳转隐藏tabBar如果在push跳转时需要隐藏tabBar，设置self.hidesBottomBarWhenPushed&#x3D;YES;并在push后设置self.hidesBottomBarWhen">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2016-03-10T14:30:00.000Z">
-<meta property="article:modified_time" content="2023-01-30T05:47:17.153Z">
+<meta property="article:modified_time" content="2023-04-07T07:47:37.846Z">
 <meta property="article:author" content="Optional">
 <meta property="article:tag" content="Optional Swift">
 <meta name="twitter:card" content="summary">
@@ -258,15 +258,19 @@
       
         <h3 id="一-IOS隐藏tabBar的方法"><a href="#一-IOS隐藏tabBar的方法" class="headerlink" title="一.IOS隐藏tabBar的方法:"></a>一.IOS隐藏tabBar的方法:</h3><!--kg-card-begin: code-->
 
-<pre><code>self.tabBarController.tabBar.hidden = YES;</code></pre><!--kg-card-end: code-->
+<pre><code>self.tabBarController.tabBar.hidden = YES;
+</code></pre>
+<!--kg-card-end: code-->
 
 <p>但是我们跳转隐藏tabBar需要的不是这段代码.</p>
-<h3 id="二-push跳转隐藏tabBar"><a href="#二-push跳转隐藏tabBar" class="headerlink" title="二.push跳转隐藏tabBar"></a>二.push跳转隐藏tabBar</h3><p>如果在push跳转时需要隐藏tabBar，设置self.hidesBottomBarWhenPushed=YES;并在push后设置self.hidesBottomBarWhenPushed=NO;这样back回来的时候，tabBar会恢复正常显示。代码如下:</p>
+<h3 id="二-push跳转隐藏tabBar"><a href="#二-push跳转隐藏tabBar" class="headerlink" title="二.push跳转隐藏tabBar"></a>二.push跳转隐藏tabBar</h3><p>如果在push跳转时需要隐藏tabBar，设置self.hidesBottomBarWhenPushed&#x3D;YES;并在push后设置self.hidesBottomBarWhenPushed&#x3D;NO;这样back回来的时候，tabBar会恢复正常显示。代码如下:</p>
 <!--kg-card-begin: code-->
 
-<pre><code>NextViewController *next=[[NextViewController alloc]init];
-next. hidesBottomBarWhenPushed = YES;
-[self.navigationController pushViewController:next animated:YES];</code></pre><!--kg-card-end: code-->
+<pre><code>    NextViewController *next=[[NextViewController alloc]init];
+    next. hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:next animated:YES];
+</code></pre>
+<!--kg-card-end: code-->
 
 <p>END</p>
 
@@ -373,7 +377,7 @@ next. hidesBottomBarWhenPushed = YES;
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-IOS隐藏tabBar的方法"><span class="nav-number">1.</span> <span class="nav-text">一.IOS隐藏tabBar的方法:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-push跳转隐藏tabBar"><span class="nav-number">2.</span> <span class="nav-text">二.push跳转隐藏tabBar</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80-IOS%E9%9A%90%E8%97%8FtabBar%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">一.IOS隐藏tabBar的方法:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C-push%E8%B7%B3%E8%BD%AC%E9%9A%90%E8%97%8FtabBar"><span class="nav-number">2.</span> <span class="nav-text">二.push跳转隐藏tabBar</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -389,7 +393,7 @@ next. hidesBottomBarWhenPushed = YES;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">72</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

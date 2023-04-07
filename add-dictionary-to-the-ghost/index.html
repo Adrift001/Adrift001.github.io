@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 7.0.0-rc1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -21,15 +21,15 @@
     var CONFIG = {"hostname":"jingxuetao.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="引入JS文件在default.hbs中引入js文件,下载TOC   &#x2F;&#x2F;放在jQuery之后 &lt;script src&#x3D;&quot;https:&#x2F;&#x2F;xxxxxx.com&#x2F;jquery.toc.min.js&quot;&gt;&lt;&#x2F;script&gt; 添加DIV在post.hbs文件的&lt;&#x2F;main&gt;标签之前添加下面代码   &lt;aside id&#x3D;&quot;toc&amp;quot">
+  <meta name="description" content="引入JS文件在default.hbs中引入js文件,下载TOC   &#x2F;&#x2F;放在jQuery之后 &lt;script src&#x3D;&quot;https:&#x2F;&#x2F;xxxxxx.com&#x2F;jquery.toc.min.js&quot;&gt;&lt;&#x2F;script&gt;   添加DIV在post.hbs文件的&lt;&#x2F;main&gt;标签之前添加下面代码   &lt;aside id&#x3D;&quot;toc&amp;qu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="为Ghost博客文章添加目录">
 <meta property="og:url" content="https://jingxuetao.com/add-dictionary-to-the-ghost/index.html">
 <meta property="og:site_name" content="Optional Blog">
-<meta property="og:description" content="引入JS文件在default.hbs中引入js文件,下载TOC   &#x2F;&#x2F;放在jQuery之后 &lt;script src&#x3D;&quot;https:&#x2F;&#x2F;xxxxxx.com&#x2F;jquery.toc.min.js&quot;&gt;&lt;&#x2F;script&gt; 添加DIV在post.hbs文件的&lt;&#x2F;main&gt;标签之前添加下面代码   &lt;aside id&#x3D;&quot;toc&amp;quot">
+<meta property="og:description" content="引入JS文件在default.hbs中引入js文件,下载TOC   &#x2F;&#x2F;放在jQuery之后 &lt;script src&#x3D;&quot;https:&#x2F;&#x2F;xxxxxx.com&#x2F;jquery.toc.min.js&quot;&gt;&lt;&#x2F;script&gt;   添加DIV在post.hbs文件的&lt;&#x2F;main&gt;标签之前添加下面代码   &lt;aside id&#x3D;&quot;toc&amp;qu">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2016-04-29T14:07:00.000Z">
-<meta property="article:modified_time" content="2023-01-30T05:47:17.153Z">
+<meta property="article:modified_time" content="2023-04-07T07:47:37.850Z">
 <meta property="article:author" content="Optional">
 <meta property="article:tag" content="Optional Swift">
 <meta name="twitter:card" content="summary">
@@ -256,21 +256,25 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="引入JS文件"><a href="#引入JS文件" class="headerlink" title="引入JS文件"></a>引入JS文件</h3><p>在default.hbs中引入js文件,下载<a href="https://github.com/idiotWu/jQuery-TOC/tree/master/dist" target="_blank" rel="noopener">TOC</a></p>
+        <h3 id="引入JS文件"><a href="#引入JS文件" class="headerlink" title="引入JS文件"></a>引入JS文件</h3><p>在default.hbs中引入js文件,下载<a href="https://github.com/idiotWu/jQuery-TOC/tree/master/dist">TOC</a></p>
 <!--kg-card-begin: code-->
 
 <pre><code>//放在jQuery之后
-&lt;script src=&quot;https://xxxxxx.com/jquery.toc.min.js&quot;&gt;&lt;/script&gt;</code></pre><!--kg-card-end: code-->
+&lt;script src=&quot;https://xxxxxx.com/jquery.toc.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<!--kg-card-end: code-->
 <h3 id="添加DIV"><a href="#添加DIV" class="headerlink" title="添加DIV"></a>添加DIV</h3><p>在post.hbs文件的<code>&lt;/main&gt;</code>标签之前添加下面代码</p>
 <!--kg-card-begin: code-->
 
 <pre><code>&lt;aside id=&quot;toc&quot;&gt;
     &lt;h4&gt;文章目录&lt;/h4&gt;
-&lt;/aside&gt;</code></pre><!--kg-card-end: code-->
+&lt;/aside&gt;
+</code></pre>
+<!--kg-card-end: code-->
 <h3 id="设置样式"><a href="#设置样式" class="headerlink" title="设置样式"></a>设置样式</h3><p>在博客的css文件里设置样式,代码如下:</p>
 <!--kg-card-begin: code-->
 
-<pre><code>#toc {
+<pre><code>#toc &#123;
     font: 400 16px/1.8 &quot;Open Sans&quot;,&quot;Hiragino Sans GB&quot;,&quot;Microsoft YaHei&quot;,&quot;WenQuanYi Micro Hei&quot;,sans-serif;
     position: fixed;
     display: none;
@@ -280,30 +284,30 @@
     max-height: 100%;
     padding: 0 5px;
     overflow-y: auto;
-}
-#toc ol {
+&#125;
+#toc ol &#123;
     margin: 0 0 0 1em;
     list-style: none;
     padding: 0;
-}
-#toc li {
+&#125;
+#toc li &#123;
     padding: 0;
     position: relative;
-}
-#toc li:before {
+&#125;
+#toc li:before &#123;
     border: 5px dashed transparent;
     border-left: 5px solid #57a3e8;
     position: absolute;
     left: -1em;
     top: .5em;
-}
-#toc li:before {
+&#125;
+#toc li:before &#123;
     content: &quot;&quot;;
     height: 0;
     width: 0;
     overflow: hidden;
-}
-#toc a {
+&#125;
+#toc a &#123;
     display: block;
     color: #6aa7c0;
     cursor: pointer;
@@ -313,29 +317,31 @@
     overflow: hidden;
     text-decoration: none;
     transition: color .3s;
-}
-#toc a:hover {
+&#125;
+#toc a:hover &#123;
     color: #F3A01E;
-}
-#toc h4 {
+&#125;
+#toc h4 &#123;
     padding-bottom: 0.25em;
     margin: .75em 0;
     border-bottom: 1px solid #b3b3b3;
     font-size: 18px;
     color: #3b3b3b;
     font-family: &quot;Open Sans&quot;,&quot;Hiragino Sans GB&quot;,&quot;Microsoft YaHei&quot;,&quot;WenQuanYi Micro Hei&quot;,sans-serif;
-}</code></pre><!--kg-card-end: code-->
+&#125;
+</code></pre>
+<!--kg-card-end: code-->
 <h3 id="初始化目录插件并动态的调整样式"><a href="#初始化目录插件并动态的调整样式" class="headerlink" title="初始化目录插件并动态的调整样式"></a>初始化目录插件并动态的调整样式</h3><p>在博客下的JS文件中添加下面代码:</p>
 <!--kg-card-begin: code-->
 
-<pre><code>$(document).ready(function() {
+<pre><code>$(document).ready(function() &#123;
     //初始化插件
-    $(&apos;#toc&apos;).initTOC({
+    $(&#39;#toc&#39;).initTOC(&#123;
         selector: &quot;h5, h6&quot;,
         scope: &quot;article&quot;,
         overwrite: false,
         prefix: &quot;toc&quot;
-    });
+    &#125;);
 
     //动态设置样式,例如:滚动到一定程度之后隐藏目录
     var mar_left = $(&quot;.post&quot;).width() / 2 + 20;
@@ -343,24 +349,26 @@
     //var top = $(&quot;#toc&quot;).position().top;
     var top = $(window).height();
     $(&quot;#toc&quot;).css(&quot;top&quot;,top / 2 - (top / 4)+&quot;px&quot;);
-    $(&quot;#toc ol&quot;).html(function(i,origText){
-        return origText + &quot;&lt;li&gt;&lt;a id=&apos;scrollTop&apos; href=&apos;#&apos;&gt;返回顶部&lt;/a&gt;&lt;/li&gt;&quot;;
-    });
-    $(&quot;#toc&quot;).css({&quot;margin-left&quot;:mar_left+&quot;px&quot;});
-    $(window).scroll(function(){
+    $(&quot;#toc ol&quot;).html(function(i,origText)&#123;
+        return origText + &quot;&lt;li&gt;&lt;a id=&#39;scrollTop&#39; href=&#39;#&#39;&gt;返回顶部&lt;/a&gt;&lt;/li&gt;&quot;;
+    &#125;);
+    $(&quot;#toc&quot;).css(&#123;&quot;margin-left&quot;:mar_left+&quot;px&quot;&#125;);
+    $(window).scroll(function()&#123;
         var window_offset = $(window).scrollTop();
         var main_header_height = $(&quot;.main-header&quot;).height();
         var content_height = $(&quot;.content&quot;).height();
-        if(window_offset &lt; main_header_height - 100) {
+        if(window_offset &lt; main_header_height - 100) &#123;
             $(&quot;#toc&quot;).hide();
             //下面的条件不能用 a&gt;x&gt;c这种形式,只能用&amp;&amp;.身为一个前端小白表示伤不起...
-        }else if(window_offset &gt; main_header_height&amp;&amp;main_header_height+content_height - 500 &gt; window_offset) {
+        &#125;else if(window_offset &gt; main_header_height&amp;&amp;main_header_height+content_height - 500 &gt; window_offset) &#123;
             $(&quot;#toc&quot;).show();
-        }else{
+        &#125;else&#123;
             $(&quot;#toc&quot;).hide();
-        }
-    });
-});</code></pre><!--kg-card-end: code-->
+        &#125;
+    &#125;);
+&#125;);
+</code></pre>
+<!--kg-card-end: code-->
 
 <p>以上就是我博客的文章目录添加步骤.前端有个好处就是<code>所见即所得</code>,慢慢折腾.^_^</p>
 <p><strong>–EOF–</strong></p>
@@ -468,7 +476,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引入JS文件"><span class="nav-number">1.</span> <span class="nav-text">引入JS文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加DIV"><span class="nav-number">2.</span> <span class="nav-text">添加DIV</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置样式"><span class="nav-number">3.</span> <span class="nav-text">设置样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化目录插件并动态的调整样式"><span class="nav-number">4.</span> <span class="nav-text">初始化目录插件并动态的调整样式</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E5%85%A5JS%E6%96%87%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">引入JS文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0DIV"><span class="nav-number">2.</span> <span class="nav-text">添加DIV</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E6%A0%B7%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">设置样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9B%AE%E5%BD%95%E6%8F%92%E4%BB%B6%E5%B9%B6%E5%8A%A8%E6%80%81%E7%9A%84%E8%B0%83%E6%95%B4%E6%A0%B7%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">初始化目录插件并动态的调整样式</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -484,7 +492,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">72</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

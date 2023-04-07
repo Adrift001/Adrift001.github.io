@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 7.0.0-rc1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -21,15 +21,15 @@
     var CONFIG = {"hostname":"jingxuetao.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="var nums &#x3D; [1, -2, 2, -13, 6, -10, 3, 12]  &#x2F;&#x2F;&#x2F; O(n^3) func maxSubSequenceSum1() {     var maxSum &#x3D; 0     for i in 0..&lt;nums.count {         for j in i..&lt;nums.count {             var thisSum &#x3D; 0">
+  <meta name="description" content="var nums &#x3D; [1, -2, 2, -13, 6, -10, 3, 12]  &#x2F;&#x2F;&#x2F; O(n^3) func maxSubSequenceSum1() &amp;#123;     var maxSum &#x3D; 0     for i in 0..&lt;nums.count &amp;#123;         for j in i..&lt;nums.count &amp;#123;             va">
 <meta property="og:type" content="article">
 <meta property="og:title" content="求最大子列和">
 <meta property="og:url" content="https://jingxuetao.com/finding-the-maximum-subcolumn-sum/index.html">
 <meta property="og:site_name" content="Optional Blog">
-<meta property="og:description" content="var nums &#x3D; [1, -2, 2, -13, 6, -10, 3, 12]  &#x2F;&#x2F;&#x2F; O(n^3) func maxSubSequenceSum1() {     var maxSum &#x3D; 0     for i in 0..&lt;nums.count {         for j in i..&lt;nums.count {             var thisSum &#x3D; 0">
+<meta property="og:description" content="var nums &#x3D; [1, -2, 2, -13, 6, -10, 3, 12]  &#x2F;&#x2F;&#x2F; O(n^3) func maxSubSequenceSum1() &amp;#123;     var maxSum &#x3D; 0     for i in 0..&lt;nums.count &amp;#123;         for j in i..&lt;nums.count &amp;#123;             va">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-05-25T11:37:52.000Z">
-<meta property="article:modified_time" content="2023-01-30T05:47:17.153Z">
+<meta property="article:modified_time" content="2023-04-07T07:47:37.850Z">
 <meta property="article:author" content="Optional">
 <meta property="article:tag" content="Optional Swift">
 <meta name="twitter:card" content="summary">
@@ -259,54 +259,56 @@
         <pre><code>var nums = [1, -2, 2, -13, 6, -10, 3, 12]
 
 /// O(n^3)
-func maxSubSequenceSum1() {
+func maxSubSequenceSum1() &#123;
     var maxSum = 0
-    for i in 0..&lt;nums.count {
-        for j in i..&lt;nums.count {
+    for i in 0..&lt;nums.count &#123;
+        for j in i..&lt;nums.count &#123;
             var thisSum = 0
-            for k in i...j {
+            for k in i...j &#123;
                 thisSum += nums[k]
-            }
-            if thisSum &gt; maxSum {
+            &#125;
+            if thisSum &gt; maxSum &#123;
                 maxSum = thisSum
-            }
-        }
-    }
+            &#125;
+        &#125;
+    &#125;
     print(maxSum)
-}
+&#125;
 
 /// O(n^2)
-func maxSubSequenceSum2() {
+func maxSubSequenceSum2() &#123;
     var maxSum = 0
-    for i in 0..&lt;nums.count {
+    for i in 0..&lt;nums.count &#123;
         var thisSum = 0
-        for j in i..&lt;nums.count {
+        for j in i..&lt;nums.count &#123;
             thisSum += nums[j]
-            if thisSum &gt; maxSum {
+            if thisSum &gt; maxSum &#123;
                 maxSum = thisSum
-            }
-        }
-    }
+            &#125;
+        &#125;
+    &#125;
     print(maxSum)
-}
+&#125;
 
 /// O(n)
-func maxSubSequenceSum3() {
+func maxSubSequenceSum3() &#123;
     var maxSum = 0, thisSum = 0
-    for i in 0..&lt;nums.count {
+    for i in 0..&lt;nums.count &#123;
         thisSum += nums[i]
-        if thisSum &gt; 0 {
+        if thisSum &gt; 0 &#123;
             maxSum = thisSum
-        } else { //如果thisSum小于0,则不可能使后面的部分和增大,抛弃.
+        &#125; else &#123; //如果thisSum小于0,则不可能使后面的部分和增大,抛弃.
             thisSum = 0
-        }
-    }
+        &#125;
+    &#125;
     print(maxSum)
-}
+&#125;
 
 maxSubSequenceSum1()
 maxSubSequenceSum2()
-maxSubSequenceSum3()</code></pre><p>算法很重要呐 😄😄</p>
+maxSubSequenceSum3()
+</code></pre>
+<p>算法很重要呐 😄😄</p>
 <p><strong>–EOF–</strong></p>
 <!--kg-card-end: markdown-->
     </div>
@@ -427,7 +429,7 @@ maxSubSequenceSum3()</code></pre><p>算法很重要呐 😄😄</p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">72</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

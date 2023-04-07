@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 7.0.0-rc1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -29,7 +29,7 @@
 <meta property="og:description" content="同学前几天面试面到了这个题,毕竟闷了半天才闷出来.记录一下省的忘了… NSString+Category.h文件   #import &lt;Foundation&#x2F;Foundation.h&gt;  @interface NSString (Category)  &#x2F;**  * 根据分隔符,分隔字符串  *  * @param symbol 分隔符  *  * @return 由被分隔完的字串组成的">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2016-05-13T14:26:00.000Z">
-<meta property="article:modified_time" content="2023-01-30T05:47:17.153Z">
+<meta property="article:modified_time" content="2023-04-07T07:47:37.850Z">
 <meta property="article:author" content="Optional">
 <meta property="article:tag" content="Optional Swift">
 <meta name="twitter:card" content="summary">
@@ -273,7 +273,9 @@
  */
 - (NSArray *)splitStringWithSymbol:(NSString *)symbol;
 
-@end</code></pre><!--kg-card-end: code-->
+@end
+</code></pre>
+<!--kg-card-end: code-->
 
 <p>NSString+Category.m文件</p>
 <!--kg-card-begin: code-->
@@ -282,38 +284,40 @@
 
 @implementation NSString (Category)
 
-- (NSArray *)splitStringWithSymbol:(NSString *)symbol {
-
-    if (!self || [self isEqualToString:@&quot;&quot;] || !symbol || [self isEqualToString:@&quot;&quot;]) {
-        NSException *e = [NSException exceptionWithName:@&quot;NullPointerException&quot; reason:@&quot;self and symbol can&apos;t be nil or @\&quot;\&quot;&quot; userInfo:nil];
+- (NSArray *)splitStringWithSymbol:(NSString *)symbol &#123;
+    
+    if (!self || [self isEqualToString:@&quot;&quot;] || !symbol || [self isEqualToString:@&quot;&quot;]) &#123;
+        NSException *e = [NSException exceptionWithName:@&quot;NullPointerException&quot; reason:@&quot;self and symbol can&#39;t be nil or @\&quot;\&quot;&quot; userInfo:nil];
         @throw e;
-    }
-
+    &#125;
+    
     NSMutableArray *mutableArr = [NSMutableArray new];
     NSInteger length = symbol.length;
     NSString *tempStr = nil;
-
-    for (int startIndex = 0, endIndex = 0; endIndex &lt;= self.length - length; endIndex++) {
-
+    
+    for (int startIndex = 0, endIndex = 0; endIndex &lt;= self.length - length; endIndex++) &#123;
+        
         tempStr = [self substringWithRange:NSMakeRange(endIndex, length)];
-        if ([tempStr isEqualToString:symbol]) {
+        if ([tempStr isEqualToString:symbol]) &#123;
             NSString *splitedString = [self substringWithRange:NSMakeRange(startIndex, endIndex - startIndex)];
-            if (splitedString &amp;&amp; ![splitedString isEqualToString:@&quot;&quot;]) {
+            if (splitedString &amp;&amp; ![splitedString isEqualToString:@&quot;&quot;]) &#123;
                 [mutableArr addObject:splitedString];
-            }
+            &#125;
             startIndex = endIndex + (int)length;
-        } else if (endIndex == self.length - length){
+        &#125; else if (endIndex == self.length - length)&#123;
             NSString *splitedString = [self substringWithRange:NSMakeRange(startIndex, endIndex - startIndex + length)];
-            if (splitedString &amp;&amp; ![splitedString isEqualToString:@&quot;&quot;]) {
+            if (splitedString &amp;&amp; ![splitedString isEqualToString:@&quot;&quot;]) &#123;
                 [mutableArr addObject:splitedString];
-            }
-        }
-
-    }
-
+            &#125;
+        &#125;
+        
+    &#125;
+    
     return [mutableArr copy];
-}
-@end</code></pre><!--kg-card-end: code-->
+&#125;
+@end
+</code></pre>
+<!--kg-card-end: code-->
 
 <p>以上代码有个问题,当字符串是<code>,asdf,,123</code>,分隔字符是<code>,</code>,分隔结果是<code>(asdf,123)</code>,而不是<code>(asdf,(前面一个是数组的逗号),123)</code>.<br>试了一下官方的<code>componentsSeparatedByString</code>方法,相同的字符串跟分隔符,输出结果是<code>(&quot;&quot;,asdf,&quot;&quot;,123)</code>,连是否是<code>@&quot;&quot;</code>都没判断.Java当中实验的结果跟OC结果相同.官方方法都这样,我想我是想多了.</p>
 <p><strong>–EOF–</strong></p>
@@ -436,7 +440,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">72</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

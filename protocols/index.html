@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 7.0.0-rc1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -29,7 +29,7 @@
 <meta property="og:description" content="A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumerat">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-11-18T04:04:14.000Z">
-<meta property="article:modified_time" content="2023-01-30T05:47:17.153Z">
+<meta property="article:modified_time" content="2023-04-07T07:47:37.850Z">
 <meta property="article:author" content="Optional">
 <meta property="article:tag" content="Optional Swift">
 <meta name="twitter:card" content="summary">
@@ -260,50 +260,50 @@
 <pre><code>import Foundation
 
 //协议语法
-protocol SomeProtocol {
+protocol SomeProtocol &#123;
+    
+&#125;
 
-}
-
-struct SomeStructure: SomeProtocol {}
-class SomeClass: SomeProtocol {}
+struct SomeStructure: SomeProtocol &#123;&#125;
+class SomeClass: SomeProtocol &#123;&#125;
 
 //属性要求
 //如果属性标注了(set get),则不能通过常量存储属性和只读计算属性来实现
 //如果属性只设置了(get),那么任何类型都可以满足,包括变量存储属性
 
-protocol SomeProtocol1 {
-    var mustBeSettable: Int { get set }
-    var doesNotNeedToBeSettable: Int { get }
-}
+protocol SomeProtocol1 &#123;
+    var mustBeSettable: Int &#123; get set &#125;
+    var doesNotNeedToBeSettable: Int &#123; get &#125;
+&#125;
 
 //协议中用static修饰时,实现中用static或者class实现都行
-protocol AnotherProtocol {
-    static var someTypeProperty: Int { get set }
-}
+protocol AnotherProtocol &#123;
+    static var someTypeProperty: Int &#123; get set &#125;
+&#125;
 
-protocol FullyNamed {
-    var fullName: String { get }
-}
+protocol FullyNamed &#123;
+    var fullName: String &#123; get &#125;
+&#125;
 
-struct Person: FullyNamed {
+struct Person: FullyNamed &#123;
     var fullName: String
-}
+&#125;
 //可set 可 get
 let john = Person(fullName: &quot;Tom&quot;)
 
-class Starship: FullyNamed {
+class Starship: FullyNamed &#123;
     var prefix: String?
     var name: String
-
-    init(name: String, prefix: String? = nil) {
+    
+    init(name: String, prefix: String? = nil) &#123;
         self.name = name
         self.prefix = prefix
-    }
-
-    var fullName: String {
+    &#125;
+    
+    var fullName: String &#123;
         return (prefix != nil ? prefix!+&quot; &quot; : &quot;&quot;) + name
-    }
-}
+    &#125;
+&#125;
 
 var ncc1701 = Starship(name: &quot;Enterprise&quot;, prefix: &quot;USS&quot;)
 
@@ -311,25 +311,25 @@ var ncc1701 = Starship(name: &quot;Enterprise&quot;, prefix: &quot;USS&quot;)
 
 //不能在协议方法中指定默认值
 
-protocol SomeProtocol2 {
+protocol SomeProtocol2 &#123;
     static func someTypeMethod()
-}
+&#125;
 
-protocol RandomNumberGenerator {
+protocol RandomNumberGenerator &#123;
     func random() -&gt; Double
-}
+&#125;
 
 //线性同余生成器的伪随机数生成器算法,好高大上有木有...
-class LinearCongruentialGenerator: RandomNumberGenerator {
+class LinearCongruentialGenerator: RandomNumberGenerator &#123;
     var lastRandom = 42.0
     let m = 139968.0
     let a = 3877.0
     let c = 29573.0
-    func random() -&gt; Double {
+    func random() -&gt; Double &#123;
         lastRandom = ((lastRandom * a + c).truncatingRemainder(dividingBy: m))
         return lastRandom / m
-    }
-}
+    &#125;
+&#125;
 
 let generator = LinearCongruentialGenerator()
 print(generator.random())
@@ -339,21 +339,21 @@ print(generator.random())
 //如果希望实现协议的任何类型(类,结构体,枚举)要修改实例或者实例中的任何属性
 //得在func前加mutating关键字
 //类实现时,无需加mutating,结构体,枚举需要加
-protocol Toggleable {
+protocol Toggleable &#123;
     mutating func toggle()
-}
+&#125;
 
-enum OnOffSwitch: Toggleable {
+enum OnOffSwitch: Toggleable &#123;
     case off, on
-    mutating func toggle() {
-        switch self {
+    mutating func toggle() &#123;
+        switch self &#123;
         case .on:
             self = .off
         case .off:
             self = .on
-        }
-    }
-}
+        &#125;
+    &#125;
+&#125;
 
 var lightSwitch = OnOffSwitch.off
 print(lightSwitch)
@@ -361,35 +361,35 @@ lightSwitch.toggle()
 print(lightSwitch)
 
 //初始化程序要求
-protocol SomeProtocol3 {
+protocol SomeProtocol3 &#123;
     init(someParameter: Int)
-}
+&#125;
 
 //required 方便子类继承,从而遵守SomeProtocol3协议
 //如果给类加上final,则required可以省略
-final class SomeClass3: SomeProtocol3 {
-    required init(someParameter: Int) {
+final class SomeClass3: SomeProtocol3 &#123;
+    required init(someParameter: Int) &#123;
         //在这进行初始化实现
-    }
-}
+    &#125;
+&#125;
 
 //如果子类重写父类中init方法,并且这个init也是协议中的实现,则需要用
 //`required`和`override`修饰
-protocol SomeProtocol4 {
+protocol SomeProtocol4 &#123;
     init()
-}
+&#125;
 
-class SomeSuperClass {
-    init() {
+class SomeSuperClass &#123;
+    init() &#123;
+        
+    &#125;
+&#125;
 
-    }
-}
-
-class SomeSubClass: SomeSuperClass, SomeProtocol4 {
-    required override init() {
+class SomeSubClass: SomeSuperClass, SomeProtocol4 &#123;
+    required override init() &#123;
         //good job
-    }
-}
+    &#125;
+&#125;
 
 //协议还可以定义可失败构造器
 
@@ -400,55 +400,55 @@ class SomeSubClass: SomeSuperClass, SomeProtocol4 {
 //2. 作为常量,变量,或者属性的类型
 //3. 作为数组,字典或其他容器类型的元素类型
 
-class Dice {
+class Dice &#123;
     let sides: Int
     let generator: RandomNumberGenerator
-    init(sides: Int, generator: RandomNumberGenerator) {
+    init(sides: Int, generator: RandomNumberGenerator) &#123;
         self.sides = sides
         self.generator = generator
-    }
-    func roll() -&gt; Int {
+    &#125;
+    func roll() -&gt; Int &#123;
         return Int(generator.random() * Double(sides)) + 1
-    }
-}
+    &#125;
+&#125;
 var d6 = Dice(sides: 6, generator: LinearCongruentialGenerator())
-for _ in 1...5 {
+for _ in 1...5 &#123;
     print(&quot;Random dice roll is \(d6.roll())&quot;)
-}
+&#125;
 
 //委托
 //响应特定操作或者从外部检索数据
-protocol DiceGame {
-    var dice: Dice { get }
+protocol DiceGame &#123;
+    var dice: Dice &#123; get &#125;
     func play()
-}
+&#125;
 
-protocol DiceGameDelegate: AnyObject {
+protocol DiceGameDelegate: AnyObject &#123;
     func gameDidStart(_ game: DiceGame)
     func game(_ game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int)
     func gameDidEnd(_ game: DiceGame)
-}
+&#125;
 
-class SnakesAndLadders: DiceGame {
+class SnakesAndLadders: DiceGame &#123;
     let finalSquare = 25
     let dice = Dice(sides: 6, generator: LinearCongruentialGenerator())
     var square = 0
     var board: [Int]
-
-    init() {
+    
+    init() &#123;
         board = Array(repeating: 0, count: finalSquare + 1)
         board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02
         board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08
-    }
-
+    &#125;
+    
     weak var delegate: DiceGameDelegate?
-    func play() {
+    func play() &#123;
         square = 0
         delegate?.gameDidStart(self)
-        gameLoop: while square != finalSquare {
+        gameLoop: while square != finalSquare &#123;
             let diceRoll = dice.roll()
             delegate?.game(self, didStartNewTurnWithDiceRoll: diceRoll)
-            switch square + diceRoll {
+            switch square + diceRoll &#123;
             case finalSquare:
                 break gameLoop
             case let newSquare where newSquare &gt; finalSquare:
@@ -456,29 +456,29 @@ class SnakesAndLadders: DiceGame {
             default:
                 square += diceRoll
                 square += board[square]
-            }
-        }
+            &#125;
+        &#125;
         delegate?.gameDidEnd(self)
-    }
-}
+    &#125;
+&#125;
 
-class DiceGameTracker: DiceGameDelegate {
+class DiceGameTracker: DiceGameDelegate &#123;
     var numberOfTurns = 0
-    func gameDidStart(_ game: DiceGame) {
+    func gameDidStart(_ game: DiceGame) &#123;
         numberOfTurns = 0
-        if game is SnakesAndLadders {
+        if game is SnakesAndLadders &#123;
             print(&quot;Started a new game of Snakes and Ladders&quot;)
-        }
+        &#125;
         print(&quot;The game is using a \(game.dice.sides)-sided dice&quot;)
-    }
-    func game(_ game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int) {
+    &#125;
+    func game(_ game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int) &#123;
         numberOfTurns += 1
         print(&quot;Rolled a \(diceRoll)&quot;)
-    }
-    func gameDidEnd(_ game: DiceGame) {
+    &#125;
+    func gameDidEnd(_ game: DiceGame) &#123;
         print(&quot;The game lasted for \(numberOfTurns) turns&quot;)
-    }
-}
+    &#125;
+&#125;
 
 let tracker = DiceGameTracker()
 let game = SnakesAndLadders()
@@ -486,46 +486,46 @@ game.delegate = tracker
 game.play()
 
 //通过扩展遵守某个协议
-protocol TextRepresentable {
-    var textualDescription: String { get }
-}
+protocol TextRepresentable &#123;
+    var textualDescription: String &#123; get &#125;
+&#125;
 
-extension Dice: TextRepresentable {
-    var textualDescription: String {
+extension Dice: TextRepresentable &#123;
+    var textualDescription: String &#123;
         return &quot;A \(sides)-sided dice&quot;
-    }
-}
+    &#125;
+&#125;
 
 let d12 = Dice(sides: 12, generator: LinearCongruentialGenerator())
 print(d12.textualDescription)
 // Prints &quot;A 12-sided dice&quot;
 
-extension SnakesAndLadders: TextRepresentable {
-    var textualDescription: String {
+extension SnakesAndLadders: TextRepresentable &#123;
+    var textualDescription: String &#123;
         return &quot;A game of Snakes and Ladders with \(finalSquare) squares&quot;
-    }
-}
+    &#125;
+&#125;
 print(game.textualDescription)
 
 //有条件的遵守协议
-extension Array: TextRepresentable where Element: TextRepresentable {
-    var textualDescription: String {
-        let itemsAsText = self.map { $0.textualDescription }
+extension Array: TextRepresentable where Element: TextRepresentable &#123;
+    var textualDescription: String &#123;
+        let itemsAsText = self.map &#123; $0.textualDescription &#125;
         return &quot;[&quot; + itemsAsText.joined(separator: &quot;, &quot;) + &quot;]&quot;
-    }
-}
+    &#125;
+&#125;
 let myDice = [d6, d12]
 print(myDice.textualDescription)
 
 //通过协议适应某种类型
 //如果某个类型已经符合协议的所有要求，但尚未声明它采用该协议，则可以使其采用带有空扩展的协议
-struct Hamster {
+struct Hamster &#123;
     var name: String
-    var textualDescription: String {
+    var textualDescription: String &#123;
         return &quot;A hamster named \(name)&quot;
-    }
-}
-extension Hamster: TextRepresentable {}
+    &#125;
+&#125;
+extension Hamster: TextRepresentable &#123;&#125;
 let simonTheHamster = Hamster(name: &quot;Simon&quot;)
 let somethingTextRepresentable: TextRepresentable = simonTheHamster
 print(somethingTextRepresentable.textualDescription)
@@ -533,11 +533,13 @@ print(somethingTextRepresentable.textualDescription)
 
 //协议类型的集合
 let things: [TextRepresentable] = [game, d12, simonTheHamster]
-for thing in things {
+for thing in things &#123;
     print(thing.textualDescription)
-}
+&#125;
 
-//协议继承</code></pre><p>还是有点烧脑….</p>
+//协议继承
+</code></pre>
+<p>还是有点烧脑….</p>
 <p><strong>–EOF–</strong></p>
 <!--kg-card-end: markdown-->
     </div>
@@ -658,7 +660,7 @@ for thing in things {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">72</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

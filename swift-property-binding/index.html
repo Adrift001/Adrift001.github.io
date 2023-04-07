@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 7.0.0-rc1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -21,15 +21,15 @@
     var CONFIG = {"hostname":"jingxuetao.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="class Person { }  extension Person {      private static var age_key &#x3D; false &#x2F;&#x2F;占一个字节,省空间     private static var weight_key &#x3D; false &#x2F;&#x2F;占一个字节,省空间  &#x2F;&#x2F; private static var age_key1: Void? &#x2F;&#x2F;这种方式也是可以的 &#x2F;&#x2F; pri">
+  <meta name="description" content="class Person &amp;#123; &amp;#125;  extension Person &amp;#123;          private static var age_key &#x3D; false &#x2F;&#x2F;占一个字节,省空间     private static var weight_key &#x3D; false &#x2F;&#x2F;占一个字节,省空间      &#x2F;&#x2F; private static var age_key1: V">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift 属性绑定">
 <meta property="og:url" content="https://jingxuetao.com/swift-property-binding/index.html">
 <meta property="og:site_name" content="Optional Blog">
-<meta property="og:description" content="class Person { }  extension Person {      private static var age_key &#x3D; false &#x2F;&#x2F;占一个字节,省空间     private static var weight_key &#x3D; false &#x2F;&#x2F;占一个字节,省空间  &#x2F;&#x2F; private static var age_key1: Void? &#x2F;&#x2F;这种方式也是可以的 &#x2F;&#x2F; pri">
+<meta property="og:description" content="class Person &amp;#123; &amp;#125;  extension Person &amp;#123;          private static var age_key &#x3D; false &#x2F;&#x2F;占一个字节,省空间     private static var weight_key &#x3D; false &#x2F;&#x2F;占一个字节,省空间      &#x2F;&#x2F; private static var age_key1: V">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-08-08T01:50:38.000Z">
-<meta property="article:modified_time" content="2023-01-30T05:47:17.153Z">
+<meta property="article:modified_time" content="2023-04-07T07:47:37.850Z">
 <meta property="article:author" content="Optional">
 <meta property="article:tag" content="Optional Swift">
 <meta name="twitter:card" content="summary">
@@ -256,42 +256,44 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <pre><code>class Person { }
+        <pre><code>class Person &#123; &#125;
 
-extension Person {
-
+extension Person &#123;
+    
     private static var age_key = false //占一个字节,省空间
     private static var weight_key = false //占一个字节,省空间
-
+    
 // private static var age_key1: Void? //这种方式也是可以的
 // private static var weight_key1: Void?
-
-    var age: Int {
-        get {
+    
+    var age: Int &#123;
+        get &#123;
             objc_getAssociatedObject(self, &amp;Self.age_key) as! Int
-        }
-        set {
+        &#125;
+        set &#123;
 // self abc 都相当于是key
             objc_setAssociatedObject(self, &amp;Self.age_key, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
-        }
-    }
-
-    var weight: Int {
-        get {
+        &#125;
+    &#125;
+    
+    var weight: Int &#123;
+        get &#123;
             objc_getAssociatedObject(self, &amp;Self.weight_key) as! Int
-        }
-        set {
+        &#125;
+        set &#123;
 // self abc 都相当于是key
             objc_setAssociatedObject(self, &amp;Self.weight_key, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
-        }
-    }
-}
+        &#125;
+    &#125;
+&#125;
 
 var p = Person()
 p.age = 10
 print(p.age)
 p.weight = 50
-print(p.weight)</code></pre><p><strong>–EOF–</strong></p>
+print(p.weight)
+</code></pre>
+<p><strong>–EOF–</strong></p>
 <!--kg-card-end: markdown-->
     </div>
 
@@ -411,7 +413,7 @@ print(p.weight)</code></pre><p><strong>–EOF–</strong></p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">72</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

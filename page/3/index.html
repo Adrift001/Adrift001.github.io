@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 7.0.0-rc1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -205,6 +205,157 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/custom-expression-pattern/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Optional">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Optional Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/custom-expression-pattern/" class="post-title-link" itemprop="url">Custom expression pattern</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-30 14:03:11" itemprop="dateCreated datePublished" datetime="2019-07-30T14:03:11+00:00">2019-07-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <pre><code>// 自定义表达式模式
+struct Student &#123;
+    var score = 0, name = &quot;&quot;
+    
+    /// pattern: case 后面内容
+    /// value: switch 后面内容
+    static func ~=(pattern: Int, value: Student) -&gt; Bool &#123;
+        return value.score &gt;= pattern
+    &#125;
+    
+    static func ~=(pattern: Range&lt;Int&gt;, value: Student) -&gt; Bool &#123;
+        return pattern.contains(value.score)
+    &#125;
+    
+    static func ~=(pattern: ClosedRange&lt;Int&gt;, value: Student) -&gt; Bool &#123;
+        return pattern.contains(value.score)
+    &#125;
+&#125;
+
+var stu = Student(score: 75, name: &quot;Tom&quot;)
+switch stu &#123;
+case 100:
+    print(&quot;&gt;=100&quot;)
+case 90:
+    print(&quot;&gt;=90&quot;)
+case 80..&lt;90:
+    print(&quot;[80, 90]&quot;)
+case 60...79:
+    print(&quot;[60, 79]&quot;)
+case 0:
+    print(&quot;&gt;=0&quot;)
+default:
+    break
+&#125;
+
+extension String &#123;
+    static func ~=(pattern: (String) -&gt; String, value: String) -&gt; Bool &#123;
+        return pattern(value)
+    &#125;
+&#125;
+
+func hasPrefix(_ prefix: String) -&gt; ((String) -&gt; Bool) &#123;
+    return &#123; $0.hasPrefix(prefix) &#125;
+&#125;
+func hasSuffix(_ suffix: String) -&gt; ((String) -&gt; Bool) &#123;
+    return &#123; $0.hasSuffix(suffix) &#125;
+&#125;
+
+var fn = hasPrefix(&quot;123&quot;)
+print(fn(&quot;123456&quot;))
+
+var str = &quot;123456&quot;
+switch str &#123;
+case hasPrefix(&quot;123&quot;), hasSuffix(&quot;456&quot;):
+    print(&quot;123开头&quot;)
+    print(&quot;456结尾&quot;)
+default:
+    break
+&#125;
+
+func isEven(_ i: Int) -&gt; Bool &#123;
+    return i % 2 == 0
+&#125;
+
+func isOdd(_ i: Int) -&gt; Bool &#123;
+    return i % 2 != 0
+&#125;
+
+extension Int &#123;
+    static func ~=(pattern: (Int) -&gt; Bool, value: Int) -&gt; Bool &#123;
+        return pattern(value)
+    &#125;
+&#125;
+
+var age = 9
+switch age &#123;
+case isEven: //函数匹配,函数类型
+    print(age,&quot;是个偶数&quot;)
+case isOdd:
+    print(age,&quot;是个奇数&quot;)
+default:
+    break
+&#125;
+</code></pre>
+<p><strong>–EOF–</strong></p>
+<!--kg-card-end: markdown-->
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/lookup-table/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -329,20 +480,22 @@
 <blockquote>
 <p>全局内用private修饰类,变量或扩展,就是用fileprivate</p>
 </blockquote>
-<pre><code>class Test {
-    private struct Dog {
+<pre><code>class Test &#123;
+    private struct Dog &#123;
         var age = 0 //Test内可用,如果显式用private修饰,则Person内不能使用age
-        func run() { }
-    }
-
-    private struct Person {
+        func run() &#123; &#125;
+    &#125;
+    
+    private struct Person &#123;
         var dog = Dog()
-        mutating func walk() {
+        mutating func walk() &#123;
             dog.run()
             dog.age = 1
-        }
-    }
-}</code></pre><p><strong>–EOF–</strong></p>
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>–EOF–</strong></p>
 <!--kg-card-end: markdown-->
       
     </div>
@@ -617,87 +770,89 @@
 #define success 1
 typedef int datatype;
 
-typedef struct {
+typedef struct &#123;
     datatype data[maxsize];
     int length;
-} Seqlist;
+&#125; Seqlist;
 
 typedef Seqlist* List;
 
 ///求表长度 o(1)
-int length(Seqlist L) {
+int length(Seqlist L) &#123;
     return L.length;
-}
+&#125;
 
 /// 取表元 O(n)
-datatype get(List L, int index) {
-    if (index &lt; 1 || index &gt; L-&gt;length ) {
+datatype get(List L, int index) &#123;
+    if (index &lt; 1 || index &gt; L-&gt;length ) &#123;
         return failure;
-    }
+    &#125;
     return L-&gt;data[index - 1];
-}
+&#125;
 
 /// 定位 O(n)
-int locate(List L, datatype x) {
-// for (int i = 0; i &lt; L-&gt;length - 1; i++) {
-// if (x == L-&gt;data[i]) {
+int locate(List L, datatype x) &#123;
+// for (int i = 0; i &lt; L-&gt;length - 1; i++) &#123;
+// if (x == L-&gt;data[i]) &#123;
 // return i + 1;
-// }
-// }
+// &#125;
+// &#125;
 // return failure;
     int i = 0;
-    while (i &lt; L-&gt;length &amp;&amp; L-&gt;data[i] != x) {
+    while (i &lt; L-&gt;length &amp;&amp; L-&gt;data[i] != x) &#123;
         i++;
-    }
-    if (i &lt; L-&gt;length) {
+    &#125;
+    if (i &lt; L-&gt;length) &#123;
         return i + 1;
-    } else {
+    &#125; else &#123;
         return failure;
-    }
-}
+    &#125;
+&#125;
 
 /// 删除 O(n)
-int delete(List L, int index) {
-    if (index &lt; 1 || index &gt; L-&gt;length) {
+int delete(List L, int index) &#123;
+    if (index &lt; 1 || index &gt; L-&gt;length) &#123;
         return failure;
-    }
-    for (int j = index; j &lt; L-&gt;length; j++) {
+    &#125;
+    for (int j = index; j &lt; L-&gt;length; j++) &#123;
         L-&gt;data[j - 1] = L-&gt;data[j];
-    }
+    &#125;
     return success;
-}
+&#125;
 
 /// 插入 O(n)
-int insert(List L, datatype x, int index) {
-
-    if (L-&gt;length == maxsize) {
+int insert(List L, datatype x, int index) &#123;
+    
+    if (L-&gt;length == maxsize) &#123;
         return failure; //表满
-    }
-    if (index &lt; 1 || index &gt; L-&gt;length + 1) {
+    &#125;
+    if (index &lt; 1 || index &gt; L-&gt;length + 1) &#123;
         return failure; //位置错
-    }
-
-    for (int j = L-&gt;length; j &gt;= index; j--) {
+    &#125;
+    
+    for (int j = L-&gt;length; j &gt;= index; j--) &#123;
         L-&gt;data[j] = L-&gt;data[j - 1];
-    }
+    &#125;
     L-&gt;data[index - 1] = x;
     L-&gt;length++;
     return success;
-}
+&#125;
 
 
 
-int main(int argc, const char * argv[]) {
+int main(int argc, const char * argv[]) &#123;
     List L = (List)malloc(sizeof(Seqlist));
     L-&gt;length = 0;
     printf(&quot;%d\n&quot;, length(*L));
     int result = insert(L, 0, 1);
     printf(&quot;%d\n&quot;, result);
     printf(&quot;%d\n&quot;, length(*L));
-
+    
     printf(&quot;取表元 %d\n&quot;, get(L, 0));
     return 0;
-}</code></pre><p><strong>–EOF–</strong></p>
+&#125;
+</code></pre>
+<p><strong>–EOF–</strong></p>
 <!--kg-card-end: markdown-->
       
     </div>
@@ -767,29 +922,29 @@ int main(int argc, const char * argv[]) {
           <pre><code>import Foundation
 
 //dynamicMemberLookup_keyPath
-struct Address {
+struct Address &#123;
     let street: String
     let zipCode: String
     let city: String
-}
+&#125;
 
 @dynamicMemberLookup
-struct Person {
+struct Person &#123;
     let firstName: String
     let lastName: String
     private let address: Address
 
-    init(firstName: String, lastName: String, address: Address) {
+    init(firstName: String, lastName: String, address: Address) &#123;
         self.firstName = firstName
         self.lastName = lastName
         self.address = address
-    }
-
-    subscript&lt;T&gt;(dynamicMember keyPath: KeyPath&lt;Address, T&gt;) -&gt; T {
+    &#125;
+    
+    subscript&lt;T&gt;(dynamicMember keyPath: KeyPath&lt;Address, T&gt;) -&gt; T &#123;
         self.address[keyPath: keyPath]
-    }
+    &#125;
 
-}
+&#125;
 
 let address = Address(street: &quot;青岛街&quot;, zipCode: &quot;266700&quot;, city: &quot;北京市&quot;)
 let person = Person(firstName: &quot;五&quot;, lastName: &quot;王&quot;, address: address)
@@ -797,51 +952,53 @@ print(person.firstName)
 
 //property_wrappers
 //https://www.avanderlee.com/swift/property-wrappers/
-extension UserDefaults {
-
-    public enum Keys {
+extension UserDefaults &#123;
+    
+    public enum Keys &#123;
         static let hasSeenAppIntroduction = &quot;has_seen_app_introduction&quot;
-    }
-
-    var hasSeenAppIntroduction: Bool {
-        set {
+    &#125;
+    
+    var hasSeenAppIntroduction: Bool &#123;
+        set &#123;
             set(newValue, forKey: Keys.hasSeenAppIntroduction)
-        }
-        get {
+        &#125;
+        get &#123;
             bool(forKey: Keys.hasSeenAppIntroduction)
-        }
-    }
-}
+        &#125;
+    &#125;
+&#125;
 
 UserDefaults.standard.hasSeenAppIntroduction = true
 print(UserDefaults.standard.hasSeenAppIntroduction)
 
 @propertyWrapper
-struct UserDefault&lt;T&gt; {
+struct UserDefault&lt;T&gt; &#123;
     let key: String
     let defaultValue: T
-
-    init(_ key: String, defaultValue: T) {
+    
+    init(_ key: String, defaultValue: T) &#123;
         self.key = key
         self.defaultValue = defaultValue
-    }
-
-    var value: T {
-        get {
+    &#125;
+    
+    var value: T &#123;
+        get &#123;
             UserDefaults.standard.value(forKey: key) as? T ?? defaultValue
-        }
-        set {
+        &#125;
+        set &#123;
             UserDefaults.standard.set(newValue, forKey: key)
-        }
-    }
-}
+        &#125;
+    &#125;
+&#125;
 
-struct UserDefaultsConfig {
+struct UserDefaultsConfig &#123;
     @UserDefault(&quot;has_seen_app_introduction&quot;, defaultValue: false)
     static var hasSeenAppIntroduction: Bool
-}
+&#125;
 
-print(UserDefaultsConfig.hasSeenAppIntroduction)</code></pre><p><strong>–EOF–</strong></p>
+print(UserDefaultsConfig.hasSeenAppIntroduction)
+</code></pre>
+<p><strong>–EOF–</strong></p>
 <!--kg-card-end: markdown-->
       
     </div>
@@ -911,54 +1068,56 @@ print(UserDefaultsConfig.hasSeenAppIntroduction)</code></pre><p><strong>–EOF�
           <pre><code>var nums = [1, -2, 2, -13, 6, -10, 3, 12]
 
 /// O(n^3)
-func maxSubSequenceSum1() {
+func maxSubSequenceSum1() &#123;
     var maxSum = 0
-    for i in 0..&lt;nums.count {
-        for j in i..&lt;nums.count {
+    for i in 0..&lt;nums.count &#123;
+        for j in i..&lt;nums.count &#123;
             var thisSum = 0
-            for k in i...j {
+            for k in i...j &#123;
                 thisSum += nums[k]
-            }
-            if thisSum &gt; maxSum {
+            &#125;
+            if thisSum &gt; maxSum &#123;
                 maxSum = thisSum
-            }
-        }
-    }
+            &#125;
+        &#125;
+    &#125;
     print(maxSum)
-}
+&#125;
 
 /// O(n^2)
-func maxSubSequenceSum2() {
+func maxSubSequenceSum2() &#123;
     var maxSum = 0
-    for i in 0..&lt;nums.count {
+    for i in 0..&lt;nums.count &#123;
         var thisSum = 0
-        for j in i..&lt;nums.count {
+        for j in i..&lt;nums.count &#123;
             thisSum += nums[j]
-            if thisSum &gt; maxSum {
+            if thisSum &gt; maxSum &#123;
                 maxSum = thisSum
-            }
-        }
-    }
+            &#125;
+        &#125;
+    &#125;
     print(maxSum)
-}
+&#125;
 
 /// O(n)
-func maxSubSequenceSum3() {
+func maxSubSequenceSum3() &#123;
     var maxSum = 0, thisSum = 0
-    for i in 0..&lt;nums.count {
+    for i in 0..&lt;nums.count &#123;
         thisSum += nums[i]
-        if thisSum &gt; 0 {
+        if thisSum &gt; 0 &#123;
             maxSum = thisSum
-        } else { //如果thisSum小于0,则不可能使后面的部分和增大,抛弃.
+        &#125; else &#123; //如果thisSum小于0,则不可能使后面的部分和增大,抛弃.
             thisSum = 0
-        }
-    }
+        &#125;
+    &#125;
     print(maxSum)
-}
+&#125;
 
 maxSubSequenceSum1()
 maxSubSequenceSum2()
-maxSubSequenceSum3()</code></pre><p>算法很重要呐 😄😄</p>
+maxSubSequenceSum3()
+</code></pre>
+<p>算法很重要呐 😄😄</p>
 <p><strong>–EOF–</strong></p>
 <!--kg-card-end: markdown-->
       
@@ -1026,92 +1185,21 @@ maxSubSequenceSum3()</code></pre><p>算法很重要呐 😄😄</p>
     <div class="post-body" itemprop="articleBody">
 
       
-          <pre><code>exitLoop: for i in 0...100 {
+          <pre><code>exitLoop: for i in 0...100 &#123;
     print(&quot;i=\(i)&quot;)
-    if i == 50 {
+    if i == 50 &#123;
 // break
-    } else {
-        for j in 0...100 {
+    &#125; else &#123;
+        for j in 0...100 &#123;
             print(&quot;j=\(j)&quot;)
-            if j == 50 {
+            if j == 50 &#123;
                 break exitLoop
-            }
-        }
-    }
-}</code></pre><p>参考: <a href="https://www.hackingwithswift.com/example-code/language/how-to-break-out-of-multiple-loop-levels-using-labeled-statements" target="_blank" rel="noopener">https://www.hackingwithswift.com/example-code/language/how-to-break-out-of-multiple-loop-levels-using-labeled-statements</a></p>
-<p><strong>–EOF–</strong></p>
-<!--kg-card-end: markdown-->
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://jingxuetao.com/sourcetree-could-not-commit-code-by-username/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Optional">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Optional Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/sourcetree-could-not-commit-code-by-username/" class="post-title-link" itemprop="url">SourceTree不能使用账号密码提交代码</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-05-05 11:43:15" itemprop="dateCreated datePublished" datetime="2019-05-05T11:43:15+00:00">2019-05-05</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>总感觉用账号密码提交代码是反人类的🙂</p>
-<p>解决方法:</p>
-<blockquote>
-<p>SourceTree -&gt; 偏好设置-&gt; Git -&gt; 使用系统安装的Git</p>
-</blockquote>
-<p>好长时间不写博客了,能水一篇是一篇.</p>
+            &#125;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>参考: <a href="https://www.hackingwithswift.com/example-code/language/how-to-break-out-of-multiple-loop-levels-using-labeled-statements">https://www.hackingwithswift.com/example-code/language/how-to-break-out-of-multiple-loop-levels-using-labeled-statements</a></p>
 <p><strong>–EOF–</strong></p>
 <!--kg-card-end: markdown-->
       
@@ -1199,7 +1287,7 @@ maxSubSequenceSum3()</code></pre><p>算法很重要呐 😄😄</p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">72</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

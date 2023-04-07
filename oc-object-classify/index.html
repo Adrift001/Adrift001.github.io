@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 7.0.0-rc1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -29,7 +29,7 @@
 <meta property="og:description" content="&#x2F;&#x2F;实例对象(instance对象)     &#x2F;&#x2F;isa指针     &#x2F;&#x2F;变量 &#x2F;&#x2F;类对象(Class对象)     &#x2F;&#x2F;每个类有且只有一个类对象     &#x2F;&#x2F;class对象在内存中存储的主要信息有:     &#x2F;&#x2F;isa指针     &#x2F;&#x2F;superclass指针     &#x2F;&#x2F;类属性信息(@property), 类的对象信息(instance method)     &#x2F;&#x2F;类的协议信息(protoco">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-11-21T14:09:18.000Z">
-<meta property="article:modified_time" content="2023-01-30T05:47:17.153Z">
+<meta property="article:modified_time" content="2023-04-07T07:47:37.850Z">
 <meta property="article:author" content="Optional">
 <meta property="article:tag" content="Optional Swift">
 <meta name="twitter:card" content="summary">
@@ -277,12 +277,12 @@
 #import &lt;Foundation/Foundation.h&gt;
 #import &lt;objc/runtime.h&gt;
 
-int main(int argc, const char * argv[]) {
-    @autoreleasepool {
+int main(int argc, const char * argv[]) &#123;
+    @autoreleasepool &#123;
         //实例对象(instance对象)
         NSObject *obj1 = [[NSObject alloc] init];
         NSObject *obj2 = [[NSObject alloc] init];
-
+        
         //类对象(Class对象)
         Class objClass1 = [obj1 class]; //类对象
         Class objClass2 = [obj2 class];
@@ -294,12 +294,14 @@ int main(int argc, const char * argv[]) {
         NSLog(@&quot;%p&quot;, objClass3);
         NSLog(@&quot;%p&quot;, objClass4);
         NSLog(@&quot;%p&quot;, objClass5);
-
+        
         //元类对象(meta class对象)
         Class metaClass = object_getClass([NSObject class]);
-    }
+    &#125;
     return 0;
-}</code></pre><p><strong>–EOF–</strong></p>
+&#125;
+</code></pre>
+<p><strong>–EOF–</strong></p>
 <!--kg-card-end: markdown-->
     </div>
 
@@ -419,7 +421,7 @@ int main(int argc, const char * argv[]) {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">72</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 7.0.0-rc1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -29,7 +29,7 @@
 <meta property="og:description" content="现在面临的场景在做项目过程中难免会创建很多ViewModel,这些ViewModel难免有些共同的方法跟属性,这些共同的方法和属性可以单独提取出来,这就用到category.我现在的具体场景是:每个ViewModel都需要请求数据,当ViewController从当前界面切换到另一个画面时,暂停本页面的网络请求. 源码NSObject+ViewModel.h文件   @interface NSOb">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2016-02-19T13:58:00.000Z">
-<meta property="article:modified_time" content="2023-01-30T05:47:17.153Z">
+<meta property="article:modified_time" content="2023-04-07T07:47:37.846Z">
 <meta property="article:author" content="Optional">
 <meta property="article:tag" content="Optional Swift">
 <meta name="twitter:card" content="summary">
@@ -265,7 +265,9 @@
 - (void)cancelTask; //取消任务
 - (void)suspendTask; //暂停任务
 - (void)resumeTask; //继续任务
-@end</code></pre><!--kg-card-end: code-->
+@end
+</code></pre>
+<!--kg-card-end: code-->
 
 <p>NSObject+ViewModel.m文件</p>
 <!--kg-card-begin: code-->
@@ -283,29 +285,31 @@ static const void *dataTaskKey = &amp;dataTaskKey;
   参数三 关联的对象
   参数四 关联策略(属性的内存管理方式),关联策略详细解释在下面
 **/
-- (void)setDataTask:(NSURLSessionDataTask *)dataTask{
+- (void)setDataTask:(NSURLSessionDataTask *)dataTask&#123;
     objc_setAssociatedObject(self, dataTaskKey, dataTask, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
+&#125;
 
 /**
   参数一 源对象,此处是self
   参数二 唯一静态变量,dataTaskKey保存的是他自己的地址,因为是静态的,所以地址不会重复
 **/
-- (NSURLSessionDataTask *)dataTask{
+- (NSURLSessionDataTask *)dataTask&#123;
     return objc_getAssociatedObject(self, dataTaskKey);
-}
+&#125;
 
-- (void)resumeTask{
+- (void)resumeTask&#123;
     [self.dataTask resume];
-}
-- (void)cancelTask{
+&#125;
+- (void)cancelTask&#123;
     [self.dataTask cancel];
-}
-- (void)suspendTask{
+&#125;
+- (void)suspendTask&#123;
     [self.dataTask suspend];
-}
-@end</code></pre><!--kg-card-end: code-->
-<h3 id="关联策略"><a href="#关联策略" class="headerlink" title="关联策略"></a>关联策略</h3><p>&nbsp; &nbsp; &nbsp;Behavior &nbsp; &nbsp;@property Equivalent &nbsp; &nbsp;Description &nbsp; &nbsp; &nbsp; &nbsp;OBJC_ASSOCIATION_ASSIGN &nbsp; &nbsp;@property (assign) 或 @property (unsafe_unretained) &nbsp; &nbsp;指定一个关联对象的弱引用。 &nbsp; &nbsp; &nbsp; &nbsp;OBJC_ASSOCIATION_RETAIN_NONATOMIC &nbsp; &nbsp;@property (nonatomic, strong) &nbsp; &nbsp;指定一个关联对象的强引用，不能被原子化使用。 &nbsp; &nbsp; &nbsp; &nbsp;OBJC_ASSOCIATION_COPY_NONATOMIC &nbsp; &nbsp;@property (nonatomic, copy) &nbsp; &nbsp;指定一个关联对象的copy引用，不能被原子化使用。 &nbsp; &nbsp; &nbsp; &nbsp;OBJC_ASSOCIATION_RETAIN &nbsp; &nbsp;@property (atomic, strong) &nbsp; &nbsp;指定一个关联对象的强引用，能被原子化使用。 &nbsp; &nbsp; &nbsp; &nbsp;OBJC_ASSOCIATION_COPY &nbsp; &nbsp;@property (atomic, copy) &nbsp; &nbsp;指定一个关联对象的copy引用，能被原子化使用。 &nbsp;</p>
+&#125;
+@end
+</code></pre>
+<!--kg-card-end: code-->
+<h3 id="关联策略"><a href="#关联策略" class="headerlink" title="关联策略"></a>关联策略</h3><p>&amp;nbsp; &amp;nbsp; &amp;nbsp;Behavior &amp;nbsp; &amp;nbsp;@property Equivalent &amp;nbsp; &amp;nbsp;Description &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;OBJC_ASSOCIATION_ASSIGN &amp;nbsp; &amp;nbsp;@property (assign) 或 @property (unsafe_unretained) &amp;nbsp; &amp;nbsp;指定一个关联对象的弱引用。 &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;OBJC_ASSOCIATION_RETAIN_NONATOMIC &amp;nbsp; &amp;nbsp;@property (nonatomic, strong) &amp;nbsp; &amp;nbsp;指定一个关联对象的强引用，不能被原子化使用。 &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;OBJC_ASSOCIATION_COPY_NONATOMIC &amp;nbsp; &amp;nbsp;@property (nonatomic, copy) &amp;nbsp; &amp;nbsp;指定一个关联对象的copy引用，不能被原子化使用。 &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;OBJC_ASSOCIATION_RETAIN &amp;nbsp; &amp;nbsp;@property (atomic, strong) &amp;nbsp; &amp;nbsp;指定一个关联对象的强引用，能被原子化使用。 &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;OBJC_ASSOCIATION_COPY &amp;nbsp; &amp;nbsp;@property (atomic, copy) &amp;nbsp; &amp;nbsp;指定一个关联对象的copy引用，能被原子化使用。 &amp;nbsp;</p>
 <blockquote>
 <p>这两个方法可以让一个对象和另一个对象关联，就是说一个对象可以保持对另一个对象的引用，并获取那个对象。有了这些，就能实现属性功能了。</p>
 </blockquote>
@@ -413,7 +417,7 @@ static const void *dataTaskKey = &amp;dataTaskKey;
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#现在面临的场景"><span class="nav-number">1.</span> <span class="nav-text">现在面临的场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源码"><span class="nav-number">2.</span> <span class="nav-text">源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关联策略"><span class="nav-number">3.</span> <span class="nav-text">关联策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#END"><span class="nav-number">4.</span> <span class="nav-text">END</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%B0%E5%9C%A8%E9%9D%A2%E4%B8%B4%E7%9A%84%E5%9C%BA%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">现在面临的场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BA%90%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E8%81%94%E7%AD%96%E7%95%A5"><span class="nav-number">3.</span> <span class="nav-text">关联策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#END"><span class="nav-number">4.</span> <span class="nav-text">END</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -429,7 +433,7 @@ static const void *dataTaskKey = &amp;dataTaskKey;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">72</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

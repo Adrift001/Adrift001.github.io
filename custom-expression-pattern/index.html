@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 7.0.0-rc1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -21,15 +21,15 @@
     var CONFIG = {"hostname":"jingxuetao.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="&#x2F;&#x2F; 自定义表达式模式 struct Student {     var score &#x3D; 0, name &#x3D; &quot;&quot;      &#x2F;&#x2F;&#x2F; pattern: case 后面内容     &#x2F;&#x2F;&#x2F; value: switch 后面内容     static func ~&#x3D;(pattern: Int, value: Student) -&gt; Bool {         return">
+  <meta name="description" content="&#x2F;&#x2F; 自定义表达式模式 struct Student &amp;#123;     var score &#x3D; 0, name &#x3D; &quot;&quot;          &#x2F;&#x2F;&#x2F; pattern: case 后面内容     &#x2F;&#x2F;&#x2F; value: switch 后面内容     static func ~&#x3D;(pattern: Int, value: Student) -&gt; Bool &amp;#123;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Custom expression pattern">
 <meta property="og:url" content="https://jingxuetao.com/custom-expression-pattern/index.html">
 <meta property="og:site_name" content="Optional Blog">
-<meta property="og:description" content="&#x2F;&#x2F; 自定义表达式模式 struct Student {     var score &#x3D; 0, name &#x3D; &quot;&quot;      &#x2F;&#x2F;&#x2F; pattern: case 后面内容     &#x2F;&#x2F;&#x2F; value: switch 后面内容     static func ~&#x3D;(pattern: Int, value: Student) -&gt; Bool {         return">
+<meta property="og:description" content="&#x2F;&#x2F; 自定义表达式模式 struct Student &amp;#123;     var score &#x3D; 0, name &#x3D; &quot;&quot;          &#x2F;&#x2F;&#x2F; pattern: case 后面内容     &#x2F;&#x2F;&#x2F; value: switch 后面内容     static func ~&#x3D;(pattern: Int, value: Student) -&gt; Bool &amp;#123;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-07-30T14:03:11.000Z">
-<meta property="article:modified_time" content="2023-01-30T05:47:17.153Z">
+<meta property="article:modified_time" content="2023-04-07T07:47:37.850Z">
 <meta property="article:author" content="Optional">
 <meta property="article:tag" content="Optional Swift">
 <meta name="twitter:card" content="summary">
@@ -257,26 +257,26 @@
 
       
         <pre><code>// 自定义表达式模式
-struct Student {
+struct Student &#123;
     var score = 0, name = &quot;&quot;
-
+    
     /// pattern: case 后面内容
     /// value: switch 后面内容
-    static func ~=(pattern: Int, value: Student) -&gt; Bool {
+    static func ~=(pattern: Int, value: Student) -&gt; Bool &#123;
         return value.score &gt;= pattern
-    }
-
-    static func ~=(pattern: Range&lt;Int&gt;, value: Student) -&gt; Bool {
+    &#125;
+    
+    static func ~=(pattern: Range&lt;Int&gt;, value: Student) -&gt; Bool &#123;
         return pattern.contains(value.score)
-    }
-
-    static func ~=(pattern: ClosedRange&lt;Int&gt;, value: Student) -&gt; Bool {
+    &#125;
+    
+    static func ~=(pattern: ClosedRange&lt;Int&gt;, value: Student) -&gt; Bool &#123;
         return pattern.contains(value.score)
-    }
-}
+    &#125;
+&#125;
 
 var stu = Student(score: 75, name: &quot;Tom&quot;)
-switch stu {
+switch stu &#123;
 case 100:
     print(&quot;&gt;=100&quot;)
 case 90:
@@ -289,56 +289,58 @@ case 0:
     print(&quot;&gt;=0&quot;)
 default:
     break
-}
+&#125;
 
-extension String {
-    static func ~=(pattern: (String) -&gt; String, value: String) -&gt; Bool {
+extension String &#123;
+    static func ~=(pattern: (String) -&gt; String, value: String) -&gt; Bool &#123;
         return pattern(value)
-    }
-}
+    &#125;
+&#125;
 
-func hasPrefix(_ prefix: String) -&gt; ((String) -&gt; Bool) {
-    return { $0.hasPrefix(prefix) }
-}
-func hasSuffix(_ suffix: String) -&gt; ((String) -&gt; Bool) {
-    return { $0.hasSuffix(suffix) }
-}
+func hasPrefix(_ prefix: String) -&gt; ((String) -&gt; Bool) &#123;
+    return &#123; $0.hasPrefix(prefix) &#125;
+&#125;
+func hasSuffix(_ suffix: String) -&gt; ((String) -&gt; Bool) &#123;
+    return &#123; $0.hasSuffix(suffix) &#125;
+&#125;
 
 var fn = hasPrefix(&quot;123&quot;)
 print(fn(&quot;123456&quot;))
 
 var str = &quot;123456&quot;
-switch str {
+switch str &#123;
 case hasPrefix(&quot;123&quot;), hasSuffix(&quot;456&quot;):
     print(&quot;123开头&quot;)
     print(&quot;456结尾&quot;)
 default:
     break
-}
+&#125;
 
-func isEven(_ i: Int) -&gt; Bool {
+func isEven(_ i: Int) -&gt; Bool &#123;
     return i % 2 == 0
-}
+&#125;
 
-func isOdd(_ i: Int) -&gt; Bool {
+func isOdd(_ i: Int) -&gt; Bool &#123;
     return i % 2 != 0
-}
+&#125;
 
-extension Int {
-    static func ~=(pattern: (Int) -&gt; Bool, value: Int) -&gt; Bool {
+extension Int &#123;
+    static func ~=(pattern: (Int) -&gt; Bool, value: Int) -&gt; Bool &#123;
         return pattern(value)
-    }
-}
+    &#125;
+&#125;
 
 var age = 9
-switch age {
+switch age &#123;
 case isEven: //函数匹配,函数类型
     print(age,&quot;是个偶数&quot;)
 case isOdd:
     print(age,&quot;是个奇数&quot;)
 default:
     break
-}</code></pre><p><strong>–EOF–</strong></p>
+&#125;
+</code></pre>
+<p><strong>–EOF–</strong></p>
 <!--kg-card-end: markdown-->
     </div>
 
@@ -458,7 +460,7 @@ default:
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">72</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

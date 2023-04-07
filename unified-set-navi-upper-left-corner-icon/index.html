@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 7.0.0-rc1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -29,7 +29,7 @@
 <meta property="og:description" content="方法一通过工厂方法，然后在需要左上角显示图标的ViewController的viewDidLoad方法调用。代码如下： Factory.h文件   #import &lt;Foundation&#x2F;Foundation.h&gt;  @interface Factory : NSObject + (void)addBackButton:(UIViewController *)viewControlle">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2016-05-11T14:00:00.000Z">
-<meta property="article:modified_time" content="2023-01-30T05:47:17.153Z">
+<meta property="article:modified_time" content="2023-04-07T07:47:37.850Z">
 <meta property="article:author" content="Optional">
 <meta property="article:tag" content="Optional Swift">
 <meta name="twitter:card" content="summary">
@@ -265,11 +265,11 @@
 @interface Factory : NSObject
 + (void)addBackButton:(UIViewController *)viewController;
 @end
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x3D;&#x3D;Factory.m文件&#x3D;&#x3D;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">==Factory.m文件==</span><br></pre></td></tr></table></figure>
 #import &quot;Factory.h&quot;
 
 @implementation Factory
-+ (void)addBackButton:(UIViewController *)viewController{
++ (void)addBackButton:(UIViewController *)viewController&#123;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[UIImage imageNamed:@&quot;community_highlight&quot;] forState:UIControlStateNormal];
     [button setImage:[UIImage imageNamed:@&quot;community_highlight&quot;] forState:UIControlStateHighlighted];
@@ -280,15 +280,15 @@
     UIBarButtonItem *speaceItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     speaceItem.width = -5;
     viewController.navigationItem.leftBarButtonItems = @[speaceItem,buttonItem];
-}
+&#125;
 @end
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">### 方法二</span><br><span class="line">这种方法是通过实现UINavigationController的pushViewController方法，拦截所有push进来的viewController，然后对其进行设置。代码如下：</span><br><span class="line"></span><br><span class="line">&#x3D;&#x3D;BaseNavigationController.h文件&#x3D;&#x3D;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">### 方法二</span><br><span class="line">这种方法是通过实现UINavigationController的pushViewController方法，拦截所有push进来的viewController，然后对其进行设置。代码如下：</span><br><span class="line"></span><br><span class="line">==BaseNavigationController.h文件==</span><br></pre></td></tr></table></figure>
 #import &lt;UIKit/UIKit.h&gt;
 
 @interface BaseNavigationController : UINavigationController
 
 @end
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x3D;&#x3D;BaseNavigationController.m文件&#x3D;&#x3D;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">==BaseNavigationController.m文件==</span><br></pre></td></tr></table></figure>
 #import &quot;BaseNavigationController.h&quot;
 
 @interface BaseNavigationController ()
@@ -297,10 +297,10 @@
 
 @implementation BaseNavigationController
 
-- (void)addBackButton:(UIViewController *)viewController{
-    if (self.viewControllers.count &gt; 0) {
+- (void)addBackButton:(UIViewController *)viewController&#123;
+    if (self.viewControllers.count &gt; 0) &#123;
         viewController.hidesBottomBarWhenPushed = YES;
-
+        
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setImage:[UIImage imageNamed:@&quot;back_icon_red&quot;] forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:@&quot;back_icon_red&quot;] forState:UIControlStateHighlighted];
@@ -310,27 +310,27 @@
         UIBarButtonItem *speaceItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
         speaceItem.width = -5;
         viewController.navigationItem.leftBarButtonItems = @[speaceItem,buttonItem];
-    }
-}
+    &#125;
+&#125;
 
-- (void)back{
+- (void)back&#123;
     [self popViewControllerAnimated:YES];
-}
+&#125;
 
-- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated&#123;
     NSLog(@&quot;push&quot;);
     [self addBackButton:viewController];
     [super pushViewController:viewController animated:animated];
-}
+&#125;
 
 #pragma -mark 生命周期
-- (void)viewDidLoad {
+- (void)viewDidLoad &#123;
     [super viewDidLoad];
-}
+&#125;
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning &#123;
     [super didReceiveMemoryWarning];
-}
+&#125;
 @end
 ```
 &gt; 注意：
@@ -340,7 +340,9 @@
 
 &gt; 所谓的拦截，大部分都是通过自定义类，然后重写自带方法实现的。
 
-**--EOF--**</code></pre><!--kg-card-end: code-->
+**--EOF--**
+</code></pre>
+<!--kg-card-end: code-->
     </div>
 
     
@@ -444,7 +446,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法一"><span class="nav-number">1.</span> <span class="nav-text">方法一</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="nav-number">1.</span> <span class="nav-text">方法一</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -460,7 +462,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">72</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

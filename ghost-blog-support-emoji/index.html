@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 7.0.0-rc1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -29,7 +29,7 @@
 <meta property="og:description" content="原文链接 转载备忘 自从 Emoji 被推广开来，被越来越多的操作系统支持，变成了一种通用的表情符号，今天看到 Ghost 的官方博客文章中用了 Emoji，我也想试一下，发现自己文章中插入 Emoji 发表后不能显示。😭 Google 了一下，找到了问题，我的 Ghost 数据保存在 MySQL 数据库上，当时安装 MySQL 设置了 utf8 的字符集，需要改成 utf8mb4 才能支持存储">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-09-13T14:28:00.000Z">
-<meta property="article:modified_time" content="2023-01-30T05:47:17.153Z">
+<meta property="article:modified_time" content="2023-04-07T07:47:37.850Z">
 <meta property="article:author" content="Optional">
 <meta property="article:tag" content="Optional Swift">
 <meta name="twitter:card" content="summary">
@@ -256,7 +256,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><a href="https://xiao.lu/solve-the-ghost-blog-can-not-display-emoji/" target="_blank" rel="noopener">原文链接</a></p>
+        <p><a href="https://xiao.lu/solve-the-ghost-blog-can-not-display-emoji/">原文链接</a></p>
 <p>转载备忘</p>
 <p>自从 Emoji 被推广开来，被越来越多的操作系统支持，变成了一种通用的表情符号，今天看到 Ghost 的官方博客文章中用了 Emoji，我也想试一下，发现自己文章中插入 Emoji 发表后不能显示。😭</p>
 <p>Google 了一下，找到了问题，我的 Ghost 数据保存在 MySQL 数据库上，当时安装 MySQL 设置了 utf8 的字符集，需要改成 utf8mb4 才能支持存储 Emoji。</p>
@@ -289,14 +289,16 @@ default-character-set=utf8mb4
 #
 # include all files from the config directory
 #
-!includedir /etc/my.cnf.d</code></pre><!--kg-card-end: code-->
+!includedir /etc/my.cnf.d
+</code></pre>
+<!--kg-card-end: code-->
 
 <p>第四步，重启 MySQL 服务，并确认变更</p>
 <!--kg-card-begin: code-->
 
 <pre><code>#登录 MySQL（需要 MySQL root 密码）
 mysql -uroot -p
-mysql&gt; SHOW VARIABLES WHERE Variable_name LIKE &apos;character\_set\_%&apos; OR Variable_name LIKE &apos;collation%&apos;;
+mysql&gt; SHOW VARIABLES WHERE Variable_name LIKE &#39;character\_set\_%&#39; OR Variable_name LIKE &#39;collation%&#39;;
 +--------------------------+--------------------+
 | Variable_name | Value |
 +--------------------------+--------------------+
@@ -311,7 +313,9 @@ mysql&gt; SHOW VARIABLES WHERE Variable_name LIKE &apos;character\_set\_%&apos; 
 | collation_database | utf8mb4_unicode_ci |
 | collation_server | utf8mb4_unicode_ci |
 +--------------------------+--------------------+
-10 rows in set (0.00 sec)</code></pre><!--kg-card-end: code-->
+10 rows in set (0.00 sec)
+</code></pre>
+<!--kg-card-end: code-->
 
 <p>第五步，修改数据库和数据表的编码格式。</p>
 <!--kg-card-begin: code-->
@@ -320,7 +324,9 @@ mysql&gt; SHOW VARIABLES WHERE Variable_name LIKE &apos;character\_set\_%&apos; 
 mysql&gt; use database-name
 #对于 Ghost 貌似修改这两处就行了
 mysql&gt; ALTER DATABASE ghost CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
-mysql&gt; ALTER TABLE posts CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;</code></pre><!--kg-card-end: code-->
+mysql&gt; ALTER TABLE posts CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+</code></pre>
+<!--kg-card-end: code-->
 
 <p>然后就支持emoji了.🙂🙂</p>
 <p><strong>–EOF–</strong></p>
@@ -443,7 +449,7 @@ mysql&gt; ALTER TABLE posts CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_uni
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">72</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
