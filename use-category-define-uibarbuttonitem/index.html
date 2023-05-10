@@ -29,7 +29,7 @@
 <meta property="og:description" content="原因：   项目中多次用到自定义UIBarButtonItem，所以需要抽取出来 代码该干什么就干什么，因为这段代码是自定义。UIBarButtonItem，所以应该由UIBarButtonItem做。所以创建一个分类。 命名习惯，代码规范。要用[UIBarButtonItem itemWith…]这种形式。  自定义UIBarButtonItemUIBarButtonItem+Category">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2016-05-11T14:15:00.000Z">
-<meta property="article:modified_time" content="2023-04-08T05:03:06.577Z">
+<meta property="article:modified_time" content="2023-05-10T01:25:32.602Z">
 <meta property="article:author" content="Optional">
 <meta property="article:tag" content="Optional Swift">
 <meta name="twitter:card" content="summary">
@@ -375,11 +375,11 @@ viewController.navigationItem.leftBarButtonItems = [UIBarButtonItem itemWithTarg
           </div>
           
     
+  
   <div class="comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
-    </div>
+  <script src="https://utteranc.es/client.js" repo="Adrift001/Blog-Comments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script>
   </div>
+  
   
 
 <script>
@@ -545,27 +545,6 @@ viewController.navigationItem.leftBarButtonItems = [UIBarButtonItem itemWithTarg
   
 
   
-
-<script>
-  var disqus_config = function() {
-    this.page.url = "https://jingxuetao.com/use-category-define-uibarbuttonitem/";
-    this.page.identifier = "use-category-define-uibarbuttonitem/";
-    this.page.title = "用分类自定义UIBarButtonItem";
-    };
-  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
-    if (window.DISQUS) {
-      DISQUS.reset({
-        reload: true,
-        config: disqus_config
-      });
-    } else {
-      var d = document, s = d.createElement('script');
-      s.src = 'https://miao-xiao-mi-de-bo-ke.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', '' + +new Date());
-      (d.head || d.body).appendChild(s);
-    }
-  });
-</script>
 
 </body>
 </html>

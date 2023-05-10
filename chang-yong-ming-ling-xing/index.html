@@ -29,7 +29,7 @@
 <meta property="og:description" content="find . -name &quot;*.gif&quot;|sed &#39;s&#x2F;.gif&#x2F;&#x2F;&#39;|xargs -n1 -I &amp;#123;&amp;#125; mv &amp;#123;&amp;#125;.gif &amp;#123;&amp;#125;.png &#x2F;&#x2F;批量修改文件后缀名 sips -Z 75 *.png &#x2F;&#x2F;批量修改文件像素 sudo python -m SimpleHTTPServer 80 &#x2F;&#x2F;开启一个简单">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-12-13T13:46:00.000Z">
-<meta property="article:modified_time" content="2023-04-08T05:03:06.577Z">
+<meta property="article:modified_time" content="2023-05-10T01:25:32.602Z">
 <meta property="article:author" content="Optional">
 <meta property="article:tag" content="Optional Swift">
 <meta name="twitter:card" content="summary">
@@ -312,11 +312,11 @@ sudo python -m SimpleHTTPServer 80 //开启一个简单的服务器,用于网页
           </div>
           
     
+  
   <div class="comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
-    </div>
+  <script src="https://utteranc.es/client.js" repo="Adrift001/Blog-Comments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script>
   </div>
+  
   
 
 <script>
@@ -481,27 +481,6 @@ sudo python -m SimpleHTTPServer 80 //开启一个简单的服务器,用于网页
   
 
   
-
-<script>
-  var disqus_config = function() {
-    this.page.url = "https://jingxuetao.com/chang-yong-ming-ling-xing/";
-    this.page.identifier = "chang-yong-ming-ling-xing/";
-    this.page.title = "常用命令行";
-    };
-  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
-    if (window.DISQUS) {
-      DISQUS.reset({
-        reload: true,
-        config: disqus_config
-      });
-    } else {
-      var d = document, s = d.createElement('script');
-      s.src = 'https://miao-xiao-mi-de-bo-ke.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', '' + +new Date());
-      (d.head || d.body).appendChild(s);
-    }
-  });
-</script>
 
 </body>
 </html>

@@ -29,7 +29,7 @@
 <meta property="og:description" content="原文链接 转载备忘 自从 Emoji 被推广开来，被越来越多的操作系统支持，变成了一种通用的表情符号，今天看到 Ghost 的官方博客文章中用了 Emoji，我也想试一下，发现自己文章中插入 Emoji 发表后不能显示。😭 Google 了一下，找到了问题，我的 Ghost 数据保存在 MySQL 数据库上，当时安装 MySQL 设置了 utf8 的字符集，需要改成 utf8mb4 才能支持存储">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-09-13T14:28:00.000Z">
-<meta property="article:modified_time" content="2023-04-08T05:03:06.577Z">
+<meta property="article:modified_time" content="2023-05-10T01:25:32.602Z">
 <meta property="article:author" content="Optional">
 <meta property="article:tag" content="Optional Swift">
 <meta name="twitter:card" content="summary">
@@ -382,11 +382,11 @@ mysql&gt; ALTER TABLE posts CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_uni
           </div>
           
     
+  
   <div class="comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
-    </div>
+  <script src="https://utteranc.es/client.js" repo="Adrift001/Blog-Comments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script>
   </div>
+  
   
 
 <script>
@@ -551,27 +551,6 @@ mysql&gt; ALTER TABLE posts CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_uni
   
 
   
-
-<script>
-  var disqus_config = function() {
-    this.page.url = "https://jingxuetao.com/ghost-blog-support-emoji/";
-    this.page.identifier = "ghost-blog-support-emoji/";
-    this.page.title = "Ghost博客支持emoji";
-    };
-  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
-    if (window.DISQUS) {
-      DISQUS.reset({
-        reload: true,
-        config: disqus_config
-      });
-    } else {
-      var d = document, s = d.createElement('script');
-      s.src = 'https://miao-xiao-mi-de-bo-ke.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', '' + +new Date());
-      (d.head || d.body).appendChild(s);
-    }
-  });
-</script>
 
 </body>
 </html>

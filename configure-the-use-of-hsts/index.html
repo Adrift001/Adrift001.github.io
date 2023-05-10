@@ -29,7 +29,7 @@
 <meta property="og:description" content="HTTP严格传输安全（英语：HTTP Strict Transport Security，缩写：HSTS）是一套由互联网工程任务组发布的互联网安全策略机制。网站可以选择使用HSTS策略，来让浏览器强制使用HTTPS与网站进行通信，以减少会话劫持风险. 内容HSTS的作用是强制客户端（如浏览器）使用HTTPS与服务器创建连接。服务器开启HSTS的方法是，当客户端通过HTTPS发出请求时，在服务器返回">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2016-03-24T13:54:00.000Z">
-<meta property="article:modified_time" content="2023-04-08T05:03:06.577Z">
+<meta property="article:modified_time" content="2023-05-10T01:25:32.602Z">
 <meta property="article:author" content="Optional">
 <meta property="article:tag" content="Optional Swift">
 <meta name="twitter:card" content="summary">
@@ -350,11 +350,11 @@ add_header Strict-Transport-Security &quot;max-age=31536000;&quot;;
           </div>
           
     
+  
   <div class="comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
-    </div>
+  <script src="https://utteranc.es/client.js" repo="Adrift001/Blog-Comments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script>
   </div>
+  
   
 
 <script>
@@ -520,27 +520,6 @@ add_header Strict-Transport-Security &quot;max-age=31536000;&quot;;
   
 
   
-
-<script>
-  var disqus_config = function() {
-    this.page.url = "https://jingxuetao.com/configure-the-use-of-hsts/";
-    this.page.identifier = "configure-the-use-of-hsts/";
-    this.page.title = "如何配置使用HSTS";
-    };
-  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
-    if (window.DISQUS) {
-      DISQUS.reset({
-        reload: true,
-        config: disqus_config
-      });
-    } else {
-      var d = document, s = d.createElement('script');
-      s.src = 'https://miao-xiao-mi-de-bo-ke.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', '' + +new Date());
-      (d.head || d.body).appendChild(s);
-    }
-  });
-</script>
 
 </body>
 </html>
