@@ -1175,79 +1175,6 @@ viewController.navigationItem.leftBarButtonItems = [UIBarButtonItem itemWithTarg
       </categories>
   </entry>
   <entry>
-    <title>OC根据分隔符分隔字符串</title>
-    <url>/oc-according-to-symbol-split-string/</url>
-    <content><![CDATA[<p>同学前几天面试面到了这个题,毕竟闷了半天才闷出来.记录一下省的忘了…</p>
-<p>NSString+Category.h文件</p>
-<!--kg-card-begin: code-->
-
-<pre><code>#import &lt;Foundation/Foundation.h&gt;
-
-@interface NSString (Category)
-
-/**
- * 根据分隔符,分隔字符串
- *
- * @param symbol 分隔符
- *
- * @return 由被分隔完的字串组成的数组
- */
-- (NSArray *)splitStringWithSymbol:(NSString *)symbol;
-
-@end
-</code></pre>
-<!--kg-card-end: code-->
-
-<p>NSString+Category.m文件</p>
-<!--kg-card-begin: code-->
-
-<pre><code>#import &quot;NSString+Category.h&quot;
-
-@implementation NSString (Category)
-
-- (NSArray *)splitStringWithSymbol:(NSString *)symbol &#123;
-    
-    if (!self || [self isEqualToString:@&quot;&quot;] || !symbol || [self isEqualToString:@&quot;&quot;]) &#123;
-        NSException *e = [NSException exceptionWithName:@&quot;NullPointerException&quot; reason:@&quot;self and symbol can&#39;t be nil or @\&quot;\&quot;&quot; userInfo:nil];
-        @throw e;
-    &#125;
-    
-    NSMutableArray *mutableArr = [NSMutableArray new];
-    NSInteger length = symbol.length;
-    NSString *tempStr = nil;
-    
-    for (int startIndex = 0, endIndex = 0; endIndex &lt;= self.length - length; endIndex++) &#123;
-        
-        tempStr = [self substringWithRange:NSMakeRange(endIndex, length)];
-        if ([tempStr isEqualToString:symbol]) &#123;
-            NSString *splitedString = [self substringWithRange:NSMakeRange(startIndex, endIndex - startIndex)];
-            if (splitedString &amp;&amp; ![splitedString isEqualToString:@&quot;&quot;]) &#123;
-                [mutableArr addObject:splitedString];
-            &#125;
-            startIndex = endIndex + (int)length;
-        &#125; else if (endIndex == self.length - length)&#123;
-            NSString *splitedString = [self substringWithRange:NSMakeRange(startIndex, endIndex - startIndex + length)];
-            if (splitedString &amp;&amp; ![splitedString isEqualToString:@&quot;&quot;]) &#123;
-                [mutableArr addObject:splitedString];
-            &#125;
-        &#125;
-        
-    &#125;
-    
-    return [mutableArr copy];
-&#125;
-@end
-</code></pre>
-<!--kg-card-end: code-->
-
-<p>以上代码有个问题,当字符串是<code>,asdf,,123</code>,分隔字符是<code>,</code>,分隔结果是<code>(asdf,123)</code>,而不是<code>(asdf,(前面一个是数组的逗号),123)</code>.<br>试了一下官方的<code>componentsSeparatedByString</code>方法,相同的字符串跟分隔符,输出结果是<code>(&quot;&quot;,asdf,&quot;&quot;,123)</code>,连是否是<code>@&quot;&quot;</code>都没判断.Java当中实验的结果跟OC结果相同.官方方法都这样,我想我是想多了.</p>
-<p><strong>–EOF–</strong></p>
-]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-  </entry>
-  <entry>
     <title>自定义搜索框</title>
     <url>/custom-searchbar/</url>
     <content><![CDATA[<h3 id="封装的几种方法"><a href="#封装的几种方法" class="headerlink" title="封装的几种方法"></a>封装的几种方法</h3><ol>
@@ -1322,6 +1249,79 @@ viewController.navigationItem.leftBarButtonItems = [UIBarButtonItem itemWithTarg
       </categories>
   </entry>
   <entry>
+    <title>OC根据分隔符分隔字符串</title>
+    <url>/oc-according-to-symbol-split-string/</url>
+    <content><![CDATA[<p>同学前几天面试面到了这个题,毕竟闷了半天才闷出来.记录一下省的忘了…</p>
+<p>NSString+Category.h文件</p>
+<!--kg-card-begin: code-->
+
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+
+@interface NSString (Category)
+
+/**
+ * 根据分隔符,分隔字符串
+ *
+ * @param symbol 分隔符
+ *
+ * @return 由被分隔完的字串组成的数组
+ */
+- (NSArray *)splitStringWithSymbol:(NSString *)symbol;
+
+@end
+</code></pre>
+<!--kg-card-end: code-->
+
+<p>NSString+Category.m文件</p>
+<!--kg-card-begin: code-->
+
+<pre><code>#import &quot;NSString+Category.h&quot;
+
+@implementation NSString (Category)
+
+- (NSArray *)splitStringWithSymbol:(NSString *)symbol &#123;
+    
+    if (!self || [self isEqualToString:@&quot;&quot;] || !symbol || [self isEqualToString:@&quot;&quot;]) &#123;
+        NSException *e = [NSException exceptionWithName:@&quot;NullPointerException&quot; reason:@&quot;self and symbol can&#39;t be nil or @\&quot;\&quot;&quot; userInfo:nil];
+        @throw e;
+    &#125;
+    
+    NSMutableArray *mutableArr = [NSMutableArray new];
+    NSInteger length = symbol.length;
+    NSString *tempStr = nil;
+    
+    for (int startIndex = 0, endIndex = 0; endIndex &lt;= self.length - length; endIndex++) &#123;
+        
+        tempStr = [self substringWithRange:NSMakeRange(endIndex, length)];
+        if ([tempStr isEqualToString:symbol]) &#123;
+            NSString *splitedString = [self substringWithRange:NSMakeRange(startIndex, endIndex - startIndex)];
+            if (splitedString &amp;&amp; ![splitedString isEqualToString:@&quot;&quot;]) &#123;
+                [mutableArr addObject:splitedString];
+            &#125;
+            startIndex = endIndex + (int)length;
+        &#125; else if (endIndex == self.length - length)&#123;
+            NSString *splitedString = [self substringWithRange:NSMakeRange(startIndex, endIndex - startIndex + length)];
+            if (splitedString &amp;&amp; ![splitedString isEqualToString:@&quot;&quot;]) &#123;
+                [mutableArr addObject:splitedString];
+            &#125;
+        &#125;
+        
+    &#125;
+    
+    return [mutableArr copy];
+&#125;
+@end
+</code></pre>
+<!--kg-card-end: code-->
+
+<p>以上代码有个问题,当字符串是<code>,asdf,,123</code>,分隔字符是<code>,</code>,分隔结果是<code>(asdf,123)</code>,而不是<code>(asdf,(前面一个是数组的逗号),123)</code>.<br>试了一下官方的<code>componentsSeparatedByString</code>方法,相同的字符串跟分隔符,输出结果是<code>(&quot;&quot;,asdf,&quot;&quot;,123)</code>,连是否是<code>@&quot;&quot;</code>都没判断.Java当中实验的结果跟OC结果相同.官方方法都这样,我想我是想多了.</p>
+<p><strong>–EOF–</strong></p>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+  </entry>
+  <entry>
     <title>github上误删远程库解决方法</title>
     <url>/github-mistakenly-delete-remote-library-solution/</url>
     <content><![CDATA[<p>迷你码农遇到的个性化问题.遇到这个问题还得上网查,说明对Git不了解.有时间看看廖雪峰的<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">Git教程</a>.</p>
@@ -1372,26 +1372,6 @@ viewController.navigationItem.leftBarButtonItems = [UIBarButtonItem itemWithTarg
 ]]></content>
       <categories>
         <category>Ghost</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>embedded dylibs/frameworks are only supported编译报错</title>
-    <url>/embedded-dylibs-frameworks-are-only-supportedbian-yi-bao-cuo/</url>
-    <content><![CDATA[<h3 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h3><!--kg-card-begin: code-->
-
-<pre><code>ld: embedded dylibs/frameworks are only supported on iOS 8.0 and later (@rpath/Alamofire.framework/Alamofire) for architecture x86_64
-</code></pre>
-<!--kg-card-end: code-->
-
-<p>其实从名字大概也能猜出来,某个库支持的最低部署环境是8.0.</p>
-<h3 id="修改方法"><a href="#修改方法" class="headerlink" title="修改方法"></a>修改方法</h3><!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img data-src="https://o3pxzuakz.qnssl.com/image/4/64/cbfb32287545352e67ba92d4ae471.png" class="kg-image"></figure><!--kg-card-end: image-->
-
-<p>我这应该修改成8.0</p>
-<p>本文参考<a href="http://blog.csdn.net/xyxjn/article/details/42100425">xyxjn的专栏</a></p>
-<p><strong>–EOF–</strong></p>
-]]></content>
-      <categories>
-        <category>iOS</category>
       </categories>
   </entry>
   <entry>
@@ -1559,11 +1539,24 @@ class MainViewController: UITabBarController &#123;
       </categories>
   </entry>
   <entry>
-    <title>好久没更新博客了</title>
-    <url>/updated-my-blog-for-a-long-time/</url>
-    <content><![CDATA[<p>此人已死.有事烧纸.小事招魂.大事挖坟.</p>
-<p>联系方式:43BA5BBCBD7622A060509FB1B1D96663</p>
+    <title>embedded dylibs/frameworks are only supported编译报错</title>
+    <url>/embedded-dylibs-frameworks-are-only-supportedbian-yi-bao-cuo/</url>
+    <content><![CDATA[<h3 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h3><!--kg-card-begin: code-->
+
+<pre><code>ld: embedded dylibs/frameworks are only supported on iOS 8.0 and later (@rpath/Alamofire.framework/Alamofire) for architecture x86_64
+</code></pre>
+<!--kg-card-end: code-->
+
+<p>其实从名字大概也能猜出来,某个库支持的最低部署环境是8.0.</p>
+<h3 id="修改方法"><a href="#修改方法" class="headerlink" title="修改方法"></a>修改方法</h3><!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img data-src="https://o3pxzuakz.qnssl.com/image/4/64/cbfb32287545352e67ba92d4ae471.png" class="kg-image"></figure><!--kg-card-end: image-->
+
+<p>我这应该修改成8.0</p>
+<p>本文参考<a href="http://blog.csdn.net/xyxjn/article/details/42100425">xyxjn的专栏</a></p>
+<p><strong>–EOF–</strong></p>
 ]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
   </entry>
   <entry>
     <title>项目上架问题总结</title>
@@ -1598,6 +1591,13 @@ class MainViewController: UITabBarController &#123;
       <categories>
         <category>iOS</category>
       </categories>
+  </entry>
+  <entry>
+    <title>好久没更新博客了</title>
+    <url>/updated-my-blog-for-a-long-time/</url>
+    <content><![CDATA[<p>此人已死.有事烧纸.小事招魂.大事挖坟.</p>
+<p>联系方式:43BA5BBCBD7622A060509FB1B1D96663</p>
+]]></content>
   </entry>
   <entry>
     <title>又好久没有更新博客了</title>
@@ -3347,8 +3347,8 @@ int main(int argc, const char * argv[]) &#123;
       </categories>
   </entry>
   <entry>
-    <title>栈实现</title>
-    <url>/stack-implement/</url>
+    <title>队列实现</title>
+    <url>/queue-implement/</url>
     <content><![CDATA[<p> <strong>–EOF–</strong></p>
 <!--kg-card-end: markdown-->]]></content>
       <categories>
@@ -3356,8 +3356,8 @@ int main(int argc, const char * argv[]) &#123;
       </categories>
   </entry>
   <entry>
-    <title>队列实现</title>
-    <url>/queue-implement/</url>
+    <title>栈实现</title>
+    <url>/stack-implement/</url>
     <content><![CDATA[<p> <strong>–EOF–</strong></p>
 <!--kg-card-end: markdown-->]]></content>
       <categories>
@@ -3501,6 +3501,37 @@ default:
       </categories>
   </entry>
   <entry>
+    <title>Swift重命名C函数</title>
+    <url>/swift-renames-c-functions/</url>
+    <content><![CDATA[<p> <strong>Test.h</strong></p>
+<pre><code>#ifndef Test_h
+#define Test_h
+
+#include &lt;stdio.h&gt;
+int sum(int v1, int v2);
+#endif /* Test_h */
+</code></pre>
+<p><strong>Test.c</strong></p>
+<pre><code>#include &quot;Test.h&quot;
+
+int sum(int v1, int v2) &#123;
+    return v1 + v2;
+&#125;
+</code></pre>
+<p><strong>main.swift</strong></p>
+<pre><code>// 重命名c函数
+@_silgen_name(&quot;sum&quot;)
+func swift_sum(_ v1: Int32, _ v2: Int32) -&gt; Int32
+
+print(swift_sum(1, 2))
+</code></pre>
+<p><strong>–EOF–</strong></p>
+<!--kg-card-end: markdown-->]]></content>
+      <categories>
+        <category>Swift</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Swift实现可选协议</title>
     <url>/swift-implements-optional-protocol/</url>
     <content><![CDATA[<h4 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h4><pre><code>protocol Runnable1: class &#123; &#125;
@@ -3561,37 +3592,6 @@ p.age = 10
 print(p.age)
 p.weight = 50
 print(p.weight)
-</code></pre>
-<p><strong>–EOF–</strong></p>
-<!--kg-card-end: markdown-->]]></content>
-      <categories>
-        <category>Swift</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Swift重命名C函数</title>
-    <url>/swift-renames-c-functions/</url>
-    <content><![CDATA[<p> <strong>Test.h</strong></p>
-<pre><code>#ifndef Test_h
-#define Test_h
-
-#include &lt;stdio.h&gt;
-int sum(int v1, int v2);
-#endif /* Test_h */
-</code></pre>
-<p><strong>Test.c</strong></p>
-<pre><code>#include &quot;Test.h&quot;
-
-int sum(int v1, int v2) &#123;
-    return v1 + v2;
-&#125;
-</code></pre>
-<p><strong>main.swift</strong></p>
-<pre><code>// 重命名c函数
-@_silgen_name(&quot;sum&quot;)
-func swift_sum(_ v1: Int32, _ v2: Int32) -&gt; Int32
-
-print(swift_sum(1, 2))
 </code></pre>
 <p><strong>–EOF–</strong></p>
 <!--kg-card-end: markdown-->]]></content>
