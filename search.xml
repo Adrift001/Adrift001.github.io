@@ -2942,6 +2942,14 @@ int main(int argc, const char * argv[]) &#123;
       </categories>
   </entry>
   <entry>
+    <title>2018年总结</title>
+    <url>/summary-of-2018/</url>
+    <content><![CDATA[<h1 id="穷折腾"><a href="#穷折腾" class="headerlink" title="穷折腾"></a>穷折腾</h1><h1 id="🙂"><a href="#🙂" class="headerlink" title="🙂"></a>🙂</h1><!--kg-card-end: html-->]]></content>
+      <categories>
+        <category>Me</category>
+      </categories>
+  </entry>
+  <entry>
     <title>位运算</title>
     <url>/bit-operation/</url>
     <content><![CDATA[<p>位运算了解一下,哈哈哈哈哈哈…</p>
@@ -3040,14 +3048,6 @@ print(person._tallRichHandsome)
 <!--kg-card-end: markdown-->]]></content>
       <categories>
         <category>Swift</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>2018年总结</title>
-    <url>/summary-of-2018/</url>
-    <content><![CDATA[<h1 id="穷折腾"><a href="#穷折腾" class="headerlink" title="穷折腾"></a>穷折腾</h1><h1 id="🙂"><a href="#🙂" class="headerlink" title="🙂"></a>🙂</h1><!--kg-card-end: html-->]]></content>
-      <categories>
-        <category>Me</category>
       </categories>
   </entry>
   <entry>
@@ -3653,16 +3653,6 @@ try app.run()
       </categories>
   </entry>
   <entry>
-    <title>逆波兰表达式求值</title>
-    <url>/ni-bo-lan-biao-da-shi-qiu-zhi/</url>
-    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 计算逆波兰表达式</span><br><span class="line">class Solution &#123;</span><br><span class="line">    func evalRPN(_ tokens: [String]) -&gt; Int &#123;</span><br><span class="line">        </span><br><span class="line">        var stack: [Int] = []</span><br><span class="line">        for token in tokens &#123;</span><br><span class="line">            if isOperator(token: token) &#123;</span><br><span class="line">                let right = stack.popLast()!</span><br><span class="line">                let left = stack.popLast()!</span><br><span class="line">                let result = calculate(right: right, left: left, token: token)</span><br><span class="line">                stack.append(result)</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                stack.append(Int(token)!)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return stack.first!</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    func calculate(right: Int, left: Int, token: String) -&gt; Int &#123;</span><br><span class="line">        if token == &quot;+&quot; &#123;</span><br><span class="line">            return left + right</span><br><span class="line">        &#125; else if token == &quot;-&quot; &#123;</span><br><span class="line">            return left - right</span><br><span class="line">        &#125; else if token == &quot;*&quot; &#123;</span><br><span class="line">            return left * right</span><br><span class="line">        &#125; else if token == &quot;/&quot; &#123;</span><br><span class="line">            return left / right</span><br><span class="line">        &#125;</span><br><span class="line">        return 0</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    func isOperator(token: String) -&gt; Bool &#123;</span><br><span class="line">        return token == &quot;+&quot; || token == &quot;-&quot; || token == &quot;*&quot; || token == &quot;/&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let solution = Solution()</span><br><span class="line">let array = [&quot;-78&quot;,&quot;-33&quot;,&quot;196&quot;,&quot;+&quot;,&quot;-19&quot;,&quot;-&quot;,&quot;115&quot;,&quot;+&quot;,&quot;-&quot;,&quot;-99&quot;,&quot;/&quot;,&quot;-18&quot;,&quot;8&quot;,&quot;*&quot;,&quot;-86&quot;,&quot;-&quot;,&quot;-&quot;,&quot;16&quot;,&quot;/&quot;,&quot;26&quot;,&quot;-14&quot;,&quot;-&quot;,&quot;-&quot;,&quot;47&quot;,&quot;-&quot;,&quot;101&quot;,&quot;-&quot;,&quot;163&quot;,&quot;*&quot;,&quot;143&quot;,&quot;-&quot;,&quot;0&quot;,&quot;-&quot;,&quot;171&quot;,&quot;+&quot;,&quot;120&quot;,&quot;*&quot;,&quot;-60&quot;,&quot;+&quot;,&quot;156&quot;,&quot;/&quot;,&quot;173&quot;,&quot;/&quot;,&quot;-24&quot;,&quot;11&quot;,&quot;+&quot;,&quot;21&quot;,&quot;/&quot;,&quot;*&quot;,&quot;44&quot;,&quot;*&quot;,&quot;180&quot;,&quot;70&quot;,&quot;-40&quot;,&quot;-&quot;,&quot;*&quot;,&quot;86&quot;,&quot;132&quot;,&quot;-84&quot;,&quot;+&quot;,&quot;*&quot;,&quot;-&quot;,&quot;38&quot;,&quot;/&quot;,&quot;/&quot;,&quot;21&quot;,&quot;28&quot;,&quot;/&quot;,&quot;+&quot;,&quot;83&quot;,&quot;/&quot;,&quot;-31&quot;,&quot;156&quot;,&quot;-&quot;,&quot;+&quot;,&quot;28&quot;,&quot;/&quot;,&quot;95&quot;,&quot;-&quot;,&quot;120&quot;,&quot;+&quot;,&quot;8&quot;,&quot;*&quot;,&quot;90&quot;,&quot;-&quot;,&quot;-94&quot;,&quot;*&quot;,&quot;-73&quot;,&quot;/&quot;,&quot;-62&quot;,&quot;/&quot;,&quot;93&quot;,&quot;*&quot;,&quot;196&quot;,&quot;-&quot;,&quot;-59&quot;,&quot;+&quot;,&quot;187&quot;,&quot;-&quot;,&quot;143&quot;,&quot;/&quot;,&quot;-79&quot;,&quot;-89&quot;,&quot;+&quot;,&quot;-&quot;]</span><br><span class="line">let result = solution.evalRPN(array)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
-<p><strong>–EOF–</strong></p>
-<!--kg-card-end: markdown-->]]></content>
-      <categories>
-        <category>Algorithm</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Moya-HandyJSON</title>
     <url>/moya-handyjson/</url>
     <content><![CDATA[<p><img data-src="https://jingxuetao.com/Images/julia-caesar-DpoMKEARZe4-unsplash.jpg"></p>
@@ -3699,6 +3689,16 @@ try app.run()
 ]]></content>
       <categories>
         <category>Swift</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>逆波兰表达式求值</title>
+    <url>/ni-bo-lan-biao-da-shi-qiu-zhi/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 计算逆波兰表达式</span><br><span class="line">class Solution &#123;</span><br><span class="line">    func evalRPN(_ tokens: [String]) -&gt; Int &#123;</span><br><span class="line">        </span><br><span class="line">        var stack: [Int] = []</span><br><span class="line">        for token in tokens &#123;</span><br><span class="line">            if isOperator(token: token) &#123;</span><br><span class="line">                let right = stack.popLast()!</span><br><span class="line">                let left = stack.popLast()!</span><br><span class="line">                let result = calculate(right: right, left: left, token: token)</span><br><span class="line">                stack.append(result)</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                stack.append(Int(token)!)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return stack.first!</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    func calculate(right: Int, left: Int, token: String) -&gt; Int &#123;</span><br><span class="line">        if token == &quot;+&quot; &#123;</span><br><span class="line">            return left + right</span><br><span class="line">        &#125; else if token == &quot;-&quot; &#123;</span><br><span class="line">            return left - right</span><br><span class="line">        &#125; else if token == &quot;*&quot; &#123;</span><br><span class="line">            return left * right</span><br><span class="line">        &#125; else if token == &quot;/&quot; &#123;</span><br><span class="line">            return left / right</span><br><span class="line">        &#125;</span><br><span class="line">        return 0</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    func isOperator(token: String) -&gt; Bool &#123;</span><br><span class="line">        return token == &quot;+&quot; || token == &quot;-&quot; || token == &quot;*&quot; || token == &quot;/&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let solution = Solution()</span><br><span class="line">let array = [&quot;-78&quot;,&quot;-33&quot;,&quot;196&quot;,&quot;+&quot;,&quot;-19&quot;,&quot;-&quot;,&quot;115&quot;,&quot;+&quot;,&quot;-&quot;,&quot;-99&quot;,&quot;/&quot;,&quot;-18&quot;,&quot;8&quot;,&quot;*&quot;,&quot;-86&quot;,&quot;-&quot;,&quot;-&quot;,&quot;16&quot;,&quot;/&quot;,&quot;26&quot;,&quot;-14&quot;,&quot;-&quot;,&quot;-&quot;,&quot;47&quot;,&quot;-&quot;,&quot;101&quot;,&quot;-&quot;,&quot;163&quot;,&quot;*&quot;,&quot;143&quot;,&quot;-&quot;,&quot;0&quot;,&quot;-&quot;,&quot;171&quot;,&quot;+&quot;,&quot;120&quot;,&quot;*&quot;,&quot;-60&quot;,&quot;+&quot;,&quot;156&quot;,&quot;/&quot;,&quot;173&quot;,&quot;/&quot;,&quot;-24&quot;,&quot;11&quot;,&quot;+&quot;,&quot;21&quot;,&quot;/&quot;,&quot;*&quot;,&quot;44&quot;,&quot;*&quot;,&quot;180&quot;,&quot;70&quot;,&quot;-40&quot;,&quot;-&quot;,&quot;*&quot;,&quot;86&quot;,&quot;132&quot;,&quot;-84&quot;,&quot;+&quot;,&quot;*&quot;,&quot;-&quot;,&quot;38&quot;,&quot;/&quot;,&quot;/&quot;,&quot;21&quot;,&quot;28&quot;,&quot;/&quot;,&quot;+&quot;,&quot;83&quot;,&quot;/&quot;,&quot;-31&quot;,&quot;156&quot;,&quot;-&quot;,&quot;+&quot;,&quot;28&quot;,&quot;/&quot;,&quot;95&quot;,&quot;-&quot;,&quot;120&quot;,&quot;+&quot;,&quot;8&quot;,&quot;*&quot;,&quot;90&quot;,&quot;-&quot;,&quot;-94&quot;,&quot;*&quot;,&quot;-73&quot;,&quot;/&quot;,&quot;-62&quot;,&quot;/&quot;,&quot;93&quot;,&quot;*&quot;,&quot;196&quot;,&quot;-&quot;,&quot;-59&quot;,&quot;+&quot;,&quot;187&quot;,&quot;-&quot;,&quot;143&quot;,&quot;/&quot;,&quot;-79&quot;,&quot;-89&quot;,&quot;+&quot;,&quot;-&quot;]</span><br><span class="line">let result = solution.evalRPN(array)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+<p><strong>–EOF–</strong></p>
+<!--kg-card-end: markdown-->]]></content>
+      <categories>
+        <category>Algorithm</category>
       </categories>
   </entry>
   <entry>
