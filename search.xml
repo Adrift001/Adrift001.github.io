@@ -1836,6 +1836,39 @@ sudo python -m SimpleHTTPServer 80 //开启一个简单的服务器,用于网页
       </categories>
   </entry>
   <entry>
+    <title>反向代理</title>
+    <url>/reverse-proxy/</url>
+    <content><![CDATA[<pre><code>server &#123;
+    listen 80;
+    listen 443 ssl;
+    server_name localhost;
+
+    ssl_certificate /etc/nginx/ssl/fullchain.cer;
+    ssl_certificate_key /etc/nginx/ssl/unsplash.jingxuetao.com.key;
+
+    location /api &#123;
+        rewrite ^.+api/?(.*)$ /$1 break;
+        proxy_pass https://api.unsplash.com;
+    &#125;
+
+    location /images &#123;
+        rewrite ^.+images/?(.*)$ /$1 break;
+        proxy_pass https://images.unsplash.com;
+    &#125;
+
+&#125;
+</code></pre>
+<!--kg-card-end: code-->
+
+<p><strong>参考链接</strong></p>
+<p><a href="https://www.cnblogs.com/gabrielchen/p/5066120.html">https://www.cnblogs.com/gabrielchen/p/5066120.html</a><br><a href="https://www.jianshu.com/p/b34a57129d6c?from=timeline">https://www.jianshu.com/p/b34a57129d6c?from=timeline</a></p>
+<p><strong>–EOF–</strong></p>
+]]></content>
+      <categories>
+        <category>NGINX</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Enum表示TableView的数据源</title>
     <url>/enum-express-tableview-datasource/</url>
     <content><![CDATA[<figure class="kg-card kg-image-card"><img data-src="https://img.hacpai.com/bing/20180330.jpg?imageView2/1/w/960/h/520/interlace/1/q/100" class="kg-image"></figure><!--kg-card-end: image--><!--kg-card-begin: code-->
@@ -1954,39 +1987,6 @@ extension SettingTableViewController &#123;
 ]]></content>
       <categories>
         <category>iOS</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>反向代理</title>
-    <url>/reverse-proxy/</url>
-    <content><![CDATA[<pre><code>server &#123;
-    listen 80;
-    listen 443 ssl;
-    server_name localhost;
-
-    ssl_certificate /etc/nginx/ssl/fullchain.cer;
-    ssl_certificate_key /etc/nginx/ssl/unsplash.jingxuetao.com.key;
-
-    location /api &#123;
-        rewrite ^.+api/?(.*)$ /$1 break;
-        proxy_pass https://api.unsplash.com;
-    &#125;
-
-    location /images &#123;
-        rewrite ^.+images/?(.*)$ /$1 break;
-        proxy_pass https://images.unsplash.com;
-    &#125;
-
-&#125;
-</code></pre>
-<!--kg-card-end: code-->
-
-<p><strong>参考链接</strong></p>
-<p><a href="https://www.cnblogs.com/gabrielchen/p/5066120.html">https://www.cnblogs.com/gabrielchen/p/5066120.html</a><br><a href="https://www.jianshu.com/p/b34a57129d6c?from=timeline">https://www.jianshu.com/p/b34a57129d6c?from=timeline</a></p>
-<p><strong>–EOF–</strong></p>
-]]></content>
-      <categories>
-        <category>NGINX</category>
       </categories>
   </entry>
   <entry>
@@ -3703,7 +3703,7 @@ try app.run()
   <entry>
     <title>Illusionary-Daytime</title>
     <url>/Illusionary-Daytime/</url>
-    <content><![CDATA[<p><img data-src="/../images/ahmet_yuksek-mybaeBtxOj8-unsplash.jpg"></p>
+    <content><![CDATA[<p><img data-src="/../images/ahmet-yuksek-mybaeBtxOj8-unsplash.jpg"></p>
 <blockquote class="blockquote-center">
 不能断更,需要翻墙...
 </blockquote>
@@ -3786,6 +3786,19 @@ Swift泛型
       </categories>
   </entry>
   <entry>
+    <title>指针</title>
+    <url>/pointer/</url>
+    <content><![CDATA[<p><img data-src="/../images/city-of-gold-coast-HdWvE7jALj8-unsplash.jpg"></p>
+<span id="more"></span>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/// Swift里面也有专门的指针类型,这些都被定性为 `Unsafe`(不安全的), 常见的4种类型</span><br><span class="line">/// UnsafePointer&lt;Pointee&gt; 类似于 const Pointee *</span><br><span class="line">/// UnsafeMutablePointer&lt;Pointee&gt; 类似于  Pointee *</span><br><span class="line">/// UnsafeRawPointer 类似于 const void * 指向类型不确定</span><br><span class="line">/// UnsafeMutableRawPointer 类似于 void * 指向类型不确定</span><br><span class="line"></span><br><span class="line">var age = 10</span><br><span class="line">func test1(_ ptr: UnsafeMutablePointer&lt;Int&gt;) &#123;// int *</span><br><span class="line">    ptr.pointee = 20</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func test2(_ ptr: UnsafePointer&lt;Int&gt;) &#123; // const int *</span><br><span class="line">    print(&quot;test2&quot;, ptr.pointee)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func test3(_ ptr: UnsafeRawPointer) &#123; // const void *</span><br><span class="line">    print(&quot;test3&quot;, ptr.load(as: Int.self))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func test4(_ ptr: UnsafeMutableRawPointer) &#123; // void *</span><br><span class="line">    ptr.storeBytes(of: 30, as: Int.self)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//func test3(_ num: inout Int) &#123;</span><br><span class="line">//</span><br><span class="line">//&#125;</span><br><span class="line"></span><br><span class="line">test1(&amp;age)</span><br><span class="line">test2(&amp;age)</span><br><span class="line">test3(&amp;age)</span><br><span class="line">test4(&amp;age)</span><br><span class="line">//test3(&amp;age)</span><br><span class="line">print(age)</span><br><span class="line"></span><br><span class="line">/// 使用场景</span><br><span class="line">/// OC -&gt; BOOL *</span><br><span class="line">/// Swift -&gt; UnsafeMutablePointer&lt;ObjeCBool&gt;</span><br><span class="line">var arr = NSArray(objects: 11, 22, 33, 44)</span><br><span class="line">arr.enumerateObjects &#123; (element, idx, stop) in</span><br><span class="line">    if idx == 2 &#123;</span><br><span class="line">        stop.pointee = true</span><br><span class="line">    &#125;</span><br><span class="line">    print(idx, element)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/// 获得指向某个变量的指针</span><br><span class="line">/// withUnsafePointer 跟body返回类型一样</span><br><span class="line">var ptrAge1 = withUnsafePointer(to: &amp;age)&#123; $0 &#125;</span><br><span class="line">print(ptrAge1.pointee)</span><br><span class="line">var ptrAge2 = withUnsafeMutablePointer(to: &amp;age) &#123; (pointer) -&gt; UnsafeMutablePointer&lt;Int&gt; in</span><br><span class="line">    return pointer</span><br><span class="line">&#125;</span><br><span class="line">var ptrAge3 = withUnsafePointer(to: &amp;age, &#123; UnsafeRawPointer($0) &#125;)</span><br><span class="line">var ptrAge4 = withUnsafeMutablePointer(to: &amp;age, &#123; UnsafeMutableRawPointer($0) &#125;)</span><br><span class="line">ptrAge4.storeBytes(of: 40, as: Int.self)</span><br><span class="line">print(age)</span><br><span class="line"></span><br><span class="line">/// 获取指向堆空间的指针</span><br><span class="line">class Person &#123;</span><br><span class="line">    var age = 0</span><br><span class="line">    deinit &#123;</span><br><span class="line">        print(&quot;Person deinit&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var person = Person()</span><br><span class="line">var ptrPerson1 = withUnsafePointer(to: &amp;person, &#123; $0 &#125;) //保存person对象的地址值</span><br><span class="line">print(ptrPerson1.pointee.age)</span><br><span class="line"></span><br><span class="line">/// 创建指针</span><br><span class="line">var mPtr = malloc(16)</span><br><span class="line">mPtr?.storeBytes(of: 11, as: Int.self)</span><br><span class="line">mPtr?.storeBytes(of: 22, toByteOffset: 8, as: Int.self)</span><br><span class="line">print(mPtr?.load(as: Int.self))</span><br><span class="line">print(mPtr?.load(fromByteOffset: 8, as: Int.self))</span><br><span class="line">free(mPtr)</span><br><span class="line"></span><br><span class="line">var allPtr = UnsafeMutableRawPointer.allocate(byteCount: 16, alignment: 1)</span><br><span class="line">allPtr.storeBytes(of: 11, as: Int.self)</span><br><span class="line">allPtr.storeBytes(of: 22, toByteOffset: 8, as: Int.self)</span><br><span class="line">allPtr.advanced(by: 8) //移动8个字节,返回一个新指针</span><br><span class="line">allPtr.deallocate()</span><br><span class="line"></span><br><span class="line">var capPtr = UnsafeMutablePointer&lt;Int&gt;.allocate(capacity: 3)</span><br><span class="line">capPtr.initialize(to: 11)</span><br><span class="line">capPtr.successor().initialize(to: 22)</span><br><span class="line">capPtr.successor().successor().initialize(to: 33)</span><br><span class="line">print(capPtr.pointee)</span><br><span class="line">print((capPtr + 1).pointee)</span><br><span class="line">print((capPtr + 2).pointee)</span><br><span class="line"></span><br><span class="line">print(capPtr[0])</span><br><span class="line">print(capPtr[1])</span><br><span class="line">print(capPtr[2])</span><br><span class="line">capPtr.deinitialize(count: 3)</span><br><span class="line">capPtr.deallocate()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var pPtr = UnsafeMutablePointer&lt;Person&gt;.allocate(capacity: 3)</span><br><span class="line">pPtr.initialize(to: Person())</span><br><span class="line">(pPtr + 1).initialize(to: Person())</span><br><span class="line">(pPtr + 2).initialize(to: Person())</span><br><span class="line">pPtr.deinitialize(count: 3)</span><br><span class="line">pPtr.deallocate()</span><br></pre></td></tr></table></figure>
+
+<p><strong>–EOF–</strong></p>
+]]></content>
+      <categories>
+        <category>Swift</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Swift 5 字符串插值-AttributedStrings</title>
     <url>/ExpressibleByStringInterpolation/</url>
     <content><![CDATA[<p><img data-src="/../images/daniel-sessler-IyhdFcaRYqE-unsplash.jpg"></p>
@@ -3794,19 +3807,6 @@ Swift泛型
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// https://swift.gg/2019/10/18/swift5-stringinterpolation-part2/</span><br><span class="line">struct AttrString &#123;</span><br><span class="line">    let attributedString: NSAttributedString</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension AttrString: ExpressibleByStringLiteral &#123;</span><br><span class="line">    init(stringLiteral: String) &#123;</span><br><span class="line">        self.attributedString = NSAttributedString(string: stringLiteral)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension AttrString: CustomStringConvertible &#123;</span><br><span class="line">    var description: String &#123;</span><br><span class="line">        return String(describing: self.attributedString)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension AttrString: ExpressibleByStringInterpolation &#123;</span><br><span class="line">  init(stringInterpolation: StringInterpolation) &#123;</span><br><span class="line">    self.attributedString = NSAttributedString(attributedString: stringInterpolation.attributedString)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  struct StringInterpolation: StringInterpolationProtocol &#123;</span><br><span class="line">    var attributedString: NSMutableAttributedString</span><br><span class="line"></span><br><span class="line">    init(literalCapacity: Int, interpolationCount: Int) &#123;</span><br><span class="line">      self.attributedString = NSMutableAttributedString()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    func appendLiteral(_ literal: String) &#123;</span><br><span class="line">      let astr = NSAttributedString(string: literal)</span><br><span class="line">      self.attributedString.append(astr)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    func appendInterpolation(_ string: String, attributes: [NSAttributedString.Key: Any]) &#123;</span><br><span class="line">      let astr = NSAttributedString(string: string, attributes: attributes)</span><br><span class="line">      self.attributedString.append(astr)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension AttrString &#123;</span><br><span class="line">    struct Style &#123;</span><br><span class="line">        let attributes: [NSAttributedString.Key: Any]</span><br><span class="line">        static func font(_ font: UIFont) -&gt; Style &#123;</span><br><span class="line">            return Style(attributes: [.font: font])</span><br><span class="line">        &#125;</span><br><span class="line">        static func color(_ color: UIColor) -&gt; Style &#123;</span><br><span class="line">            return Style(attributes: [.foregroundColor: color])</span><br><span class="line">        &#125;</span><br><span class="line">        static func bgColor(_ color: UIColor) -&gt; Style &#123;</span><br><span class="line">            return Style(attributes: [.backgroundColor: color])</span><br><span class="line">        &#125;</span><br><span class="line">        static func link(_ link: String) -&gt; Style &#123;</span><br><span class="line">            return .link(URL(string: link)!)</span><br><span class="line">        &#125;</span><br><span class="line">        static func link(_ link: URL) -&gt; Style &#123;</span><br><span class="line">            return Style(attributes: [.link: link])</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        static let oblique = Style(attributes: [.obliqueness: 0.1])</span><br><span class="line">        </span><br><span class="line">        static func underline(_ color: UIColor, _ style: NSUnderlineStyle) -&gt; Style &#123;</span><br><span class="line">            return Style(attributes: [</span><br><span class="line">                .underlineColor: color,</span><br><span class="line">                .underlineStyle: style.rawValue</span><br><span class="line">            ])</span><br><span class="line">        &#125;</span><br><span class="line">        static func alignment(_ alignment: NSTextAlignment) -&gt; Style &#123;</span><br><span class="line">            let ps = NSMutableParagraphStyle()</span><br><span class="line">            ps.alignment = alignment</span><br><span class="line">            return Style(attributes: [.paragraphStyle: ps])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension AttrString.StringInterpolation &#123;</span><br><span class="line">    func appendInterpolation(_ string: String, _ style: AttrString.Style...) &#123;</span><br><span class="line">        var attrs: [NSAttributedString.Key: Any] = [:]</span><br><span class="line">        style.forEach &#123; attrs.merge($0.attributes, uniquingKeysWith: &#123;$1&#125;) &#125;</span><br><span class="line">        let astr = NSAttributedString(string: string, attributes: attrs)</span><br><span class="line">        self.attributedString.append(astr)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension AttrString.StringInterpolation &#123;</span><br><span class="line">    func appendInterpolation(image: UIImage, scale: CGFloat = 1.0) &#123;</span><br><span class="line">        let attachment = NSTextAttachment()</span><br><span class="line">        if let cgImage = image.cgImage &#123;</span><br><span class="line">            attachment.image = UIImage(cgImage: cgImage, scale: scale, orientation: .left)</span><br><span class="line">            self.attributedString.append(NSAttributedString(attachment: attachment))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension AttrString.StringInterpolation &#123;</span><br><span class="line">    func appendInterpolation(wrap string: AttrString, _ style: AttrString.Style...) &#123;</span><br><span class="line">        var attrs: [NSAttributedString.Key: Any] = [:]</span><br><span class="line">        style.forEach &#123; attrs.merge($0.attributes, uniquingKeysWith: &#123;$1&#125;) &#125;</span><br><span class="line">        let mas = NSMutableAttributedString(attributedString: string.attributedString)</span><br><span class="line">        let fullRange = NSRange(mas.string.startIndex..&lt;mas.string.endIndex, in: mas.string)</span><br><span class="line">        mas.addAttributes(attrs, range: fullRange)</span><br><span class="line">        self.attributedString.append(mas)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><a href="https://swift.gg/2019/10/18/swift5-stringinterpolation-part2/">原文链接</a></p>
-<p><strong>–EOF–</strong></p>
-]]></content>
-      <categories>
-        <category>Swift</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>指针</title>
-    <url>/pointer/</url>
-    <content><![CDATA[<p><img data-src="/../images/city-of-gold-coast-HdWvE7jALj8-unsplash.jpg"></p>
-<span id="more"></span>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/// Swift里面也有专门的指针类型,这些都被定性为 `Unsafe`(不安全的), 常见的4种类型</span><br><span class="line">/// UnsafePointer&lt;Pointee&gt; 类似于 const Pointee *</span><br><span class="line">/// UnsafeMutablePointer&lt;Pointee&gt; 类似于  Pointee *</span><br><span class="line">/// UnsafeRawPointer 类似于 const void * 指向类型不确定</span><br><span class="line">/// UnsafeMutableRawPointer 类似于 void * 指向类型不确定</span><br><span class="line"></span><br><span class="line">var age = 10</span><br><span class="line">func test1(_ ptr: UnsafeMutablePointer&lt;Int&gt;) &#123;// int *</span><br><span class="line">    ptr.pointee = 20</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func test2(_ ptr: UnsafePointer&lt;Int&gt;) &#123; // const int *</span><br><span class="line">    print(&quot;test2&quot;, ptr.pointee)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func test3(_ ptr: UnsafeRawPointer) &#123; // const void *</span><br><span class="line">    print(&quot;test3&quot;, ptr.load(as: Int.self))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func test4(_ ptr: UnsafeMutableRawPointer) &#123; // void *</span><br><span class="line">    ptr.storeBytes(of: 30, as: Int.self)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//func test3(_ num: inout Int) &#123;</span><br><span class="line">//</span><br><span class="line">//&#125;</span><br><span class="line"></span><br><span class="line">test1(&amp;age)</span><br><span class="line">test2(&amp;age)</span><br><span class="line">test3(&amp;age)</span><br><span class="line">test4(&amp;age)</span><br><span class="line">//test3(&amp;age)</span><br><span class="line">print(age)</span><br><span class="line"></span><br><span class="line">/// 使用场景</span><br><span class="line">/// OC -&gt; BOOL *</span><br><span class="line">/// Swift -&gt; UnsafeMutablePointer&lt;ObjeCBool&gt;</span><br><span class="line">var arr = NSArray(objects: 11, 22, 33, 44)</span><br><span class="line">arr.enumerateObjects &#123; (element, idx, stop) in</span><br><span class="line">    if idx == 2 &#123;</span><br><span class="line">        stop.pointee = true</span><br><span class="line">    &#125;</span><br><span class="line">    print(idx, element)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/// 获得指向某个变量的指针</span><br><span class="line">/// withUnsafePointer 跟body返回类型一样</span><br><span class="line">var ptrAge1 = withUnsafePointer(to: &amp;age)&#123; $0 &#125;</span><br><span class="line">print(ptrAge1.pointee)</span><br><span class="line">var ptrAge2 = withUnsafeMutablePointer(to: &amp;age) &#123; (pointer) -&gt; UnsafeMutablePointer&lt;Int&gt; in</span><br><span class="line">    return pointer</span><br><span class="line">&#125;</span><br><span class="line">var ptrAge3 = withUnsafePointer(to: &amp;age, &#123; UnsafeRawPointer($0) &#125;)</span><br><span class="line">var ptrAge4 = withUnsafeMutablePointer(to: &amp;age, &#123; UnsafeMutableRawPointer($0) &#125;)</span><br><span class="line">ptrAge4.storeBytes(of: 40, as: Int.self)</span><br><span class="line">print(age)</span><br><span class="line"></span><br><span class="line">/// 获取指向堆空间的指针</span><br><span class="line">class Person &#123;</span><br><span class="line">    var age = 0</span><br><span class="line">    deinit &#123;</span><br><span class="line">        print(&quot;Person deinit&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var person = Person()</span><br><span class="line">var ptrPerson1 = withUnsafePointer(to: &amp;person, &#123; $0 &#125;) //保存person对象的地址值</span><br><span class="line">print(ptrPerson1.pointee.age)</span><br><span class="line"></span><br><span class="line">/// 创建指针</span><br><span class="line">var mPtr = malloc(16)</span><br><span class="line">mPtr?.storeBytes(of: 11, as: Int.self)</span><br><span class="line">mPtr?.storeBytes(of: 22, toByteOffset: 8, as: Int.self)</span><br><span class="line">print(mPtr?.load(as: Int.self))</span><br><span class="line">print(mPtr?.load(fromByteOffset: 8, as: Int.self))</span><br><span class="line">free(mPtr)</span><br><span class="line"></span><br><span class="line">var allPtr = UnsafeMutableRawPointer.allocate(byteCount: 16, alignment: 1)</span><br><span class="line">allPtr.storeBytes(of: 11, as: Int.self)</span><br><span class="line">allPtr.storeBytes(of: 22, toByteOffset: 8, as: Int.self)</span><br><span class="line">allPtr.advanced(by: 8) //移动8个字节,返回一个新指针</span><br><span class="line">allPtr.deallocate()</span><br><span class="line"></span><br><span class="line">var capPtr = UnsafeMutablePointer&lt;Int&gt;.allocate(capacity: 3)</span><br><span class="line">capPtr.initialize(to: 11)</span><br><span class="line">capPtr.successor().initialize(to: 22)</span><br><span class="line">capPtr.successor().successor().initialize(to: 33)</span><br><span class="line">print(capPtr.pointee)</span><br><span class="line">print((capPtr + 1).pointee)</span><br><span class="line">print((capPtr + 2).pointee)</span><br><span class="line"></span><br><span class="line">print(capPtr[0])</span><br><span class="line">print(capPtr[1])</span><br><span class="line">print(capPtr[2])</span><br><span class="line">capPtr.deinitialize(count: 3)</span><br><span class="line">capPtr.deallocate()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var pPtr = UnsafeMutablePointer&lt;Person&gt;.allocate(capacity: 3)</span><br><span class="line">pPtr.initialize(to: Person())</span><br><span class="line">(pPtr + 1).initialize(to: Person())</span><br><span class="line">(pPtr + 2).initialize(to: Person())</span><br><span class="line">pPtr.deinitialize(count: 3)</span><br><span class="line">pPtr.deallocate()</span><br></pre></td></tr></table></figure>
-
 <p><strong>–EOF–</strong></p>
 ]]></content>
       <categories>
