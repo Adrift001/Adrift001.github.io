@@ -243,7 +243,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><img data-src="https://source.unsplash.com/hBQWBsoLTIQ/1600x900"></p>
+          <p><img data-src="/../images/marco-grosso-ABGHh9toXUE-unsplash.jpg"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/macos-jenkins-flutter-pack-upload-pgyer/#more" rel="contents">
@@ -317,15 +317,39 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><img data-src="https://source.unsplash.com/TJ3Xl4YgHVs/1600x900"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/dart-define-from-file/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <span id="more"></span>
+
+<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">通过命令行传递参数</span><br><span class="line">把App后缀,App名传给原生</span><br><span class="line">baseURL传给flutter</span><br></pre></td></tr></table></figure>
+
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p><strong>release.json</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;DEFINE_APP_NAME&quot;: &quot;微信&quot;,</span><br><span class="line">  &quot;DEFINE_APP_URL&quot;: &quot;https://wechat.qq.com&quot;,</span><br><span class="line">  &quot;DEFINE_APP_SUFFIX&quot;: &quot;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>dev.json</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;DEFINE_APP_NAME&quot;: &quot;微信Dev&quot;,</span><br><span class="line">  &quot;DEFINE_APP_URL&quot;: &quot;https://dev.wechat.qq.com&quot;,</span><br><span class="line">  &quot;DEFINE_APP_SUFFIX&quot;: &quot;.dev&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">flutter build ipa \</span><br><span class="line">--export-method=ad-hoc \</span><br><span class="line">--obfuscate \</span><br><span class="line">--split-debug-info=./build/split-debug-info \</span><br><span class="line">--dart-define-from-file=./env/dev.json</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">flutter build ipa \</span><br><span class="line">--export-method=ad-hoc \</span><br><span class="line">--obfuscate \</span><br><span class="line">--split-debug-info=./build/split-debug-info \</span><br><span class="line">--dart-define-from-file=./env/release.json</span><br></pre></td></tr></table></figure>
+
+<h3 id="iOS-配置"><a href="#iOS-配置" class="headerlink" title="iOS 配置"></a>iOS 配置</h3><p><strong>project.pbxproj</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PRODUCT_BUNDLE_IDENTIFIER = &quot;com.wechat$(DEFINE_APP_SUFFIX)&quot;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Info.plist</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;key&gt;CFBundleDisplayName&lt;/key&gt;</span><br><span class="line">	&lt;string&gt;$(DEFINE_APP_NAME)&lt;/string&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Android-配置"><a href="#Android-配置" class="headerlink" title="Android 配置"></a>Android 配置</h3><p><strong>build.gradle</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">applicationIdSuffix DEFINE_APP_SUFFIX</span><br><span class="line">resValue &quot;string&quot;, &quot;app_name&quot;, DEFINE_APP_NAME</span><br></pre></td></tr></table></figure>
+
+<p><strong>AndroidManifest.xml</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:label=&quot;@string/app_name&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Flutter-配置"><a href="#Flutter-配置" class="headerlink" title="Flutter 配置"></a>Flutter 配置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String.fromEnvironment(&#x27;DEFINE_APP_URL&#x27;, defaultValue: &#x27;&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Android-studio"><a href="#Android-studio" class="headerlink" title="Android studio"></a>Android studio</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--dart-define-from-file=./env/dev.json</span><br></pre></td></tr></table></figure>
+
+<p>还可以选中 <code>Store as project file</code></p>
+<p><strong>–EOF–</strong></p>
+
       
     </div>
 
@@ -391,7 +415,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><img data-src="https://source.unsplash.com/_4_e5MGyquM/1600x900"></p>
+          <p><img data-src="/../images/luca-tettamanti-wsKIUC2P1JQ-unsplash.jpg"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/postgresql-client-time-zone-difference/#more" rel="contents">
@@ -465,7 +489,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><img data-src="https://source.unsplash.com/09k72oU7qYU/1600x900"></p>
+          <p><img data-src="/../images/rod-long-YLMnqzvXyhU-unsplash.jpg"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/generate-xcframework/#more" rel="contents">
@@ -539,7 +563,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><img data-src="https://source.unsplash.com/kf3OjuBafhA/1600x900"></p>
+          <p><img data-src="/../images/hector-j-rivas-1FxMET2U5dU-unsplash.jpg"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/github-signing-commits/#more" rel="contents">
@@ -613,7 +637,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><img data-src="https://source.unsplash.com/KYjsoR9MCRE/1600x900"></p>
+          <p><img data-src="/../images/daniel-sessler-IyhdFcaRYqE-unsplash.jpg"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/ExpressibleByStringInterpolation/#more" rel="contents">
@@ -687,7 +711,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><img data-src="https://source.unsplash.com/alamoUCs2FY/1600x900"></p>
+          <p><img data-src="/../images/city-of-gold-coast-HdWvE7jALj8-unsplash.jpg"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/pointer/#more" rel="contents">
@@ -761,7 +785,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><img data-src="https://source.unsplash.com/tJWZ3L9WLnE/1600x900"></p>
+          <p><img data-src="/../images/spenser-sembrat-M2CHE5EDmo8-unsplash.jpg"></p>
 <blockquote class="blockquote-center">
 柯里化
 </blockquote>
@@ -838,7 +862,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><img data-src="https://source.unsplash.com/KZIT2OYws-s/1600x900"></p>
+          <p><img data-src="/../images/leo_visions-jIvIRbtu77A-unsplash.jpg"></p>
 <blockquote class="blockquote-center">
 Swift泛型
 </blockquote>
@@ -915,7 +939,7 @@ Swift泛型
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><img data-src="https://source.unsplash.com/w24KoifPovw/1600x900"></p>
+          <p><img data-src="/../images/farhan-nsrdn-uyvK8hrKex8-unsplash.jpg"></p>
 <blockquote class="blockquote-center">
 总得说点什么,🙂
 </blockquote>
