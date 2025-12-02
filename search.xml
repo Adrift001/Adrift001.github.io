@@ -51,7 +51,7 @@
 <li>无序列表2</li>
 </ul>
 <p>还可以插入图片,插入图片也很方便</p>
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img data-src="https://o3pxzuakz.qnssl.com/75b31e23e4e4c22e24daa3de4ed47474.jpeg/image/1/ef/849ba9f8cea329e8faaefa49aa970.jpg" class="kg-image" alt="这是一张即将要插入的图片"></figure><!--kg-card-end: image--><!--kg-card-begin: code-->
+<!--kg-card-begin: code-->
 
 <pre><code>public static void main(String args[])&#123;
     //这是一个由```写的高亮代码
@@ -69,7 +69,6 @@
 <!--kg-card-end: hr-->
 
 <p>一些常用得markdown语法都在这了,用起来还算顺手.</p>
-<p>上方配图来自<a href="http://weibo.com/bboyzong">王源宗Bboy</a></p>
 ]]></content>
       <categories>
         <category>Me</category>
@@ -1696,7 +1695,6 @@ mysql -uroot -ppassword
 <!--kg-card-end: code-->
 
 <p><strong>–EOF–</strong></p>
-<p>Photo by Brady Bellini on Unsplash</p>
 ]]></content>
   </entry>
   <entry>
