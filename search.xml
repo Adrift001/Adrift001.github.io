@@ -173,31 +173,6 @@ static const void *dataTaskKey = &amp;dataTaskKey;
       </categories>
   </entry>
   <entry>
-    <title>iOS界面跳转隐藏tabBar</title>
-    <url>/ios-jump-hide-tabbar/</url>
-    <content><![CDATA[<h3 id="一-IOS隐藏tabBar的方法"><a href="#一-IOS隐藏tabBar的方法" class="headerlink" title="一.IOS隐藏tabBar的方法:"></a>一.IOS隐藏tabBar的方法:</h3><!--kg-card-begin: code-->
-
-<pre><code>self.tabBarController.tabBar.hidden = YES;
-</code></pre>
-<!--kg-card-end: code-->
-
-<p>但是我们跳转隐藏tabBar需要的不是这段代码.</p>
-<h3 id="二-push跳转隐藏tabBar"><a href="#二-push跳转隐藏tabBar" class="headerlink" title="二.push跳转隐藏tabBar"></a>二.push跳转隐藏tabBar</h3><p>如果在push跳转时需要隐藏tabBar，设置self.hidesBottomBarWhenPushed&#x3D;YES;并在push后设置self.hidesBottomBarWhenPushed&#x3D;NO;这样back回来的时候，tabBar会恢复正常显示。代码如下:</p>
-<!--kg-card-begin: code-->
-
-<pre><code>    NextViewController *next=[[NextViewController alloc]init];
-    next. hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:next animated:YES];
-</code></pre>
-<!--kg-card-end: code-->
-
-<p>END</p>
-]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-  </entry>
-  <entry>
     <title>CentOS安装Ghost博客并实现全站HTTPS</title>
     <url>/centosan-zhuang-ghostbo-ke-bing-shi-xian-quan-zhan-https/</url>
     <content><![CDATA[<h3 id="1-前期准备"><a href="#1-前期准备" class="headerlink" title="1.前期准备"></a>1.前期准备</h3><!--kg-card-begin: code-->
@@ -441,6 +416,31 @@ server &#123;
 ]]></content>
       <categories>
         <category>Ghost</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>iOS界面跳转隐藏tabBar</title>
+    <url>/ios-jump-hide-tabbar/</url>
+    <content><![CDATA[<h3 id="一-IOS隐藏tabBar的方法"><a href="#一-IOS隐藏tabBar的方法" class="headerlink" title="一.IOS隐藏tabBar的方法:"></a>一.IOS隐藏tabBar的方法:</h3><!--kg-card-begin: code-->
+
+<pre><code>self.tabBarController.tabBar.hidden = YES;
+</code></pre>
+<!--kg-card-end: code-->
+
+<p>但是我们跳转隐藏tabBar需要的不是这段代码.</p>
+<h3 id="二-push跳转隐藏tabBar"><a href="#二-push跳转隐藏tabBar" class="headerlink" title="二.push跳转隐藏tabBar"></a>二.push跳转隐藏tabBar</h3><p>如果在push跳转时需要隐藏tabBar，设置self.hidesBottomBarWhenPushed&#x3D;YES;并在push后设置self.hidesBottomBarWhenPushed&#x3D;NO;这样back回来的时候，tabBar会恢复正常显示。代码如下:</p>
+<!--kg-card-begin: code-->
+
+<pre><code>    NextViewController *next=[[NextViewController alloc]init];
+    next. hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:next animated:YES];
+</code></pre>
+<!--kg-card-end: code-->
+
+<p>END</p>
+]]></content>
+      <categories>
+        <category>iOS</category>
       </categories>
   </entry>
   <entry>
