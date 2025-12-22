@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://jingxuetao.com/images/andres-dallimonti--_F5_acTm7o-unsplash.jpg">
 <meta property="article:published_time" content="2019-10-15T20:54:40.000Z">
-<meta property="article:modified_time" content="2025-12-22T03:09:44.150Z">
+<meta property="article:modified_time" content="2025-12-22T03:13:12.436Z">
 <meta property="article:author" content="Jing">
 <meta property="article:tag" content="Slacker Swift">
 <meta name="twitter:card" content="summary">
@@ -265,7 +265,7 @@
 <p>Single+HandyJSON.swift</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import Foundation</span><br><span class="line">import RxSwift</span><br><span class="line">import Moya</span><br><span class="line">import HandyJSON</span><br><span class="line"></span><br><span class="line">public extension PrimitiveSequence where TraitType == SingleTrait, ElementType == Response &#123;</span><br><span class="line">    </span><br><span class="line">    func mapObject&lt;T: HandyJSON&gt;(_ type: T.Type) -&gt; Single&lt;T&gt; &#123;</span><br><span class="line">        return flatMap &#123;</span><br><span class="line">            .just(try $0.mapObject(type))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a href="https://github.com/Adrift001/Moya-HandyJSON">Moya-HandyJSON</a></p>
+<p><a href="https://github.com/SlackerJing/Moya-HandyJSON">Moya-HandyJSON</a></p>
 <p><strong>–EOF–</strong></p>
 
     </div>
@@ -321,7 +321,7 @@
     
   
   <div class="comments">
-  <script src="https://utteranc.es/client.js" repo="Adrift001/Blog-Comments" issue-term="title" theme="github-light" crossorigin="anonymous" async></script>
+  <script src="https://utteranc.es/client.js" repo="SlackerJing/Blog-Comments" issue-term="title" theme="github-light" crossorigin="anonymous" async></script>
   </div>
   
   
@@ -400,7 +400,7 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/Adrift001" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Adrift001" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+        <a href="https://github.com/SlackerJing" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;SlackerJing" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
       </span>
       <span class="links-of-author-item">
         <a href="mailto:me@jingxuetao.com" title="E-Mail → mailto:me@jingxuetao.com"><i class="fa fa-fw fa-envelope"></i></a>
