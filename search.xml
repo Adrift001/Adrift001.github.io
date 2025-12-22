@@ -173,6 +173,31 @@ static const void *dataTaskKey = &amp;dataTaskKey;
       </categories>
   </entry>
   <entry>
+    <title>iOS界面跳转隐藏tabBar</title>
+    <url>/ios-jump-hide-tabbar/</url>
+    <content><![CDATA[<h3 id="一-IOS隐藏tabBar的方法"><a href="#一-IOS隐藏tabBar的方法" class="headerlink" title="一.IOS隐藏tabBar的方法:"></a>一.IOS隐藏tabBar的方法:</h3><!--kg-card-begin: code-->
+
+<pre><code>self.tabBarController.tabBar.hidden = YES;
+</code></pre>
+<!--kg-card-end: code-->
+
+<p>但是我们跳转隐藏tabBar需要的不是这段代码.</p>
+<h3 id="二-push跳转隐藏tabBar"><a href="#二-push跳转隐藏tabBar" class="headerlink" title="二.push跳转隐藏tabBar"></a>二.push跳转隐藏tabBar</h3><p>如果在push跳转时需要隐藏tabBar，设置self.hidesBottomBarWhenPushed&#x3D;YES;并在push后设置self.hidesBottomBarWhenPushed&#x3D;NO;这样back回来的时候，tabBar会恢复正常显示。代码如下:</p>
+<!--kg-card-begin: code-->
+
+<pre><code>    NextViewController *next=[[NextViewController alloc]init];
+    next. hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:next animated:YES];
+</code></pre>
+<!--kg-card-end: code-->
+
+<p>END</p>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+  </entry>
+  <entry>
     <title>CentOS安装Ghost博客并实现全站HTTPS</title>
     <url>/centosan-zhuang-ghostbo-ke-bing-shi-xian-quan-zhan-https/</url>
     <content><![CDATA[<h3 id="1-前期准备"><a href="#1-前期准备" class="headerlink" title="1.前期准备"></a>1.前期准备</h3><!--kg-card-begin: code-->
@@ -416,31 +441,6 @@ server &#123;
 ]]></content>
       <categories>
         <category>Ghost</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>iOS界面跳转隐藏tabBar</title>
-    <url>/ios-jump-hide-tabbar/</url>
-    <content><![CDATA[<h3 id="一-IOS隐藏tabBar的方法"><a href="#一-IOS隐藏tabBar的方法" class="headerlink" title="一.IOS隐藏tabBar的方法:"></a>一.IOS隐藏tabBar的方法:</h3><!--kg-card-begin: code-->
-
-<pre><code>self.tabBarController.tabBar.hidden = YES;
-</code></pre>
-<!--kg-card-end: code-->
-
-<p>但是我们跳转隐藏tabBar需要的不是这段代码.</p>
-<h3 id="二-push跳转隐藏tabBar"><a href="#二-push跳转隐藏tabBar" class="headerlink" title="二.push跳转隐藏tabBar"></a>二.push跳转隐藏tabBar</h3><p>如果在push跳转时需要隐藏tabBar，设置self.hidesBottomBarWhenPushed&#x3D;YES;并在push后设置self.hidesBottomBarWhenPushed&#x3D;NO;这样back回来的时候，tabBar会恢复正常显示。代码如下:</p>
-<!--kg-card-begin: code-->
-
-<pre><code>    NextViewController *next=[[NextViewController alloc]init];
-    next. hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:next animated:YES];
-</code></pre>
-<!--kg-card-end: code-->
-
-<p>END</p>
-]]></content>
-      <categories>
-        <category>iOS</category>
       </categories>
   </entry>
   <entry>
@@ -1004,6 +1004,81 @@ int main(int argc, const char * argv[]) &#123;
       </categories>
   </entry>
   <entry>
+    <title>用分类自定义UIBarButtonItem</title>
+    <url>/use-category-define-uibarbuttonitem/</url>
+    <content><![CDATA[<blockquote>
+<p>原因：</p>
+</blockquote>
+<ol>
+<li>项目中多次用到自定义UIBarButtonItem，所以需要抽取出来</li>
+<li>代码该干什么就干什么，因为这段代码是自定义。UIBarButtonItem，所以应该由UIBarButtonItem做。所以创建一个分类。</li>
+<li>命名习惯，代码规范。要用[UIBarButtonItem itemWith…]这种形式。</li>
+</ol>
+<h3 id="自定义UIBarButtonItem"><a href="#自定义UIBarButtonItem" class="headerlink" title="自定义UIBarButtonItem"></a>自定义UIBarButtonItem</h3><p>UIBarButtonItem+Category.h文件</p>
+<!--kg-card-begin: code-->
+
+<pre><code>#import &lt;UIKit/UIKit.h&gt;
+
+@interface UIBarButtonItem (Category)
++ (NSArray *)itemWithTarget:(id)target action:(SEL)action image:(NSString *)image lighlightImage:(NSString *)lighlightImage;
+@end
+</code></pre>
+<!--kg-card-end: code-->
+
+<p>UIBarButtonItem+Category.m文件</p>
+<!--kg-card-begin: code-->
+
+<pre><code>#import &quot;UIBarButtonItem+Category.h&quot;
+
+@implementation UIBarButtonItem (Category)
+
+/**
+ * 自定义一个UIBarButtomItem
+ *
+ * @param target 点击之后调用哪个对象
+ * @param action 点击之后调用对象里面的哪个方法
+ * @param image 普通状态下图片
+ * @param lighlightImage 高亮状态下图片
+ *
+ * @return 创建完的一个UIBarButtomItem数组
+ */
++ (NSArray *)itemWithTarget:(id)target action:(SEL)action image:(NSString *)image lighlightImage:(NSString *)lighlightImage &#123;
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:lighlightImage] forState:UIControlStateHighlighted];
+    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    button.size = button.currentImage.size;
+    
+    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
+    UIBarButtonItem *speaceItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    speaceItem.width = -5;
+    
+    return @[speaceItem,buttonItem];
+&#125;
+
+@end
+</code></pre>
+<!--kg-card-end: code-->
+<h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><p>在ViewController调用或者在自定义的UINavigationController的push方法里面调用。</p>
+<!--kg-card-begin: code-->
+
+<pre><code>//ViewController调用
+self.navigationItem.leftBarButtonItems = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@&quot;back_icon_red&quot; lighlightImage:@&quot;back_icon_red&quot;];
+//自定义UINavigationController的push方法调用
+viewController.navigationItem.leftBarButtonItems = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@&quot;back_icon_red&quot; lighlightImage:@&quot;back_icon_red&quot;];
+</code></pre>
+<!--kg-card-end: code-->
+
+<p>注意：action方法写在ViewController或自定义UINavigationController里面。</p>
+<p>当然还可以在分类里做其他自定义的样式。</p>
+<p><strong>–EOF–</strong></p>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+  </entry>
+  <entry>
     <title>统一设置UINavigationController左上角图标</title>
     <url>/unified-set-navi-upper-left-corner-icon/</url>
     <content><![CDATA[<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>通过工厂方法，然后在需要左上角显示图标的ViewController的viewDidLoad方法调用。代码如下：</p>
@@ -1093,81 +1168,6 @@ int main(int argc, const char * argv[]) &#123;
 **--EOF--**
 </code></pre>
 <!--kg-card-end: code-->]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>用分类自定义UIBarButtonItem</title>
-    <url>/use-category-define-uibarbuttonitem/</url>
-    <content><![CDATA[<blockquote>
-<p>原因：</p>
-</blockquote>
-<ol>
-<li>项目中多次用到自定义UIBarButtonItem，所以需要抽取出来</li>
-<li>代码该干什么就干什么，因为这段代码是自定义。UIBarButtonItem，所以应该由UIBarButtonItem做。所以创建一个分类。</li>
-<li>命名习惯，代码规范。要用[UIBarButtonItem itemWith…]这种形式。</li>
-</ol>
-<h3 id="自定义UIBarButtonItem"><a href="#自定义UIBarButtonItem" class="headerlink" title="自定义UIBarButtonItem"></a>自定义UIBarButtonItem</h3><p>UIBarButtonItem+Category.h文件</p>
-<!--kg-card-begin: code-->
-
-<pre><code>#import &lt;UIKit/UIKit.h&gt;
-
-@interface UIBarButtonItem (Category)
-+ (NSArray *)itemWithTarget:(id)target action:(SEL)action image:(NSString *)image lighlightImage:(NSString *)lighlightImage;
-@end
-</code></pre>
-<!--kg-card-end: code-->
-
-<p>UIBarButtonItem+Category.m文件</p>
-<!--kg-card-begin: code-->
-
-<pre><code>#import &quot;UIBarButtonItem+Category.h&quot;
-
-@implementation UIBarButtonItem (Category)
-
-/**
- * 自定义一个UIBarButtomItem
- *
- * @param target 点击之后调用哪个对象
- * @param action 点击之后调用对象里面的哪个方法
- * @param image 普通状态下图片
- * @param lighlightImage 高亮状态下图片
- *
- * @return 创建完的一个UIBarButtomItem数组
- */
-+ (NSArray *)itemWithTarget:(id)target action:(SEL)action image:(NSString *)image lighlightImage:(NSString *)lighlightImage &#123;
-    
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
-    [button setImage:[UIImage imageNamed:lighlightImage] forState:UIControlStateHighlighted];
-    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
-    button.size = button.currentImage.size;
-    
-    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
-    UIBarButtonItem *speaceItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    speaceItem.width = -5;
-    
-    return @[speaceItem,buttonItem];
-&#125;
-
-@end
-</code></pre>
-<!--kg-card-end: code-->
-<h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><p>在ViewController调用或者在自定义的UINavigationController的push方法里面调用。</p>
-<!--kg-card-begin: code-->
-
-<pre><code>//ViewController调用
-self.navigationItem.leftBarButtonItems = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@&quot;back_icon_red&quot; lighlightImage:@&quot;back_icon_red&quot;];
-//自定义UINavigationController的push方法调用
-viewController.navigationItem.leftBarButtonItems = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@&quot;back_icon_red&quot; lighlightImage:@&quot;back_icon_red&quot;];
-</code></pre>
-<!--kg-card-end: code-->
-
-<p>注意：action方法写在ViewController或自定义UINavigationController里面。</p>
-<p>当然还可以在分类里做其他自定义的样式。</p>
-<p><strong>–EOF–</strong></p>
-]]></content>
       <categories>
         <category>iOS</category>
       </categories>
@@ -3767,6 +3767,19 @@ Swift泛型
       </categories>
   </entry>
   <entry>
+    <title>指针</title>
+    <url>/pointer/</url>
+    <content><![CDATA[<p><img data-src="/../images/city-of-gold-coast-HdWvE7jALj8-unsplash.jpg"></p>
+<span id="more"></span>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/// Swift里面也有专门的指针类型,这些都被定性为 `Unsafe`(不安全的), 常见的4种类型</span><br><span class="line">/// UnsafePointer&lt;Pointee&gt; 类似于 const Pointee *</span><br><span class="line">/// UnsafeMutablePointer&lt;Pointee&gt; 类似于  Pointee *</span><br><span class="line">/// UnsafeRawPointer 类似于 const void * 指向类型不确定</span><br><span class="line">/// UnsafeMutableRawPointer 类似于 void * 指向类型不确定</span><br><span class="line"></span><br><span class="line">var age = 10</span><br><span class="line">func test1(_ ptr: UnsafeMutablePointer&lt;Int&gt;) &#123;// int *</span><br><span class="line">    ptr.pointee = 20</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func test2(_ ptr: UnsafePointer&lt;Int&gt;) &#123; // const int *</span><br><span class="line">    print(&quot;test2&quot;, ptr.pointee)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func test3(_ ptr: UnsafeRawPointer) &#123; // const void *</span><br><span class="line">    print(&quot;test3&quot;, ptr.load(as: Int.self))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func test4(_ ptr: UnsafeMutableRawPointer) &#123; // void *</span><br><span class="line">    ptr.storeBytes(of: 30, as: Int.self)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//func test3(_ num: inout Int) &#123;</span><br><span class="line">//</span><br><span class="line">//&#125;</span><br><span class="line"></span><br><span class="line">test1(&amp;age)</span><br><span class="line">test2(&amp;age)</span><br><span class="line">test3(&amp;age)</span><br><span class="line">test4(&amp;age)</span><br><span class="line">//test3(&amp;age)</span><br><span class="line">print(age)</span><br><span class="line"></span><br><span class="line">/// 使用场景</span><br><span class="line">/// OC -&gt; BOOL *</span><br><span class="line">/// Swift -&gt; UnsafeMutablePointer&lt;ObjeCBool&gt;</span><br><span class="line">var arr = NSArray(objects: 11, 22, 33, 44)</span><br><span class="line">arr.enumerateObjects &#123; (element, idx, stop) in</span><br><span class="line">    if idx == 2 &#123;</span><br><span class="line">        stop.pointee = true</span><br><span class="line">    &#125;</span><br><span class="line">    print(idx, element)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/// 获得指向某个变量的指针</span><br><span class="line">/// withUnsafePointer 跟body返回类型一样</span><br><span class="line">var ptrAge1 = withUnsafePointer(to: &amp;age)&#123; $0 &#125;</span><br><span class="line">print(ptrAge1.pointee)</span><br><span class="line">var ptrAge2 = withUnsafeMutablePointer(to: &amp;age) &#123; (pointer) -&gt; UnsafeMutablePointer&lt;Int&gt; in</span><br><span class="line">    return pointer</span><br><span class="line">&#125;</span><br><span class="line">var ptrAge3 = withUnsafePointer(to: &amp;age, &#123; UnsafeRawPointer($0) &#125;)</span><br><span class="line">var ptrAge4 = withUnsafeMutablePointer(to: &amp;age, &#123; UnsafeMutableRawPointer($0) &#125;)</span><br><span class="line">ptrAge4.storeBytes(of: 40, as: Int.self)</span><br><span class="line">print(age)</span><br><span class="line"></span><br><span class="line">/// 获取指向堆空间的指针</span><br><span class="line">class Person &#123;</span><br><span class="line">    var age = 0</span><br><span class="line">    deinit &#123;</span><br><span class="line">        print(&quot;Person deinit&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var person = Person()</span><br><span class="line">var ptrPerson1 = withUnsafePointer(to: &amp;person, &#123; $0 &#125;) //保存person对象的地址值</span><br><span class="line">print(ptrPerson1.pointee.age)</span><br><span class="line"></span><br><span class="line">/// 创建指针</span><br><span class="line">var mPtr = malloc(16)</span><br><span class="line">mPtr?.storeBytes(of: 11, as: Int.self)</span><br><span class="line">mPtr?.storeBytes(of: 22, toByteOffset: 8, as: Int.self)</span><br><span class="line">print(mPtr?.load(as: Int.self))</span><br><span class="line">print(mPtr?.load(fromByteOffset: 8, as: Int.self))</span><br><span class="line">free(mPtr)</span><br><span class="line"></span><br><span class="line">var allPtr = UnsafeMutableRawPointer.allocate(byteCount: 16, alignment: 1)</span><br><span class="line">allPtr.storeBytes(of: 11, as: Int.self)</span><br><span class="line">allPtr.storeBytes(of: 22, toByteOffset: 8, as: Int.self)</span><br><span class="line">allPtr.advanced(by: 8) //移动8个字节,返回一个新指针</span><br><span class="line">allPtr.deallocate()</span><br><span class="line"></span><br><span class="line">var capPtr = UnsafeMutablePointer&lt;Int&gt;.allocate(capacity: 3)</span><br><span class="line">capPtr.initialize(to: 11)</span><br><span class="line">capPtr.successor().initialize(to: 22)</span><br><span class="line">capPtr.successor().successor().initialize(to: 33)</span><br><span class="line">print(capPtr.pointee)</span><br><span class="line">print((capPtr + 1).pointee)</span><br><span class="line">print((capPtr + 2).pointee)</span><br><span class="line"></span><br><span class="line">print(capPtr[0])</span><br><span class="line">print(capPtr[1])</span><br><span class="line">print(capPtr[2])</span><br><span class="line">capPtr.deinitialize(count: 3)</span><br><span class="line">capPtr.deallocate()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var pPtr = UnsafeMutablePointer&lt;Person&gt;.allocate(capacity: 3)</span><br><span class="line">pPtr.initialize(to: Person())</span><br><span class="line">(pPtr + 1).initialize(to: Person())</span><br><span class="line">(pPtr + 2).initialize(to: Person())</span><br><span class="line">pPtr.deinitialize(count: 3)</span><br><span class="line">pPtr.deallocate()</span><br></pre></td></tr></table></figure>
+
+<p><strong>–EOF–</strong></p>
+]]></content>
+      <categories>
+        <category>Swift</category>
+      </categories>
+  </entry>
+  <entry>
     <title>柯里化</title>
     <url>/currying/</url>
     <content><![CDATA[<p><img data-src="/../images/spenser-sembrat-M2CHE5EDmo8-unsplash.jpg"></p>
@@ -3776,19 +3789,6 @@ Swift泛型
 <span id="more"></span>
 
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import Foundation</span><br><span class="line"></span><br><span class="line">/// 柯里化</span><br><span class="line">/// 将一个接收多参数的函数变换为一系列只接收一个单个参数的函数</span><br><span class="line"></span><br><span class="line">func add1(_ v1: Int, _ v2: Int) -&gt; Int &#123;</span><br><span class="line">    return v1 + v2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func add(_ v: Int) -&gt; (Int) -&gt; Int &#123;</span><br><span class="line">    &#123; $0 + v &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let result1 = add1(10, 20)</span><br><span class="line">let result2 = add(20)(10)</span><br><span class="line">print(result1)</span><br><span class="line">print(result2)</span><br><span class="line"></span><br><span class="line">func add(_ v1: Int, _ v2: Int, _ v3: Int) -&gt; Int &#123;</span><br><span class="line">    return v1 + v2 + v3</span><br><span class="line">&#125;</span><br><span class="line">//                      v2        v1     result</span><br><span class="line">func add2(_ v3: Int) -&gt; (Int) -&gt; (Int) -&gt; Int &#123;</span><br><span class="line">//func add(_ v3: Int) -&gt; ((Int) -&gt; ((Int) -&gt; Int)) &#123;</span><br><span class="line">    // 20</span><br><span class="line">    return &#123; v2 in</span><br><span class="line">        // 10</span><br><span class="line">        return &#123; v1 in</span><br><span class="line">            return v1 + v2 + v3</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let result3 = add(10, 20, 30)</span><br><span class="line">let result4 = add2(30)(20)(10)</span><br><span class="line">print(result3)</span><br><span class="line">print(result4)</span><br><span class="line">/// 不断地函数嵌套, 最里层做计算</span><br><span class="line"></span><br><span class="line">func currying&lt;A, B, C&gt;(_ fn: @escaping (A, B) -&gt; C) -&gt; (B) -&gt; (A) -&gt; C &#123;</span><br><span class="line">    return &#123; b in</span><br><span class="line">        return &#123; a in</span><br><span class="line">            return fn(a, b)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let result5 = currying(add1)(20)(10)</span><br><span class="line">print(result5)</span><br></pre></td></tr></table></figure>
-
-<p><strong>–EOF–</strong></p>
-]]></content>
-      <categories>
-        <category>Swift</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>指针</title>
-    <url>/pointer/</url>
-    <content><![CDATA[<p><img data-src="/../images/city-of-gold-coast-HdWvE7jALj8-unsplash.jpg"></p>
-<span id="more"></span>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/// Swift里面也有专门的指针类型,这些都被定性为 `Unsafe`(不安全的), 常见的4种类型</span><br><span class="line">/// UnsafePointer&lt;Pointee&gt; 类似于 const Pointee *</span><br><span class="line">/// UnsafeMutablePointer&lt;Pointee&gt; 类似于  Pointee *</span><br><span class="line">/// UnsafeRawPointer 类似于 const void * 指向类型不确定</span><br><span class="line">/// UnsafeMutableRawPointer 类似于 void * 指向类型不确定</span><br><span class="line"></span><br><span class="line">var age = 10</span><br><span class="line">func test1(_ ptr: UnsafeMutablePointer&lt;Int&gt;) &#123;// int *</span><br><span class="line">    ptr.pointee = 20</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func test2(_ ptr: UnsafePointer&lt;Int&gt;) &#123; // const int *</span><br><span class="line">    print(&quot;test2&quot;, ptr.pointee)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func test3(_ ptr: UnsafeRawPointer) &#123; // const void *</span><br><span class="line">    print(&quot;test3&quot;, ptr.load(as: Int.self))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func test4(_ ptr: UnsafeMutableRawPointer) &#123; // void *</span><br><span class="line">    ptr.storeBytes(of: 30, as: Int.self)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//func test3(_ num: inout Int) &#123;</span><br><span class="line">//</span><br><span class="line">//&#125;</span><br><span class="line"></span><br><span class="line">test1(&amp;age)</span><br><span class="line">test2(&amp;age)</span><br><span class="line">test3(&amp;age)</span><br><span class="line">test4(&amp;age)</span><br><span class="line">//test3(&amp;age)</span><br><span class="line">print(age)</span><br><span class="line"></span><br><span class="line">/// 使用场景</span><br><span class="line">/// OC -&gt; BOOL *</span><br><span class="line">/// Swift -&gt; UnsafeMutablePointer&lt;ObjeCBool&gt;</span><br><span class="line">var arr = NSArray(objects: 11, 22, 33, 44)</span><br><span class="line">arr.enumerateObjects &#123; (element, idx, stop) in</span><br><span class="line">    if idx == 2 &#123;</span><br><span class="line">        stop.pointee = true</span><br><span class="line">    &#125;</span><br><span class="line">    print(idx, element)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/// 获得指向某个变量的指针</span><br><span class="line">/// withUnsafePointer 跟body返回类型一样</span><br><span class="line">var ptrAge1 = withUnsafePointer(to: &amp;age)&#123; $0 &#125;</span><br><span class="line">print(ptrAge1.pointee)</span><br><span class="line">var ptrAge2 = withUnsafeMutablePointer(to: &amp;age) &#123; (pointer) -&gt; UnsafeMutablePointer&lt;Int&gt; in</span><br><span class="line">    return pointer</span><br><span class="line">&#125;</span><br><span class="line">var ptrAge3 = withUnsafePointer(to: &amp;age, &#123; UnsafeRawPointer($0) &#125;)</span><br><span class="line">var ptrAge4 = withUnsafeMutablePointer(to: &amp;age, &#123; UnsafeMutableRawPointer($0) &#125;)</span><br><span class="line">ptrAge4.storeBytes(of: 40, as: Int.self)</span><br><span class="line">print(age)</span><br><span class="line"></span><br><span class="line">/// 获取指向堆空间的指针</span><br><span class="line">class Person &#123;</span><br><span class="line">    var age = 0</span><br><span class="line">    deinit &#123;</span><br><span class="line">        print(&quot;Person deinit&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var person = Person()</span><br><span class="line">var ptrPerson1 = withUnsafePointer(to: &amp;person, &#123; $0 &#125;) //保存person对象的地址值</span><br><span class="line">print(ptrPerson1.pointee.age)</span><br><span class="line"></span><br><span class="line">/// 创建指针</span><br><span class="line">var mPtr = malloc(16)</span><br><span class="line">mPtr?.storeBytes(of: 11, as: Int.self)</span><br><span class="line">mPtr?.storeBytes(of: 22, toByteOffset: 8, as: Int.self)</span><br><span class="line">print(mPtr?.load(as: Int.self))</span><br><span class="line">print(mPtr?.load(fromByteOffset: 8, as: Int.self))</span><br><span class="line">free(mPtr)</span><br><span class="line"></span><br><span class="line">var allPtr = UnsafeMutableRawPointer.allocate(byteCount: 16, alignment: 1)</span><br><span class="line">allPtr.storeBytes(of: 11, as: Int.self)</span><br><span class="line">allPtr.storeBytes(of: 22, toByteOffset: 8, as: Int.self)</span><br><span class="line">allPtr.advanced(by: 8) //移动8个字节,返回一个新指针</span><br><span class="line">allPtr.deallocate()</span><br><span class="line"></span><br><span class="line">var capPtr = UnsafeMutablePointer&lt;Int&gt;.allocate(capacity: 3)</span><br><span class="line">capPtr.initialize(to: 11)</span><br><span class="line">capPtr.successor().initialize(to: 22)</span><br><span class="line">capPtr.successor().successor().initialize(to: 33)</span><br><span class="line">print(capPtr.pointee)</span><br><span class="line">print((capPtr + 1).pointee)</span><br><span class="line">print((capPtr + 2).pointee)</span><br><span class="line"></span><br><span class="line">print(capPtr[0])</span><br><span class="line">print(capPtr[1])</span><br><span class="line">print(capPtr[2])</span><br><span class="line">capPtr.deinitialize(count: 3)</span><br><span class="line">capPtr.deallocate()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var pPtr = UnsafeMutablePointer&lt;Person&gt;.allocate(capacity: 3)</span><br><span class="line">pPtr.initialize(to: Person())</span><br><span class="line">(pPtr + 1).initialize(to: Person())</span><br><span class="line">(pPtr + 2).initialize(to: Person())</span><br><span class="line">pPtr.deinitialize(count: 3)</span><br><span class="line">pPtr.deallocate()</span><br></pre></td></tr></table></figure>
 
 <p><strong>–EOF–</strong></p>
 ]]></content>
